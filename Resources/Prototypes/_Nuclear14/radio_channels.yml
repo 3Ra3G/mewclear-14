@@ -43,7 +43,7 @@
 - type: radioChannel
   id: VaultCommon
   name: chat-radio-vault-common
-  keycode: 'm' # Corvax-Change
+  keycode: 'v' # Corvax-Change
   frequency: 1349
   color: "#3E7BD1"
 
@@ -57,7 +57,7 @@
 - type: radioChannel
   id: BrotherhoodMidwest
   name: chat-radio-bosmidwest
-  keycode: 'r'
+  keycode: 'm'
   frequency: 1213
   color: "#3B72BF"
 
