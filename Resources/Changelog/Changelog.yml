@@ -140,3 +140,60 @@ Entries:
   id: 5612
   time: '2026-03-06T22:44:01.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/31
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        HideWithoutWhitelist field on JobPrototype - jobs flagged with this are
+        completely hidden from late-join and lobby UI for non-whitelisted
+        players.
+    - type: Add
+      message: >-
+        Synthetics and Super Mutant jobs now use hideWithoutWhitelist
+        (whitelist-gated visibility).
+    - type: Add
+      message: FEVMutants department for Super Mutants, separate from Robots.
+    - type: Add
+      message: >-
+        Language trait category and new speech traits locale (Latin Language,
+        Polyglot).
+    - type: Add
+      message: >-
+        Misfits guidebook override - rules entry now points to Misfits server
+        rules XML.
+    - type: Add
+      message: >-
+        Misfits guidebook locale overrides (rules → "Wiki", nuclear14 →
+        "Misfits: Nuclear Wasteland").
+    - type: Tweak
+      message: >-
+        Renamed "Synthetics" department to "Robots"; added weight -100 to both
+        Robots and FEVMutants departments.
+    - type: Tweak
+      message: >-
+        Renamed all "Midwest BoS" / "MBoS" / "bos" references to "Brotherhood of
+        Steel" across job names, descriptions, access levels, headset channels,
+        ghost roles, traits, loadout kits, clothing/armor/helmet entity names,
+        encryption keys, flags, guidebooks, and the Wendover map.
+    - type: Tweak
+      message: >-
+        Renamed lathe category "Ammo box" to "Ammunition Boxes" (consolidated
+        duplicate locale entry).
+    - type: Tweak
+      message: Filled in empty psi-trait descriptions (LowPotential, HighPotential).
+    - type: Tweak
+      message: >-
+        Server rules XML rewritten with Vault-Tec terminal theme for both
+        Misfits and Nuclear14 rulesets.
+    - type: Tweak
+      message: >-
+        Capitalized and standardized file-renamed marker textures (Prisoner,
+        Serf, Slave PNGs).
+    - type: Fix
+      message: >-
+        Removed ~30 unused/orphaned locale files (nyanotrasen, robust-toolbox,
+        deltav, station-goal, ghouls, disabilities, etc.) that had no matching
+        prototypes.
+  id: 5613
+  time: '2026-03-06T23:47:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/32
