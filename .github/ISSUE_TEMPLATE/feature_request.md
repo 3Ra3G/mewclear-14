@@ -7,21 +7,69 @@ assignees: ''
 
 ---
 
+---
+name: Feature request
+about: Suggest a gameplay, content, or technical improvement.
+title: "[Feature]: "
+labels: ["Type: Feature", "W: Discussion"]
+assignees: ''
+
+---
+
+## Summary
 <!--
-This is a loose format, write this however you need to
-Remove these comments before submitting
+Describe the feature in 1-3 sentences.
+What is it, and what problem does it solve?
 -->
 
-# Description
+## Problem statement
 <!--
-Explain your request in as much detail as you can
+What is frustrating, missing, or inefficient today?
+Who is affected (players, admins, mappers, maintainers)?
 -->
 
-I want Goldfish crackers
-
-# Media
+## Proposed solution
 <!--
-If applicable, add images or even a video to help explain your suggestion
+Describe how this should work.
+Include player/admin UX and expected behavior.
 -->
 
-![Example Screenshot](https://example.com/thisimageisntreal.png)
+## Alternatives considered
+<!--
+List other approaches you considered and why they are less ideal.
+-->
+
+## Scope
+<!--
+Mark all that apply and remove items that are not relevant.
+- Gameplay balance
+- New content (items/jobs/species/maps/etc.)
+- UI/UX
+- Performance
+- Technical debt/refactor
+- Admin tooling
+-->
+
+## Acceptance criteria
+<!--
+Provide clear, testable checks for completion.
+Example:
+- [ ] Feature can be configured by server cvar/prototype.
+- [ ] No regressions in existing related mechanics.
+- [ ] Documentation/localization updated where needed.
+-->
+
+- [ ]
+- [ ]
+- [ ]
+
+## Implementation notes (optional)
+<!--
+If you have implementation ideas, include them here.
+Mention affected systems/files if known.
+-->
+
+## Additional context
+<!--
+Links to Discord discussion, related issues/PRs, mockups, screenshots, or videos.
+-->
