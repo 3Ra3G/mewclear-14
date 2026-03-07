@@ -197,3 +197,68 @@ Entries:
   id: 5613
   time: '2026-03-06T23:47:31.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/32
+- author: Cythisiax
+  changes:
+    - type: Add
+      message: >-
+        Added species whitelist system (WhitelistRequired, RestrictedJobs,
+        JobWhitelistUnlock, Order, RestrictedCustomization) to SpeciesPrototype
+        with job restriction enforcement in character editor and late-join
+    - type: Add
+      message: Added Robot as a new Misfits species prototype
+    - type: Add
+      message: Added Misfits lobby background prototype and texture (1920x1080PSB)
+    - type: Add
+      message: Added wood door recipes and construction graph nodes for N14
+    - type: Add
+      message: Added loadout locale entries for Duffel and Satchel categories
+    - type: Add
+      message: >-
+        Added numerous localization files for Misfits and Nuclear14 content
+        (clothing, structures, weapons, furniture, etc.)
+    - type: Fix
+      message: >-
+        Fixed double-localization in PlayerTab, AtmosMonitoringEntryContainer,
+        and PowerMonitoringWindow (use already-resolved EntityName strings)
+    - type: Fix
+      message: >-
+        Fixed TTS regex using source-generated cached Regex methods to resolve
+        RA0026 and improve performance
+    - type: Fix
+      message: Fixed lobby background prototypes not being registered/loaded
+    - type: Fix
+      message: >-
+        Fixed HumanoidProfileEditor blank DescriptionTab being selected for
+        restricted species; hidden tab removed from XAML and code
+    - type: Fix
+      message: >-
+        Fixed LoadoutPreferenceSelector double-localization by using loadoutDesc
+        directly
+    - type: Fix
+      message: >-
+        Fixed bark voice prototypes sorting by raw Name instead of calling
+        Loc.GetString
+    - type: Fix
+      message: Fixed redundant localization calls in MarkingPicker
+    - type: Fix
+      message: >-
+        Fixed short key/voice names being treated as display text in
+        BoundKeyHelpers and Barks
+    - type: Fix
+      message: Fixed profile name not being applied to spawned job entities
+    - type: Fix
+      message: Removed unused IEntityManager from PortalAutoLinkSystem
+    - type: Tweak
+      message: Lowered NuclearMapFix log level from Error to Info
+    - type: Tweak
+      message: Commented out some Corvax/N14 lobby screen entries
+    - type: Tweak
+      message: Added size to Gamma Gulp Beer item to match other bottles
+    - type: Tweak
+      message: >-
+        HumanoidProfileEditor now hides
+        Appearance/Jobs/Antags/Traits/Loadouts/Markings tabs for restricted
+        species and sorts species by Order and whitelist/unlock
+  id: 5614
+  time: '2026-03-07T13:58:52.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/33
