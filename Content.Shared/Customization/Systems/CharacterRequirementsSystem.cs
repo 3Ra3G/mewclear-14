@@ -19,33 +19,46 @@ public sealed class CharacterRequirementsSystem : EntitySystem
     public bool CheckRequirementValid(CharacterRequirement requirement, JobPrototype job,
         HumanoidCharacterProfile profile, Dictionary<string, TimeSpan> playTimes, bool whitelisted, IPrototype prototype,
         IEntityManager entityManager, IPrototypeManager prototypeManager, IConfigurationManager configManager,
-        ISharedSponsorManager sponsorManager, out string? reason, int depth = 0) // Forge-Change
+        ISharedSponsorManager sponsorManager, out string? reason, int depth = 0, bool jobWhitelisted = false) // Forge-Change
     {
+        var valid = requirement.IsValid(job, profile, playTimes, whitelisted, prototype,
+            entityManager, prototypeManager, configManager, sponsorManager, // Forge-Change
+            out reason, depth);
+
+        if (!valid && jobWhitelisted && requirement.CanBeBypassedByJobWhitelist(job))
+        {
+            reason = null;
+            valid = true;
+        }
+
         // Return false if the requirement is invalid and not inverted
         // If it's inverted return false when it's valid
-        return
-            !requirement.IsValid(job, profile, playTimes, whitelisted, prototype,
-                entityManager, prototypeManager, configManager, sponsorManager, // Forge-Change
-                out reason, depth)
-                ? requirement.Inverted
-                : !requirement.Inverted;
+        return !valid ? requirement.Inverted : !requirement.Inverted;
     }
 
     public bool CheckRequirementsValid(List<CharacterRequirement> requirements, JobPrototype job,
         HumanoidCharacterProfile profile, Dictionary<string, TimeSpan> playTimes, bool whitelisted, IPrototype prototype,
         IEntityManager entityManager, IPrototypeManager prototypeManager, IConfigurationManager configManager,
-        ISharedSponsorManager sponsorManager, out List<string> reasons, int depth = 0) // Forge-Change
+        ISharedSponsorManager sponsorManager, out List<string> reasons, int depth = 0, bool jobWhitelisted = false) // Forge-Change
     {
         reasons = new List<string>();
         var valid = true;
 
         foreach (var requirement in requirements)
         {
+            var requirementValid = requirement.IsValid(job, profile, playTimes, whitelisted, prototype,
+                entityManager, prototypeManager, configManager, sponsorManager, // Forge-Change
+                out var reason, depth);
+
+            if (!requirementValid && jobWhitelisted && requirement.CanBeBypassedByJobWhitelist(job))
+            {
+                reason = null;
+                requirementValid = true;
+            }
+
             // Set valid to false if the requirement is invalid and not inverted
             // If it's inverted set valid to false when it's valid
-            if (!requirement.IsValid(job, profile, playTimes, whitelisted, prototype,
-                entityManager, prototypeManager, configManager, sponsorManager, // Forge-Change
-                out var reason, depth))
+            if (!requirementValid)
             {
                 if (valid)
                     valid = requirement.Inverted;
@@ -61,6 +74,37 @@ public sealed class CharacterRequirementsSystem : EntitySystem
         }
 
         return valid;
+    }
+
+    public bool CheckPlaytimeRequirementsVisible(List<CharacterRequirement> requirements, JobPrototype job,
+        HumanoidCharacterProfile profile, Dictionary<string, TimeSpan> playTimes, bool whitelisted, IPrototype prototype,
+        IEntityManager entityManager, IPrototypeManager prototypeManager, IConfigurationManager configManager,
+        ISharedSponsorManager sponsorManager, out List<string> reasons, int depth = 0, bool jobWhitelisted = false) // #Misfits Change
+    {
+        var playtimeRequirements = requirements
+            .Where(requirement => requirement.CanBeBypassedByJobWhitelist(job))
+            .ToList();
+
+        if (playtimeRequirements.Count == 0)
+        {
+            reasons = new List<string>();
+            return true;
+        }
+
+        return CheckRequirementsValid(
+            playtimeRequirements,
+            job,
+            profile,
+            playTimes,
+            whitelisted,
+            prototype,
+            entityManager,
+            prototypeManager,
+            configManager,
+            sponsorManager,
+            out reasons,
+            depth,
+            jobWhitelisted);
     }
 
 

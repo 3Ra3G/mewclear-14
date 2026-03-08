@@ -12,6 +12,7 @@ using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
 using Robust.Client.Console;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
@@ -187,9 +188,29 @@ namespace Content.Client.LateJoin
                             continue;
 
                         var job = _prototypeManager.Index<JobPrototype>(jobId);
+                        var jobWhitelisted = _jobRequirements.IsJobWhitelisted(job.ID);
 
                         // #Misfits Change - hide whitelist-gated jobs from non-whitelisted players
-                        if (job.HideWithoutWhitelist && !_jobRequirements.IsWhitelisted() && !(job.Whitelisted && _jobRequirements.IsJobWhitelisted(job.ID)))
+                        if (job.HideWithoutWhitelist && !_jobRequirements.IsWhitelisted() && !(job.Whitelisted && jobWhitelisted))
+                            continue;
+
+                        if (job.HideWithoutJobWhitelist && !jobWhitelisted)
+                            continue;
+
+                        if (job.HideIfPlaytimeRequirementsNotMet && !_characterRequirements.CheckPlaytimeRequirementsVisible(
+                                job.Requirements ?? new(),
+                                job,
+                                (HumanoidCharacterProfile) (_prefs.Preferences?.SelectedCharacter
+                                                            ?? HumanoidCharacterProfile.DefaultWithSpecies()),
+                                _jobRequirements.GetRawPlayTimeTrackers(),
+                                _jobRequirements.IsWhitelisted(),
+                                job,
+                                _entityManager,
+                                _prototypeManager,
+                                _configManager,
+                                _sponsorManager,
+                                out _,
+                                jobWhitelisted: jobWhitelisted))
                             continue;
 
                         jobsAvailable.Add(job);
@@ -265,6 +286,18 @@ namespace Content.Client.LateJoin
 
                         jobSelector.AddChild(jobLabel);
                         jobButton.AddChild(jobSelector);
+
+                        // #Misfits Change: rank group separator
+                        if (prototype.ShowBorder)
+                        {
+                            category.AddChild(new PanelContainer
+                            {
+                                PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                                MinSize = new Vector2(0, 2),
+                                Margin = new Thickness(3f, 8f, 3f, 4f),
+                            });
+                        }
+
                         category.AddChild(jobButton);
 
                         jobButton.OnPressed += _ => SelectedId.Invoke((id, jobButton.JobId));
@@ -298,7 +331,8 @@ namespace Content.Client.LateJoin
                                 _prototypeManager,
                                 _configManager,
                                 _sponsorManager, // Forge-Change
-                                out var reasons))
+                            out var reasons,
+                            jobWhitelisted: _jobRequirements.IsJobWhitelisted(prototype.ID)))
                         {
                             jobButton.Disabled = true;
 

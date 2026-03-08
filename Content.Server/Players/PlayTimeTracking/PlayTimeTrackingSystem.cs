@@ -6,6 +6,7 @@ using Content.Server.Afk.Events;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.Mind;
+using Content.Server.Players.JobWhitelist;
 using Content.Server.Station.Events;
 using Content.Server.Preferences.Managers;
 using Content.Shared.CCVar;
@@ -40,8 +41,8 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
     [Dependency] private readonly PlayTimeTrackingManager _tracking = default!;
     [Dependency] private readonly IAdminManager _adminManager = default!;
     [Dependency] private readonly CharacterRequirementsSystem _characterRequirements = default!;
+    [Dependency] private readonly JobWhitelistManager _jobWhitelists = default!;
     [Dependency] private readonly IServerPreferencesManager _prefs = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly SponsorManager _sponsorManager = default!; // Forge-Change
 
 
@@ -218,6 +219,7 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
         }
 
         var isWhitelisted = player.ContentData()?.Whitelisted ?? false; // DeltaV - Whitelist requirement
+        var jobWhitelisted = _cfg.GetCVar(CCVars.GameRoleWhitelist) && _jobWhitelists.IsWhitelisted(player.UserId, role); // #Misfits Change
 
         return _characterRequirements.CheckRequirementsValid(
             job.Requirements,
@@ -228,9 +230,10 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
             job,
             EntityManager,
             _prototypes,
-            _config,
+            _cfg,
             _sponsorManager, // Forge-Change
-            out _);
+            out _,
+            jobWhitelisted: jobWhitelisted);
     }
 
     public HashSet<ProtoId<JobPrototype>> GetDisallowedJobs(ICommonSession player)
@@ -249,6 +252,8 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
         foreach (var job in _prototypes.EnumeratePrototypes<JobPrototype>())
         {
+            var jobWhitelisted = _cfg.GetCVar(CCVars.GameRoleWhitelist) && _jobWhitelists.IsWhitelisted(player.UserId, job.ID); // #Misfits Change
+
             if (job.Requirements != null)
             {
                 if (_characterRequirements.CheckRequirementsValid(
@@ -260,9 +265,10 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
                         job,
                         EntityManager,
                         _prototypes,
-                        _config,
+                        _cfg,
                         _sponsorManager, // Forge-Change
-                        out _))
+                        out _,
+                        jobWhitelisted: jobWhitelisted))
                     continue;
 
                 goto NoRole;
@@ -299,6 +305,8 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
                 jobber.Requirements.Count == 0)
                 continue;
 
+            var jobWhitelisted = _cfg.GetCVar(CCVars.GameRoleWhitelist) && _jobWhitelists.IsWhitelisted(userId, jobber.ID); // #Misfits Change
+
             if (!_characterRequirements.CheckRequirementsValid(
                 jobber.Requirements,
                 jobber,
@@ -308,9 +316,10 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
                 jobber,
                 EntityManager,
                 _prototypes,
-                _config,
+                _cfg,
                 _sponsorManager, // Forge-Change
-                out _))
+                out _,
+                jobWhitelisted: jobWhitelisted))
             {
                 jobs.RemoveSwap(i);
                 i--;

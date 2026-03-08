@@ -90,6 +90,13 @@ namespace Content.Shared.Roles
         public int RealDisplayWeight => DisplayWeight ?? Weight;
 
         /// <summary>
+        /// When true, a thin visual separator is drawn above this job row in the character UI,
+        /// marking the start of a new rank group.
+        /// </summary>
+        [DataField]
+        public bool ShowBorder { get; private set; } = false;
+
+        /// <summary>
         ///     A numerical score for how much easier this job is for antagonists.
         ///     For traitors, reduces starting TC by this amount. Other gamemodes can use it for whatever they find fitting.
         /// </summary>
@@ -150,6 +157,27 @@ namespace Content.Shared.Roles
         /// </summary>
         [DataField]
         public bool HideWithoutWhitelist; // #Misfits Change
+
+        /// <summary>
+        ///     If true, this job is completely hidden from the lobby UI
+        ///     unless the player has an explicit job whitelist entry for it.
+        /// </summary>
+        [DataField]
+        public bool HideWithoutJobWhitelist; // #Misfits Change
+
+        /// <summary>
+        ///     If true, this job is hidden from the lobby UI until its
+        ///     playtime-based requirements are met or bypassed by job whitelist.
+        /// </summary>
+        [DataField]
+        public bool HideIfPlaytimeRequirementsNotMet; // #Misfits Change
+
+        /// <summary>
+        ///     If true, an explicit job whitelist entry bypasses playtime-based
+        ///     requirements for this job.
+        /// </summary>
+        [DataField]
+        public bool JobWhitelistBypassesRoleTimers; // #Misfits Change
 
         [DataField]
         public bool SpawnLoadout = true;

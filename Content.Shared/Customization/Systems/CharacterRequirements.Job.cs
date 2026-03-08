@@ -124,6 +124,11 @@ public sealed partial class CharacterDepartmentTimeRequirement : CharacterRequir
     [DataField(required: true)]
     public ProtoId<DepartmentPrototype> Department;
 
+    public override bool CanBeBypassedByJobWhitelist(JobPrototype job) // #Misfits Change
+    {
+        return job.JobWhitelistBypassesRoleTimers;
+    }
+
     public override bool IsValid(JobPrototype job,
         HumanoidCharacterProfile profile,
         Dictionary<string, TimeSpan> playTimes,
@@ -197,6 +202,11 @@ public sealed partial class CharacterOverallTimeRequirement : CharacterRequireme
     [DataField]
     public TimeSpan Max = TimeSpan.MaxValue;
 
+    public override bool CanBeBypassedByJobWhitelist(JobPrototype job) // #Misfits Change
+    {
+        return job.JobWhitelistBypassesRoleTimers;
+    }
+
     public override bool IsValid(JobPrototype job,
         HumanoidCharacterProfile profile,
         Dictionary<string, TimeSpan> playTimes,
@@ -259,6 +269,11 @@ public sealed partial class CharacterPlaytimeRequirement : CharacterRequirement
 
     [DataField(required: true)]
     public ProtoId<PlayTimeTrackerPrototype> Tracker;
+
+    public override bool CanBeBypassedByJobWhitelist(JobPrototype job) // #Misfits Change
+    {
+        return job.JobWhitelistBypassesRoleTimers;
+    }
 
     public override bool IsValid(JobPrototype job,
         HumanoidCharacterProfile profile,

@@ -940,10 +940,27 @@ namespace Content.Client.Lobby.UI
             foreach (var department in departments)
             {
                 var departmentName = Loc.GetString($"department-{department.ID}");
+                var profile = Profile ?? HumanoidCharacterProfile.DefaultWithSpecies();
+                var playTimes = _requirements.GetRawPlayTimeTrackers();
+                var serverWhitelisted = _requirements.IsWhitelisted();
 
                 var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
                     .Where(job => job.SetPreference)
                     .Where(job => !job.HideWithoutWhitelist || _requirements.IsWhitelisted() || (job.Whitelisted && _requirements.IsJobWhitelisted(job.ID))) // #Misfits Change
+                    .Where(job => !job.HideWithoutJobWhitelist || _requirements.IsJobWhitelisted(job.ID)) // #Misfits Change
+                    .Where(job => !job.HideIfPlaytimeRequirementsNotMet || _characterRequirementsSystem.CheckPlaytimeRequirementsVisible(
+                        job.Requirements ?? new(),
+                        job,
+                        profile,
+                        playTimes,
+                        serverWhitelisted,
+                        job,
+                        _entManager,
+                        _prototypeManager,
+                        _cfgManager,
+                        _sponsorMan,
+                        out _,
+                        jobWhitelisted: _requirements.IsJobWhitelisted(job.ID))) // #Misfits Change
                     .ToArray();
 
                 Array.Sort(jobs, JobUIComparer.Instance);
@@ -987,6 +1004,17 @@ namespace Content.Client.Lobby.UI
 
                 foreach (var job in jobs)
                 {
+                    // #Misfits Change: rank group separator
+                    if (job.ShowBorder)
+                    {
+                        category.AddChild(new PanelContainer
+                        {
+                            PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                            MinSize = new Vector2(0, 2),
+                            Margin = new Thickness(3f, 8f, 3f, 4f),
+                        });
+                    }
+
                     var jobContainer = new BoxContainer { Orientation = LayoutOrientation.Horizontal, };
                     var selector = new RequirementsSelector { Margin = new(3f, 3f, 3f, 0f) };
 
@@ -1020,7 +1048,8 @@ namespace Content.Client.Lobby.UI
                          _prototypeManager,
                          _cfgManager,
                          _sponsorMan, // Forge-Change
-                         out var reasons))
+                        out var reasons,
+                        jobWhitelisted: _requirements.IsJobWhitelisted(job.ID)))
                         selector.LockRequirements(_characterRequirementsSystem.GetRequirementsText(reasons));
                     else
                         selector.UnlockRequirements();
@@ -1080,10 +1109,27 @@ namespace Content.Client.Lobby.UI
             foreach (var department in departments)
             {
                 var departmentName = Loc.GetString($"department-{department.ID}");
+                var profile = Profile ?? HumanoidCharacterProfile.DefaultWithSpecies();
+                var playTimes = _requirements.GetRawPlayTimeTrackers();
+                var serverWhitelisted = _requirements.IsWhitelisted();
 
                 var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
                     .Where(job => job.SetPreference)
                     .Where(job => !job.HideWithoutWhitelist || _requirements.IsWhitelisted() || (job.Whitelisted && _requirements.IsJobWhitelisted(job.ID))) // #Misfits Change
+                    .Where(job => !job.HideWithoutJobWhitelist || _requirements.IsJobWhitelisted(job.ID)) // #Misfits Change
+                    .Where(job => !job.HideIfPlaytimeRequirementsNotMet || _characterRequirementsSystem.CheckPlaytimeRequirementsVisible(
+                        job.Requirements ?? new(),
+                        job,
+                        profile,
+                        playTimes,
+                        serverWhitelisted,
+                        job,
+                        _entManager,
+                        _prototypeManager,
+                        _cfgManager,
+                        _sponsorMan,
+                        out _,
+                        jobWhitelisted: _requirements.IsJobWhitelisted(job.ID))) // #Misfits Change
                     .ToArray();
                 Array.Sort(jobs, JobUIComparer.Instance);
 
@@ -1131,6 +1177,17 @@ namespace Content.Client.Lobby.UI
 
                 foreach (var job in jobs)
                 {
+                    // #Misfits Change: rank group separator
+                    if (job.ShowBorder)
+                    {
+                        category.AddChild(new PanelContainer
+                        {
+                            PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                            MinSize = new Vector2(0, 2),
+                            Margin = new Thickness(3f, 8f, 3f, 4f),
+                        });
+                    }
+
                     var jobContainer = new BoxContainer()
                     {
                         Orientation = LayoutOrientation.Horizontal,
@@ -1168,7 +1225,8 @@ namespace Content.Client.Lobby.UI
                         _prototypeManager,
                         _cfgManager,
                         _sponsorMan, // Forge-Change
-                        out var reasons))
+                        out var reasons,
+                        jobWhitelisted: _requirements.IsJobWhitelisted(job.ID)))
                         selector.LockRequirements(_characterRequirementsSystem.GetRequirementsText(reasons));
                     else
                         selector.UnlockRequirements();
@@ -1226,7 +1284,8 @@ namespace Content.Client.Lobby.UI
                         _prototypeManager,
                         _cfgManager,
                         _sponsorMan, // Forge-Change
-                        out _))
+                        out _,
+                        jobWhitelisted: _requirements.IsJobWhitelisted(proto.ID)))
                     continue;
 
                 selector.Select((int) JobPriority.Never);

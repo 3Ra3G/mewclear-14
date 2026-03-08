@@ -40,4 +40,9 @@ public abstract partial class CharacterRequirement
         out string? reason,
         int depth = 0
     );
+
+    public virtual bool CanBeBypassedByJobWhitelist(JobPrototype job) // #Misfits Change
+    {
+        return false;
+    }
 }
