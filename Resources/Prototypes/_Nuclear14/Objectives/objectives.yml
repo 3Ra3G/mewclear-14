@@ -71,7 +71,7 @@
   id: BaseBOSWObjective
   components:
   - type: Objective
-    issuer: Brotherhood of Steel
+    issuer: brotherhoodofsteel #Misfits Change
   - type: FactionRequirement
     factions:
     - BrotherhoodOfSteel

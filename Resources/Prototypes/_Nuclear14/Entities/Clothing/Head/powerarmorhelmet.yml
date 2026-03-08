@@ -374,6 +374,18 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.85
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Brotherhood Tactical HUD
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Brotherhood
+    compactHud: true
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
 
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
@@ -463,6 +475,18 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.85
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Brotherhood Tactical HUD
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Brotherhood
+    compactHud: true
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
 
 - type: entity
   parent: N14ClothingHeadHelmetPowerArmorX01
@@ -495,6 +519,18 @@
     isEquipment: true
     pulseTime: 2
     toggleAction: PulseThermalVision
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Brotherhood Tactical HUD
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Brotherhood
+    compactHud: true
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
 
 - type: entity
   parent: N14ClothingHeadHelmetPowerArmorT51
@@ -512,6 +548,18 @@
       visible: false
       shader: unshaded
       map: [ "light" ]
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Brotherhood Tactical HUD
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Brotherhood
+    compactHud: true
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
 
 - type: entity
   parent: N14ClothingHeadHelmetPowerArmorT51
@@ -533,3 +581,15 @@
     isEquipment: true
     pulseTime: 2
     toggleAction: PulseThermalVision
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Brotherhood Tactical HUD
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Brotherhood
+    compactHud: true
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface

@@ -15,6 +15,53 @@ public enum WastelandMapUiKey : byte
     Key,
 }
 
+[Serializable, NetSerializable]
+public enum WastelandMapTrackedBlipKind : byte
+{
+    Unknown,
+    Elder,
+    Paladin,
+    Knight,
+    Scribe,
+    Squire,
+}
+
+[Serializable, NetSerializable]
+public enum WastelandMapAnnotationType : byte
+{
+    Marker,
+    Box,
+    Draw,
+}
+
+[Serializable, NetSerializable]
+public enum WastelandMapTacticalFeedKind : byte
+{
+    None,
+    Brotherhood,
+    Vault,
+    NCR,
+}
+
+[Serializable, NetSerializable]
+public readonly record struct WastelandMapTrackedBlip(float X, float Y, string Label, WastelandMapTrackedBlipKind Kind);
+
+[Serializable, NetSerializable]
+public readonly record struct WastelandMapAnnotation(
+    WastelandMapAnnotationType Type,
+    float StartX,
+    float StartY,
+    float EndX,
+    float EndY,
+    string Label,
+    /// <summary>RGBA8 packed color: (R&lt;&lt;24)|(G&lt;&lt;16)|(B&lt;&lt;8)|A. Default is orange.</summary>
+    uint PackedColor,
+    /// <summary>For Draw type: interleaved [x0,y0,x1,y1,...] UV coords. Null for Marker/Box.</summary>
+    float[]? StrokePoints)
+{
+    public const uint DefaultPackedColor = 0xF27F26FF;
+}
+
 /// <summary>
 /// BUI state sent from server to client when the map UI is opened.
 /// Uses primitive floats because Box2 is not [NetSerializable].
@@ -24,21 +71,55 @@ public sealed class WastelandMapBoundUserInterfaceState : BoundUserInterfaceStat
 {
     public readonly string MapTitle;
     public readonly string MapTexturePath;
+    public readonly bool CompactHud;
     // World-space bounds as separate floats (left, bottom, right, top).
     public readonly float BoundsLeft;
     public readonly float BoundsBottom;
     public readonly float BoundsRight;
     public readonly float BoundsTop;
+    public readonly WastelandMapTrackedBlip[] TrackedBlips;
+    public readonly WastelandMapAnnotation[] SharedAnnotations;
 
     public WastelandMapBoundUserInterfaceState(string mapTitle, string mapTexturePath,
-        float boundsLeft, float boundsBottom, float boundsRight, float boundsTop)
+        bool compactHud,
+        float boundsLeft, float boundsBottom, float boundsRight, float boundsTop,
+        WastelandMapTrackedBlip[]? trackedBlips = null,
+        WastelandMapAnnotation[]? sharedAnnotations = null)
     {
         MapTitle = mapTitle;
         MapTexturePath = mapTexturePath;
+        CompactHud = compactHud;
         BoundsLeft = boundsLeft;
         BoundsBottom = boundsBottom;
         BoundsRight = boundsRight;
         BoundsTop = boundsTop;
+        TrackedBlips = trackedBlips ?? [];
+        SharedAnnotations = sharedAnnotations ?? [];
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class WastelandMapAddAnnotationMessage : BoundUserInterfaceMessage
+{
+    public readonly WastelandMapAnnotation Annotation;
+
+    public WastelandMapAddAnnotationMessage(WastelandMapAnnotation annotation)
+    {
+        Annotation = annotation;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class WastelandMapClearAnnotationsMessage : BoundUserInterfaceMessage;
+
+[Serializable, NetSerializable]
+public sealed class WastelandMapRemoveAnnotationMessage : BoundUserInterfaceMessage
+{
+    public readonly int Index;
+
+    public WastelandMapRemoveAnnotationMessage(int index)
+    {
+        Index = index;
     }
 }
 
@@ -68,5 +149,33 @@ public sealed partial class WastelandMapComponent : Component
     /// </summary>
     [DataField]
     public Box2 WorldBounds = default;
+
+    /// <summary>
+    /// If true, the server streams live positions for Brotherhood holotag entities
+    /// on the same map into the tactical map UI as tracked blips.
+    /// </summary>
+    [DataField]
+    public bool TrackBrotherhoodHolotags;
+
+    /// <summary>
+    /// Shared tactical feed for tracked IDs and synchronized annotations.
+    /// Brotherhood and Vault viewers can share the same layer across tables,
+    /// Pip-Boys, and armor HUDs.
+    /// </summary>
+    [DataField]
+    public WastelandMapTacticalFeedKind TacticalFeed;
+
+    /// <summary>
+    /// If true, the UI hides the annotation toolbar and uses a smaller HUD-style layout.
+    /// </summary>
+    [DataField]
+    public bool CompactHud;
+
+    /// <summary>
+    /// Shared tactical annotations synchronized to all viewers of this map.
+    /// Stored in normalized UV space so they remain aligned with the rendered image.
+    /// </summary>
+    [DataField]
+    public List<WastelandMapAnnotation> SharedAnnotations = new();
 }
 

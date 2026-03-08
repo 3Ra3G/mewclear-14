@@ -1,0 +1,16 @@
+# #Misfits Change - Tags used by the Pip-Boy shared faction map system.
+# When a player inserts a faction ID/holotag into a Pip-Boy, WastelandMapCartridgeSystem
+# inspects these tags to select the correct shared tactical feed (BOS MAP / VAULT MAP / NCR MAP).
+# The WastelandMapTacticalFeedKind enum in WastelandMapComponent.cs must have a matching entry.
+# Tracked blips and annotations are isolated per feed - adding a new faction requires:
+#   1. Adding the tag here
+#   2. Adding a Tag component with this tag to the faction's base ID entity
+#   3. Adding the tag to N14BasePipboy idSlot whitelist in pda.yml
+#   4. Adding a new enum value in WastelandMapTacticalFeedKind (WastelandMapComponent.cs)
+#   5. Handling the new enum in WastelandMapCartridgeSystem.GetLoaderFeed()
+#   6. Handling the new enum in WastelandMapSystem.GetTrackedBlips()
+- type: Tag
+  id: IdCardBrotherhood
+
+- type: Tag
+  id: IdCardNCR

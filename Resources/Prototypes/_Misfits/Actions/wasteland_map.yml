@@ -1,0 +1,12 @@
+- type: entity
+  id: ActionOpenWastelandMap
+  name: action-name-open-wasteland-map
+  description: action-desc-open-wasteland-map
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _Nuclear14/Objects/Misc/pipboy.rsi
+      state: pda
+    event: !type:OpenUiActionEvent
+      key: enum.WastelandMapUiKey.Key

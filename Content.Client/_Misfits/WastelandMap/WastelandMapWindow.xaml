@@ -18,10 +18,24 @@
                         StyleClasses="AngleRect"/>
 
         <!-- Footer -->
-        <BoxContainer Orientation="Vertical">
+        <BoxContainer Name="FooterContainer" Orientation="Vertical">
             <PanelContainer StyleClasses="LowDivider"/>
+            <BoxContainer Name="ToolbarContainer" Orientation="Vertical" Margin="10 4 10 0" VerticalAlignment="Bottom">
+                <BoxContainer Orientation="Horizontal" Margin="0 0 0 2">
+                    <Button Name="PanModeButton" Text="Pan"/>
+                    <Button Name="MarkerModeButton" Text="Marker" Margin="6 0 0 0"/>
+                    <Button Name="BoxModeButton" Text="Box" Margin="6 0 0 0"/>
+                    <Button Name="DrawModeButton" Text="Draw" Margin="6 0 0 0"/>
+                    <Button Name="EraseButton" Text="Erase" Margin="6 0 0 0"/>
+                    <Button Name="ClearMapButton" Text="Clear Map" Margin="6 0 0 0"/>
+                    <LineEdit Name="AnnotationText" HorizontalExpand="True" Margin="8 0 0 0"
+                              PlaceHolder="Annotation text"/>
+                </BoxContainer>
+                <!-- Color swatches: populated in code-behind -->
+                <BoxContainer Name="ColorRow" Orientation="Horizontal" Margin="0 0 0 2" VerticalAlignment="Center"/>
+            </BoxContainer>
             <BoxContainer Orientation="Horizontal" Margin="10 2 5 0" VerticalAlignment="Bottom">
-                <Label Name="FooterText" Text="Scroll to zoom | Click and drag to pan"
+                <Label Name="FooterText" Text="Scroll to zoom | Click and drag to pan | Right click an annotation to delete it"
                        StyleClasses="WindowFooterText"
                        HorizontalAlignment="Left" HorizontalExpand="True" Margin="0 0 5 0"/>
             </BoxContainer>

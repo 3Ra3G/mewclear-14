@@ -32,11 +32,17 @@
           True: { visible: true }
           False: { visible: false }
   - type: Appearance
-  # #Misfits Change - Make tactical map functional with wasteland map viewer
+  # #Misfits Change - BOS tactical war table using the Brotherhood shared map feed.
+  # tacticalFeed: Brotherhood means annotations and blips are shared with:
+  #   - BOS power armor helmets (powerarmorhelmet.yml in _Nuclear14 and Corvax)
+  #   - Any Pip-Boy with a BOS holotag inserted (MisfitsWastelandMapCartridge via WastelandMapCartridgeSystem)
+  # If adding new BOS map consumers, set tacticalFeed: Brotherhood on their WastelandMap component.
   - type: WastelandMap
     mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Tactical Map - Wendover
     worldBounds: "-517,-308,484,311"
+    tacticalFeed: Brotherhood
+    trackBrotherhoodHolotags: true
   - type: ActivatableUI
     key: enum.WastelandMapUiKey.Key
   - type: ActivatableUIRequiresPower

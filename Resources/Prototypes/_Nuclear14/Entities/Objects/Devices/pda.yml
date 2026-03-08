@@ -45,8 +45,16 @@
       ejectSound: /Audio/Machines/id_swipe.ogg
       insertSound: /Audio/Machines/id_insert.ogg
       whitelist:
+        # #Misfits Change - Faction ID tags: inserting one of these into the Pip-Boy
+        # activates the corresponding shared tactical feed in the Pipboy Map cartridge.
+        # IdCardVault     -> Vault shared map (VaultMap feed)
+        # IdCardBrotherhood -> BOS shared map (Brotherhood feed) - same feed as N14BrotherhoodTacticalmap table and BOS helmets
+        # IdCardNCR       -> NCR shared map (NCR feed)
+        # When adding a new faction map, add its tag here AND define it in _Misfits/tags.yml.
         tags:
         - IdCardVault
+        - IdCardBrotherhood
+        - IdCardNCR
   - type: Geiger
     isEnabled: true
     showControl: true
@@ -57,6 +65,13 @@
       maxDistance: 10
       rolloffFactor: 4
   - type: RadiationReceiver
+  - type: CartridgeLoader
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NewsReaderCartridge
+      - NanoChatCartridge
+      - MisfitsWastelandMapCartridge  # #Misfits Change - Pip-Boy shared faction map program
 
 - type: entity
   parent: N14BasePipboy

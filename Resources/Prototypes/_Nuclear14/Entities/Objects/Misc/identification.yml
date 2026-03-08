@@ -329,6 +329,9 @@
     state: ncrdogtag
   - type: PresetIdCard
     job: NCRCadet #Misfits Change - was NCRSoldier
+  - type: Tag
+    tags:
+    - IdCardNCR  # #Misfits Change - enables NCR shared map in Pip-Boy; all NCR dogtags inherit this via parent
   - type: ClothingAddFaction
     faction: NCR
 

@@ -15,3 +15,8 @@ objectives-objective-success = {$objective} | [color={$markupColor}]Success![/co
 objectives-objective-fail = {$objective} | [color={$markupColor}]Failure![/color] ({$progress}%)
 
 objectives-in-custody = [bold][color=red]| IN CUSTODY | [/color][/bold]
+
+#Misfits Change
+objective-issuer-ncr = [color=#cc2f2f]NCR[/color]
+objective-issuer-brotherhoodofsteel = [color=#4f81bd]Brotherhood of Steel[/color]
+objective-issuer-geometerofblood = [color=#b22222]The Geometer of Blood[/color]

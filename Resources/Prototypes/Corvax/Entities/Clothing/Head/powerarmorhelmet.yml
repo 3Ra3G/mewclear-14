@@ -67,6 +67,18 @@
   - type: Sprite
     netsync: false
     sprite: Corvax/Clothing/Head/PowerArmorHelmets/t45westbos.rsi
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Brotherhood Tactical HUD
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Brotherhood
+    compactHud: true
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
 
 - type: entity
   parent: N14ClothingHeadHelmetPowerArmorT51
@@ -77,3 +89,15 @@
   - type: Sprite
     netsync: false
     sprite: Corvax/Clothing/Head/PowerArmorHelmets/t51westboselder.rsi
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Brotherhood Tactical HUD
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Brotherhood
+    compactHud: true
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface

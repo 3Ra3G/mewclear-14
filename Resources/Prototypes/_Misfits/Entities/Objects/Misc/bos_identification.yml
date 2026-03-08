@@ -1,5 +1,14 @@
 # #Misfits Change - Brotherhood of Steel Washington holotag ID entity definitions.
 # Consolidated here from _Nuclear14/Entities/Objects/Misc/identification.yml.
+#
+# The IdCardBrotherhood tag on the Initiate base enables the BOS shared faction map in the Pip-Boy.
+# All other BOS Washington holotags inherit from N14IDBrotherhoodWashingtonHolotagInitiate, so they
+# automatically get the tag too. The BOS MAP feed is shared across:
+#   - N14BrotherhoodTacticalmap (war table, misc_machines.yml)
+#   - BOS power armor helmets (powerarmorhelmet.yml in _Nuclear14 and Corvax)
+#   - Pip-Boy with any BOS holotag inserted (WastelandMapCartridgeSystem.cs)
+# If you add a new BOS holotag entity that does NOT inherit from N14IDBrotherhoodWashingtonHolotagInitiate,
+# you must manually add the Tag component with IdCardBrotherhood.
 
 ##MARK: Brotherhood Washington
 - type: entity
@@ -14,6 +23,9 @@
     state: bos_holotag
   - type: PresetIdCard
     job: BoSWashingtonInitiate
+  - type: Tag
+    tags:
+    - IdCardBrotherhood  # enables BOS shared map - see tags.yml comment for full faction map checklist
   - type: ClothingAddFaction
     faction: BrotherhoodOfSteel
 
@@ -70,6 +82,9 @@
     state: bos_holotag
   - type: PresetIdCard
     job: BoSMidScribe
+  - type: Tag
+    tags:
+    - IdCardBrotherhood
   - type: ClothingAddFaction
     faction: BrotherhoodOfSteel
 

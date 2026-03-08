@@ -20,6 +20,9 @@ public sealed class WastelandMapBoundUserInterface : BoundUserInterface
     {
         base.Open();
         _window = this.CreateWindow<WastelandMapWindow>();
+        _window.OnAddAnnotation += annotation => SendMessage(new WastelandMapAddAnnotationMessage(annotation));
+        _window.OnRemoveAnnotation += index => SendMessage(new WastelandMapRemoveAnnotationMessage(index));
+        _window.OnClearAnnotations += () => SendMessage(new WastelandMapClearAnnotationsMessage());
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -31,7 +34,7 @@ public sealed class WastelandMapBoundUserInterface : BoundUserInterface
 
         var bounds = new Box2(mapState.BoundsLeft, mapState.BoundsBottom, mapState.BoundsRight, mapState.BoundsTop);
         var texturePath = new ResPath(mapState.MapTexturePath);
-        _window?.SetMap(mapState.MapTitle, texturePath, bounds);
+        _window?.SetMap(mapState.MapTitle, texturePath, bounds, mapState.TrackedBlips, mapState.SharedAnnotations, mapState.CompactHud);
     }
 }
 
