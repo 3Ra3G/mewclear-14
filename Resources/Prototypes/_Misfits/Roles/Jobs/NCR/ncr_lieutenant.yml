@@ -45,7 +45,10 @@
     head: N14ClothingHeadHatNCRBeretOfficer
     back: N14ClothingBackpackNCR # Corvax-Change
     jumpsuit: N14ClothingOfficerUniformNCRDesert # Corvax-Change
+    outerClothing: N14ClothingOuterNCRDressJacket
     shoes: N14ClothingBootsCombatFilled
+    neck: ClothingNeckPinNCRFirstlLieutenant
+    belt: ClothingBeltNCR
     eyes: ClothingEyesGlassesSunglasses
     ears: N14ClothingHeadsetNCR
     pocket1: NCRLTloadoutkits

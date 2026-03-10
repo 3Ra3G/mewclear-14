@@ -33,6 +33,7 @@
   id: BoSWestScribeGear
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitBOSWestScribe
+    outerClothing: NCClothingOuterRobeScribeWesternBoS
     back: N14ClothingBackpackSatchelMilitary
     shoes: N14ClothingBootsLeather
     pocket1: BoSBrotherhoodHeadScribeKits

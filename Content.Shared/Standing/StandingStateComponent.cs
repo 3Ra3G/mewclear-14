@@ -3,7 +3,7 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared.Standing;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(raiseAfterAutoHandleState: true)]
 public sealed partial class StandingStateComponent : Component
 {
     [DataField]

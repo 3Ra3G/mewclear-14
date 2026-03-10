@@ -19,4 +19,6 @@ objectives-in-custody = [bold][color=red]| IN CUSTODY | [/color][/bold]
 #Misfits Change
 objective-issuer-ncr = [color=#cc2f2f]NCR[/color]
 objective-issuer-brotherhoodofsteel = [color=#4f81bd]Brotherhood of Steel[/color]
+# #Misfits Change - Caesar's Legion issuer label for the C character menu objectives panel
+objective-issuer-caesarlegion = [color=#8B0000]Caesar's Legion[/color]
 objective-issuer-geometerofblood = [color=#b22222]The Geometer of Blood[/color]

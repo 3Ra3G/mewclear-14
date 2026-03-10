@@ -155,7 +155,7 @@
     Piercing: 4
     Heat: 4
 
-# #Misfits Change - FEV-mutated super mutants: 50% damage reduction across the board, immune to radiation.
+# Misfits Change - FEV-mutated super mutants: 50% damage reduction across the board, immune to radiation.
 - type: damageModifierSet
   id: SuperMutant
   coefficients:
@@ -171,3 +171,15 @@
     Bloodloss: 0.5
     Cellular: 0.5
     Radiation: 0.0
+
+# Misfits Change - Super Mutant damage modifier sets
+# Ported from DesertRose2/desertrose: supermutant.dm bullet deflection (85% chance vs weak bullets)
+# approximated here as flat Piercing coefficient reduction.
+- type: damageModifierSet
+  id: N14SuperMutant # Thick mutant hide, highly radiation resistant, shrugs off weak impacts.
+  coefficients:
+    Blunt: 0.85
+    Slash: 0.85
+    Piercing: 0.80
+    Radiation: 0.25
+    Poison: 0.75

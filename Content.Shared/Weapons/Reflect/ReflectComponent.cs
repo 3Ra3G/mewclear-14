@@ -60,4 +60,5 @@ public enum ReflectType : byte
     None = 0,
     NonEnergy = 1 << 0,
     Energy = 1 << 1,
+    SmallCaliber = 1 << 2, // #Misfits Change Add: Small-caliber rounds (sub-5.56mm class: .22lr, 5mm, 9mm, 10mm, .45 ACP). Power armor ricochets these at high probability.
 }

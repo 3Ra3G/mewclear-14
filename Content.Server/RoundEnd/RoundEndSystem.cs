@@ -1,5 +1,6 @@
 using System.Threading;
 using Content.Server.Administration.Logs;
+using Content.Server._Misfits.Announcements;
 using Content.Server.AlertLevel;
 using Content.Shared.CCVar;
 using Content.Server.Chat.Managers;
@@ -189,27 +190,11 @@ namespace Content.Server.RoundEnd
                 _adminLogger.Add(LogType.ShuttleCalled, LogImpact.High, $"Shuttle called");
             }
 
-            // I originally had these set up here but somehow time gets passed as 0 to Loc so IDEK.
-            int time;
-            string units;
-
-            if (countdownTime.TotalSeconds < 60)
-            {
-                time = countdownTime.Seconds;
-                units = "eta-units-seconds";
-            }
-            else
-            {
-                time = countdownTime.Minutes;
-                units = "eta-units-minutes";
-            }
-
             SendRoundEndAnnouncement(
                 "ShuttleCalled",
                 text,
                 name,
-                ("time", time),
-                ("units", Loc.GetString(units))
+                ("duration", AnnouncementTimeFormatter.FormatDurationWords(countdownTime))
             );
 
             LastCountdownStart = _gameTiming.CurTime;
@@ -297,23 +282,10 @@ namespace Content.Server.RoundEnd
             _countdownTokenSource = new();
 
             countdownTime ??= TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.RoundRestartTime));
-            int time;
-            string unitsLocString;
-            if (countdownTime.Value.TotalSeconds < 60)
-            {
-                time = countdownTime.Value.Seconds;
-                unitsLocString = "eta-units-seconds";
-            }
-            else
-            {
-                time = countdownTime.Value.Minutes;
-                unitsLocString = "eta-units-minutes";
-            }
             _chatManager.DispatchServerAnnouncement(
                 Loc.GetString(
                     "round-end-system-round-restart-eta-announcement",
-                    ("time", time),
-                    ("units", Loc.GetString(unitsLocString))));
+                    ("duration", AnnouncementTimeFormatter.FormatDurationWords(countdownTime.Value))));
             Timer.Spawn(countdownTime.Value, AfterEndRoundRestart, _countdownTokenSource.Token);
         }
 
@@ -412,8 +384,7 @@ namespace Content.Server.RoundEnd
                     "ShuttleCalled",
                     "round-end-system-shuttle-countdown-announcement",
                     sender,
-                    ("time", (int) remainingTime.TotalMinutes),
-                    ("units", Loc.GetString("eta-units-minutes"))
+                    ("duration", AnnouncementTimeFormatter.FormatDurationWords(remainingTime))
                 );
             }, token);
         }

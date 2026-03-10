@@ -8,3 +8,8 @@
     damage:
       types:
         Piercing: 16 # Corvax-Change
+  # Misfits Add - 12.7mm heavy round; strong range retention
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 7.0
+    maxFalloffTiles: 22.0
+    minDamageMultiplier: 0.65

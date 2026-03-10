@@ -2,6 +2,8 @@
 using Content.Server.Mind;
 using Content.Server.Roles;
 using Content.Server.Roles.Jobs;
+using Content.Shared._Misfits.Currency.Components;
+using Content.Shared._Misfits.PlayerData.Components;
 using Content.Shared.CharacterInfo;
 using Content.Shared.Objectives;
 using Content.Shared.Objectives.Components;
@@ -61,6 +63,40 @@ public sealed class CharacterInfoSystem : EntitySystem
             specials = mind.AllSpecials.ToList();
         }
 
-        RaiseNetworkEvent(new CharacterInfoEvent(GetNetEntity(entity), jobTitle, objectives, briefing, specials), args.SenderSession);
+        var evnt = new CharacterInfoEvent(GetNetEntity(entity), jobTitle, objectives, briefing, specials);
+
+        // #Misfits Add - Attach persistent SPECIAL / stats / history if available
+        if (TryComp<PersistentPlayerDataComponent>(entity, out var playerData))
+        {
+            evnt.PersistentStats = new CharacterPersistentStats
+            {
+                Strength     = playerData.Strength,
+                Perception   = playerData.Perception,
+                Endurance    = playerData.Endurance,
+                Charisma     = playerData.Charisma,
+                Agility      = playerData.Agility,
+                Intelligence = playerData.Intelligence,
+                Luck         = playerData.Luck,
+
+                MobKills     = playerData.MobKills,
+                Deaths       = playerData.Deaths,
+                RoundsPlayed = playerData.RoundsPlayed,
+
+                HistoryLog      = new List<string>(playerData.HistoryLog),
+                StatsConfirmed  = playerData.StatsConfirmed,
+            };
+        }
+
+        // #Misfits Add - Attach currency balances from PersistentCurrencyComponent
+        if (TryComp<PersistentCurrencyComponent>(entity, out var currency))
+        {
+            evnt.PersistentStats ??= new CharacterPersistentStats();
+            evnt.PersistentStats.Bottlecaps   = currency.Bottlecaps;
+            evnt.PersistentStats.NCRDollars   = currency.NCRDollars;
+            evnt.PersistentStats.LegionDenarii = currency.LegionDenarii;
+            evnt.PersistentStats.PrewarMoney  = currency.PrewarMoney;
+        }
+
+        RaiseNetworkEvent(evnt, args.SenderSession);
     }
 }

@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration;
+using Content.Server._Misfits.Announcements;
 using Content.Server.Chat.Managers;
 using Content.Server.DeviceNetwork.Components;
 using Content.Server.DeviceNetwork.Systems;
@@ -396,7 +397,7 @@ public sealed class ArrivalsSystem : EntitySystem
         var arrival = NextShuttleArrival();
 
         var message = arrival is not null
-            ? Loc.GetString("latejoin-arrivals-direction-time", ("time", $"{arrival:mm\\:ss}"))
+            ? Loc.GetString("latejoin-arrivals-direction-time", ("duration", AnnouncementTimeFormatter.FormatDurationWords(arrival.Value)))
             : Loc.GetString("latejoin-arrivals-direction");
 
         _chat.DispatchServerMessage(ev.Player, message);

@@ -1,4 +1,6 @@
+using Content.Server.Chat.Systems; // #Misfits Add: chat emote on item handoff
 using Content.Server.Popups;
+using Content.Shared.Chat; // #Misfits Add: InGameICChatType
 using Content.Shared.Hands.Components;
 using Content.Shared.Alert;
 using Content.Shared.Hands.EntitySystems;
@@ -13,6 +15,7 @@ public sealed class OfferItemSystem : SharedOfferItemSystem
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly ChatSystem _chat = default!; // #Misfits Add: for emote chat on handoff
 
     public override void Update(float frameTime)
     {
@@ -75,6 +78,13 @@ public sealed class OfferItemSystem : SharedOfferItemSystem
                     ("item", Identity.Entity(offerItem.Item.Value, EntityManager)),
                     ("target", Identity.Entity(uid, EntityManager)))
                 , component.Target.Value, Filter.PvsExcept(component.Target.Value, entityManager: EntityManager), true);
+
+            // #Misfits Add: broadcast item handoff as a chat emote so nearby players see it in the chatbox
+            var itemName = Identity.Entity(offerItem.Item.Value, EntityManager);
+            var targetName = Identity.Entity(uid, EntityManager);
+            var handoffMsg = Loc.GetString("misfits-chat-offer-handoff", ("item", itemName), ("target", targetName));
+            _chat.TrySendInGameICMessage(component.Target.Value, handoffMsg, InGameICChatType.Emote,
+                ChatTransmitRange.Normal, ignoreActionBlocker: true);
         }
 
         offerItem.Item = null;

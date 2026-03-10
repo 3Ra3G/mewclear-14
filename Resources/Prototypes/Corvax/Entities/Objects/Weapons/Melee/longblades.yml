@@ -30,8 +30,8 @@
 - type: entity
   parent: BaseItem
   id: N14WeaponThermospear
-  name: thermospear
-  description: "A long two-handed thermal spear, fuel is needed for use."
+  name: thermic lance
+  description: "A long two-handed thermic lance. Fuel is needed for use."
   components:
   - type: Sprite
     sprite: Corvax/Objects/Weapons/Melee/thermospear.rsi
@@ -97,6 +97,9 @@
     activatedDamage:
         types:
             Heat: 40
+  # Misfits Change /Fix/ Expose the welder tank so this weapon can be refilled with WeldingFuel.
+  - type: RefillableSolution
+    solution: Welder
   - type: SolutionContainerManager
     solutions:
       Welder:
@@ -123,7 +126,7 @@
 - type: entity
   parent: BaseItem
   id: N14WeaponKebab
-  name: shish kebab
+  name: Shishkebab
   description: "A one-handed homemade weapon powered by fuel."
   components:
   - type: Sprite
@@ -198,6 +201,9 @@
     activatedDamage:
         types:
             Heat: 35
+  # Misfits Change /Fix/ Expose the welder tank so this weapon can be refilled with WeldingFuel.
+  - type: RefillableSolution
+    solution: Welder
   - type: SolutionContainerManager
     solutions:
       Welder:

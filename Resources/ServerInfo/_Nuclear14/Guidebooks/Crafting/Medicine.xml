@@ -27,11 +27,18 @@ Ingredients:
 <GuideEntityEmbed Entity="MaterialCloth1"/>
 </Box>
 
-[color=#a4885c]Clean gauze[/color] and [color=#a4885c]ointment[/color] are sterile supplies found in first aid kits and medical caches. Clean gauze treats cuts and punctures without infection risk. Ointment treats burns and cold damage.
+[color=#a4885c]Clean gauze[/color] is usually found in first aid kits and medical caches. [color=#a4885c]Ointment[/color] treats burns and cold damage, and can either be scavenged or brewed in the field from agave nectar, clean water, and ash.
 
 <Box>
 <GuideEntityEmbed Entity="N14CleanGauze1" Caption="Clean Gauze"/>
 <GuideEntityEmbed Entity="N14Ointment1" Caption="Ointment"/>
+</Box>
+
+Ointment reagents:
+<Box>
+<GuideReagentEmbed Reagent="ExtractAgaveNectar"/>
+<GuideReagentEmbed Reagent="Water"/>
+<GuideReagentEmbed Reagent="Ash"/>
 </Box>
 
 ## Healing Powder
@@ -46,7 +53,6 @@ Ingredients:
 <GuideEntityEmbed Entity="N14FloraProduceWildXander"/>
 </Box>
 
-<!-- Misfits Change /Add/: Cleansing Powder -->
 ## Cleansing Powder
 
 A field remedy used by tribal and Legion healers to purge radiation. Craft it from irradiated cave fungus and xander root in the medical tab of the crafting menu.
@@ -75,7 +81,7 @@ Ingredients:
 
 ## Stimpaks
 
-[color=#a4885c]Stimpaks[/color] are the backbone of Wasteland medicine — injectable serums that rapidly accelerate the body's healing. Craft a standard stimpak by combining broc flower and xander root with a syringe and a bloodpack.
+[color=#a4885c]Stimpaks[/color] are the backbone of Wasteland medicine — injectable serums that rapidly accelerate the body's healing. Craft a standard stimpak by combining broc flower and xander root with a syringe and a bloodpack. If you are working from loose reagents, the herbal base is first mixed into healing mixture and then stabilized with oil and phosphorus to finish the syringe.
 
 <GuideEntityEmbed Entity="N14Stimpak" Caption="Stimpak"/>
 
@@ -87,7 +93,33 @@ Ingredients:
 <GuideEntityEmbed Entity="Bloodpack"/>
 </Box>
 
-[color=#a4885c]Dirty stimpaks[/color] and [color=#a4885c]super stimpaks[/color] cannot be crafted. Dirty stimpaks are found in poor condition throughout the Wasteland; super stimpaks are manufactured goods sold by doctors and traders.
+Chemistry intermediates and improvised variants:
+<Box>
+<GuideReagentEmbed Reagent="HealingMixture"/>
+<GuideReagentEmbed Reagent="DirtyStimpak"/>
+</Box>
+
+[color=#a4885c]Dirty stimpaks[/color] can also be improvised with wasteland blood if you are desperate. [color=#a4885c]Super stimpaks[/color] remain pre-war or professionally manufactured goods sold by doctors and traders.
+
+## Bitterdrink
+
+A bottled tribal remedy for poison and radiation exposure. In practice, it is brewed from broc flower and xander root and poured into an empty soda bottle.
+
+<GuideEntityEmbed Entity="N14Bitterdrink" Caption="Bitterdrink"/>
+
+Ingredients:
+<Box>
+<GuideEntityEmbed Entity="N14FloraProduceWildBrocFlower"/>
+<GuideEntityEmbed Entity="N14FloraProduceWildXander"/>
+<GuideEntityEmbed Entity="N14DrinkNukaColaEmpty" Caption="Empty Soda Bottle"/>
+</Box>
+
+Chemistry reference:
+<Box>
+<GuideReagentEmbed Reagent="Bitterdrink"/>
+</Box>
+
+Chemistry station note: if you are working in a proper lab, you can print an empty bitterdrink bottle and fill it through the ChemMaster instead of hand-assembling it from a scavenged soda bottle.
 
 ## Jet Inhaler
 
@@ -125,16 +157,33 @@ Assembly steps:
 <GuideEntityEmbed Entity="N14RadAwayPhial"/>
 </Box>
 
+[color=#a4885c]RadAway[/color] itself is mixed from irradiated fungus extract, antiseptic, and water. If supplies are tight, you can water it down into a weaker diluted RadAway.
+
+<Box>
+<GuideReagentEmbed Reagent="RadAway"/>
+<GuideReagentEmbed Reagent="RadAwayDiluted"/>
+</Box>
+
 [color=#a4885c]RadAway phials[/color] and [color=#a4885c]RadAway bloodbags[/color] are also found as standalone items throughout the Wasteland.
 
 ## Antidotes and Other Remedies
 
-These items cannot be crafted and must be found or purchased — looted from enemies, bought from traveling doctors, or discovered in medical caches across the Wasteland.
+Most finished items in this section are found or purchased — looted from enemies, bought from traveling doctors, or discovered in medical caches across the Wasteland. The chemistry itself can still be refined if you have the right ingredients.
+
+[color=#a4885c]Antidote chemistry[/color] starts with radscorpion tail and ethanol to make antidote mixture, then uses tarberries to refine it into proper antidote.
+
+<Box>
+<GuideReagentEmbed Reagent="AntidoteMixture"/>
+<GuideReagentEmbed Reagent="Antidote"/>
+</Box>
+
+Chemistry station note: empty antidote bottles can also be printed at a chemistry station and filled directly once you have a finished antidote batch.
+
+Not every item in this section is a straightforward treatment. Mourning poultice is included here because it is a field compound you may find alongside medical supplies, but its purpose is ritual rather than restorative. It is primarily associated with Legion and tribal ceremonial use: a poisonous herbal mixture meant to induce visions and altered speech, carrying clear negative connotations and causing minor physical harm instead of healing.
 
 <Box>
 <GuideEntityEmbed Entity="N14Antidote" Caption="Antidote"/>
 <GuideEntityEmbed Entity="N14SmellingSalts" Caption="Smelling Salts"/>
-<GuideEntityEmbed Entity="N14Bitterdrink" Caption="Bitterdrink"/>
 <GuideEntityEmbed Entity="N14MourningPoultice" Caption="Mourning Poultice"/>
 </Box>
 

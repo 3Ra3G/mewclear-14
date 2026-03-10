@@ -295,6 +295,82 @@
       types:
         Radiation: -5
 
+#MARK: SuperMutant Base
+# Misfits Change - Base entity for all Super Mutant NPC variants
+# Ported from DesertRose2/desertrose supermutant.dm
+- type: entity
+  name: super mutant
+  abstract: true
+  id: N14MobBaseHostileSuperMutant
+  parent: N14MobBaseHostile
+  description: A hulking post-human mutation, product of the FEV virus. Radiation resistant and brutally strong.
+  components:
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: N14SuperMutant
+  - type: NpcFactionMember
+    factions:
+    - SuperMutant
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.8
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: base_dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 4.5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.55
+        density: 60
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Hands
+  - type: Puller
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      60: 0.85
+      80: 0.7
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    understands:
+    - English
+  - type: IdleSound #Misfits Change
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 15
+    maxInterval: 60
+    sound:
+      collection: N14SuperMutantIdle
+      params:
+        volume: -6
+        maxDistance: 7
+  - type: AggroSound #Misfits Change - separate aggro/alert vocalization on combat entry
+    sound:
+      collection: N14SuperMutantAlert
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
+
 # Wave Defence Base Hostile
 #MARK: WAVE
 - type: entity

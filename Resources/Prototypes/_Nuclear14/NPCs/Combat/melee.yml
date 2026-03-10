@@ -19,7 +19,9 @@
         - !type:HTNPrimitiveTask
           operator: !type:MoveToOperator
             shutdownState: PlanFinished
-            pathfindInPlanning: false
+            # #Misfits Change /Fix:/ Plan the route up front so melee NPCs commit to
+            # obstacle-aware movement instead of steering blind into doors before combat jukes run.
+            pathfindInPlanning: true
             removeKeyOnFinish: false
             targetKey: TargetCoordinates
             pathfindKey: TargetPathfind

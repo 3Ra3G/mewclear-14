@@ -105,6 +105,13 @@
     tags:
     - DoorBumpOpener
     - FootstepSound
+    - SiliconEmotes
+  - type: Deathgasp #Misfits Change - keep robot death emotes consistent with silicon mobs
+    prototype: SiliconDeathgasp
+    needsCritical: false
+  - type: Vocal #Misfits Change - generic fallback emotes for robots without a dedicated sound set
+    sounds:
+      Unsexed: UnisexSilicon
 # TODO: Make them shout things at people using advertise.
 
 - type: entity
@@ -128,6 +135,15 @@
   name: Assaultron
   description: Horrifying. Fast. Deadly.
   components:
+  - type: IdleSound #Misfits Change - use the dedicated Assaultron idle loop set
+  - type: SpamEmitSound #Misfits Change - periodic Assaultron idle chatter
+    minInterval: 10
+    maxInterval: 35
+    sound:
+      collection: N14AssaultronIdle
+      params:
+        volume: -6
+        maxDistance: 7
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
@@ -165,6 +181,15 @@
   - type: MovementSpeedModifier
     baseWalkSpeed : 3
     baseSprintSpeed : 6
+  - type: MeleeWeapon #Misfits Change - replace generic clangs with Assaultron attack vocals
+    hidden: true
+    soundHit:
+      collection: N14AssaultronAttack
+    angle: 0
+    animation: WeaponArcPunch
+    damage:
+      groups:
+        Brute: 5
   # - type: GhostRole
     # prob: 1
     # makeSentient: true
@@ -199,6 +224,13 @@
         Base: deathclaw
       Dead:
         Base: dead
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14AssaultronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    cooldownDuration: 25
 
 - type: entity
   parent: N14MobRobotHostileMelee
@@ -206,9 +238,27 @@
   name: Protectron
   description: A common protectron looking for a fight.
   components:
+  - type: IdleSound #Misfits Change - use the dedicated Protectron idle loop set
+  - type: SpamEmitSound #Misfits Change - periodic Protectron idle chatter
+    minInterval: 12
+    maxInterval: 45
+    sound:
+      collection: N14ProtectronIdle
+      params:
+        volume: -7
+        maxDistance: 6
   - type: MovementSpeedModifier
     baseWalkSpeed : 1.5
     baseSprintSpeed : 3
+  - type: MeleeWeapon #Misfits Change - replace generic clangs with Protectron attack vocals
+    hidden: true
+    soundHit:
+      collection: N14ProtectronAttack
+    angle: 0
+    animation: WeaponArcPunch
+    damage:
+      groups:
+        Brute: 5
   - type: Sprite
     sprite: _Nuclear14/Mobs/Robots/protectron.rsi
     layers:
@@ -241,6 +291,13 @@
     blackboard:
       NavSmash: !type:Bool
         true
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14ProtectronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    cooldownDuration: 25
 
 - type: entity
   parent: N14MobRobotProtectronHostile
@@ -335,13 +392,22 @@
   description: A domestic Mr Handy model with a claw attachment.
   suffix: hostile, claw
   components:
+  - type: IdleSound #Misfits Change - use the dedicated Mr. Handy idle loop set
+  - type: SpamEmitSound #Misfits Change - periodic Mr. Handy idle chatter
+    minInterval: 12
+    maxInterval: 45
+    sound:
+      collection: N14HandyIdle
+      params:
+        volume: -7
+        maxDistance: 6
   - type: MovementSpeedModifier
     baseWalkSpeed : 2
     baseSprintSpeed : 4
   - type: MeleeWeapon
     hidden: true
     soundHit:
-      path: /Audio/Effects/metal_thud1.ogg
+      collection: N14HandyAttack
     angle: 0
     animation: WeaponArcPunch
     damage:
@@ -400,6 +466,13 @@
     # volume: -3
     # sound: /Audio/DeltaV/Glimmer_Creatures/mite.ogg
   # - type: AmbientOnPowered
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14HandyAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 - type: entity
   parent: N14MobRobotMrHandyClaw
@@ -430,6 +503,13 @@
       shader: unshaded
       map: ["light"]
       visible: false
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14HandyAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 - type: entity
   parent: N14MobRobotHostile
@@ -438,6 +518,15 @@
   description: A domestic Mr Handy model with a gun attachment.
   suffix: hostile, gun
   components:
+  - type: IdleSound #Misfits Change - use the dedicated Mr. Handy idle loop set
+  - type: SpamEmitSound #Misfits Change - periodic Mr. Handy idle chatter
+    minInterval: 12
+    maxInterval: 45
+    sound:
+      collection: N14HandyIdle
+      params:
+        volume: -7
+        maxDistance: 6
   - type: MovementSpeedModifier
     baseWalkSpeed : 2
     baseSprintSpeed : 4
@@ -489,6 +578,13 @@
     blackboard:
       NavSmash: !type:Bool
         true
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14HandyAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 - type: entity
   parent: N14MobRobotHostile
@@ -497,6 +593,15 @@
   description: A military Mr Gutsy model with a plasma attachment.
   suffix: hostile, plasma
   components:
+  - type: IdleSound #Misfits Change - use the dedicated Mr. Gutsy idle loop set
+  - type: SpamEmitSound #Misfits Change - periodic Mr. Gutsy idle chatter
+    minInterval: 12
+    maxInterval: 45
+    sound:
+      collection: N14GutsyIdle
+      params:
+        volume: -7
+        maxDistance: 6
   - type: MovementSpeedModifier
     baseWalkSpeed : 2
     baseSprintSpeed : 4
@@ -545,6 +650,13 @@
     blackboard:
       NavSmash: !type:Bool
         true
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14GutsyAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 - type: entity
   parent: N14MobRobotHostile
@@ -601,6 +713,13 @@
     blackboard:
       NavSmash: !type:Bool
         true
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14ProtectronAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    cooldownDuration: 25
 
 - type: entity
   parent: N14MobRobotHostile
@@ -676,3 +795,177 @@
     volume: -3
     sound:
       collection: AmbienceEyebot
+  - type: IdleSound #Misfits Change - layer in the dedicated Eyebot chatter set alongside the ambient music loop
+  - type: SpamEmitSound #Misfits Change - periodic Eyebot beeps and announcements
+    minInterval: 10
+    maxInterval: 35
+    sound:
+      collection: N14EyebotIdle
+      params:
+        volume: -6
+        maxDistance: 6
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14EyebotAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    cooldownDuration: 25
+
+- type: entity
+  id: N14SentryBotOverloadLightEmitter
+  name: sentry bot overload light emitter
+  description: A hidden helper entity for the sentry bot's overload warning lights.
+  save: false
+  components:
+  - type: PointLight
+    enabled: false
+    color: red
+    radius: 5
+    softness: 2
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    netsync: false
+
+# Misfits Change /Add: Sentry Bot - hostile NPC with twin gatling lasers, high HP, and armor
+- type: entity
+  parent: N14MobRobotHostile
+  id: N14MobRobotSentryBot
+  name: Sentry Bot
+  description: A pre-war military robot armed with a gatling laser and covered in thick armor plating. A terrifying relic of humanity's last war.
+  suffix: hostile, gatling laser
+  components:
+  - type: IdleSound #Misfits Change - use the dedicated Sentry Bot idle loop set
+  - type: SpamEmitSound #Misfits Change - periodic Sentry Bot mechanical chatter
+    minInterval: 12
+    maxInterval: 40
+    sound:
+      collection: N14SentryIdle
+      params:
+        volume: -6
+        maxDistance: 7
+  - type: AggroSound #Misfits Change - separate aggro alert on combat entry
+    sound:
+      collection: N14SentryAttack
+      params:
+        volume: -3
+        maxDistance: 12
+    cooldownDuration: 25
+  - type: MovementSpeedModifier
+    # Sentry Bots are slow, heavily armored walkers
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 2.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      350: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Dead: HumanDead
+  - type: Damageable
+    damageContainer: Biological
+    # Hardened military armor - resistant to physical and burn damage
+    damageModifierSet: N14HeavyRobot
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/sentrybot.rsi
+    layers:
+    - state: icon
+      map: ["movement"]
+    - sprite: _Nuclear14/Objects/Weapons/Guns/Battery/laser_gatling.rsi
+      state: base
+      offset: 0.0, 0.1
+      scale: 0.72, 0.72
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: icon
+      Dead:
+        Base: dead
+  - type: SentryBotOverloadLight
+    steadyLightEnabled: true
+    flashInterval: 0.35
+  # Single gatling laser sprite, but still uses the same combat profile and hitscan path.
+  - type: Gun
+    minAngle: 2
+    maxAngle: 12
+    angleIncrease: 4
+    angleDecay: 12
+    fireRate: 8
+    soundGunshot:
+      collection: N14LaserGatlingGunshot
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 50
+  - type: Battery
+    maxCharge: 5000
+    startingCharge: 5000
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      NavClimb: !type:Bool
+        true
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: OnUseTimerTrigger
+    delay: 8
+    initialBeepDelay: 0
+    beepInterval: 1
+    beepSound:
+      path: /Audio/Machines/Nuke/general_beep.ogg
+      params:
+        volume: -2
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: N14DefaultStructural
+    maxIntensity: 4
+    intensitySlope: 4
+    totalIntensity: 24
+    canCreateVacuum: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 350
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          N14ScrapElectronic1:
+            min: 2
+            max: 5
+          N14Scrap1:
+            min: 2
+            max: 5
+          N14CurrencyPrewar: #Misfits Change /Add: Drop prewar money on death (10-40)
+            min: 10
+            max: 40
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/AI/borg_death.ogg
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer.ogg
+          params:
+            volume: 2

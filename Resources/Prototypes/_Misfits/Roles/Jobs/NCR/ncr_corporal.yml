@@ -38,10 +38,13 @@
 - type: startingGear
   id: NCRWSGear
   equipment:
+    head: N14ClothingHeadHatNCRHelmetMetalDesert
     back: N14ClothingBackpackNCR # Corvax-Change
     jumpsuit: N14ClothingUniformNCRDesert # Corvax-Change
     outerClothing: N14ClothingOuterNCRPouchedVestDesert # Forge-Change
     shoes: N14ClothingBootsLeatherFilled
+    neck: ClothingNeckPinNCRCorporal
+    belt: ClothingBeltNCR
     pocket1: NCRcorporalloadoutkits
     id: N14IDNCRDogtagWS
   innerClothingSkirt: N14ClothingUniformNCRDesert # Corvax-Change

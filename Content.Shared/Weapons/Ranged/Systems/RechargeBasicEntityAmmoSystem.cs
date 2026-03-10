@@ -1,4 +1,7 @@
+// #Misfits Change /Fix/: Pause self-recharging guns while they are attached to dead mobs.
 using Content.Shared.Examine;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -16,6 +19,7 @@ public sealed class RechargeBasicEntityAmmoSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedGunSystem _gun = default!;
     [Dependency] private readonly MetaDataSystem _metadata = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     public override void Initialize()
     {
@@ -34,6 +38,17 @@ public sealed class RechargeBasicEntityAmmoSystem : EntitySystem
         {
             if (ammo.Count is null || ammo.Count == ammo.Capacity || recharge.NextCharge == null)
                 continue;
+
+            if (IsAttachedToDeadMob(uid))
+            {
+                if (recharge.NextCharge < _timing.CurTime)
+                {
+                    recharge.NextCharge = _timing.CurTime + TimeSpan.FromSeconds(recharge.RechargeCooldown);
+                    Dirty(uid, recharge);
+                }
+
+                continue;
+            }
 
             if (recharge.NextCharge > _timing.CurTime)
                 continue;
@@ -56,6 +71,28 @@ public sealed class RechargeBasicEntityAmmoSystem : EntitySystem
             recharge.NextCharge = recharge.NextCharge.Value + TimeSpan.FromSeconds(recharge.RechargeCooldown);
             Dirty(uid, recharge);
         }
+    }
+
+    private bool IsAttachedToDeadMob(EntityUid uid)
+    {
+        if (TryComp<MobStateComponent>(uid, out var selfMobState) && _mobState.IsDead(uid, selfMobState))
+            return true;
+
+        var parent = Transform(uid).ParentUid;
+
+        while (parent.IsValid())
+        {
+            if (TryComp<MobStateComponent>(parent, out var mobState) && _mobState.IsDead(parent, mobState))
+                return true;
+
+            var parentXform = Transform(parent);
+            if (parentXform.ParentUid == parent)
+                break;
+
+            parent = parentXform.ParentUid;
+        }
+
+        return false;
     }
 
     private void OnInit(EntityUid uid, RechargeBasicEntityAmmoComponent component, MapInitEvent args)

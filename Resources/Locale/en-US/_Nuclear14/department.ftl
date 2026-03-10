@@ -32,3 +32,7 @@ department-Wastelander-description = Wastelanders living in the pacific northwes
 department-Townsfolk-description = Townsfolk from a local town trying to keep it civilised.
 department-Followers-description = Followers of the Apocalypse on a humanitarian mission.
 department-Zetan-description = Zetan abductors here to probe you!
+# #Misfits Add: Caesar's Legion department locale.
+department-CaesarLegion = Caesar's Legion
+CaesarLegion = Caesar's Legion
+department-CaesarLegion-description = An iron-disciplined slaveholding Legion modeled on the Roman Empire. Ave, true to Caesar.

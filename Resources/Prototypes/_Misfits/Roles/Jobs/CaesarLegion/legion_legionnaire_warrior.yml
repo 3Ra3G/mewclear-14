@@ -23,7 +23,7 @@
   icon: "JobIconlegionerWarrior"
   supervisors: job-name-caesar-legion-other
   canBeAntag: false
-  access:
+  accessGroups:
   - CaesarLegionLegionnaireWarrior
   special:
   - !type:AddComponentSpecial
@@ -45,14 +45,15 @@
     eyes: N14ClothingEyesGlassesWelding
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingShoesKaligi
-    head: N14ClothingHeadHatLightBaseballHelmet
+    head: N14ClothingHeadHatLegionHood # #Misfits Change /Fix/: Legionnaires should not wear decanus helmets
+    outerClothing: N14ClothingOuterLegionnaireBaseArmor
     gloves: N14ClothingHandsGlovesTribal
     pocket1: LegionWarriorloadoutkits
     id: N14IDLegionaryMedalSilver
   innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
   storage:
     back:
-    - N14BoxPlasticFilledMilitary
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
     - N14HealingPowder
 
 - type: playTimeTracker

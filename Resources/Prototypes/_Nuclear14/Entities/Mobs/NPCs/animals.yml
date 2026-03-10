@@ -60,6 +60,13 @@
       params:
         volume: -10
         maxDistance: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14MoleratAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
  #- type: Reproductive
    #breedChance: 0.05
    #birthPopup: reproductive-birth-popup
@@ -143,6 +150,13 @@
       params:
         volume: -10
         maxDistance: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14MoleratAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
   - type: Butcherable
     spawned:
     - id: N14FoodMeatPigrat
@@ -221,6 +235,13 @@
       params:
         volume: -8
         maxDistance: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14DogBark
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
  #- type: Reproductive
    #breedChance: 0.05
    #birthPopup: reproductive-birth-popup
@@ -313,6 +334,13 @@
       params:
         volume: -7
         maxDistance: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14DeathclawAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
   - type: NoSlip
  #- type: Reproductive
    #breedChance: 0.05
@@ -399,6 +427,10 @@
   - type: ReproductivePartner
   - type: MobPrice
     price: 250 # Corvax-Change
+  - type: Advertise
+    pack: N14BrahminSays
+    minimumWait: 120
+    maximumWait: 300
 
 #MARK: Bighorner
 - type: entity

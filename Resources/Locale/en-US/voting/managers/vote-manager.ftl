@@ -24,9 +24,9 @@ ui-vote-extend-no = No
 ui-vote-extend-abstain = Abstain
 
 # #Misfits Change: Round countdown announcements.
-ui-round-countdown-60 = Attention: Approximately 60 minutes remain before the round ends.
-ui-round-countdown-30 = Attention: Approximately 30 minutes remain before the round ends.
-ui-round-countdown-15 = Attention: Approximately 15 minutes remain. A vote to decide the round's fate will now begin.
+ui-round-countdown-60 = Attention: Approximately sixty minutes remain before the round ends.
+ui-round-countdown-30 = Attention: Approximately thirty minutes remain before the round ends.
+ui-round-countdown-15 = Attention: Approximately fifteen minutes remain. A vote to decide the round's fate will now begin.
 
 # #Misfits Change: Round timer HUD label.
 ui-round-timer-label = Round End

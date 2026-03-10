@@ -11,7 +11,7 @@ namespace Content.Shared.Mobs.Components;
 /// </summary>
 [RegisterComponent]
 [NetworkedComponent]
-[AutoGenerateComponentState]
+[AutoGenerateComponentState(raiseAfterAutoHandleState: true)]
 public sealed partial class MobStateComponent : Component
 {
     /// <summary>

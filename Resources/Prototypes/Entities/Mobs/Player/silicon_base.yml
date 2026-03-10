@@ -33,6 +33,7 @@
     - type: CanEnterCryostorage
     - type: DoAfter
     - type: PersistentCurrency # Misfits - Currency wallet
+    - type: PersistentPlayerData # Misfits Add - SPECIAL stats, kill/death/round tracking, character history
     - type: RotationVisuals
       horizontalRotation: 90
     - type: Examiner

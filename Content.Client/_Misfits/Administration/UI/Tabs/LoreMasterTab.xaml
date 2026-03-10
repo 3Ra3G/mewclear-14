@@ -1,0 +1,40 @@
+<!-- #Misfits Change /Add/ - LoreMaster tab for admin menu.
+     Lets admins inspect faction objective states and issue new objectives to the highest-ranking
+     online member. Objective display uses the same colour language as the C character menu. -->
+<Control
+    xmlns="https://spacestation14.io"
+    Margin="4"
+    MinSize="50 50">
+    <BoxContainer Orientation="Vertical" SeparationOverride="8" VerticalExpand="True">
+
+        <!-- Top bar: faction selector + refresh -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+            <Label Text="{Loc loremaster-tab-faction-label}" VerticalAlignment="Center"/>
+            <OptionButton Name="FactionSelector" Access="Public" MinWidth="180"/>
+            <Button Name="RefreshButton" Text="{Loc loremaster-tab-refresh}" Access="Public" MinWidth="90"/>
+            <Label Name="StatusLabel" Access="Public" VerticalAlignment="Center" HorizontalExpand="True" StyleClasses="LabelSubText"/>
+        </BoxContainer>
+
+        <!-- Member / objectives display area -->
+        <Label Text="{Loc loremaster-tab-members-header}" Modulate="#87CEFA"/>
+        <ScrollContainer VerticalExpand="True" MinHeight="200">
+            <BoxContainer Name="MembersContainer" Access="Public" Orientation="Vertical" SeparationOverride="4"/>
+        </ScrollContainer>
+
+        <!-- Separator -->
+        <PanelContainer MinHeight="1" Modulate="#404040"/>
+
+        <!-- Issue new objective section -->
+        <Label Text="{Loc loremaster-tab-issue-header}" Modulate="#87CEFA"/>
+        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+            <Label Text="{Loc loremaster-tab-objective-label}" VerticalAlignment="Center"/>
+            <OptionButton Name="ObjectiveSelector" Access="Public" HorizontalExpand="True"/>
+        </BoxContainer>
+        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+            <Label Name="TargetLabel" Access="Public" VerticalAlignment="Center" HorizontalExpand="True" StyleClasses="LabelSubText"/>
+            <Button Name="IssueButton" Text="{Loc loremaster-tab-issue-button}" Access="Public" MinWidth="130"/>
+        </BoxContainer>
+        <Label Name="ResultLabel" Access="Public"/>
+
+    </BoxContainer>
+</Control>

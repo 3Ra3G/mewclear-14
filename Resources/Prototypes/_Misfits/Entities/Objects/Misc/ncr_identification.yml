@@ -3,8 +3,8 @@
 - type: entity
   parent: N14IDNCRDogtag
   id: N14IDNCRDogtagSoldier
-  name: dogtag
-  description: An ID dogtag worn by NCR soldiers.
+  name: private's dogtags
+  description: An ID dogtag worn by NCR privates.
   suffix: Soldier
   components:
   - type: PresetIdCard
@@ -13,7 +13,7 @@
 - type: entity
   parent: N14IDNCRDogtag
   id: N14IDNCRDogtagPrivateFirstClass
-  name: dogtag
+  name: private first class dogtags
   description: An ID dogtag worn by NCR privates first class.
   suffix: Private First Class
   components:
@@ -23,7 +23,7 @@
 - type: entity
   parent: N14IDNCRDogtagNCO
   id: N14IDNCRDogtagStaffSergeant
-  name: dogtag
+  name: staff sergeant's dogtags
   description: An ID dogtag worn by NCR staff sergeants.
   suffix: Staff Sergeant
   components:
@@ -33,7 +33,7 @@
 - type: entity
   parent: N14IDNCRDogtagNCO
   id: N14IDNCRDogtagFirstSergeant
-  name: dogtag
+  name: first sergeant's dogtags
   description: An ID dogtag worn by NCR first sergeants.
   suffix: First Sergeant
   components:
@@ -43,7 +43,7 @@
 - type: entity
   parent: N14IDNCRDogtagNCO
   id: N14IDNCRDogtagMPInvestigator
-  name: dogtag
+  name: MP investigator's dogtags
   description: An ID dogtag worn by NCR military police investigators.
   suffix: MP Investigator
   components:
@@ -53,7 +53,7 @@
 - type: entity
   parent: N14IDNCRDogtagDoctor
   id: N14IDNCRDogtagDoctorSenior
-  name: dogtag
+  name: senior doctor's dogtags
   description: An ID dogtag worn by NCR doctors.
   suffix: Doctor
   components:
@@ -63,7 +63,7 @@
 - type: entity
   parent: N14IDNCRDogtagOfficer
   id: N14IDNCRDogtagCaptain
-  name: dogtag
+  name: captain's dogtags
   description: An ID dogtag worn by NCR captains.
   suffix: Captain
   components:

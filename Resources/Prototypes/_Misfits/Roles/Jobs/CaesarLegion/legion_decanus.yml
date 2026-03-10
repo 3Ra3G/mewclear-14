@@ -26,7 +26,7 @@
   icon: "JobIconlegionerDean"
   supervisors: job-name-caesar-legion-supervisors
   canBeAntag: false
-  access:
+  accessGroups:
   - CaesarLegionDean
   special:
   - !type:AddComponentSpecial
@@ -48,6 +48,8 @@
     eyes: N14ClothingEyesGlassesWelding
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsBlack
+    head: N14ClothingHeadHatDeanRecruitHelmet
+    outerClothing: N14ClothingOuterDeanLegionnaireRecruitArmor
     gloves: N14ClothingHandsGlovesTribal
     belt: N14Gladius
     pocket1: LegionDeanloadoutkits
@@ -56,7 +58,7 @@
   innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
   storage:
     back:
-    - N14BoxPlasticFilledMilitary
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
     - N14HealingPowder
 
 - type: playTimeTracker

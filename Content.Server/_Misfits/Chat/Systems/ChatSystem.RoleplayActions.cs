@@ -19,6 +19,22 @@ public sealed partial class ChatSystem
 {
     private const string RoleplayQuoteColor = "#f0c674";
 
+    public void SendPrivateDoMessage(ICommonSession session, string message)
+    {
+        if (string.IsNullOrWhiteSpace(message))
+            return;
+
+        var wrappedMessage = BuildDoWrappedMessage(message);
+
+        _chatManager.ChatMessageToOne(
+            ChatChannel.Emotes,
+            message,
+            wrappedMessage,
+            EntityUid.Invalid,
+            false,
+            session.Channel);
+    }
+
     public void TrySendInGameDoMessage(
         EntityUid source,
         string message,

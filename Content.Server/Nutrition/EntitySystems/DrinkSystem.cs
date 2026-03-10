@@ -216,6 +216,7 @@ public sealed class DrinkSystem : SharedDrinkSystem
         {
             BreakOnMove = forceDrink,
             BreakOnDamage = true,
+            BreakOnHandChange = true, // #Misfits Change Fix: cancel drinking if the container leaves the user's hand, including storage-slot insertion.
             MovementThreshold = 0.01f,
             DistanceThreshold = 1.0f,
             // Mice and the like can eat without hands.

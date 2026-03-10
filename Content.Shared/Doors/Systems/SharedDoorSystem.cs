@@ -8,6 +8,7 @@ using Content.Shared.Doors.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
+using Content.Shared._Misfits.Doors; // #Misfits Change/Add: namespace for DoorDeniedEvent
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
@@ -298,6 +299,9 @@ public abstract partial class SharedDoorSystem : EntitySystem
 
         if (!SetState(uid, DoorState.Denying, door))
             return;
+
+        // #Misfits Change/Add: Raise a directed event so server-side systems can notify the denied player.
+        RaiseLocalEvent(uid, new DoorDeniedEvent(user));
 
         if (predicted)
             Audio.PlayPredicted(door.DenySound, uid, user, AudioParams.Default.WithVolume(-3));

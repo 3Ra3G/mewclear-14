@@ -19,13 +19,13 @@
       - id: ClothingBeltRope
       - id: Bola
         amount: 2
-      - id: N14Stimpak
+      - id: N14HealingPowder #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
         amount: 2
-      - id: N14SuperStimpak
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces super stimpak
       - id: N14MedkitCombatFilled
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: N14DrinkTeaBroc
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -49,11 +49,11 @@
         amount: 2
       - id: MagazineBox762
       - id: SmokeGrenade
-      - id: N14Stimpak
-      - id: N14SuperStimpak
+      - id: N14HealingPowder #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces super stimpak
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -77,12 +77,12 @@
       - id: MagazineBox45
       - id: Bola
         amount: 2
-      - id: N14Stimpak
+      - id: N14HealingPowder #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
         amount: 2
-      - id: N14SuperStimpak
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces super stimpak
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: N14DrinkTeaBroc
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -103,16 +103,16 @@
       - id: N14WeaponShotgunLever
       - id: N14LegionnaireShield
       - id: ClothingBeltRope
-      - id: MagazineBox12gauge
+      - id: MagazineBox20gauge
       - id: Bola
         amount: 2
       - id: BoxHandcuff
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14MedkitFilled
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -135,11 +135,11 @@
         amount: 2
       - id: MagazineBox762
       - id: SmokeGrenade
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -160,12 +160,12 @@
       - id: ClothingBeltRope
       - id: ThrowingKnife
         amount: 3
-      - id: N14Stimpak
+      - id: N14HealingPowder #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
         amount: 2
       - id: N14MedkitFilled
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -188,11 +188,11 @@
         amount: 3
       - id: MagazineBox50
       - id: ClothingEyesNightVisionGoggles
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -212,15 +212,17 @@
     items:
       - id: N14WeaponShotgunLever
       - id: N14WeaponRevolver10mm
-      - id: MagazineBox12gauge
+      - id: MagazineBox20gauge
+      - id: SpeedLoader10
+        amount: 2
+      - id: MagazineBox10mm
       - id: ClothingBeltRope
       - id: ClothingEyesNightVisionGoggles
       - id: N14HealingPowder
-      - id: N14StimpakDirty
-        amount: 2
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -243,11 +245,11 @@
         amount: 2
       - id: N14CeremonialSword
       - id: ClothingEyesNightVisionGoggles
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -271,11 +273,11 @@
       - id: N14PilumSpear
         amount: 2
       - id: Bola
-      - id: N14StimpakDirty
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14HealingPowder
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -302,10 +304,10 @@
         amount: 2
       - id: N14HealingPoultice
         amount: 2
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -329,10 +331,10 @@
       - id: MagazineBox9mm
       - id: N14LegionnaireBuckler
       - id: N14PilumSpear
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -360,7 +362,7 @@
       - id: N14HealingPowder
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -383,10 +385,10 @@
       - id: N14Whip
       - id: Zipties
         amount: 2
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -415,7 +417,7 @@
       - id: N14HealingPowder
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -440,7 +442,7 @@
       - id: N14LegionnaireBuckler
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -465,7 +467,7 @@
       - id: N14HealingPowder
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -494,7 +496,7 @@
       - id: N14TribalMachete
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -519,12 +521,12 @@
       - id: MagazineBox45
       - id: BoxHandcuff
       - id: Bola
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14MedkitFilled
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -545,12 +547,12 @@
       - id: ClothingBeltRope
       - id: N14WeaponShotgunShort
       - id: MagazineBox12gauge
-      - id: N14StimpakDirty
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14HealingPowder
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -573,11 +575,11 @@
         amount: 2
       - id: MagazineBox44
       - id: SmokeGrenade
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -600,12 +602,12 @@
       - id: Bola
         amount: 2
       - id: BoxHandcuff
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14MedkitCombatFilled
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -629,11 +631,11 @@
         amount: 2
       - id: MagazineBox10mm
       - id: SmokeGrenade
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -655,12 +657,12 @@
       - id: ClothingBeltRope
       - id: ThrowingKnife
         amount: 3
-      - id: N14Stimpak
+      - id: N14HealingPowder #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
         amount: 2
       - id: N14MedkitFilled
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -686,11 +688,11 @@
       - id: MagazineBox762
       - id: Magazine762Rifle
         amount: 3
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -714,11 +716,11 @@
       - id: N14FireAxe
       - id: ThrowingKnife
         amount: 3
-      - id: N14Stimpak
+      - id: N14HealingPowder #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
         amount: 2
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -743,11 +745,11 @@
       - id: SpeedLoader44
         amount: 2
       - id: MagazineBox44
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -770,11 +772,11 @@
       - id: N14LegionnaireBuckler
       - id: N14WeaponShotgunShort
       - id: MagazineBox12gauge
-      - id: N14StimpakDirty
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -803,7 +805,7 @@
         amount: 2
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -836,7 +838,7 @@
       - id: MagazineBox45
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -860,11 +862,10 @@
       - id: MagazineBox10mm
       - id: N14MagazineSMG10mm
         amount: 3
-      - id: N14StimpakDirty
-        amount: 1
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -887,11 +888,10 @@
       - id: N14TrenchClub
       - id: N14LegionnaireShield
       - id: N14HealingPowder
-      - id: N14StimpakDirty
-        amount: 1
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -917,11 +917,10 @@
       - id: MagazineBox9mm
       - id: N14TribalMachete
       - id: N14LegionnaireBuckler
-      - id: N14StimpakDirty
-        amount: 1
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -944,11 +943,10 @@
         amount: 4
       - id: N14LegionnaireBuckler
       - id: N14HealingPowder
-      - id: N14StimpakDirty
-        amount: 1
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -969,11 +967,10 @@
       - id: N14ClothingOuterLegionnaireRecruitArmor
       - id: N14LongSword
       - id: N14LegionnaireBuckler
-      - id: N14StimpakDirty
-        amount: 1
+      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
       - id: FoodCondimentPacketMustard
     sound:
       path: /Audio/Effects/unwrap.ogg
@@ -1002,7 +999,7 @@
       - id: N14HealingPowder
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -1025,7 +1022,7 @@
       - id: N14HealingPowder
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -1049,7 +1046,7 @@
       - id: N14HealingPowder
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -1076,7 +1073,7 @@
         amount: 2
       - id: N14FoodTinK
         amount: 2
-      - id: DrinkWaterBottleFull
+      - id: N14JunkCeramicFlask
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -1210,7 +1207,7 @@
       - id: N14WeaponLaserPistol
       - id: N14PowerCellSmall
         amount: 2
-      - id: N14PlasmaCartridge
+      - id: N14PowerCellHigh
         amount: 3
       - id: N14Stimpak
       - id: BoxMRE
@@ -1365,7 +1362,7 @@
 - type: entity
   name: elderss laser kit
   parent: KitBase
-  id: KitBrootherWest_Elderlas
+  id: KitBrotherWest_Elderlas
   description: Standard Laser kit
   components:
   - type: Sprite
@@ -1387,7 +1384,7 @@
 - type: entity
   name: elderss Rifle kit
   parent: KitBase
-  id: KitBrootherWest_Elderrifle
+  id: KitBrotherWest_Elderrifle
   description: Standard Rifle kit
   components:
   - type: Sprite
@@ -1410,7 +1407,7 @@
 - type: entity
   name: Paladin laser kit
   parent: KitBase
-  id: KitBrootherWest_Paladinlas
+  id: KitBrotherWest_Paladinlas
   description: Standard Laser kit
   components:
   - type: Sprite
@@ -1431,7 +1428,7 @@
 - type: entity
   name: Paladin Rifle kit
   parent: KitBase
-  id: KitBrootherWest_Paladinrifle
+  id: KitBrotherWest_Paladinrifle
   description: Standard Rifle kit
   components:
   - type: Sprite
@@ -1453,7 +1450,7 @@
 - type: entity
   name: Paladin PlasmaRifle kit
   parent: KitBase
-  id: KitBrootherWest_Paladinplasma
+  id: KitBrotherWest_Paladinplasma
   description: Standard Rifle kit
   components:
   - type: Sprite
@@ -1475,7 +1472,7 @@
 - type: entity
   name: knight Rifle kit
   parent: KitBase
-  id: KitBrootherWest_Knightrifle
+  id: KitBrotherWest_Knightrifle
   description: Standard Rifle kit
   components:
   - type: Sprite
@@ -1500,7 +1497,7 @@
 - type: entity
   name: knight Laser kit
   parent: KitBase
-  id: KitBrootherWest_Knightlaser
+  id: KitBrotherWest_Knightlaser
   description: Standard Rifle kit
   components:
   - type: Sprite
@@ -1524,7 +1521,7 @@
 - type: entity
   name: knight Plasma kit
   parent: KitBase
-  id: KitBrootherWest_Knightplasma
+  id: KitBrotherWest_Knightplasma
   description: Standard Rifle kit
   components:
   - type: Sprite
@@ -1549,7 +1546,7 @@
 - type: entity
   name: squire Rifle kit
   parent: KitBase
-  id: KitBrootherWest_Squirerifle
+  id: KitBrotherWest_Squirerifle
   description: Standard Rifle kit
   components:
   - type: Sprite
@@ -1571,7 +1568,7 @@
 - type: entity
   name: squire Laser kit
   parent: KitBase
-  id: KitBrootherWest_Squirelaser
+  id: KitBrotherWest_Squirelaser
   description: Standard Rifle kit
   components:
   - type: Sprite
@@ -1590,7 +1587,7 @@
 - type: entity
   name: squire Plasma kit
   parent: KitBase
-  id: KitBrootherWest_Squireplasma
+  id: KitBrotherWest_Squireplasma
   description: Standard Rifle kit
   components:
   - type: Sprite
@@ -1611,7 +1608,7 @@
 - type: entity
   name: Scribe rifle kit
   parent: KitBase
-  id: KitBrootherWest_Scriberifle
+  id: KitBrotherWest_Scriberifle
   description: Standard Rifle kit
   components:
   - type: Sprite
@@ -1632,7 +1629,7 @@
 - type: entity
   name: Scribe laser kit
   parent: KitBase
-  id: KitBrootherWest_Scribelaser
+  id: KitBrotherWest_Scribelaser
   description: Standard laser kit
   components:
   - type: Sprite
@@ -1652,7 +1649,7 @@
 - type: entity
   name: Scribe Plasma kit
   parent: KitBase
-  id: KitBrootherWest_Scribeplasma
+  id: KitBrotherWest_Scribeplasma
   description: Standard Plasma kit
   components:
   - type: Sprite
@@ -1814,4 +1811,178 @@
       - id: N14CleanGauze10
       - id: Handcuffs
         amount: 2
+
+- type: entity
+  name: explorer-scout kit
+  parent: KitBase
+  id: KitExplorerScout
+  description: "A set of Legion scout equipment."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponSniper44LeverCarbine
+      - id: N14WeaponRevolver44Tribal
+      - id: SpeedLoader44
+        amount: 2
+      - id: MagazineBox44
+      - id: ClothingBeltRope
+      - id: Bola
+        amount: 2
+      - id: ClothingEyesNightVisionGoggles
+      - id: N14HealingPowder
+      - id: N14HealingPoultice
+      - id: N14FoodTinK
+        amount: 2
+      - id: N14JunkCeramicFlask
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: explorer-tracker kit
+  parent: KitBase
+  id: KitExplorerTracker
+  description: "A set of Legion long-range tracking equipment."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponSniperHunting
+      - id: N14WeaponPistol45Colt
+      - id: Magazine308Rifle
+        amount: 2
+      - id: MagazineBox308
+      - id: N14MagazinePistol45
+        amount: 2
+      - id: MagazineBox45
+      - id: ClothingBeltRope
+      - id: ClothingEyesNightVisionGoggles
+      - id: N14HealingPowder
+      - id: N14HealingPoultice
+      - id: N14FoodTinK
+        amount: 2
+      - id: N14JunkCeramicFlask
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: explorer-raider kit
+  parent: KitBase
+  id: KitExplorerRaider
+  description: "A set of Legion ambush equipment."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponShotgunLever
+      - id: N14Machete
+      - id: MagazineBox20gauge
+        amount: 2
+      - id: ClothingBeltRope
+      - id: Bola
+        amount: 2
+      - id: N14HealingPowder
+        amount: 2
+      - id: N14FoodTinK
+        amount: 2
+      - id: N14JunkCeramicFlask
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: orator-preacher kit
+  parent: KitBase
+  id: KitOratorPreacher
+  description: "A set of Legion propaganda and support equipment."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponPistol45Colt
+      - id: N14MagazinePistol45
+        amount: 2
+      - id: MagazineBox45
+      - id: SmokeGrenade
+        amount: 2
+      - id: N14Bandage
+        amount: 2
+      - id: N14HealingPoultice
+        amount: 2
+      - id: N14HealingPowder
+      - id: N14FoodTinK
+        amount: 2
+      - id: N14JunkCeramicFlask
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: orator-defender kit
+  parent: KitBase
+  id: KitOratorDefender
+  description: "A set of Legion armed escort equipment."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponSMG9mm
+      - id: N14MagazineSMG9mm
+        amount: 2
+      - id: MagazineBox9mm
+      - id: SmokeGrenade
+      - id: N14HealingPoultice
+        amount: 2
+      - id: N14HealingPowder
+      - id: N14FoodTinK
+        amount: 2
+      - id: N14JunkCeramicFlask
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: orator-inquisitor kit
+  parent: KitBase
+  id: KitOratorInquisitor
+  description: "A set of Legion enforcement equipment."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponRevolver44Tribal
+      - id: N14CeremonialSword
+      - id: SpeedLoader44
+        amount: 2
+      - id: MagazineBox44
+      - id: Bola
+      - id: Handcuffs
+      - id: N14HealingPowder
+        amount: 2
+      - id: N14FoodTinK
+        amount: 2
+      - id: N14JunkCeramicFlask
+    sound:
+      path: /Audio/Effects/unwrap.ogg
 

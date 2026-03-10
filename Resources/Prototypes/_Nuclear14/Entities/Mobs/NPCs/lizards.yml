@@ -57,6 +57,13 @@
       params:
         volume: -10
         maxDistance: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14GeckoAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
   - type: Butcherable
     spawned:
     - id: N14FoodMeatGecko
@@ -162,6 +169,13 @@
     firestackFade: -1
   - type: Damageable
     damageModifierSet: N14ScaleFireresist
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14GeckoAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 - type: entity
   name: golden gecko
@@ -214,6 +228,13 @@
    #- type: Tag
  # tags:
    #  - Gecko
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14GeckoAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 
 # Nightstalker Cub
@@ -285,6 +306,13 @@
       params:
         volume: -10
         maxDistance: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14NightstalkerAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
   - type: SolutionContainerManager
     solutions:
       melee:
@@ -382,6 +410,13 @@
       params:
         volume: -8
         maxDistance: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14NightstalkerAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
   - type: SolutionContainerManager
     solutions:
       melee:
@@ -433,6 +468,9 @@
   parent: N14MobBaseHostileScaley
   description: Look at those claws.
   components:
+  - type: NpcFactionMember #Misfits Add - Deathclaw is its own faction; hostile to everything except other deathclaws
+    factions:
+    - Deathclaw
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: N14ToughAnimal
@@ -513,6 +551,13 @@
       params:
         volume: -8
         maxDistance: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14DeathclawAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
   - type: MovementSpeedModifier
     baseWalkSpeed : 3
     baseSprintSpeed : 6
@@ -604,6 +649,13 @@
         Base: dead # TODO: Crit sprite
       Dead:
         Base: dead
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14DeathclawAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 - type: entity
   name: deathclaw maid
@@ -625,6 +677,13 @@
         Base: crit
       Dead:
         Base: dead
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14DeathclawAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 #MARK: Metal Deathclaw
 - type: entity
@@ -647,6 +706,13 @@
         Base: crit
       Dead:
         Base: dead
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14DeathclawAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 # Fatass, aka the Lurker
 - type: entity
@@ -683,6 +749,13 @@
         Blunt: 5
         Slash: 15
         Piercing: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14DeathclawAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
   - type: StepTriggerImmune
     whitelist:
       types:

@@ -1,6 +1,12 @@
 # Misfits Change - Creature-specific sound collections from Big-Iron (f13npc/creatures)
 # Replaces generic bite.ogg / AlienClaw with unique creature attack sounds
 
+# Bloatfly attack sound
+- type: soundCollection
+  id: N14BloatflyAttack
+  files:
+    - /Audio/_Misfits/Mobs/Bloatfly/bloatfly_attack.ogg
+
 # Deathclaw attack sounds (roars/aggro)
 - type: soundCollection
   id: N14DeathclawAttack
@@ -316,3 +322,43 @@
     - /Audio/_Misfits/Mobs/Centaur/idle1.ogg
     - /Audio/_Misfits/Mobs/Centaur/idle2.ogg
     - /Audio/_Misfits/Mobs/Centaur/taunt.ogg
+
+# Centaur death sound
+- type: soundCollection
+  id: N14CentaurDeath
+  files:
+    - /Audio/_Misfits/Mobs/Centaur/centaur_death.ogg
+
+# Misfits Change - Super Mutant sounds (DesertRose2/desertrose port)
+# Super Mutant attack sounds
+- type: soundCollection
+  id: N14SuperMutantAttack
+  files:
+    - /Audio/_Misfits/Mobs/Supermutant/attack1.ogg
+    - /Audio/_Misfits/Mobs/Supermutant/attack2.ogg
+    - /Audio/_Misfits/Mobs/Supermutant/attack3.ogg
+
+# Super Mutant ambient idle
+- type: soundCollection
+  id: N14SuperMutantIdle
+  files:
+    - /Audio/_Misfits/Mobs/Supermutant/idle1.ogg
+    - /Audio/_Misfits/Mobs/Supermutant/idle2.ogg
+    - /Audio/_Misfits/Mobs/Supermutant/idle3.ogg
+    - /Audio/_Misfits/Mobs/Supermutant/idle4.ogg
+
+# Super Mutant alert/aggro sounds
+- type: soundCollection
+  id: N14SuperMutantAlert
+  files:
+    - /Audio/_Misfits/Mobs/Supermutant/alert1.ogg
+    - /Audio/_Misfits/Mobs/Supermutant/alert2.ogg
+    - /Audio/_Misfits/Mobs/Supermutant/alert3.ogg
+    - /Audio/_Misfits/Mobs/Supermutant/alert4.ogg
+
+# Super Mutant death sounds
+- type: soundCollection
+  id: N14SuperMutantDeath
+  files:
+    - /Audio/_Misfits/Mobs/Supermutant/death1.ogg
+    - /Audio/_Misfits/Mobs/Supermutant/death2.ogg

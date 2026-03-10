@@ -140,6 +140,10 @@
   name: id-card-access-level-brasskey
 
 - type: accessLevel
+  id: LegionBrassKey
+  name: id-card-access-level-legion-brasskey
+
+- type: accessLevel
   id: SilverKey
   name: id-card-access-level-silverkey
 

@@ -1,8 +1,8 @@
 - type: entity
-  name: sledge hammer
+  name: sledgehammer
   parent: BaseItem
   id: N14SledgeHammer
-  description: A robust sledge hammer that requires considerable strength to be wielded.
+  description: A robust sledgehammer that requires considerable strength to be wielded.
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/sledgehammer.rsi
@@ -36,10 +36,10 @@
     price: 60
 
 - type: entity
-  name: super sledge hammer
+  name: super sledgehammer
   parent: N14SledgeHammer
   id: N14SuperSledgeHammer
-  description: A bigger, heavier, and more destructive sledge hammer, you really need some strong arms to swing it.
+  description: A bigger, heavier, and more destructive sledgehammer. You really need some strong arms to swing it.
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/supersledge.rsi
@@ -53,7 +53,7 @@
     damage:
       types:
         Blunt: 35
-        Structural: 20
+        Structural: 30
   - type: MeleeThrowOnHit
     speed: 10
     lifetime: 0.025

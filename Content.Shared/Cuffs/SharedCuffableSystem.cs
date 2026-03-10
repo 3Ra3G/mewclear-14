@@ -36,6 +36,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 using PullableComponent = Content.Shared.Movement.Pulling.Components.PullableComponent;
+using Content.Shared._Misfits.Cuffs; // #Misfits Add: CuffAppliedEvent for chat system hook
 
 namespace Content.Shared.Cuffs
 {
@@ -363,6 +364,10 @@ namespace Content.Shared.Cuffs
                     _adminLog.Add(LogType.Action, LogImpact.Medium,
                         $"{ToPrettyString(user):player} has cuffed {ToPrettyString(target):player}");
                 }
+
+                // #Misfits Add: raise event so server-side chat system can broadcast cuffing to chatbox
+                var cuffEv = new CuffAppliedEvent(user, target);
+                RaiseLocalEvent(target, ref cuffEv);
             }
             else
             {

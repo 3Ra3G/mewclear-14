@@ -86,6 +86,7 @@
   hostile:
   - WastelandInsect
   - WastelandAnimal
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -110,7 +111,35 @@
   - Zetan
   - WastelandAnimal
   - WastelandInsect
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - CaesarLegion
   - HostileRobot
   - Feral
+
+# #Misfits Add - Deathclaw faction. Hostile to everything, neutral only to other deathclaws.
+- type: npcFaction
+  id: Deathclaw
+  hostile:
+  - Wastelander
+  - BrotherhoodOfSteel
+  - BrotherhoodOfSteelSecureArea
+  - CaravanCompany
+  - CaravanCompanySecureArea
+  - NCR
+  - NCRSecureArea
+  - Rangers
+  - Townsfolk
+  - TownsfolkSecureArea
+  - Tribal
+  - TribalSecureArea
+  - Vault
+  - VaultSecureArea
+  - Zetan
+  - WastelandAnimal
+  - WastelandInsect
+  - Raider
+  - HostileRobot
+  - Feral
+  - CaesarLegion
+  - SuperMutant

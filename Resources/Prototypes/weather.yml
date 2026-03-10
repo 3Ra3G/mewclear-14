@@ -98,6 +98,23 @@
   duration: 250
   chance: 1 # Misfits: reduced from 2
   message: weather-rain
+  # Misfits Change Add: Rain puddle spawning. Puddles grow silently on open outdoor tiles
+  # near players only. Volume is capped at 15 u (below the 20 u overflow threshold) so
+  # the fluid spreader is never triggered and puddles won't creep indoors.
+  spawnPuddles: true
+  puddleReagent: Water
+  puddleAmountPerInterval: 3    # units of Water added per tile per pass
+  puddleInterval: 30            # seconds between passes
+  puddleMaxVolume: 15           # tile is "full" above this; must be < OverflowVolume (20)
+  puddleViewportRadius: 15      # world-tile radius around each player to consider
+  puddleChance: 0.25            # per-tile probability each pass (25 % for organic scatter)
+  # Misfits Change Add: blood washing. Each rain pass removes 2 u of non-evaporating reagents
+  # (blood, etc.) from existing puddles on exposed tiles, simulating rain washing them away.
+  # Blood has evaporates:false so this is the only way it clears outdoors.
+  # Rain-water puddles (Water) soak into the ground automatically after rain ends thanks to
+  # Water.evaporates:true and the existing EvaporationComponent — no extra code required.
+  washBloodPuddles: true
+  puddleWashAmount: 2           # non-evaporating reagent units washed per tile per pass
 
 - type: soundCollection
   id: Rain

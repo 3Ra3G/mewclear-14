@@ -25,3 +25,6 @@ lathe-menu-connected-to-silo-message = Connected to material silo.
 lathe-menu-fabricating-message = Fabricating...
 lathe-menu-materials-title = Materials
 lathe-menu-queue-title = Build Queue
+# Misfits Change Add: Section header strings for the 3-panel lathe menu layout
+lathe-menu-all-items-title = All Items
+lathe-menu-craftable-title = Craftable Now

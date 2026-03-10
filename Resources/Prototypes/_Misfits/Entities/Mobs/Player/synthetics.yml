@@ -7,7 +7,24 @@
   id: N14BasePlayerSynthetic
   abstract: true
   components:
+  - type: Appearance # #Misfits Change: allow robot sprites to swap to their built-in dead state
+  - type: DamageStateVisuals # #Misfits Change: use robot dead sprites instead of animated hover frames when downed/dead
+    states:
+      Alive:
+        Base: icon
+      Critical:
+        Base: dead
+      Dead:
+        Base: dead
+  - type: RobotDownedVisuals # #Misfits Change: force the dead frame while the robot is lying down
   - type: Stripping # #Misfits Change: allow player robots to open strip UI with hover + E
+  - type: RobotCriticalSparking # #Misfits Change: spark and crackle while near destruction, stop once repaired
+  - type: Reflect # #Misfits Change: player robots can ricochet ballistic fire off their chassis
+    innate: true
+    reflectProb: 0.1
+    spread: 150
+    reflects:
+    - NonEnergy
 
 - type: entity
   parent: N14BasePlayerSynthetic
@@ -22,7 +39,7 @@
     sprite: _Nuclear14/Mobs/Robots/mrhandyclaw.rsi
     layers:
     - state: icon
-      map: ["movement"]
+      map: ["enum.DamageStateVisualLayers.Base", "movement"]
     - state: icon
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
@@ -41,6 +58,17 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai
+  - type: BorgHands # #Misfits Change: Mr. Handy gets a third usable item slot
+    handCount: 3
+  - type: IdleSound
+  - type: SpamEmitSound
+    minInterval: 15
+    maxInterval: 50
+    sound:
+      collection: N14HandyIdle
+      params:
+        volume: -7
+        maxDistance: 6
   - type: StepTriggerImmune
   - type: NpcFactionMember
     factions:
@@ -56,7 +84,6 @@
         Heat: -0.5
         Shock: -0.5
   - type: RobotSelfRepairAnnouncer # #Misfits Change: hull integrity warnings + self-repair popups
-  - type: EmitBuzzWhileDamaged # #Misfits Change: sparks/buzz when below half health
 
   - type: ContainerFill
     containers:
@@ -87,7 +114,7 @@
     sprite: _Nuclear14/Mobs/Robots/protectron.rsi
     layers:
     - state: icon
-      map: ["movement"]
+      map: ["enum.DamageStateVisualLayers.Base", "movement"]
     - state: icon
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
@@ -106,9 +133,27 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai
+  - type: IdleSound
+  - type: SpamEmitSound
+    minInterval: 15
+    maxInterval: 50
+    sound:
+      collection: N14ProtectronIdle
+      params:
+        volume: -7
+        maxDistance: 6
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.0
     baseSprintSpeed: 3.5
+  - type: Armor # #Misfits Change: innate Protectron plating matches BoS Combat Armor MK2 protection values
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.65
+        Heat: 0.65
+  - type: ExplosionResistance # #Misfits Change: keep Protectron chassis in line with BoS Combat Armor MK2 explosive protection
+    damageCoefficient: 0.75
   - type: NpcFactionMember
     factions:
     - Wastelander
@@ -123,7 +168,6 @@
         Heat: -0.5
         Shock: -0.5
   - type: RobotSelfRepairAnnouncer # #Misfits Change: hull integrity warnings + self-repair popups
-  - type: EmitBuzzWhileDamaged # #Misfits Change: sparks/buzz when below half health
 
   - type: Tag # #Misfits Change: Protectron walks, so it should have footstep sounds
     tags:
@@ -155,7 +199,7 @@
     sprite: _Nuclear14/Mobs/Robots/mrhandygutsy.rsi
     layers:
     - state: icon
-      map: ["movement"]
+      map: ["enum.DamageStateVisualLayers.Base", "movement"]
     - state: icon
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
@@ -174,6 +218,15 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai
+  - type: IdleSound
+  - type: SpamEmitSound
+    minInterval: 15
+    maxInterval: 50
+    sound:
+      collection: N14GutsyIdle
+      params:
+        volume: -7
+        maxDistance: 6
   - type: StepTriggerImmune
   - type: NpcFactionMember
     factions:
@@ -189,7 +242,6 @@
         Heat: -0.5
         Shock: -0.5
   - type: RobotSelfRepairAnnouncer # #Misfits Change: hull integrity warnings + self-repair popups
-  - type: EmitBuzzWhileDamaged # #Misfits Change: sparks/buzz when below half health
 
   - type: ContainerFill
     containers:
@@ -219,7 +271,7 @@
     sprite: _Nuclear14/Mobs/Robots/assaultron.rsi
     layers:
     - state: icon
-      map: ["movement"]
+      map: ["enum.DamageStateVisualLayers.Base", "movement"]
     - state: icon
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
@@ -238,6 +290,15 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai
+  - type: IdleSound
+  - type: SpamEmitSound
+    minInterval: 15
+    maxInterval: 50
+    sound:
+      collection: N14AssaultronIdle
+      params:
+        volume: -7
+        maxDistance: 6
   - type: MovementSpeedModifier
     baseWalkSpeed: 3.0
     baseSprintSpeed: 6.0
@@ -255,7 +316,6 @@
         Heat: -0.5
         Shock: -0.5
   - type: RobotSelfRepairAnnouncer # #Misfits Change: hull integrity warnings + self-repair popups
-  - type: EmitBuzzWhileDamaged # #Misfits Change: sparks/buzz when below half health
 
   - type: Tag # #Misfits Change: Assaultron walks, so it should have footstep sounds
     tags:

@@ -138,6 +138,22 @@
     Glass: 100
 
 - type: latheRecipe
+  id: N14AntidoteEmpty
+  result: N14AntidoteEmpty
+  completetime: 2
+  category: N14Chemistry
+  materials:
+    Glass: 100
+
+- type: latheRecipe
+  id: N14BitterdrinkEmpty
+  result: N14BitterdrinkEmpty
+  completetime: 2
+  category: N14Chemistry
+  materials:
+    Glass: 50
+
+- type: latheRecipe
   id: N14ChemistryEmptyBottle01
   result: ChemistryEmptyBottle01
   completetime: 2

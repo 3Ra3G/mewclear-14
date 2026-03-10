@@ -1,0 +1,165 @@
+<Document>
+# Caesar's Legion
+
+Founded by Edward Sallow — a well-educated wasteland wanderer who took the name Caesar — the Legion is a totalitarian military empire built on the ideals of ancient Rome. It does not merely conquer territory. It absorbs populations, destroys the cultures and identities of defeated tribes, and forges the survivors into new legionaries loyal to Caesar alone. In the two decades since its founding in the American Southwest, the Legion has grown from a handful of united tribes into an army of tens of thousands.
+
+The Legion operates on absolute discipline, rigid hierarchy, and the contempt for weakness in any form. It has no democracy. No dissent. No mercy for failure. What it has is order, strength, and an institutional willpower that outlasts almost everything it encounters.
+
+## Philosophy
+
+The Legion believes civilization collapsed because pre-war society was decadent, corrupt, and weak. Caesar's solution is a return to strength — total social control, martial virtue, and the complete erasure of old-world thinking. Tribalism, faction identity, caps-based trade, democratic politics — all of it is replaced by the Legion's structure. Conquered peoples are enslaved, re-educated, and integrated. Those who prove themselves through service can rise. Those who do not serve, are owned.
+
+This ideology is not a performance. Legionaries genuinely believe they are building the only civilization worth having.
+
+## Chain of Command
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Legate[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Command all Legion military operations in the Wendover region. Strategic decisions — troop movements, alliances, subjugation or destruction of opposing factions — are yours to make. Caesar's will is expressed through you. Act accordingly.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Centurion[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Lead combat operations. Execute the Legate's strategy in the field, direct Decani, and deal with any tactical situation that arises. You are the Legion's instrument of force in any direct engagement.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Veteran Decanus[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Lead your contubernium with authority and experience. Support the Centurion's operations, mentor newer soldiers, and enforce Legion discipline at the squad level. Your experience is a resource — use it.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Prime Decanus[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Command your squad in the field. Carry out orders from Centurion and Veteran Decani without question. Demonstrate the judgment that earns the trust of those above you.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Decanus[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Lead a contubernium and carry out the orders of your superiors without hesitation. Your legionnaires follow your example. Set the right one.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Veteran Legionnaire[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Fight, survive, and serve as the example your younger brothers are measured against. Your experience and discipline are the Legion's real weapons.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Legionnaire Warrior[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Execute orders. Fight as directed. Protect your brothers and represent the Legion in every action you take. Ave, true to Caesar.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Legionnaire Recruit[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Survive. Learn. Do not embarrass the Legion or yourself. Follow your Decanus without question and prove you deserve the armor you're wearing.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Explorer (Venator)[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Scout the region. Gather intelligence on other factions, track persons of interest, and feed operational information back to the Centurion. You work alone or in pairs — that is by design.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Frumentarii[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Operate in the shadows. Infiltrate, observe, and report. When action is needed, take it quietly. The Frumentarii do not exist — and that is the point.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Vexillarius[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Carry the Legion's standard and serve as its visible heart in the field. Rally your brothers, maintain cohesion under fire, and protect the standard at all costs. Where you stand, the Legion stands.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Orator[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Speak for the Legion. Deal with non-Legion parties, broadcast Caesar's ideology, and manage the faction's reputation with communities that can be brought into compliance without force. You are the edge of the sword that doesn't cut.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Auxilia[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Provide support to Legion operations. Your path to full induction runs through demonstrated service. Do your work. Do it well. Earn your place.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Houndmaster[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Care for and deploy your hounds in service of the Legion. Tracking fugitives, patrolling the perimeter, or leading the charge — your dogs are weapons and companions in equal measure.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Recruit[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] You are at the bottom. Follow every order. Do not question above your station. Every great Centurion started where you are standing.
+</Box>
+
+<ColorBox Color="#8B0000">
+  <Box Margin="2">
+  [bold]Slave[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Carry out the work assigned to you. Survival in the Legion depends on being too useful to discard. That calculus applies to you more than anyone else in this camp.
+</Box>
+
+## Relations
+
+The Legion does not recognize the equal authority of any other faction. The NCR is their primary historical enemy — the two have fought major campaigns across the Mojave and the rivalry is deeply personal for veterans on both sides. The Brotherhood of Steel the Legion views as technological arrogance waiting to be humbled. The towns and tribes of the region are raw material — to be absorbed or destroyed depending on their utility and compliance.
+
+The Legion is here because Wendover was assessed as a strategic asset. That assessment does not expire until the site is secured or the Legion is driven off.
+</Document>

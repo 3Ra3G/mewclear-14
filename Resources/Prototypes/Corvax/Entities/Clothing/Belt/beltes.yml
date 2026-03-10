@@ -1,7 +1,7 @@
 - type: entity
   parent: N14ClothingBeltStorageBase
-  id: N14ClothingBeltBoSWesternKhignht
-  name: Knight unloading
+  id: N14ClothingBeltBoSWesternKnight
+  name: BoS Knight utility belt
   description: The latest generation of unloading combines great convenience with good capacity
   components:
   - type: Sprite

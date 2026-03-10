@@ -3,6 +3,40 @@
 # Tab names
 misfits-admin-menu-whitelisting-tab = Whitelisting
 misfits-admin-menu-staff-tab = Staff
+# #Misfits Change - LoreMaster tab for faction objective management
+misfits-admin-menu-loremaster-tab = Loremaster
+
+## LoreMaster tab UI strings
+loremaster-tab-faction-label = Faction:
+loremaster-tab-refresh = Refresh
+loremaster-tab-members-header = Online Members & Objectives
+loremaster-tab-issue-header = Issue New Orders
+loremaster-tab-objective-label = Objective:
+loremaster-tab-issue-button = Issue Orders
+loremaster-tab-refreshing = Refreshing...
+loremaster-tab-no-members = No online members found.
+loremaster-tab-no-objectives = (no objectives assigned)
+loremaster-tab-target-none = Target: (none online)
+loremaster-tab-target-label = Will issue to: {$name} ({$job})
+loremaster-tab-member-count = Online members: {$count}
+loremaster-tab-issuing = Issuing...
+
+## Per-faction objective selector labels
+# NCR
+loremaster-obj-ncr-kill = Eliminate High-Value Target
+loremaster-obj-ncr-steal-enclave = Steal Enclave Intel Holotape
+loremaster-obj-ncr-steal-bosw = Steal Brotherhood Plans Holotape
+loremaster-obj-ncr-steal-legion = Steal Legion Orders Holotape
+# Brotherhood of Steel
+loremaster-obj-bosw-kill = Purge Enemy Officer
+loremaster-obj-bosw-steal-geck = Seize GECK Location Holotape
+loremaster-obj-bosw-steal-ncr = Seize NCR Plans Holotape
+loremaster-obj-bosw-steal-legion = Seize Legion Battle Orders Holotape
+# Caesar's Legion
+loremaster-obj-legion-kill = Execute Enemy for Caesar
+loremaster-obj-legion-steal-ncr = Steal NCR Intel Holotape
+loremaster-obj-legion-steal-bosw = Steal Brotherhood Orders Holotape
+loremaster-obj-legion-steal-enclave = Steal Enclave Tech Data Holotape
 
 # Staff tab button + description
 misfits-staff-tab-permissions-btn = Admin Permissions

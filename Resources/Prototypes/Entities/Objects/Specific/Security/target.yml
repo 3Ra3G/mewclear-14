@@ -55,6 +55,9 @@
   parent: BaseTarget
   description: A shooting target. This one is a human.
   components:
+  - type: Construction
+    graph: TargetHuman # Misfits Change /Add/: make the human target buildable from the construction menu.
+    node: targetHuman
   - type: Sprite
     sprite: Objects/Specific/Security/target.rsi
     state: target_h

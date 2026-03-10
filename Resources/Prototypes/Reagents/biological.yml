@@ -1,3 +1,4 @@
+# Misfits Change Tweak: Blood does not evaporate so mops can clean blood puddles
 - type: reagent
   id: Blood
   name: reagent-name-blood
@@ -5,6 +6,7 @@
   desc: reagent-desc-blood
   flavor: metallic
   color: "#800000"
+  evaporates: false
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/bloodglass.rsi
     state: icon_empty
@@ -159,6 +161,7 @@
   physicalDesc: reagent-physical-desc-pungent
   slippery: false
 
+# Misfits Change Tweak: ZombieBlood does not evaporate so mops can clean its puddles
 - type: reagent
   id: ZombieBlood
   name: reagent-name-zombie-blood
@@ -167,6 +170,7 @@
   physicalDesc: reagent-physical-desc-necrotic
   flavor: bitter
   color: "#2b0700"
+  evaporates: false
   slippery: false
   metabolisms:
     Drink:
@@ -183,6 +187,7 @@
       - !type:ChemVomit
         probability: 0.25
 
+# Misfits Change Tweak: Ichor does not evaporate so mops can clean its puddles
 - type: reagent
   id: Ichor
   name: reagent-name-ichor
@@ -191,6 +196,7 @@
   physicalDesc: reagent-physical-desc-roaring
   flavor: metallic
   color: "#f4692e"
+  evaporates: false
   recognizable: true
   metabolisms:
     Drink:

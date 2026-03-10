@@ -324,13 +324,16 @@
 - type: entity
   parent: N14IDPassportBlank
   id: N14IDNCRDogtag
-  name: dogtag
+  name: recruit's dogtags
   description: An ID dogtag worn by members of the NCR.
   suffix: Recruit #Misfits Change - was Soldier, Cadet
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: ncrdogtag
+  - type: IdCard
+    nameLocId: n14-id-dogtag-name
+    fullNameLocId: n14-id-dogtag-full-name
   - type: PresetIdCard
     job: NCRCadet #Misfits Change - was NCRSoldier
   - type: Tag
@@ -342,7 +345,7 @@
 - type: entity
   parent: N14IDNCRDogtag
   id: N14IDNCRDogtagDoctor
-  name: dogtag
+  name: doctor's dogtags
   description: An ID dogtag worn by decently ranking members of the NCR.
   suffix: Doctor
   components:
@@ -370,7 +373,7 @@
 - type: entity
   parent: N14IDNCRDogtag
   id: N14IDNCRDogtagEngineer
-  name: dogtag
+  name: engineer's dogtags
   description: An ID dogtag worn by decently ranking members of the NCR.
   suffix: Engineer
   components:
@@ -383,7 +386,7 @@
 - type: entity
   parent: N14IDNCRDogtag
   id: N14IDNCRDogtagNCO
-  name: dogtag
+  name: sergeant's dogtags
   description: An ID dogtag worn by decently ranking members of the NCR.
   suffix: SGT
   components:
@@ -396,7 +399,7 @@
 - type: entity
   parent: N14IDNCRDogtag
   id: N14IDNCRDogtagOfficer
-  name: dogtag
+  name: lieutenant's dogtags
   description: An ID dogtag worn by high ranking members of the NCR.
   suffix: Officer
   components:
@@ -711,7 +714,7 @@
     state: brass
   - type: Access
     tags:
-    - BrassKey
+    - LegionBrassKey
 
 - type: entity
   parent: N14IDCard

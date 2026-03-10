@@ -1,3 +1,6 @@
+// #Misfits Change Tweak: Added Section 2 (Craftable Now) — PopulateBuildableRecipes() mirrors
+// PopulateRecipes() but only shows recipes where canProduce = true, giving players a quick view
+// of what they can build right now with currently loaded materials.
 using System.Linq;
 using System.Text;
 using Content.Client.Materials;
@@ -170,6 +173,56 @@ public sealed partial class LatheMenu : DefaultWindow
                 RecipeQueueAction?.Invoke(s, amount);
             };
             RecipeList.AddChild(control);
+        }
+
+        // #Misfits Change Add: Refresh Section 2 whenever Section 1 is rebuilt
+        PopulateBuildableRecipes();
+    }
+
+    /// <summary>
+    /// #Misfits Change Add: Populates Section 2 — "Craftable Now".
+    /// Shows only recipes the player currently has enough materials in the lathe to produce.
+    /// Respects the active search text, category filter, and amount quantity.
+    /// </summary>
+    public void PopulateBuildableRecipes()
+    {
+        if (!int.TryParse(AmountLineEdit.Text, out var quantity) || quantity <= 0)
+            quantity = 1;
+
+        BuildableRecipeList.Children.Clear();
+        _entityManager.TryGetComponent(Entity, out LatheComponent? lathe);
+
+        var buildable = new List<LatheRecipePrototype>();
+        foreach (var recipeId in Recipes)
+        {
+            if (!_prototypeManager.TryIndex(recipeId, out var proto))
+                continue;
+
+            // Respect category filter
+            if (CurrentCategory != null && proto.Category != CurrentCategory)
+                continue;
+
+            // Respect search text
+            if (SearchBar.Text.Trim().Length != 0 &&
+                !_lathe.GetRecipeName(recipeId).ToLowerInvariant().Contains(SearchBar.Text.Trim().ToLowerInvariant()))
+                continue;
+
+            // Only include recipes the player can currently build
+            if (_lathe.CanProduce(Entity, proto, quantity, component: lathe))
+                buildable.Add(proto);
+        }
+
+        foreach (var prototype in buildable.OrderBy(_lathe.GetRecipeName))
+        {
+            // Buildable controls are always enabled (canProduce = true)
+            var control = new RecipeControl(_lathe, prototype, () => GenerateTooltipText(prototype), true, GetRecipeDisplayControl(prototype));
+            control.OnButtonPressed += s =>
+            {
+                if (!int.TryParse(AmountLineEdit.Text, out var amount) || amount <= 0)
+                    amount = 1;
+                RecipeQueueAction?.Invoke(s, amount);
+            };
+            BuildableRecipeList.AddChild(control);
         }
     }
 

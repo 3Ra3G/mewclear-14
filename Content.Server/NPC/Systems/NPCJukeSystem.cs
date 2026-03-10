@@ -4,6 +4,7 @@ using Content.Server.NPC.Events;
 using Content.Server.NPC.HTN.PrimitiveTasks.Operators.Combat;
 using Content.Server.Weapons.Melee;
 using Content.Shared.Coordinates.Helpers;
+using Content.Shared.Interaction;
 using Content.Shared.NPC;
 using Content.Shared.Weapons.Melee;
 using Robust.Shared.Collections;
@@ -27,6 +28,7 @@ public sealed class NPCJukeSystem : EntitySystem
     private EntityQuery<NPCMeleeCombatComponent> _npcMeleeQuery;
     private EntityQuery<NPCRangedCombatComponent> _npcRangedQuery;
     private EntityQuery<PhysicsComponent> _physicsQuery;
+    private EntityQuery<NPCSteeringComponent> _steeringQuery;
 
     public override void Initialize()
     {
@@ -34,6 +36,7 @@ public sealed class NPCJukeSystem : EntitySystem
         _npcMeleeQuery = GetEntityQuery<NPCMeleeCombatComponent>();
         _npcRangedQuery = GetEntityQuery<NPCRangedCombatComponent>();
         _physicsQuery = GetEntityQuery<PhysicsComponent>();
+        _steeringQuery = GetEntityQuery<NPCSteeringComponent>();
 
         SubscribeLocalEvent<NPCJukeComponent, NPCSteeringEvent>(OnJukeSteering);
     }
@@ -89,6 +92,28 @@ public sealed class NPCJukeSystem : EntitySystem
             {
                 component.TargetTile = null;
                 return;
+            }
+
+            if (_npcMeleeQuery.TryGetComponent(uid, out var melee))
+            {
+                // #Misfits Change /Fix:/ Don't let close-range strafing override obstacle-aware pursuit.
+                // If we're still following a path or haven't actually reached melee envelope yet,
+                // keep committing to the route so doors and other blockers can be handled first.
+                if (!_melee.TryGetWeapon(uid, out _, out var meleeWeapon) ||
+                    !melee.Target.IsValid() ||
+                    _steeringQuery.TryGetComponent(uid, out var steering) && steering.CurrentPath.Count > 0)
+                {
+                    component.TargetTile = null;
+                    return;
+                }
+
+                var targetDistance = (_transform.GetWorldPosition(melee.Target) - args.WorldPosition).Length();
+
+                if (targetDistance > meleeWeapon.Range + 0.5f)
+                {
+                    component.TargetTile = null;
+                    return;
+                }
             }
 
             var currentTile = _map.CoordinatesToTile((EntityUid) args.Transform.GridUid, grid, args.Transform.Coordinates);

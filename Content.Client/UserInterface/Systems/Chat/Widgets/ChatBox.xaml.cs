@@ -110,14 +110,14 @@ public partial class ChatBox : UIWidget, ILinkClickHandler // #Misfits Change �
 
         var color = msg.MessageColorOverride ?? msg.Channel.TextColor();
 
-        // #Misfits Change — resolve admin link info once so we can pass it to AddLine variants.
-        var (showAdminLinks, adminUsername) = TryGetAdminLinkData(msg);
+        // #Misfits Change — resolve ghost/admin link info once so we can pass it to AddLine variants.
+        var (showGhostLink, showInfoLink, adminUsername) = TryGetChatLinkData(msg);
 
         if (msg.IgnoreChatStack)
         {
             TrackNewMessage(msg.WrappedMessage, color, true);
-            if (showAdminLinks)
-                AddLineWithAdminLinks(msg.WrappedMessage, color, adminUsername!, msg.SenderEntity);
+            if (showGhostLink)
+                AddLineWithLinks(msg.WrappedMessage, color, msg.SenderEntity, showInfoLink, adminUsername);
             else
                 AddLine(msg.WrappedMessage, color);
             return;
@@ -128,8 +128,8 @@ public partial class ChatBox : UIWidget, ILinkClickHandler // #Misfits Change �
         if (index == -1) // this also handles chatstack being disabled, since FindIndex won't find anything in an empty array
         {
             TrackNewMessage(msg.WrappedMessage, color);
-            if (showAdminLinks)
-                AddLineWithAdminLinks(msg.WrappedMessage, color, adminUsername!, msg.SenderEntity);
+            if (showGhostLink)
+                AddLineWithLinks(msg.WrappedMessage, color, msg.SenderEntity, showInfoLink, adminUsername);
             else
                 AddLine(msg.WrappedMessage, color);
             return;
@@ -138,33 +138,44 @@ public partial class ChatBox : UIWidget, ILinkClickHandler // #Misfits Change �
         UpdateRepeatingLine(index);
     }
 
-    // #Misfits Change — determines whether admin [Info]/[Ghost] links should appear after a chat message.
-    // Returns (showLinks, username) where username is only non-null when showLinks is true.
-    private (bool show, string? username) TryGetAdminLinkData(ChatMessage msg)
+    // #Misfits Change — determines which chat hyperlinks should appear after a message.
+    // Returns (showGhostLink, showInfoLink, username).
+    // showGhostLink — true for any ghost (regular or admin).
+    // showInfoLink  — true only for aghosted admins.
+    // username      — non-null when showInfoLink is true.
+    private (bool showGhost, bool showInfo, string? username) TryGetChatLinkData(ChatMessage msg)
     {
-        if (!_controller.IsAdminGhost)
-            return (false, null);
+        // Need to be at least a regular ghost to see any links.
+        if (!_controller.IsGhost)
+            return (false, false, null);
 
         if (msg.SenderEntity == default)
-            return (false, null);
+            return (false, false, null);
 
         var isWatchedChannel = msg.Channel is
             ChatChannel.Local or
             ChatChannel.Emotes or
             ChatChannel.LOOC or
             ChatChannel.Radio or
-            ChatChannel.Dead; // #Misfits Change
+            ChatChannel.Dead;
 
         if (!isWatchedChannel)
-            return (false, null);
+            return (false, false, null);
 
-        // Look up the sending player by their entity in the admin player list.
-        var adminSys = _entManager.System<AdminSystem>();
-        var playerInfo = adminSys.PlayerList.FirstOrDefault(p => p.NetEntity == msg.SenderEntity);
-        if (playerInfo == null)
-            return (false, null);
+        var isAdmin = _controller.IsAdminGhost;
 
-        return (true, playerInfo.Username);
+        // For [Info] we need to look up the player — only bother when admin.
+        string? username = null;
+        if (isAdmin)
+        {
+            var adminSys = _entManager.System<AdminSystem>();
+            var playerInfo = adminSys.PlayerList.FirstOrDefault(p => p.NetEntity == msg.SenderEntity);
+            if (playerInfo == null)
+                return (true, false, null); // ghost link still shown, just no info
+            username = playerInfo.Username;
+        }
+
+        return (true, isAdmin, username);
     }
 
     /// <summary>
@@ -248,8 +259,8 @@ public partial class ChatBox : UIWidget, ILinkClickHandler // #Misfits Change �
         Contents.AddMessage(formatted);
     }
 
-    // #Misfits Change — like AddLine but appends clickable [Info] and [Ghost] admin hyperlinks.
-    private void AddLineWithAdminLinks(string message, Color color, string username, NetEntity senderEntity, int repeat = 0)
+    // #Misfits Change — like AddLine but appends [Ghost] (all ghosts) and optionally [Info] (aghost admins only).
+    private void AddLineWithLinks(string message, Color color, NetEntity senderEntity, bool showInfo, string? username, int repeat = 0)
     {
         var formatted = new FormattedMessage(8);
         formatted.PushColor(color);
@@ -265,13 +276,16 @@ public partial class ChatBox : UIWidget, ILinkClickHandler // #Misfits Change �
                                 ));
         }
 
-        // Append [Info] hyperlink — opens the player panel for this player.
-        formatted.AddText(" ");
-        var infoAttrs = new Dictionary<string, MarkupParameter>
-            { ["link"] = new MarkupParameter("chatinfo:" + username) };
-        formatted.PushTag(new MarkupNode("adminlink", new MarkupParameter("[Info]"), infoAttrs), selfClosing: true);
+        // [Info] hyperlink — admin aghost only, opens the player panel.
+        if (showInfo && username != null)
+        {
+            formatted.AddText(" ");
+            var infoAttrs = new Dictionary<string, MarkupParameter>
+                { ["link"] = new MarkupParameter("chatinfo:" + username) };
+            formatted.PushTag(new MarkupNode("adminlink", new MarkupParameter("[Info]"), infoAttrs), selfClosing: true);
+        }
 
-        // Append [Ghost] hyperlink — runs the follow command so the admin orbits the player.
+        // [Ghost] hyperlink — any ghost, orbits the sender.
         formatted.AddText(" ");
         var ghostAttrs = new Dictionary<string, MarkupParameter>
             { ["link"] = new MarkupParameter("chatghost:" + senderEntity.ToString()) };

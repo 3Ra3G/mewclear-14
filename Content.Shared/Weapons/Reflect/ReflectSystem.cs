@@ -5,6 +5,7 @@ using Content.Shared.Alert;
 using Content.Shared.Audio;
 using Content.Shared.Database;
 using Content.Shared.Hands;
+using Content.Shared.IdentityManagement; // #Misfits Change Add: for identity-aware names in ricochet popup
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Item.ItemToggle;
@@ -120,7 +121,25 @@ public sealed class ReflectSystem : EntitySystem
 
         if (_netManager.IsServer)
         {
-            _popup.PopupEntity(Loc.GetString("reflect-shot"), user);
+            // #Misfits Change Add: Show descriptive popup for small-caliber rounds bouncing off power armor / shields.
+            if ((reflective.Reflective & ReflectType.SmallCaliber) != 0)
+            {
+                TryComp<ProjectileComponent>(projectile, out var pComp);
+                var targetName = Identity.Name(user, EntityManager);
+                var bulletName = Name(projectile);
+                var shooterName = pComp?.Shooter is { } shooterId
+                    ? Identity.Name(shooterId, EntityManager)
+                    : Loc.GetString("reflect-unknown-shooter");
+                _popup.PopupEntity(
+                    Loc.GetString("reflect-shot-small-caliber",
+                        ("shooter", shooterName), ("bullet", bulletName), ("target", targetName)),
+                    user,
+                    PopupType.Medium);
+            }
+            else
+            {
+                _popup.PopupEntity(Loc.GetString("reflect-shot"), user);
+            }
             _audio.PlayPvs(reflect.SoundOnReflect, user, AudioHelpers.WithVariation(0.05f, _random));
         }
 

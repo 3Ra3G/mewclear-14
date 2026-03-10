@@ -1,3 +1,4 @@
+// #Misfits Change Tweak: Add a post-death bleed multiplier so corpses make fewer blood puddles without lowering blood capacity.
 using Content.Server.Body.Systems;
 using Content.Server.Chemistry.EntitySystems;
 using Content.Server.Traits;
@@ -98,6 +99,13 @@ namespace Content.Server.Body.Components
         /// </summary>
         [DataField]
         public FixedPoint2 BleedPuddleThreshold = 1.0f;
+
+        /// <summary>
+        ///     Multiplier applied to current bleed amount when the mob first dies.
+        ///     Lower values reduce post-mortem blood puddles without changing blood capacity.
+        /// </summary>
+        [DataField]
+        public float DeadBleedAmountMultiplier = 0.35f;
 
         /// <summary>
         ///     A modifier set prototype ID corresponding to how damage should be modified

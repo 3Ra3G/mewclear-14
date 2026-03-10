@@ -1,0 +1,66 @@
+- type: job
+  id: CaesarLegionPrimeDecanus
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: true # #Misfits Change
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 95
+  showBorder: true
+  name: job-name-caesar-legion-prime-decanus
+  description: job-description-caesar-legion-prime-decanus
+  playTimeTracker: CaesarLegionPrimeDecanus
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+      department: CaesarLegion
+      min: 108000 # 30 hours
+  - !type:CharacterPlaytimeRequirement
+      tracker: CaesarLegionDean
+      min: 18000 # 5 hours as Decanus
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+  - !type:CharacterSexRequirement
+    sex: Male
+  - !type:CharacterGenderRequirement
+    gender: Male
+  startingGear: CaesarLegionPrimeDecanusGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerDean"
+  supervisors: job-name-caesar-legion-supervisors
+  canBeAntag: false
+  accessGroups:
+  - CaesarLegionDean
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - CaesarLegion
+      - type: ReplacementAccent
+        accent: latin
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin ]
+
+- type: startingGear
+  id: CaesarLegionPrimeDecanusGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitLegionnaire
+    ears: N14ClothingHeadsetLegion
+    neck: ClothingNeckRedScarf
+    eyes: N14ClothingEyesGlassesWelding
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingBootsBlack
+    head: N14ClothingHeadHatDeanPrimeHelmet
+    gloves: N14ClothingHandsGlovesTribal
+    outerClothing: N14ClothingOuterDeanLegionnairePrimeArmor
+    belt: N14Gladius
+    pocket1: LegionDeanloadoutkits
+    pocket2: N14WeaponPistol10mmPipe
+    id: N14IDLegionaryMedalPrimeDecanus
+  innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+    - N14HealingPowder
+
+- type: playTimeTracker
+  id: CaesarLegionPrimeDecanus

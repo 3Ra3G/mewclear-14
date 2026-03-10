@@ -23,7 +23,7 @@
   icon: "JobIconlegionerVenator"
   supervisors: job-name-caesar-legion-other
   canBeAntag: false
-  access:
+  accessGroups:
   - CaesarLegionVexillarius
   special:
   - !type:AddComponentSpecial
@@ -45,7 +45,8 @@
     mask: N14ClothingMaskBrownMask
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingShoesKaligi
-    head: N14ClothingHeadHatVenator
+    head: N14ClothingHeadHatVexillariusHelmet
+    outerClothing: N14ClothingOuterLegionnaireVexillariusArmor
     gloves: N14ClothingHandsGlovesTribal
     belt: N14Gladius
     suitstorage: N14PilumSpear
@@ -54,7 +55,7 @@
   innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
   storage:
     back:
-    - N14BoxPlasticFilledMilitary
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
     - N14HealingPowder
 
 - type: playTimeTracker

@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration.Managers;
+using Content.Server._Misfits.Announcements;
 using Content.Server.GameTicking.Events;
 using Content.Server.Ghost;
 using Content.Server.RandomMetadata;
@@ -334,7 +335,7 @@ namespace Content.Server.GameTicking
                 else
                 {
                     _chatManager.DispatchServerMessage(player,
-                        Loc.GetString("latejoin-arrivals-direction-time", ("time", $"{arrival:mm\\:ss}")));
+                        Loc.GetString("latejoin-arrivals-direction-time", ("duration", AnnouncementTimeFormatter.FormatDurationWords(arrival.Value))));
                 }
             }
 

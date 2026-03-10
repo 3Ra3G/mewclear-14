@@ -14,13 +14,16 @@
 - type: entity
   parent: N14IDPassportBlank
   id: N14IDBrotherhoodWashingtonHolotagInitiate
-  name: holotag
+  name: initiate's holotags
   description: An ID holotag worn by a Brotherhood initiate.
   suffix: Initiate
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: bos_holotag
+  - type: IdCard
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   - type: PresetIdCard
     job: BoSWashingtonInitiate
   - type: Tag
@@ -32,7 +35,7 @@
 - type: entity
   parent: N14IDBrotherhoodWashingtonHolotagInitiate
   id: N14IDBrotherhoodWashingtonHolotagScribe
-  name: holotag
+  name: scribe's holotags
   description: An ID holotag worn by a Brotherhood scribe.
   suffix: Scribe
   components:
@@ -42,7 +45,7 @@
 - type: entity
   parent: N14IDBrotherhoodWashingtonHolotagInitiate
   id: N14IDBrotherhoodWashingtonHolotagKnight
-  name: holotag
+  name: knight's holotags
   description: An ID holotag worn by a Brotherhood knight.
   suffix: Knight
   components:
@@ -52,7 +55,7 @@
 - type: entity
   parent: N14IDBrotherhoodWashingtonHolotagInitiate
   id: N14IDBrotherhoodWashingtonHolotagPaladin
-  name: holotag
+  name: paladin's holotags
   description: An ID holotag worn by a Brotherhood paladin.
   suffix: Paladin
   components:
@@ -62,7 +65,7 @@
 - type: entity
   parent: N14IDBrotherhoodWashingtonHolotagInitiate
   id: N14IDBrotherhoodWashingtonHolotagCommander
-  name: holotag
+  name: head knight's holotags
   description: An ID holotag worn by the Head Knight of the Brotherhood of Steel.
   suffix: Head Knight
   components:
@@ -73,13 +76,16 @@
 - type: entity
   parent: N14IDPassportBlank
   id: N14IDBrotherhoodHolotag
-  name: holotag
+  name: senior scribe's holotags
   description: An ID holotag worn by the Brotherhood of Steel.
   suffix: Senior Scribe
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: bos_holotag
+  - type: IdCard
+    nameLocId: n14-id-holotag-name
+    fullNameLocId: n14-id-holotag-full-name
   - type: PresetIdCard
     job: BoSMidScribe
   - type: Tag
@@ -91,7 +97,7 @@
 - type: entity
   parent: N14IDBrotherhoodHolotag
   id: N14IDBrotherhoodHolotagSquire
-  name: holotag
+  name: squire's holotags
   description: An ID holotag worn by the Brotherhood of Steel.
   suffix: Squire
   components:
@@ -101,7 +107,7 @@
 - type: entity
   parent: N14IDBrotherhoodHolotag
   id: N14IDBrotherhoodHolotagKnight
-  name: holotag
+  name: senior knight's holotags
   description: An ID holotag worn by the Brotherhood of Steel.
   suffix: Senior Knight
   components:
@@ -111,7 +117,7 @@
 - type: entity
   parent: N14IDBrotherhoodHolotag
   id: N14IDBrotherhoodHolotagPaladin
-  name: holotag
+  name: senior paladin's holotags
   description: An ID holotag worn by the Paladins of the Brotherhood of Steel.
   suffix: Senior Paladin
   components:
@@ -121,7 +127,7 @@
 - type: entity
   parent: N14IDBrotherhoodHolotag
   id: N14IDBrotherhoodHolotagCommander
-  name: holotag
+  name: head paladin's holotags
   description: An ID holotag worn by the Head Paladin of the Brotherhood of Steel.
   suffix: Head Paladin
   components:
@@ -132,7 +138,7 @@
 - type: entity
   parent: N14IDNCRDogtag
   id: N14IDNCRDogtagWS
-  name: dogtag
+  name: weapon specialist's dogtags
   description: An ID dogtag worn by decently ranking members of the NCR.
   suffix: WS
   components:

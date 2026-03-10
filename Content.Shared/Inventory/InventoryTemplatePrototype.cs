@@ -37,6 +37,12 @@ public sealed partial class SlotDefinition
 
     [DataField("dependsOnComponents")] public ComponentRegistry? DependsOnComponents { get; private set; }
 
+    /// <summary>
+    ///     When true, the slot UI button is hidden entirely until its <see cref="DependsOn"/> slot is
+    ///     occupied by an entity that satisfies <see cref="DependsOnComponents"/>.
+    /// </summary>
+    [DataField("hideOnDepsMissing")] public bool HideOnDepsMissing { get; private set; }
+
     [DataField("displayName", required: true)]
     public string DisplayName { get; private set; } = string.Empty;
 

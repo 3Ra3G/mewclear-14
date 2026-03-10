@@ -47,6 +47,10 @@
       - !type:Jitter
       - !type:Addicting #Misfits Change
         time: 8
+        # Jet withdrawal: lethargy and exhaustion without the speed rush.
+        # Mood handled separately via JetBenefit moodletOnEnd → JetWithdrawal.
+        withdrawalSpeedPenalty: 0.80
+        withdrawalStaminaDrain: 5.0
       - !type:GenericStatusEffect
         key: Stun
         time: 3
@@ -96,6 +100,9 @@
       - !type:Jitter
       - !type:Addicting #Misfits Change
         time: 10
+        # RobustMovespeedMixture (Turbo) withdrawal: harder crash than regular Jet — severe fatigue and lethargy.
+        withdrawalSpeedPenalty: 0.70
+        withdrawalStaminaDrain: 7.0
       - !type:GenericStatusEffect
         key: Stun
         time: 5
@@ -132,6 +139,12 @@
       - !type:Drunk
       - !type:Addicting #Misfits Change
         time: 8
+        # DamageModifyingMixture (Psycho) withdrawal: aggression crash, body aching from the comedown.
+        # Mood handled separately via PsychoBenefit moodletOnEnd → PsychoWithdrawal.
+        withdrawalDamage:
+          groups:
+            Brute: 0.2
+        withdrawalStaminaDrain: 6.0
     Narcotic:
       effects:
       - !type:ChemAddMoodlet
@@ -162,6 +175,10 @@
         refresh: false
       - !type:Addicting #Misfits Change
         time: 6
+        # Daytripper withdrawal: the colours drain away; the world feels flat and exhausting.
+        withdrawalMoodEffect: DaytripperWithdrawal
+        withdrawalSpeedPenalty: 0.90
+        withdrawalStaminaDrain: 4.0
     Food:
       effects:
       - !type:SatiateThirst
@@ -189,6 +206,9 @@
         color: "#F0FFFF" # Forge-Change
       - !type:Addicting #Misfits Change
         time: 4
+        # Cateye withdrawal: mild, but losing sharp night vision leaves the world dim and tiresome.
+        withdrawalMoodEffect: CateyeWithdrawal
+        withdrawalStaminaDrain: 2.0
 
 - type: reagent
   id: Buffout
@@ -210,6 +230,12 @@
       - !type:Jitter
       - !type:Addicting #Misfits Change
         time: 6
+        # Buffout withdrawal: muscles ache from sudden loss of chemical strength augmentation.
+        withdrawalMoodEffect: BuffoutWithdrawal
+        withdrawalDamage:
+          groups:
+            Brute: 0.2
+        withdrawalStaminaDrain: 8.0
       # - !type:HealthIncreaseReagent
         # increaseAmount: 50
 
@@ -241,6 +267,15 @@
         sprintSpeedModifier: 1.1
       - !type:Addicting #Misfits Change
         time: 10
+        # Buffjet withdrawal: worst of both Jet and Buffout — speed crash, muscle pain, nausea.
+        withdrawalMoodEffect: BuffjetWithdrawal
+        withdrawalDamage:
+          types:
+            Poison: 0.2
+          groups:
+            Brute: 0.10
+        withdrawalSpeedPenalty: 0.75
+        withdrawalStaminaDrain: 7.0
       # - !type:HealthIncreaseReagent
         # increaseAmount: 50
 
@@ -264,6 +299,13 @@
       - !type:Jitter
       - !type:Addicting #Misfits Change
         time: 8
+        # Bufftats withdrawal: agility gone, body slow and sore.
+        withdrawalMoodEffect: BufftatsWithdrawal
+        withdrawalDamage:
+          groups:
+            Brute: 0.15
+        withdrawalSpeedPenalty: 0.90
+        withdrawalStaminaDrain: 5.0
       # - !type:HealthIncreaseReagent
         # increaseAmount: 50
 
@@ -287,6 +329,9 @@
       - !type:Jitter #Placeholder for when we get Special working again.
       - !type:Addicting #Misfits Change
         time: 5
+        # Mentats withdrawal: mental clarity evaporates, leaving fatigue and brain fog.
+        withdrawalMoodEffect: MentatsWithdrawal
+        withdrawalStaminaDrain: 3.0
 
 - type: reagent
   id: MentatsBerry
@@ -308,6 +353,8 @@
       - !type:Jitter #Placeholder for when we get Special working again.
       - !type:Addicting #Misfits Change
         time: 5
+        withdrawalMoodEffect: MentatsWithdrawal
+        withdrawalStaminaDrain: 3.0
 
 - type: reagent
   id: MentatsGrape
@@ -329,6 +376,8 @@
       - !type:Jitter #Placeholder for when we get Special working again.
       - !type:Addicting #Misfits Change
         time: 5
+        withdrawalMoodEffect: MentatsWithdrawal
+        withdrawalStaminaDrain: 3.0
 
 - type: reagent
   id: MentatsOrange
@@ -350,6 +399,8 @@
       - !type:Jitter #Placeholder for when we get Special working again.
       - !type:Addicting #Misfits Change
         time: 5
+        withdrawalMoodEffect: MentatsWithdrawal
+        withdrawalStaminaDrain: 3.0
 
 - type: reagent
   id: DamageResistMixture
@@ -390,6 +441,12 @@
         - drug-ambience-hydra-3
       - !type:Addicting #Misfits Change
         time: 6
+        # Hydra withdrawal: body becomes raw as its accelerated healing fades; wounds reopen slowly.
+        withdrawalMoodEffect: HydraWithdrawal
+        withdrawalDamage:
+          types:
+            Poison: 0.3
+        withdrawalStaminaDrain: 3.0
       - !type:GenericStatusEffect
         key: HydraTint
         component: HydraTint

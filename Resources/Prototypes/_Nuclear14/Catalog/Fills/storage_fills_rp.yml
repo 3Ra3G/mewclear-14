@@ -1184,6 +1184,9 @@
         - id: N14Wrench
           prob: 0.06
           orGroup: Tools
+        - id: JugWeldingFuel
+          prob: 0.025
+          orGroup: Tools
         - id: PaperOffice
           prob: 0.04
           amount: 1

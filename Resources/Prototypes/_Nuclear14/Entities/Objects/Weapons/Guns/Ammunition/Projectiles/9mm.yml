@@ -4,7 +4,16 @@
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
+  - type: Reflective # #Misfits Change Add: 9mm pistol round is sub-5.56mm class; ricochets off power armor.
+    reflective:
+      - SmallCaliber
+      - NonEnergy
   - type: Projectile
     damage:
       types:
         Piercing: 12
+  # Misfits Add - 9mm standard pistol; moderate damage dropoff at range
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 4.0
+    maxFalloffTiles: 12.0
+    minDamageMultiplier: 0.45

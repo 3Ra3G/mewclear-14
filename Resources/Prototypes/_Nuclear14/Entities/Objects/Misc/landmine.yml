@@ -1,10 +1,18 @@
 - type: entity
   name: anti-personnel landmine
+  description: A pressure-activated explosive device. Handle with extreme care. #Misfits Add - description for examine
   parent: BaseLandMine
   id: N14LandMine
   placement:
     mode: SnapgridCenter
   components:
+  # Misfits Add - allow the mine to be picked up as an inventory item
+  - type: Item
+    size: Normal
+  # Misfits Add - override parent Static body so pickup/physics work correctly
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: true
   - type: ExplodeOnTrigger
   - type: Explosive # Should be identical copy of a 40mm grenade.
     #Misfits Change - use the structural-capable N14 explosion profile.

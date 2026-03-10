@@ -84,6 +84,7 @@
       - EncryptionKeyBrotherhoodOfSteel
       - EncryptionKeyEnclave
       - EncryptionKeyNCR
+      - EncryptionKeyLegion # #Misfits Change /Fix/: Legion headsets require telecom support for :l to relay.
       - EncryptionKeyVault
       - EncryptionKeyPBS
 

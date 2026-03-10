@@ -107,6 +107,8 @@ chatsan-replacement-38 = motherfucker
 
 chatsan-word-39 = etc
 chatsan-word-40 = etc.
+chatsan-replacement-39 = etcetera
+chatsan-replacement-40 = etcetera
 chatsan-replacement-etcetera = etcetera
 
 chatsan-word-41 = wyd
@@ -120,6 +122,52 @@ chatsan-replacement-43 = i guess
 
 chatsan-word-44 = tbf
 chatsan-replacement-44 = to be fair
+
+chatsan-word-45 = tho
+chatsan-replacement-45 = though.
+
+chatsan-word-46 = ngl
+chatsan-replacement-46 = not gonna lie.
+
+chatsan-word-47 = rn
+chatsan-replacement-47 = right now.
+
+chatsan-word-48 = bc
+chatsan-replacement-48 = because.
+
+chatsan-word-49 = dw
+chatsan-replacement-49 = don't worry.
+
+chatsan-word-50 = mb
+chatsan-replacement-50 = my bad.
+
+chatsan-word-51 = asap
+chatsan-replacement-51 = as soon as possible.
+
+chatsan-word-52 = atm
+chatsan-replacement-52 = at the moment.
+
+chatsan-word-53 = irl
+chatsan-replacement-53 = in real life.
+
+chatsan-word-54 = fyi
+chatsan-replacement-54 = for your information.
+
+chatsan-word-55 = imho
+chatsan-replacement-55 = in my humble opinion.
+
+chatsan-word-56 = yw
+chatsan-replacement-56 = you're welcome.
+
+chatsan-word-57 = sry
+chatsan-replacement-57 = sorry.
+
+chatsan-word-58 = soz
+chatsan-replacement-58 = sorry.
+
+chatsan-word-59 = cya
+chatsan-replacement-59 = see you.
+
 chatsan-word-99 = jerk
 chatsan-replacement-99 = jerking off
 

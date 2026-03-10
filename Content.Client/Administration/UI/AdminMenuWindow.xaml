@@ -24,5 +24,7 @@
         <misfitsTabs:WhitelistingTab />
         <!-- #Misfits Change - Staff tab (permissions management) -->
         <misfitsTabs:StaffTab />
+        <!-- #Misfits Change - LoreMaster tab (faction objective management) -->
+        <misfitsTabs:LoreMasterTab />
     </TabContainer>
 </DefaultWindow>

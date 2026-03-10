@@ -12,7 +12,10 @@ public sealed partial class OverlayChatGameScreen : InGameScreen
     {
         RobustXamlLoader.Load(this);
 
-        AutoscaleMaxResolution = new Vector2i(1080, 770);
+        // #Misfits Change/Tweak: Scale UI relative to 1080p so at 720p the whole HUD (health/caps/currency) fits without overflow.
+        // Linear scale from 0 px up; default floor of 0.5 means minimum is ~540p equivalent.
+        AutoscaleMaxResolution = new Vector2i(1920, 1080);
+        AutoscaleMinResolution = new Vector2i(0, 0);
 
         SetAnchorPreset(MainViewport, LayoutPreset.Wide);
         SetAnchorPreset(ViewportContainer, LayoutPreset.Wide);

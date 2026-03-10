@@ -99,6 +99,8 @@
     - N14JunkGunpartsStock
     - N14JunkGunpartsStockWood
     - N14JunkGunpartsTrigger
+    # Explosives - Misfits Add
+    - N14LandMine
 
 - type: entity
   parent: N14WorkbenchBase
@@ -228,7 +230,16 @@
     grid:
     - 0,0,12,9
   # Forge-Change-End
+  # Misfits Fix: insertOnInteract is disabled to prevent the MaterialStorage from silently eating
+  # raw materials (sheets/ingots/leather) before they can reach the Storage container used by the
+  # blueprint-based crafting system (Storage + Craftable). Without this fix, players trying to
+  # place SheetSteel or MaterialCloth into the bench for combat-armor recipes would have those
+  # items absorbed into the lathe material pool instead of the physical storage container.
+  # Trade-off: the bench's lathe recipes (leather/metal armor etc.) can no longer auto-consume
+  # materials via direct interaction — materials must be inserted into the Storage UI for crafting,
+  # or a dedicated lathe bench should be used for the purely lathe-based recipe set.
   - type: MaterialStorage
+    insertOnInteract: false
     whitelist:
       tags:
       - Sheet

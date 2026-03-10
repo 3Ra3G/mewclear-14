@@ -40,7 +40,7 @@
     head:  N14ClothingHeadHatBoSInquisitorCap
     outerClothing: N14ClothingOuterBOSInquisitorCoat
     pocket1: BoSMidwestInquisitorKits
-    gloves: N14ClothingHandsGlovesCombat
+    hands: N14ClothingHandsGlovesCombat
     id: N14IDBrotherhoodHolotagPaladin
     ears: N14ClothingHeadsetBOSMidwest
   storage:

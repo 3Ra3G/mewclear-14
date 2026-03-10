@@ -39,7 +39,7 @@
   id: NCRSGTGear
   equipment:
     back: N14ClothingBackpackNCR # Corvax-Change
-    gloves: N14ClothingHandsGlovesCombat
+    hands: N14ClothingHandsGlovesCombat
     jumpsuit: N14ClothingOfficerUniformNCRDesert # Corvax-Change
     shoes: N14ClothingBootsCombatFilled
     neck: N14ClothingNeckMantleNCR

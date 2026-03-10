@@ -9,3 +9,8 @@
       types:
         Piercing: 30
         Blunt: 5
+  # Misfits Add - .44 Magnum high-velocity revolver round; better range than standard pistol
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 5.0
+    maxFalloffTiles: 14.0
+    minDamageMultiplier: 0.52

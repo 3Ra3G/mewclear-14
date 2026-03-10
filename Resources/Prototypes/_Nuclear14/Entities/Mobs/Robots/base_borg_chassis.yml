@@ -47,6 +47,7 @@
   - type: RotationVisuals
     horizontalRotation: 90
   - type: PersistentCurrency # Misfits - Currency wallet
+  - type: PersistentPlayerData # Misfits Add - SPECIAL stats, kill/death/round tracking, character history
   - type: MobState
     allowedStates:
     - Alive
@@ -60,6 +61,9 @@
       Dead: BorgDead
     showOverlays: false
     allowRevives: true
+  - type: Deathgasp # #Misfits Change: play silicon deathgasp emote when robots enter the dead state
+    prototype: SiliconDeathgasp
+    needsCritical: false
   - type: HealthExaminable
     examinableTypes:
       - Blunt
@@ -147,9 +151,9 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai
-  # - type: Vocal # not in our version of the game yet 16/07/2024
-    # sounds:
-      # Unsexed: UnisexSilicon
+  - type: Vocal # #Misfits Change: fallback robot emotes for chassis that do not override a model-specific profile
+    sounds:
+      Unsexed: UnisexSilicon
   - type: UnblockableSpeech
   # - type: LockedWiresPanel # not in our version of the game yet 16/07/2024
   - type: Flashable
@@ -166,6 +170,13 @@
           path: /Audio/Machines/warning_buzzer.ogg
           params:
             volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior # #Misfits Change: play a proper robot death sound when the chassis actually dies
+        sound:
+          path: /Audio/Machines/AI/borg_death.ogg
     - trigger:
         !type:DamageTrigger
         damage: 300
@@ -227,6 +238,7 @@
     tags:
     - DoorBumpOpener
     - CanPilot
+    - SiliconEmotes
     # FootstepSound intentionally omitted - only walking robots (Protectron, Assaultron) add it back #Misfits Change
   - type: Emoting
   # - type: GuideHelp

@@ -87,5 +87,5 @@ drug-ambience-hydra-1 = Heat pulses through your veins in slow, angry waves.
 drug-ambience-hydra-2 = Your heartbeat drums hard enough to drown out the room for a moment.
 drug-ambience-hydra-3 = A coppery rush blooms behind your eyes and refuses to fully fade.
 
-drug-ambience-mourning-poultice-1 = The poultice burns cold and sad against your nerves.
-drug-ambience-mourning-poultice-2 = A funeral-herb numbness settles in with the sting.
+drug-ambience-mourning-poultice-1 = Cold poison crawls through your veins, and the world starts to breathe around you.
+drug-ambience-mourning-poultice-2 = The sting turns holy and wrong, dragging bright visions behind the pain.

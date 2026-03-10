@@ -463,3 +463,53 @@
         - NCRWS # Forge-Change
   items:
     - N14ClothingMaskBrownBalaclava
+
+#Misfits Change /Add/: Rank pin loadouts for Misfits NCR jobs that were missing entries.
+
+- type: loadout
+  id: LoadoutNCRPinPrivateFirstClass
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRPrivateFirstClass
+  items:
+    - ClothingNeckPinNCRPrivate1st
+
+- type: loadout
+  id: LoadoutNCRPinStaffSergeant
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRStaffSergeant
+  items:
+    - ClothingNeckPinNCRSergeant1st
+
+- type: loadout
+  id: LoadoutNCRPinFirstSergeant
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRFirstSergeant
+  items:
+    - ClothingNeckPinNCRMasterSergeant
+
+- type: loadout
+  id: LoadoutNCRPinCaptainMisfits
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRCaptain
+  items:
+    - ClothingNeckPinNCRCaptain

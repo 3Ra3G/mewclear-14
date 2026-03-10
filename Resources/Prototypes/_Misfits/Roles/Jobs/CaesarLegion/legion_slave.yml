@@ -20,7 +20,7 @@
   icon: "JobIconLegionSlave"
   supervisors: job-supervisors-caesar-legion-slave
   canBeAntag: false
-  access:
+  accessGroups:
   - CaesarLegionSlave
   special:
   - !type:AddComponentSpecial

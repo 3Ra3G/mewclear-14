@@ -8,6 +8,9 @@ using Content.Server.EUI;
 using Content.Shared.Administration;
 using Content.Shared.Database;
 using Content.Shared.Eui;
+using Content.Shared.Follower; // #Misfits Change
+using Content.Shared.Ghost; // #Misfits Change
+using Robust.Server.Console; // #Misfits Change
 using Robust.Server.Player;
 using Robust.Shared.Player;
 
@@ -22,6 +25,7 @@ public sealed class PlayerPanelEui : BaseEui
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly EuiManager _eui = default!;
     [Dependency] private readonly IAdminLogManager _adminLog = default!;
+    [Dependency] private readonly IServerConsoleHost _consoleHost = default!; // #Misfits Change
 
     private readonly LocatedPlayerData _targetPlayer;
     private int? _notes;
@@ -123,6 +127,32 @@ public sealed class PlayerPanelEui : BaseEui
                 _eui.OpenEui(ui, Player);
                 ui.SetLogFilter(search: _targetPlayer.Username);
                 break;
+            // #Misfits Change — Ghost Follow: ensure admin is in aghost mode, then orbit the target player's entity.
+            case PlayerPanelGhostFollowMessage:
+                if (!_admins.HasAdminFlag(Player, AdminFlags.Admin))
+                    return;
+
+                if (!_player.TryGetSessionById(_targetPlayer.UserId, out session) ||
+                    session.AttachedEntity == null)
+                    return;
+
+                // If the admin is not already an admin ghost, enter aghost mode first.
+                var alreadyAGhost = Player.AttachedEntity.HasValue &&
+                    _entity.TryGetComponent<GhostComponent>(Player.AttachedEntity.Value, out var ghostComp) &&
+                    ghostComp.CanGhostInteract;
+                if (!alreadyAGhost)
+                    _consoleHost.ExecuteCommand(Player, "aghost");
+
+                // After entering aghost, make the ghost entity orbit the target.
+                if (Player.AttachedEntity != null &&
+                    _entity.TrySystem<FollowerSystem>(out var followerSystem))
+                {
+                    _adminLog.Add(LogType.Action,
+                        $"{Player:actor} ghost-followed {_entity.ToPrettyString(session.AttachedEntity.Value):subject}");
+                    followerSystem.StartFollowingEntity(Player.AttachedEntity.Value, session.AttachedEntity.Value);
+                }
+                break;
+
             case PlayerPanelDeleteMessage:
             case PlayerPanelRejuvenationMessage:
                 if (!_admins.HasAdminFlag(Player, AdminFlags.Debug) ||

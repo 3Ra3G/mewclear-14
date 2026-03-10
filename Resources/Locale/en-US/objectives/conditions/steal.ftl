@@ -7,6 +7,10 @@ objective-condition-steal-station = station
 objective-condition-steal-Ian = head of personnel's corgi
 objective-condition-steal-enclave = Enclave
 objective-condition-steal-vault = vault
+# #Misfits Change - New steal owner labels for faction objectives
+objective-condition-steal-brotherhood = Brotherhood
+objective-condition-steal-ncr = NCR
+objective-condition-steal-legion = Legion
 
 objective-condition-thief-description = The {$itemName} would be a great addition to my collection!
 objective-condition-thief-animal-description = The {$itemName} would be a great addition to my collection! Most importantly, alive.

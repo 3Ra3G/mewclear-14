@@ -46,6 +46,13 @@ public sealed class PlayerPanelEui : BaseEui
                 _console.ExecuteCommand($"follow \"{netEntity}\"");
         };
 
+        // #Misfits Change — ghost follow: enter aghost mode then orbit the target player.
+        PlayerPanel.OnGhostFollow += entity =>
+        {
+            if (entity is { } netEntity && netEntity != NetEntity.Invalid)
+                SendMessage(new PlayerPanelGhostFollowMessage());
+        };
+
         PlayerPanel.OnClose += () => SendMessage(new CloseEuiMessage());
     }
 

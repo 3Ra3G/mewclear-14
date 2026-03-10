@@ -46,6 +46,15 @@ public sealed class CurrencyWalletSystem : EntitySystem
         RaiseNetworkEvent(new OpenWalletHudMessage());
     }
 
+    /// <summary>
+    /// Public entry-point so external UI (e.g. Character Menu) can trigger the same server-side
+    /// wallet refresh and open the full wallet window. #Misfits Add
+    /// </summary>
+    public void OpenWallet()
+    {
+        RaiseNetworkEvent(new OpenWalletHudMessage());
+    }
+
     private void OnCurrencyWalletState(CurrencyWalletStateMessage msg)
     {
         EnsureWindow();

@@ -9,50 +9,131 @@ The NCR arrived in this region seeking influence, trade agreements, and another 
 
 The NCR believes in democracy, organized law enforcement, and expansion by diplomacy first and force second. Critics point to the Republic's worst traits: corruption, political short-sightedness, and a habit of promising protection it cannot reliably deliver at the frontier. Supporters say it remains the best foundation for lasting civilization the post-war world has managed to build.
 
-## Ranks
+## Chain of Command
+
+### Officers
 
 <ColorBox Color="#fbc02d">
   <Box Margin="2">
-  [bold]NCR Officer[/bold]
+  [bold]Captain[/bold]
   </Box>
 </ColorBox>
 <Box>
-[italic]In the Fallout universe:[/italic] NCR Officers are commissioned members of the Republic's military, managing regional operations and fielding the Republic's political relationships as much as its combat power. Officers in lore — like Colonel Hsu or General Oliver of New Vegas — span the full spectrum from dedicated public servants to pure political appointments. Most are somewhere in between.
-
-[color=#a4885c]Your role:[/color] Direct military and diplomatic operations for the NCR presence in this region. Your decisions determine whether the Republic gains a foothold here or retreats in failure. Balance force, diplomacy, and Republic politics.
+[color=#a4885c]Your role:[/color] Command the NCR's local detachment. All military and diplomatic decisions run through you. Balance force, political dealings, and the Republic's interests — your choices determine whether the NCR gains a foothold in Wendover or retreats in failure.
 </Box>
 
 <ColorBox Color="#fbc02d">
   <Box Margin="2">
-  [bold]NCR Ranger[/bold]
+  [bold]Lieutenant[/bold]
   </Box>
 </ColorBox>
 <Box>
-[italic]In the Fallout universe:[/italic] Rangers are the Republic's elite long-range operatives, descended from the Desert Ranger tradition that merged into the NCR after the Ranger Unification Treaty. They are feared across the Mojave for their skill, autonomy, and effectiveness. In lore, veteran Rangers operate independently for months at a time before reporting in. NCR Ranger armor and the iconic Ranger Sequoia revolver are among the most recognizable equipment in the wasteland.
-
-[color=#a4885c]Your role:[/color] Operate independently. Gather intelligence, conduct covert operations, and deal with threats regular soldiers cannot handle discreetly. You answer to the Officer but work on your own judgment.
+[color=#a4885c]Your role:[/color] Second-in-command. Support the Captain, manage day-to-day operations, and step into command if the Captain is unavailable. You are the bridge between officer intent and the NCOs who execute it.
 </Box>
 
 <ColorBox Color="#fbc02d">
   <Box Margin="2">
-  [bold]NCR Trooper[/bold]
+  [bold]Medical Doctor[/bold]
   </Box>
 </ColorBox>
 <Box>
-[italic]In the Fallout universe:[/italic] Troopers are the backbone of NCR military presence — ordinary soldiers drawn from across the Republic by conscription and patriotism. In New Vegas, NCR Troopers are often undersupplied and posted far from home in hostile territory. They are not elite forces, but there are many of them, and numbers have historically been enough to make up for individual limitations.
+[color=#a4885c]Your role:[/color] Senior medical officer attached to the NCR detachment. Keep soldiers combat-capable, treat civilian allies to build goodwill, and advise command on medical threats. Your skills are a diplomatic asset as much as a survival one.
+</Box>
 
-[color=#a4885c]Your role:[/color] Hold the line. Enforce NCR authority, protect personnel and assets, and carry out orders. The politics are above your grade — your job is to be where you're told and do it well.
+### Non-Commissioned Officers
+
+<ColorBox Color="#fbc02d">
+  <Box Margin="2">
+  [bold]First Sergeant[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Senior NCO of the detachment. You translate officer intent into enlisted action — enforcing discipline, managing formation readiness, and carrying the load between command and the soldiers who carry out its orders.
 </Box>
 
 <ColorBox Color="#fbc02d">
   <Box Margin="2">
-  [bold]NCR Medic[/bold]
+  [bold]Staff Sergeant[/bold]
   </Box>
 </ColorBox>
 <Box>
-[italic]In the Fallout universe:[/italic] Field medics are among the most valued personnel in any NCR deployment. The Republic's military emphasizes keeping soldiers combat-capable, and its medical corps is more developed than most factions manage. NCR medics develop strong relationships with local populations — making them diplomatic assets as well as lifesavers.
+[color=#a4885c]Your role:[/color] Senior squad leader. Lead your troops in the field, coordinate with the First Sergeant, and handle the mid-level decisions that keep small-unit operations running. You have enough rank to make things happen without waiting for permission.
+</Box>
 
-[color=#a4885c]Your role:[/color] Keep NCR personnel alive and, when authorized, extend aid to civilian allies. Your stimpaks and skill can earn trust that no amount of boots on the ground could buy.
+<ColorBox Color="#fbc02d">
+  <Box Margin="2">
+  [bold]Sergeant[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Squad leader. Know your soldiers, execute the Staff Sergeant's direction, and make the right call when there is no time to ask. NCR troopers live or die by Sergeant-level judgment.
+</Box>
+
+### Enlisted
+
+<ColorBox Color="#fbc02d">
+  <Box Margin="2">
+  [bold]Corporal[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Lead enlisted soldier. Carry out Sergeant-level orders and help mentor newer Privates. When the Sergeant is occupied, you keep the squad moving. Your experience is trusted — use it.
+</Box>
+
+<ColorBox Color="#fbc02d">
+  <Box Margin="2">
+  [bold]Engineer[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Maintain NCR equipment and manage field fortifications. When weapons malfunction or defensive positions need building, it falls to you. The detachment's operational readiness depends on your work.
+</Box>
+
+<ColorBox Color="#fbc02d">
+  <Box Margin="2">
+  [bold]Medic[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Field medical support. Keep soldiers alive and in the fight. When authorized, extend aid to civilian allies — a well-timed stimpak earns loyalty that no patrol can buy.
+</Box>
+
+<ColorBox Color="#fbc02d">
+  <Box Margin="2">
+  [bold]Private First Class[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Experienced private. You have proven you can be relied on — better gear, slightly more latitude, a little more trust from the NCOs above you. Hold the line and keep moving up.
+</Box>
+
+<ColorBox Color="#fbc02d">
+  <Box Margin="2">
+  [bold]Private[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Standard soldier. Enforce NCR authority, protect personnel and assets, and carry out orders. The politics are above your grade — your job is to be where you are told and do it well.
+</Box>
+
+<ColorBox Color="#fbc02d">
+  <Box Margin="2">
+  [bold]Recruit[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Newest enlistee. You are at the bottom of a very long ladder. Follow orders, learn the ropes, and avoid getting yourself or your squadmates killed. Everything else comes later.
+</Box>
+
+### Special
+
+<ColorBox Color="#fbc02d">
+  <Box Margin="2">
+  [bold]Prisoner[/bold]
+  </Box>
+</ColorBox>
+<Box>
+[color=#a4885c]Your role:[/color] Held in NCR custody pending processing or release. What happens to you next depends on what you did, who is in command, and how cooperative you decide to be.
 </Box>
 
 ## Relations

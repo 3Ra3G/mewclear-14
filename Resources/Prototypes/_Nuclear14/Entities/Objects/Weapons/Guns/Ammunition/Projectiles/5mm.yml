@@ -4,7 +4,16 @@
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
+  - type: Reflective # #Misfits Change Add: 5mm is sub-5.56mm; ricochets off power armor.
+    reflective:
+      - SmallCaliber
+      - NonEnergy
   - type: Projectile
     damage:
       types:
         Piercing: 10 # Forge-Change
+  # Misfits Add - 5mm varmint/minigun round; small caliber with notable energy loss
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 3.0
+    maxFalloffTiles: 10.0
+    minDamageMultiplier: 0.40

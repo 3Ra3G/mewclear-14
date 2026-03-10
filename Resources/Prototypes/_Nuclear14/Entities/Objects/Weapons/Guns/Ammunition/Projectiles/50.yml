@@ -10,6 +10,11 @@
         Piercing: 30
         Blunt: 20
     ignoreResistances: true
+  # Misfits Add - .50 BMG anti-materiel; extreme range caliber — minimal falloff
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 12.0
+    maxFalloffTiles: 35.0
+    minDamageMultiplier: 0.82
 
 - type: entity
   categories: [ HideSpawnMenu ]
@@ -24,6 +29,11 @@
       types:
         Piercing: 40 # medium decrease for explosion numerics
     ignoreResistances: true
+  # Misfits Add - .50 HEIAP; same caliber as AP, same minimal falloff on direct hit damage
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 12.0
+    maxFalloffTiles: 35.0
+    minDamageMultiplier: 0.82
   - type: ExplodeOnTrigger
   - type: Explosive
     #Misfits Change - use the structural-capable N14 explosion profile.

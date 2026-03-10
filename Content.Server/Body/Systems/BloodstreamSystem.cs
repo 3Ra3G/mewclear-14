@@ -1,3 +1,4 @@
+// #Misfits Change Tweak: Reduce post-death bleed rate to limit corpse puddle spam without changing blood capacity.
 using Content.Server.Body.Components;
 using Content.Server.Body.Events;
 using Content.Server.Chemistry.Containers.EntitySystems;
@@ -5,6 +6,7 @@ using Content.Server.EntityEffects.Effects;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics;
 using Content.Server.Popups;
+using Content.Server._Misfits.Chat.Events;
 using Content.Shared.Alert;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
@@ -14,6 +16,7 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.Drunk;
 using Content.Shared.FixedPoint;
 using Content.Shared.HealthExaminable;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
@@ -54,6 +57,7 @@ public sealed class BloodstreamSystem : EntitySystem
         SubscribeLocalEvent<BloodstreamComponent, EntityUnpausedEvent>(OnUnpaused);
         SubscribeLocalEvent<BloodstreamComponent, DamageChangedEvent>(OnDamageChanged);
         SubscribeLocalEvent<BloodstreamComponent, HealthBeingExaminedEvent>(OnHealthBeingExamined);
+        SubscribeLocalEvent<BloodstreamComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<BloodstreamComponent, BeingGibbedEvent>(OnBeingGibbed);
         SubscribeLocalEvent<BloodstreamComponent, ApplyMetabolicMultiplierEvent>(OnApplyMetabolicMultiplier);
         SubscribeLocalEvent<BloodstreamComponent, ReactionAttemptEvent>(OnReactionAttempt);
@@ -271,6 +275,18 @@ public sealed class BloodstreamSystem : EntitySystem
         }
     }
 
+    private void OnMobStateChanged(Entity<BloodstreamComponent> ent, ref MobStateChangedEvent args)
+    {
+        if (args.OldMobState == MobState.Dead || args.NewMobState != MobState.Dead)
+            return;
+
+        if (ent.Comp.BleedAmount <= 0 || ent.Comp.DeadBleedAmountMultiplier >= 1f)
+            return;
+
+        var reducedBleedAmount = ent.Comp.BleedAmount * ent.Comp.DeadBleedAmountMultiplier;
+        TryModifyBleedAmount(ent.Owner, reducedBleedAmount - ent.Comp.BleedAmount, ent.Comp);
+    }
+
     private void OnBeingGibbed(Entity<BloodstreamComponent> ent, ref BeingGibbedEvent args)
     {
         SpillAllSolutions(ent, ent);
@@ -412,6 +428,7 @@ public sealed class BloodstreamSystem : EntitySystem
         if (!Resolve(uid, ref component, logMissing: false))
             return false;
 
+        var previousBleedAmount = component.BleedAmount;
         component.BleedAmount += amount;
         component.BleedAmount = Math.Clamp(component.BleedAmount, 0, component.MaxBleedAmount);
 
@@ -422,6 +439,10 @@ public sealed class BloodstreamSystem : EntitySystem
             var severity = (short) Math.Clamp(Math.Round(component.BleedAmount, MidpointRounding.ToZero), 0, 10);
             _alertsSystem.ShowAlert(uid, component.BleedingAlert, severity);
         }
+
+        // #Misfits Change - Raise a server-side bleed state event so player pain screams can react to bleeding starting.
+        if (!MathHelper.CloseTo(previousBleedAmount, component.BleedAmount))
+            RaiseLocalEvent(uid, new BleedAmountChangedEvent(previousBleedAmount, component.BleedAmount));
 
         return true;
     }

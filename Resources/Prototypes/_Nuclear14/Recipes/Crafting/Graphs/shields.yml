@@ -16,6 +16,21 @@
       entity: N14ShieldMetalLight
 
 - type: constructionGraph
+  id: N14LegionnaireBuckler #Misfits Change /Add/
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: legionnairebuckler
+          steps:
+            - material: WoodPlank
+              amount: 5
+              doAfter: 3
+
+    - node: legionnairebuckler
+      entity: N14LegionnaireBuckler
+
+- type: constructionGraph
   id: N14HeavyShield
   start: start
   graph:
@@ -31,3 +46,20 @@
 
     - node: heavyshield
       entity: N14ShieldMetalHeavy
+
+- type: constructionGraph
+  id: N14LegionnaireShield #Misfits Change /Add/
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: legionnaireshield
+          steps:
+            - material: WoodPlank
+              amount: 5
+            - material: Steel
+              amount: 3
+              doAfter: 3
+
+    - node: legionnaireshield
+      entity: N14LegionnaireShield

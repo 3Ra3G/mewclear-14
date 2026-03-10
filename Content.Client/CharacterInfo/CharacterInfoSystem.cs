@@ -1,4 +1,5 @@
-﻿using Content.Shared.CharacterInfo;
+﻿using Content.Shared._Misfits.PlayerData;
+using Content.Shared.CharacterInfo;
 using Content.Shared.Objectives;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
@@ -32,7 +33,8 @@ public sealed class CharacterInfoSystem : EntitySystem
     private void OnCharacterInfoEvent(CharacterInfoEvent msg, EntitySessionEventArgs args)
     {
         var entity = GetEntity(msg.NetEntity);
-        var data = new CharacterData(entity, msg.JobTitle, msg.Objectives, msg.Briefing, Name(entity), msg.Special);
+        // #Misfits Add - include persistent stats in the data bundle sent to the UI controller
+        var data = new CharacterData(entity, msg.JobTitle, msg.Objectives, msg.Briefing, Name(entity), msg.Special, msg.PersistentStats);
 
         OnCharacterUpdate?.Invoke(data);
     }
@@ -44,13 +46,25 @@ public sealed class CharacterInfoSystem : EntitySystem
         return ev.Controls;
     }
 
+    // #Misfits Add - sends SPECIAL allocation confirmation to the server
+    public void SendConfirmSpecialAllocation(int s, int p, int e, int c, int i, int a, int l)
+    {
+        RaiseNetworkEvent(new ConfirmSpecialAllocationEvent
+        {
+            Strength = s, Perception = p, Endurance = e, Charisma = c,
+            Intelligence = i, Agility = a, Luck = l,
+        });
+    }
+
     public readonly record struct CharacterData(
         EntityUid Entity,
         string Job,
         Dictionary<string, List<ObjectiveInfo>> Objectives,
         string? Briefing,
         string EntityName,
-        List<string> Special
+        List<string> Special,
+        // #Misfits Add - persistent SPECIAL / stats / history from server
+        CharacterPersistentStats? PersistentStats = null
     );
 
     /// <summary>

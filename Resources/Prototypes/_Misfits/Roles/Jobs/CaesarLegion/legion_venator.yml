@@ -1,13 +1,13 @@
 - type: job
-  id: CaesarLegionVenator
+  id: CaesarLegionFrumentarii
   setPreference: true
   hideIfPlaytimeRequirementsNotMet: true # #Misfits Change
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 50
   showBorder: true
-  name: job-name-caesar-legion-venator
-  description: job-description-caesar-legion-venator
-  playTimeTracker: CaesarLegionVenator
+  name: job-name-caesar-legion-frumentarii
+  description: job-description-caesar-legion-frumentarii
+  playTimeTracker: CaesarLegionFrumentarii
   requirements:
   - !type:CharacterDepartmentTimeRequirement
      department: CaesarLegion
@@ -20,13 +20,13 @@
     sex: Male
   - !type:CharacterGenderRequirement
     gender: Male
-  startingGear: CaesarLegionVenatorGear
+  startingGear: CaesarLegionFrumentariiGear
   alwaysUseSpawner: true
   icon: "JobIconlegionerVenator"
   supervisors: job-name-caesar-legion-supervisors
   canBeAntag: false
-  access:
-  - CaesarLegionVenator
+  accessGroups:
+  - CaesarLegionFrumentarii
   special:
   - !type:AddComponentSpecial
     components:
@@ -39,24 +39,24 @@
     traits: [ LanguageLatin ]
 
 - type: startingGear
-  id: CaesarLegionVenatorGear
+  id: CaesarLegionFrumentariiGear
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     ears: N14ClothingHeadsetLegion
     mask: N14ClothingMaskBrownMask
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingShoesKaligi
-    head: N14ClothingHeadHatVenator
+    outerClothing: N14ClothingLegionReconArmor
     gloves: N14ClothingHandsGlovesTribal
     belt: N14Gladius
     suitstorage: N14PilumSpear
     pocket1: LegionVenatorloadoutkits
-    id: N14IDLegionaryMedalExplorer
+    id: N14IDLegionaryMedalFrumentarii
   innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
   storage:
     back:
-    - N14BoxPlasticFilledMilitary
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
     - N14HealingPowder
 
 - type: playTimeTracker
-  id: CaesarLegionVenator
+  id: CaesarLegionFrumentarii

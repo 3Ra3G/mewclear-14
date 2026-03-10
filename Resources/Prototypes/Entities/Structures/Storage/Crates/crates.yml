@@ -570,10 +570,13 @@
   - type: Physics
     bodyType: Static
   - type: Grave
+  - type: EntityStorageLayingDownOverride # Misfits Change /Fix/: graves should rebury a downed body rather than behave like a generic crate.
   - type: AntiRottingContainer # Replaced for N14, no one wants organs and limbs pop out from under the dirt after rot. Eventually we should get our own grave entities with sprites.
   - type: EntityStorage
     airtight: true
     isCollidableWhenOpen: false
+    capacity: 1 # Misfits Change /Fix/: one grave should only rebury one body.
+    enteringRange: 0.35 # Misfits Change /Fix/: allow a nearby corpse to be caught reliably when the grave is closed with a shovel.
     closeSound:
       path: /Audio/Items/shovel_dig.ogg
     openSound:

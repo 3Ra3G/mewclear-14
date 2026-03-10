@@ -14,7 +14,7 @@
   suffix: Legion, Locked
   components:
   - type: AccessReader
-    access: [["CaesarLegion"]]
+    access: [["LegionBrassKey"]]
   - type: Wires
     layoutId: AirlockService
 
@@ -34,7 +34,7 @@
   suffix: Legion, Locked, Legion Dean
   components:
   - type: AccessReader
-    access: [["CaesarLegionDean"]]
+    access: [["CaesarLegion"]]
   - type: Wires
     layoutId: AirlockService
 
@@ -44,7 +44,7 @@
   suffix: Legion, Locked, Legion Dean
   components:
   - type: AccessReader
-    access: [["CaesarLegionDean"]]
+    access: [["CaesarLegion"]]
   - type: Wires
     layoutId: AirlockService
 
@@ -54,7 +54,7 @@
   suffix: Legion, Locked, Legion Dean
   components:
   - type: AccessReader
-    access: [["CaesarLegionDean"]]
+    access: [["CaesarLegion"]]
   - type: Wires
     layoutId: HighSec
 
@@ -64,7 +64,7 @@
   suffix: Legion, Locked, Legion Centurion
   components:
   - type: AccessReader
-    access: [["CaesarLegionCenturion"]]
+    access: [["CaesarLegion"]]
   - type: Wires
     layoutId: AirlockService
 
@@ -74,7 +74,7 @@
   suffix: Legion, Locked, Legion Centurion
   components:
   - type: AccessReader
-    access: [["CaesarLegionCenturion"]]
+    access: [["CaesarLegion"]]
   - type: Wires
     layoutId: AirlockService
 

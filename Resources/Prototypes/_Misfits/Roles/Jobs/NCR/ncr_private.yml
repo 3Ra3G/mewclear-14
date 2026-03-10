@@ -39,6 +39,8 @@
     jumpsuit: N14ClothingUniformNCRDesert # Corvax-Change
     outerClothing: N14ClothingOuterNCRVestDesert # Forge-Change
     shoes: N14ClothingBootsLeatherFilled
+    neck: ClothingNeckPinNCRPrivate
+    belt: ClothingBeltNCR
     id: N14IDNCRDogtagSoldier
     pocket1: NCRtrooperloadoutkits
   innerClothingSkirt: N14ClothingUniformNCRDesert # Corvax-Change

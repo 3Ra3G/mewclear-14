@@ -479,6 +479,13 @@
   components:
   - type: Sprite
     state: ceramic-flask
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Water
+          Quantity: 30
 
 - type: entity
   parent: N14JunkItemBaseContainer

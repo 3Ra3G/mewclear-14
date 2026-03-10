@@ -91,6 +91,8 @@
   - RangerVeteran
   - Ranger
   - RangerRecruit
+  - NCRRanger         # #Misfits Add - NCR Ranger (needed for department requirement lookup)
+  - NCRRangerVeteran  # #Misfits Add - NCR Ranger Veteran (needed for department requirement lookup)
 
 - type: department
   id: Tribe
@@ -155,3 +157,31 @@
 #  color: "#33a1c1"
 #  roles:
 #  - Followers
+
+# #Misfits Add: Caesar's Legion is now a playable faction.
+- type: department
+  id: CaesarLegion
+  description: department-CaesarLegion-description
+  color: "#8B0000"
+  roles:
+  # Command (Whitelisted)
+  - CaesarLegionLegate          # Legate              | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml
+  - CaesarLegionCenturion       # Centurion           | _Misfits/Roles/Jobs/CaesarLegion/legion_centurion.yml
+  # Senior NCOs
+  - CaesarLegionVeteranDecanus  # Veteran Decanus     | _Misfits/Roles/Jobs/CaesarLegion/legion_veteran_decanus.yml
+  - CaesarLegionPrimeDecanus    # Prime Decanus       | _Misfits/Roles/Jobs/CaesarLegion/legion_prime_decanus.yml
+  - CaesarLegionDean            # Decanus             | _Misfits/Roles/Jobs/CaesarLegion/legion_decanus.yml
+  # Warriors
+  - CaesarLegionLegionnaireVeteran  # Veteran Legionnaire | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_veteran.yml
+  - CaesarLegionLegionnaireWarrior  # Legionnaire Warrior | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_warrior.yml
+  - CaesarLegionLegionnaireRecruit  # Legionnaire Recruit | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_recruit.yml
+  # Specialists # #Misfits Change /Fix/: Reordered Explorer below Frumentarii; Auxilia below Houndmaster above Recruit
+  - CaesarLegionFrumentarii     # Frumentarii         | _Misfits/Roles/Jobs/CaesarLegion/legion_venator.yml
+  - CaesarLegionExplorer        # Explorer            | _Misfits/Roles/Jobs/CaesarLegion/legion_explorer.yml
+  - CaesarLegionVexillarius     # Vexillarius         | _Misfits/Roles/Jobs/CaesarLegion/legion_vexillarius.yml
+  - CaesarLegionOrator          # Orator              | _Misfits/Roles/Jobs/CaesarLegion/legion_orator.yml
+  - CaesarLegionHoundmaster     # Houndmaster         | _Misfits/Roles/Jobs/CaesarLegion/legion_houndmaster.yml
+  - CaesarLegionAuxilia         # Auxilia             | _Misfits/Roles/Jobs/CaesarLegion/legion_auxilia.yml
+  # Recruits
+  - CaesarLegionRecruit         # Recruit             | _Misfits/Roles/Jobs/CaesarLegion/legion_recruit.yml
+  - CaesarLegionSlave           # Slave               | _Misfits/Roles/Jobs/CaesarLegion/legion_slave.yml

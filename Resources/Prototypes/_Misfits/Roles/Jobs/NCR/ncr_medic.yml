@@ -40,6 +40,8 @@
     outerClothing: N14ClothingOuterNCRPouchedVestDesert # Forge-Change
     back: N14ClothingBackpackNCR # Corvax-Change
     shoes: N14ClothingBootsLeatherFilled
+    neck: ClothingNeckPinNCRDoctor
+    belt: ClothingBeltNCR
     id: N14IDNCRDogtagDoctor
     pocket2: NCRmedicloadoutkits
   innerClothingSkirt: N14ClothingUniformNCRDesert # Corvax-Change

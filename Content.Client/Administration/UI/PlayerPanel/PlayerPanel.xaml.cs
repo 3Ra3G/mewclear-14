@@ -28,6 +28,7 @@ public sealed partial class PlayerPanel : FancyWindow
     public event Action? OnDelete;
     public event Action? OnRejuvenate;
     public event Action<NetEntity?>? OnFollow; // #Misfits Change
+    public event Action<NetEntity?>? OnGhostFollow; // #Misfits Change
 
     public NetUserId? TargetPlayer;
     public string? TargetUsername;
@@ -56,6 +57,7 @@ public sealed partial class PlayerPanel : FancyWindow
             DeleteButton.OnPressed += _ => OnDelete?.Invoke();
             RejuvenateButton.OnPressed += _ => OnRejuvenate?.Invoke();
                 FollowButton.OnPressed += _ => OnFollow?.Invoke(TargetNetEntity); // #Misfits Change
+                GhostFollowButton.OnPressed += _ => OnGhostFollow?.Invoke(TargetNetEntity); // #Misfits Change
     }
 
     public void SetUsername(string player)
@@ -133,5 +135,6 @@ public sealed partial class PlayerPanel : FancyWindow
         RejuvenateButton.Disabled = !_adminManager.HasFlag(AdminFlags.Debug);
         DeleteButton.Disabled = !_adminManager.HasFlag(AdminFlags.Debug);
         FollowButton.Disabled = !_adminManager.CanCommand("follow") || TargetNetEntity == null; // #Misfits Change
+        GhostFollowButton.Disabled = !_adminManager.CanCommand("aghost") || TargetNetEntity == null; // #Misfits Change
     }
 }

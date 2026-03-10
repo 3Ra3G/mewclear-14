@@ -8,3 +8,8 @@
     damage:
       types:
         Piercing: 19
+  # Misfits Add - 5.56mm intermediate rifle round; good range retention
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 5.0
+    maxFalloffTiles: 18.0
+    minDamageMultiplier: 0.57

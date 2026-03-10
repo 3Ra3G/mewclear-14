@@ -200,6 +200,7 @@
     - NCRA_LTTacticalSet
     - NCRA_CaptainCommandSet
     - NCRA_CaptainMarksmanSet
+    - NCRA_CaptainServiceRifleSet
   - type: ActivatableUI
 
 # New California Republic Rangers

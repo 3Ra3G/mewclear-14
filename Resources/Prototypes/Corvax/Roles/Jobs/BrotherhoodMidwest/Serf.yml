@@ -33,7 +33,7 @@
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitSettlerRags
     shoes: N14ClothingShoesRaider
-    gloves: N14ClothingHandsGlovesCloth
+    hands: N14ClothingHandsGlovesCloth
     bandage: NCClothingCollarBoSSerf
 
 

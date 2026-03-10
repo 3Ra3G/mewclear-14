@@ -8,8 +8,8 @@
     state: rifleman
   - type: UndecidedLoadoutBackpack
     possibleSets:
-    - KitBrootherWest_ElderlasSet
-    - KitBrootherWest_ElderrifleSet
+    - KitBrotherWest_ElderlasSet
+    - KitBrotherWest_ElderrifleSet
     - CommandGatlingWashingtonBoSSet
 
 - type: entity
@@ -52,7 +52,7 @@
     possibleSets:
     - WBoS_ScrMed_Set
     - WBoS_ScrEng_Set
-    - KitBrootherWest_ScribelaserSet
+    - KitBrotherWest_ScribelaserSet
 
 - type: entity
   id: BoSBrotherhoodSeniorPaladinKits
@@ -79,9 +79,9 @@
     state: rifleman
   - type: UndecidedLoadoutBackpack
     possibleSets:
-    - KitBrootherWest_KnightrifleSet
-    - KitBrootherWest_KnightlaserSet
-    - KitBrootherWest_KnightplasmaSet
+    - KitBrotherWest_KnightrifleSet
+    - KitBrotherWest_KnightlaserSet
+    - KitBrotherWest_KnightplasmaSet
 
 - type: entity
   id: BoSBrotherhoodSeniorScribeKits

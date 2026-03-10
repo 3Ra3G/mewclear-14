@@ -8,8 +8,11 @@
         - CaesarLegionLegate
         - CaesarLegionCenturion
         - CaesarLegionVeteranDecanus
-        - CaesarLegionVenator
+        - CaesarLegionFrumentarii
+        - CaesarLegionPrimeDecanus
         - CaesarLegionVexillarius
+        - CaesarLegionExplorer
+        - CaesarLegionOrator
         - CaesarLegionDean
         - CaesarLegionHoundmaster
   functions:

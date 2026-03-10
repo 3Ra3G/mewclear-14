@@ -34,7 +34,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: N14ClothingHeadHatCapkhighbluBoS
-  name: cap knigh stripe blu
+  name: BoS Knight Striped Cap
   description: A knights cap with the distinctive symbol of an experienced fighter. Convenient, easy, and practical
   components:
   - type: Sprite
@@ -45,7 +45,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: N14ClothingHeadHatCapPaladin
-  name: cap paladin
+  name: BoS Paladin Cap
   description: The cap of a paladin who can shape destinies
   components:
   - type: Sprite
@@ -56,8 +56,8 @@
 - type: entity
   parent: ClothingHeadBase
   id: N14ClothingHeadHatCapScout
-  name: cap scout
-  description: A young soldiers cap. It smells of sweat and the future
+  name: BoS Scout Cap
+  description: A young soldier's cap. It smells of sweat and the future
   components:
   - type: Sprite
     sprite: Corvax/Clothing/Head/Hats/capscout.rsi

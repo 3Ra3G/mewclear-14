@@ -1,4 +1,6 @@
 using Content.Shared.Chat;
+using Robust.Shared.IoC;
+using Robust.Shared.Localization;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Language;
@@ -6,6 +8,7 @@ namespace Content.Shared.Language;
 [Prototype("language")]
 public sealed partial class LanguagePrototype : IPrototype
 {
+    // #Misfits Change Fix: avoid surfacing raw localization ids when a language entry is missing.
     [IdDataField]
     public string ID { get; private set; } = default!;
 
@@ -31,17 +34,23 @@ public sealed partial class LanguagePrototype : IPrototype
     /// <summary>
     ///     The in-world name of this language, localized.
     /// </summary>
-    public string Name => Loc.GetString($"language-{ID}-name");
+    public string Name => GetLocalizedOrFallback($"language-{ID}-name", ID);
 
     /// <summary>
     ///     The in-world chat abbreviation of this language, localized.
     /// </summary>
-    public string ChatName => Loc.GetString($"chat-language-{ID}-name");
+    public string ChatName => GetLocalizedOrFallback($"chat-language-{ID}-name", Name);
 
     /// <summary>
     ///     The in-world description of this language, localized.
     /// </summary>
-    public string Description => Loc.GetString($"language-{ID}-description");
+    public string Description => GetLocalizedOrFallback($"language-{ID}-description", string.Empty);
+
+    private static string GetLocalizedOrFallback(string key, string fallback)
+    {
+        var localization = IoCManager.Resolve<ILocalizationManager>();
+        return localization.TryGetString(key, out var value) ? value : fallback;
+    }
     #endregion utility
 }
 

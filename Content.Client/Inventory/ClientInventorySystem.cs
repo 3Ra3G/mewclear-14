@@ -77,6 +77,19 @@ namespace Content.Client.Inventory
                 return;
             var update = new SlotSpriteUpdate(null, args.SlotGroup, args.Slot, false);
             OnSpriteUpdate?.Invoke(update);
+
+            // Dynamically hide any HideOnDepsMissing slots that depended on this slot
+            if (!TryGetSlots(args.Equipee, out var definitions))
+                return;
+            foreach (var definition in definitions)
+            {
+                if (!definition.HideOnDepsMissing || definition.DependsOn != args.Slot)
+                    continue;
+                if (!component.SlotData.TryGetValue(definition.Name, out var slotData))
+                    continue;
+                component.SlotData.Remove(definition.Name);
+                OnSlotRemoved?.Invoke(slotData);
+            }
         }
 
         private void OnDidEquip(InventorySlotsComponent component, DidEquipEvent args)
@@ -87,6 +100,46 @@ namespace Content.Client.Inventory
             var update = new SlotSpriteUpdate(args.Equipment, args.SlotGroup, args.Slot,
                 HasComp<StorageComponent>(args.Equipment));
             OnSpriteUpdate?.Invoke(update);
+
+            // Dynamically show any HideOnDepsMissing slots whose dependencies are now met
+            if (!TryGetSlots(args.Equipee, out var definitions))
+                return;
+            foreach (var definition in definitions)
+            {
+                if (!definition.HideOnDepsMissing || definition.DependsOn != args.Slot)
+                    continue;
+                if (!AreSlotDepsMet(args.Equipee, definition))
+                    continue;
+                if (component.SlotData.ContainsKey(definition.Name))
+                    continue;
+                if (!TryGetSlotContainer(args.Equipee, definition.Name, out var container, out _))
+                    continue;
+                var data = new SlotData(definition, container);
+                component.SlotData[definition.Name] = data;
+                OnSlotAdded?.Invoke(data);
+            }
+        }
+
+        /// <summary>
+        ///     Returns true if the given slot's <see cref="SlotDefinition.DependsOn"/> and
+        ///     <see cref="SlotDefinition.DependsOnComponents"/> conditions are currently satisfied.
+        /// </summary>
+        private bool AreSlotDepsMet(EntityUid uid, SlotDefinition definition)
+        {
+            if (definition.DependsOn == null)
+                return true;
+
+            if (!TryGetSlotEntity(uid, definition.DependsOn, out var depEntity) || depEntity == null)
+                return false;
+
+            if (definition.DependsOnComponents == null)
+                return true;
+
+            foreach (var (_, entry) in definition.DependsOnComponents)
+                if (!HasComp(depEntity.Value, entry.Component.GetType()))
+                    return false;
+
+            return true;
         }
 
         private void OnShutdown(EntityUid uid, InventoryComponent component, ComponentShutdown args)
@@ -108,6 +161,13 @@ namespace Content.Client.Inventory
                 {
                     if (!TryGetSlotContainer(uid, definition.Name, out var container, out _))
                         continue;
+
+                    if (definition.HideOnDepsMissing && !AreSlotDepsMet(uid, definition))
+                    {
+                        // Slot may have been pre-populated by OnInit; remove it so the UI doesn't show it
+                        component.SlotData.Remove(definition.Name);
+                        continue;
+                    }
 
                     if (!component.SlotData.TryGetValue(definition.Name, out var data))
                     {
@@ -156,7 +216,8 @@ namespace Content.Client.Inventory
 
         public void SetSlotHighlight(EntityUid owner, InventorySlotsComponent component, string slotName, bool state)
         {
-            var oldData = component.SlotData[slotName];
+            if (!component.SlotData.TryGetValue(slotName, out var oldData))
+                return;
             var newData = component.SlotData[slotName] = new SlotData(oldData, state);
             if (owner == _playerManager.LocalEntity)
                 EntitySlotUpdate?.Invoke(newData);
@@ -165,7 +226,8 @@ namespace Content.Client.Inventory
         public void UpdateSlot(EntityUid owner, InventorySlotsComponent component, string slotName,
             bool? blocked = null, bool? highlight = null)
         {
-            var oldData = component.SlotData[slotName];
+            if (!component.SlotData.TryGetValue(slotName, out var oldData))
+                return;
             var newHighlight = oldData.Highlighted;
             var newBlocked = oldData.Blocked;
 

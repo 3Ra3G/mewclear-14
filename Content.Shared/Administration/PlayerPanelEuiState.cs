@@ -55,3 +55,7 @@ public sealed class PlayerPanelDeleteMessage : EuiMessageBase;
 
 [Serializable, NetSerializable]
 public sealed class PlayerPanelRejuvenationMessage: EuiMessageBase;
+
+// #Misfits Change — message sent when the admin clicks "Ghost Follow" in the player panel.
+[Serializable, NetSerializable]
+public sealed class PlayerPanelGhostFollowMessage : EuiMessageBase;

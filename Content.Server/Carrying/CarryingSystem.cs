@@ -1,10 +1,13 @@
 using System.Numerics;
 using System.Threading;
+using Content.Server.Chat.Systems; // #Misfits Add: chat emote for carry
 using Content.Server.DoAfter;
 using Content.Server.Resist;
 using Content.Server.Popups;
 using Content.Server.Inventory;
 using Content.Server.Nyanotrasen.Item.PseudoItem;
+using Content.Shared.Chat; // #Misfits Add: InGameICChatType
+using Content.Shared.IdentityManagement; // #Misfits Add: Identity.Entity for carry chat
 using Content.Shared.Mobs;
 using Content.Shared.DoAfter;
 using Content.Shared.Buckle.Components;
@@ -29,6 +32,8 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nyanotrasen.Item.PseudoItem;
 using Content.Shared.Storage;
+using Content.Shared.Inventory; // #Misfits Change Add: needed for IsWearingPowerArmor check
+using Content.Shared._Misfits.PowerArmor; // #Misfits Change Add: N14PowerArmorComponent for power armor carry restriction
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Content.Server._N14.Carrying;
@@ -52,6 +57,8 @@ namespace Content.Server.Carrying
         [Dependency] private readonly ContestsSystem _contests = default!;
         [Dependency] private readonly SharedStunSystem _stun = default!;
         [Dependency] private readonly TransformSystem _transform = default!;
+        [Dependency] private readonly InventorySystem _inventorySystem = default!; // #Misfits Change Add: for power armor carry restriction
+        [Dependency] private readonly ChatSystem _chat = default!; // #Misfits Add: broadcast carry as chat emote
 
         public override void Initialize()
         {
@@ -281,6 +288,11 @@ namespace Content.Server.Carrying
             carryingComp.Carried = carried;
             carriedComp.Carrier = carrier;
 
+            // #Misfits Add: broadcast to nearby players in chat so it is not missed on sprites alone
+            var carriedName = Identity.Entity(carried, EntityManager);
+            _chat.TrySendInGameICMessage(carrier, Loc.GetString("misfits-chat-carry-pickup", ("carried", carriedName)),
+                InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
+
             _actionBlockerSystem.UpdateCanMove(carried);
 
             // If the carrier has GrabStunComponent, stun the carried entity.
@@ -306,6 +318,15 @@ namespace Content.Server.Carrying
 
         public void DropCarried(EntityUid carrier, EntityUid carried)
         {
+            // #Misfits Add: broadcast put-down in chat, but only if carrier is still alive/conscious
+            // (prevents confusing "X puts down Y" messages when a carrier dies or goes crit)
+            if (_mobStateSystem.IsAlive(carrier))
+            {
+                var dropName = Identity.Entity(carried, EntityManager);
+                _chat.TrySendInGameICMessage(carrier, Loc.GetString("misfits-chat-carry-drop", ("carried", dropName)),
+                    InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
+            }
+
             RemComp<CarryingComponent>(carrier); // get rid of this first so we don't recursively fire that event
             RemComp<CarryingSlowdownComponent>(carrier);
             RemComp<BeingCarriedComponent>(carried);
@@ -338,7 +359,23 @@ namespace Content.Server.Carrying
                 || !TryComp<HandsComponent>(carrier, out var hands)
                 || hands.CountFreeHands() < carriedComp.FreeHandsRequired)
                 return false;
+
+            // #Misfits Change Add: Power armor wearers can only be picked up by other power armor wearers.
+            // Dragging / pulling remain unaffected by this check.
+            if (IsWearingPowerArmor(carried) && !IsWearingPowerArmor(carrier))
+                return false;
+
             return true;
+        }
+
+        /// <summary>
+        ///     Returns true if the given entity currently has a N14 power armor item equipped in the outerClothing slot.
+        /// </summary>
+        // #Misfits Change Add
+        private bool IsWearingPowerArmor(EntityUid uid)
+        {
+            return _inventorySystem.TryGetSlotEntity(uid, "outerClothing", out var outerItem)
+                   && HasComp<N14PowerArmorComponent>(outerItem.Value);
         }
 
         public override void Update(float frameTime)

@@ -3,6 +3,7 @@
   hostile:
   - WastelandInsect
   - WastelandAnimal
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -95,6 +96,7 @@
   hostile:
   - WastelandInsect
   - WastelandAnimal
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - Feral
 
@@ -118,6 +120,7 @@
   - Zetan
   - WastelandAnimal
   - WastelandInsect
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -131,6 +134,7 @@
   hostile:
   - WastelandInsect
   - WastelandAnimal
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -154,6 +158,7 @@
   - Zetan
   - WastelandAnimal
   - WastelandInsect
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -168,6 +173,7 @@
   - Zetan
   - WastelandInsect
   - WastelandAnimal
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - Feral
 
@@ -178,6 +184,7 @@
   hostile:
   - WastelandAnimal
   - WastelandInsect
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -200,6 +207,7 @@
   - Zetan
   - WastelandAnimal
   - WastelandInsect
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -211,6 +219,7 @@
   hostile:
   - WastelandAnimal
   - WastelandInsect
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -233,6 +242,7 @@
   - Zetan
   - WastelandAnimal
   - WastelandInsect
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -245,6 +255,7 @@
   - Zetan
   - WastelandAnimal
   - WastelandInsect
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -267,6 +278,7 @@
   - Zetan
   - WastelandAnimal
   - WastelandInsect
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -288,6 +300,7 @@
   - VaultSecureArea
   - WastelandAnimal
   - WastelandInsect
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -313,6 +326,7 @@
   - VaultSecureArea
   - WastelandInsect
   - WastelandAnimal
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Zetan
   - HostileRobot
   - Feral
@@ -338,6 +352,7 @@
   - VaultSecureArea
   - WastelandInsect
   - WastelandAnimal
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Zetan
   - HostileRobot
   - Raider
@@ -362,6 +377,7 @@
   - Vault
   - VaultSecureArea
   - WastelandInsect
+  - Deathclaw #Misfits Add - Deathclaw is now a separate faction; yaoguai etc. attack deathclaws
   - Raider
   - HostileRobot
   - Feral
@@ -386,6 +402,7 @@
   - Vault
   - VaultSecureArea
   - WastelandAnimal
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
   - Feral
@@ -412,6 +429,33 @@
   - WastelandInsect
   - Raider
   - WastelandAnimal
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Feral
   - CaesarLegion #Corvax-Legion
   - BrotherhoodOfSteelSecureArea
+
+# Misfits Change - Super Mutant hostile NPC faction. Hostile to all civilized factions.
+# They are neutral to Raiders (not explicitly hostile). Ported from DesertRose2/desertrose.
+- type: npcFaction
+  id: SuperMutant
+  hostile:
+  - Wastelander
+  - BrotherhoodOfSteel
+  - BrotherhoodOfSteelSecureArea
+  - CaravanCompany
+  - CaravanCompanySecureArea
+  - NCR
+  - NCRSecureArea
+  - Rangers
+  - Townsfolk
+  - TownsfolkSecureArea
+  - Tribal
+  - TribalSecureArea
+  - Vault
+  - VaultSecureArea
+  - WastelandInsect
+  - WastelandAnimal
+  - Deathclaw #Misfits Add - Deathclaw is enemy of everything
+  - HostileRobot
+  - Feral
+  - CaesarLegion #Corvax-Legion

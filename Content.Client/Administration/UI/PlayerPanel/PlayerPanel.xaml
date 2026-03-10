@@ -32,6 +32,8 @@
             <controls:ConfirmButton Name="RejuvenateButton" Text="{Loc player-panel-rejuvenate}" Disabled="True"/>
             <!-- #Misfits Change — follow player button -->
             <Button Name="FollowButton" Text="{Loc admin-player-actions-follow}" Disabled="True"/>
+            <!-- #Misfits Change — ghost follow player button: enters aghost mode then orbits the target -->
+            <Button Name="GhostFollowButton" Text="{Loc admin-player-actions-ghost-follow}" Disabled="True"/>
            </GridContainer>
        </BoxContainer>
     </BoxContainer>

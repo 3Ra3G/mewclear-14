@@ -106,8 +106,11 @@
     - CaesarLegionCenturion
     - CaesarLegionLegate
     - CaesarLegionVeteranDecanus
-    - CaesarLegionVenator
+    - CaesarLegionFrumentarii
+    - CaesarLegionPrimeDecanus
     - CaesarLegionVexillarius
+    - CaesarLegionExplorer
+    - CaesarLegionOrator
     - CaesarLegionDean
     - CaesarLegionLegionnaireVeteran
     - CaesarLegionLegionnaireWarrior

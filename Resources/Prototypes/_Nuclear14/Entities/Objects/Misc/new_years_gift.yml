@@ -318,9 +318,10 @@
       - id: N14ClothingUniformJumpskirtWastelandDoc
         prob: 0.5
         orGroup: Clothing
-      - id: N14ClothingHeadHatEnclavePeacekeeperCap
-        prob: 0.4
-        orGroup: Clothing
+      # #Misfits Change /Tweak/: faction-specific holiday gift entries are disabled rather than deleted.
+      # - id: N14ClothingHeadHatEnclavePeacekeeperCap
+      #   prob: 0.4
+      #   orGroup: Clothing
       - id: N14ClothingUniformJumpsuitMilUniform
         prob: 0.4
         orGroup: Clothing
@@ -330,21 +331,21 @@
       - id: N14ClothingNeckCloakYaoguai
         prob: 0.4
         orGroup: Clothing
-      - id: N14ClothingUniformJumpsuitEnclave
-        prob: 0.4
-        orGroup: Clothing
-      - id: N14ClothingBackpackVaultPurple
-        prob: 0.4
-        orGroup: Clothing
+      # - id: N14ClothingUniformJumpsuitEnclave
+      #   prob: 0.4
+      #   orGroup: Clothing
+      # - id: N14ClothingBackpackVaultPurple
+      #   prob: 0.4
+      #   orGroup: Clothing
       - id: N14ClothingHeadHatBeanie
         prob: 0.4
         orGroup: Clothing
       - id: N14ClothingHeadHatNightstalker
         prob: 0.4
         orGroup: Clothing
-      - id: N14ClothingHeadHatEnclaveOfficer
-        prob: 0.4
-        orGroup: Clothing
+      # - id: N14ClothingHeadHatEnclaveOfficer
+      #   prob: 0.4
+      #   orGroup: Clothing
       - id: N14ClothingHeadHatWoodBoonie
         prob: 0.4
         orGroup: Clothing
@@ -372,9 +373,9 @@
       - id: N14ClothingOuterTownSpecialCoat
         prob: 0.3
         orGroup: Clothing
-      - id: N14ClothingOuterEnclaverOfficerCoat
-        prob: 0.3
-        orGroup: Clothing
+      # - id: N14ClothingOuterEnclaverOfficerCoat
+      #   prob: 0.3
+      #   orGroup: Clothing
       - id: N14ClothingHeadHatCombatHelmet
         prob: 0.2
         orGroup: Clothing
@@ -396,9 +397,9 @@
       - id: N14ClothingBootsCombatMK2
         prob: 0.1
         orGroup: Clothing
-      - id: N14ClothingOuterCombatArmorSeniorBOS
-        prob: 0.03
-        orGroup: Clothing
+      # - id: N14ClothingOuterCombatArmorSeniorBOS
+      #   prob: 0.03
+      #   orGroup: Clothing
       - id: N14ClothingOuterPowerArmorT60Tesla
         prob: 0.005
         orGroup: Clothing
@@ -562,9 +563,9 @@
       - id: N14WeaponLMGchinese
         prob: 0.05
         orGroup: Weapon
-      - id: N14WeaponSniper50NCRRifle
-        prob: 0.05
-        orGroup: Weapon
+      # - id: N14WeaponSniper50NCRRifle
+      #   prob: 0.05
+      #   orGroup: Weapon
       - id: N14WeaponSniper50Pipe
         prob: 0.05
         orGroup: Weapon

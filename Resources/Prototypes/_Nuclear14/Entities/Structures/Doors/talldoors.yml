@@ -39,6 +39,9 @@
       path: /Audio/Effects/door_open.ogg
     closeSound:
       path: /Audio/Effects/door_close.ogg
+    # #Misfits Change/Add: Deny sound played when access is refused; mirrors airlock denial feedback.
+    denySound:
+      path: /Audio/Machines/airlock_deny.ogg
   - type: Destructible
     thresholds:
     - trigger:

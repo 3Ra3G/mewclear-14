@@ -49,6 +49,7 @@
   - type: Speech
     speechVerb: Skeleton
   - type: PersistentCurrency # Misfits - Currency wallet
+  - type: PersistentPlayerData # Misfits Add - SPECIAL stats, kill/death/round tracking, character history
   - type: ZombieImmune
   - type: Vocal
     sounds:

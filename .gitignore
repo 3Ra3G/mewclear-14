@@ -316,3 +316,20 @@ package-lock.json
 .claude/rules/copilotinst.instructions.md
 .vscode/settings.json
 .vscode/settings.json
+.github/instructions/misfitscopilot.instructions.md
+
+# Local map editor prototype
+/mapeditor/
+/runmapeditor.bat
+/bin/Content.MapEditor/
+runmapeditor.bat
+mapeditor/Server/MapEditorServerBootstrapSystem.cs
+mapeditor/Commands/MapEditorOpenCommand.cs
+mapeditor/Content.MapEditor.csproj
+mapeditor/MapEditorCVars.cs
+mapeditor/runmapeditor.bat
+mapeditor/Program.cs
+SpaceStation14.slnx
+SpaceStation14.slnx
+SpaceStation14.slnx
+*.slnx

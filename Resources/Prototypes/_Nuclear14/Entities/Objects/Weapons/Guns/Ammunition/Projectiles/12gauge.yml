@@ -11,6 +11,11 @@
     damage:
       types:
         Piercing: 10
+  # Misfits Add - Shotgun pellets lose velocity extremely rapidly; heaviest falloff
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 3.0
+    maxFalloffTiles: 8.0
+    minDamageMultiplier: 0.30
 
 - type: entity
   id: PelletShotgun12Spread

@@ -168,7 +168,7 @@
 
 - type: entity
   parent: N14FalloutArmorBase
-  id: N14ClothingOuterLegionnaireLightReconnaissanceArmor
+  id: N14ClothingLegionReconArmor
   name: light reconnaissance armor
   description: "Incredibly light armor with not the best protection, but you feel faster."
   components:
@@ -231,6 +231,69 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.95
+
+- type: entity
+  parent: N14FalloutArmorBase
+  id: N14ClothingOuterLegionnaireVexillariusArmor
+  name: vexillarius armor
+  description: "Reinforced armor worn by the Legion's Vexillarius standard bearer."
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/Armor/vexillariusarmor.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/Armor/vexillariusarmor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.75
+        Heat: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.80
+
+- type: entity
+  parent: N14FalloutArmorBase
+  id: N14ClothingOuterLegionnaireExplorerArmor
+  name: explorer armor
+  description: "Light layered armor worn by Legion scouts and explorers."
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/Armor/explorerarmor.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/Armor/explorerarmor.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.05
+    sprintModifier: 1.05
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Heat: 0.85
+  - type: ExplosionResistance
+    damageCoefficient: 0.90
+
+- type: entity
+  parent: N14FalloutArmorBase
+  id: N14ClothingOuterLegionnaireOratorArmor
+  name: orator armor
+  description: "Armor of a Legion Orator, styled after the praetorian guard."
+  components:
+  - type: Sprite
+    sprite: Corvax/Clothing/OuterClothing/Armor/oratorarmor.rsi
+  - type: Clothing
+    sprite: Corvax/Clothing/OuterClothing/Armor/oratorarmor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.78
+        Heat: 0.78
+  - type: ExplosionResistance
+    damageCoefficient: 0.82
 
 - type: entity
   parent: N14FalloutArmorBase

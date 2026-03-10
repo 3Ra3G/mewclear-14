@@ -3,6 +3,8 @@ using Content.Shared.Doors.Systems;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.ResourceManagement;
+using Robust.Shared.Animations;
+using Robust.Shared.Maths; // #Misfits Change/Add: required for Color in deny flash animation
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 
 namespace Content.Client.Doors;
@@ -65,6 +67,30 @@ public sealed class DoorSystem : SharedDoorSystem
                 }
             },
         };
+
+        // #Misfits Change/Add: Initialize a fallback deny animation for basic (non-airlock) doors.
+        // These doors have no dedicated deny sprite states, so we flash the sprite red twice over 0.4s.
+        // Airlock doors will overwrite this in AirlockSystem.OnComponentInit with their own unlit-layer flick.
+        comp.DenyingAnimation = new Animation()
+        {
+            Length = TimeSpan.FromSeconds(0.4f),
+            AnimationTracks =
+            {
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Color),
+                    InterpolationMode = AnimationInterpolationMode.Nearest,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(Color.Red, 0f),
+                        new AnimationTrackProperty.KeyFrame(Color.White, 0.1f),
+                        new AnimationTrackProperty.KeyFrame(Color.Red, 0.2f),
+                        new AnimationTrackProperty.KeyFrame(Color.White, 0.4f),
+                    }
+                }
+            },
+        };
     }
 
     private void OnAppearanceChange(EntityUid uid, DoorComponent comp, ref AppearanceChangeEvent args)
@@ -116,7 +142,8 @@ public sealed class DoorSystem : SharedDoorSystem
                     _animationSystem.Play((uid, animPlayer), (Animation)comp.ClosingAnimation, DoorComponent.AnimationKey);
                 break;
             case DoorState.Denying:
-                if (animPlayer != null)
+                // #Misfits Change/Fix: Guard against null DenyingAnimation to prevent NullReferenceException.
+                if (animPlayer != null && comp.DenyingAnimation != null)
                     _animationSystem.Play((uid, animPlayer), (Animation)comp.DenyingAnimation, DoorComponent.AnimationKey);
                 break;
             case DoorState.Welded:

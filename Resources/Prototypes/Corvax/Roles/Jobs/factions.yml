@@ -1,29 +1,4 @@
 - type: department
-  id: CaesarLegion
-  description: department-CaesarLegion-description
-  color: "#950202"
-  roles:
-  # Command
-  - CaesarLegionLegate          # Legate             | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml
-  # Officers
-  - CaesarLegionCenturion       # Centurion          | _Misfits/Roles/Jobs/CaesarLegion/legion_centurion.yml
-  # Decani
-  - CaesarLegionVeteranDecanus  # Veteran Decanus    | _Misfits/Roles/Jobs/CaesarLegion/legion_veteran_decanus.yml
-  - CaesarLegionDean            # Decanus            | _Misfits/Roles/Jobs/CaesarLegion/legion_decanus.yml
-  # Legionaries
-  - CaesarLegionLegionnaireVeteran  # Legionnaire Veteran | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_veteran.yml
-  - CaesarLegionLegionnaireWarrior  # Legionnaire Warrior | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_warrior.yml
-  - CaesarLegionLegionnaireRecruit  # Legionnaire Recruit | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_recruit.yml
-  # Specialists
-  - CaesarLegionVenator         # Venator            | _Misfits/Roles/Jobs/CaesarLegion/legion_venator.yml
-  - CaesarLegionVexillarius     # Vexillarius        | _Misfits/Roles/Jobs/CaesarLegion/legion_vexillarius.yml
-  - CaesarLegionHoundmaster     # Houndmaster        | _Misfits/Roles/Jobs/CaesarLegion/legion_houndmaster.yml
-  - CaesarLegionAuxilia         # Auxilia            | _Misfits/Roles/Jobs/CaesarLegion/legion_auxilia.yml
-  # Enlisted
-  - CaesarLegionRecruit         # Recruit            | _Misfits/Roles/Jobs/CaesarLegion/legion_recruit.yml
-  - CaesarLegionSlave           # Slave              | _Misfits/Roles/Jobs/CaesarLegion/legion_slave.yml
-
-- type: department
   id: Raider
   description: department-Raider-description
   color: "#093f09"

@@ -237,6 +237,7 @@
           concrete_barrier_3: ""
           concrete_barrier_4: ""
           concrete_barrier_5: ""
+  - type: Climbable
 
 - type: entity
   parent: N14DecorConcreteBarrier
@@ -262,3 +263,4 @@
   components:
   - type: Sprite
     state: road_barrier
+  - type: Climbable

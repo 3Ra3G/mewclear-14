@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client._Misfits.Administration.Events; // #Misfits Change/Add: DragNoTargetEvent hook
 using Content.Client.CombatMode;
 using Content.Client.Gameplay;
 using Content.Client.Outline;
@@ -390,6 +391,18 @@ public sealed class DragDropSystem : SharedDragDropSystem
             EndDrag();
             return true;
         }
+
+        // #Misfits Change/Add: Allow other systems (e.g. admin drag-teleport) to intercept when
+        // a drag ends without a valid entity drop target, before showing any popup or cancelling.
+        var dragNoTargetEv = new DragNoTargetEvent(_draggedEntity.Value, coords);
+        RaiseLocalEvent(dragNoTargetEv);
+        if (dragNoTargetEv.Handled)
+        {
+            // The intercepting system handled the drop; skip popup and report success.
+            EndDrag();
+            return true;
+        }
+        // End Misfits Change
 
         if (outOfRange)
         {

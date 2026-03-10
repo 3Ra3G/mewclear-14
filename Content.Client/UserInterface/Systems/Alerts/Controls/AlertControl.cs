@@ -2,9 +2,12 @@
 using Content.Client.Actions.UI;
 using Content.Client.Cooldown;
 using Content.Shared.Alert;
+using Content.Shared.Nutrition.Components;
 using Robust.Client.GameObjects;
+using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Maths;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -12,6 +15,8 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
 {
     public sealed class AlertControl : BaseButton
     {
+        private const float NutritionShakeThreshold = 0.25f;
+
         public AlertPrototype Alert { get; }
 
         /// <summary>
@@ -35,6 +40,7 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
         private short? _severity;
         private readonly IGameTiming _gameTiming;
         private readonly IEntityManager _entityManager;
+        private readonly IPlayerManager _playerManager;
         private readonly SpriteView _icon;
         private readonly CooldownGraphic _cooldownGraphic;
 
@@ -49,6 +55,7 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
         {
             _gameTiming = IoCManager.Resolve<IGameTiming>();
             _entityManager = IoCManager.Resolve<IEntityManager>();
+            _playerManager = IoCManager.Resolve<IPlayerManager>();
             TooltipSupplier = SupplyTooltip;
             Alert = alert;
             _severity = severity;
@@ -79,7 +86,61 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
         {
             var msg = FormattedMessage.FromMarkup(Loc.GetString(Alert.Name));
             var desc = FormattedMessage.FromMarkup(Loc.GetString(Alert.Description));
+
+            if (TryBuildNutritionTooltip(desc))
+            {
+                desc.PushNewline();
+                desc.PushNewline();
+            }
+
             return new ActionAlertTooltip(msg, desc) {Cooldown = Cooldown};
+        }
+
+        private bool TryBuildNutritionTooltip(FormattedMessage desc)
+        {
+            var entity = _playerManager.LocalEntity;
+            if (entity is null)
+                return false;
+
+            switch (Alert.ID)
+            {
+                case "Peckish":
+                case "Starving":
+                    if (!_entityManager.TryGetComponent(entity.Value, out HungerComponent? hunger))
+                        return false;
+
+                    var hungerWarningMax = hunger.Thresholds[HungerThreshold.Peckish];
+                    var hungerCurrent = Math.Clamp(hunger.CurrentHunger, hunger.Thresholds[HungerThreshold.Dead], hungerWarningMax);
+                    desc.AddText(Loc.GetString("alerts-hunger-current-value",
+                        ("current", (int) hungerCurrent),
+                        ("max", (int) hungerWarningMax)));
+                    desc.PushNewline();
+                    desc.AddText(Loc.GetString("alerts-hunger-threshold-range",
+                        ("upper", (int) hungerWarningMax),
+                        ("lower", (int) hunger.Thresholds[HungerThreshold.Dead]),
+                        ("max", (int) hungerWarningMax)));
+                    return true;
+
+                case "Thirsty":
+                case "Parched":
+                    if (!_entityManager.TryGetComponent(entity.Value, out ThirstComponent? thirst))
+                        return false;
+
+                    var thirstWarningMax = thirst.ThirstThresholds[ThirstThreshold.Thirsty];
+                    var thirstCurrent = Math.Clamp(thirst.CurrentThirst, thirst.ThirstThresholds[ThirstThreshold.Dead], thirstWarningMax);
+                    desc.AddText(Loc.GetString("alerts-thirst-current-value",
+                        ("current", (int) thirstCurrent),
+                        ("max", (int) thirstWarningMax)));
+                    desc.PushNewline();
+                    desc.AddText(Loc.GetString("alerts-thirst-threshold-range",
+                        ("upper", (int) thirstWarningMax),
+                        ("lower", (int) thirst.ThirstThresholds[ThirstThreshold.Dead]),
+                        ("max", (int) thirstWarningMax)));
+                    return true;
+
+                default:
+                    return false;
+            }
         }
 
         /// <summary>
@@ -102,6 +163,7 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
         {
             base.FrameUpdate(args);
             UserInterfaceManager.GetUIController<AlertsUIController>().UpdateAlertSpriteEntity(_spriteViewEntity, Alert);
+            UpdateNutritionShake();
 
             if (!Cooldown.HasValue)
             {
@@ -113,6 +175,81 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
             _cooldownGraphic.FromTime(Cooldown.Value.Start, Cooldown.Value.End);
         }
 
+        private void UpdateNutritionShake()
+        {
+            var offset = GetNutritionShakeOffset();
+            var margin = new Thickness(offset.X, offset.Y, -offset.X, -offset.Y);
+
+            _icon.Margin = margin;
+            _cooldownGraphic.Margin = margin;
+        }
+
+        private Vector2i GetNutritionShakeOffset()
+        {
+            var entity = _playerManager.LocalEntity;
+            if (entity is null)
+                return Vector2i.Zero;
+
+            var shakeData = Alert.ID switch
+            {
+                "Peckish" or "Starving" => GetHungerShakeData(entity.Value),
+                "Thirsty" or "Parched" => GetThirstShakeData(entity.Value),
+                _ => null,
+            };
+
+            if (shakeData is null || shakeData.Value.Fraction > NutritionShakeThreshold)
+                return Vector2i.Zero;
+
+            var intensity = (1f - (shakeData.Value.Fraction / NutritionShakeThreshold)) * shakeData.Value.Multiplier;
+            var time = (float) _gameTiming.CurTime.TotalSeconds;
+            var x = (int) MathF.Round(MathF.Sin(time * 20f) * (1f + intensity));
+            var y = (int) MathF.Round(MathF.Cos(time * 13f) * MathF.Max(1f, intensity * 1.5f));
+            return new Vector2i(x, y);
+        }
+
+        private (float Fraction, float Multiplier)? GetHungerShakeData(EntityUid entity)
+        {
+            if (!_entityManager.TryGetComponent(entity, out HungerComponent? hunger))
+                return null;
+
+            var max = hunger.Thresholds[HungerThreshold.Peckish];
+            if (max <= 0f)
+                return null;
+
+            var current = Math.Clamp(hunger.CurrentHunger, hunger.Thresholds[HungerThreshold.Dead], max);
+            var multiplier = hunger.CurrentThreshold switch
+            {
+                HungerThreshold.Dead => 1.85f,
+                HungerThreshold.Starving => 1.35f,
+                HungerThreshold.Peckish => 0.8f,
+                _ => 0f,
+            };
+
+            return multiplier <= 0f ? null : (current / max, multiplier);
+        }
+
+        private (float Fraction, float Multiplier)? GetThirstShakeData(EntityUid entity)
+        {
+            if (!_entityManager.TryGetComponent(entity, out ThirstComponent? thirst))
+                return null;
+
+            var max = thirst.ThirstThresholds[ThirstThreshold.Thirsty];
+            if (max <= 0f)
+                return null;
+
+            var current = Math.Clamp(thirst.CurrentThirst, thirst.ThirstThresholds[ThirstThreshold.Dead], max);
+            var multiplier = thirst.CurrentThirstThreshold switch
+            {
+                ThirstThreshold.Dead => 1.95f,
+                ThirstThreshold.Parched => 1.45f,
+                ThirstThreshold.Thirsty => 0.9f,
+                _ => 0f,
+            };
+
+            return multiplier <= 0f ? null : (current / max, multiplier);
+        }
+
+        [Obsolete]
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

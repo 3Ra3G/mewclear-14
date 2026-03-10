@@ -82,13 +82,16 @@ namespace Content.Server.Pointing.EntitySystems
                     continue;
                 }
 
-                var message = viewerEntity == source
-                    ? selfMessage
-                    : viewerEntity == pointed && viewerPointedAtMessage != null
-                        ? viewerPointedAtMessage
-                        : viewerMessage;
+                // #Misfits Change: Sprite popup text commented out — PointingChatSystem now broadcasts
+                // the point action to the emote chat channel, visible to all nearby players.
+                // The visual arrow entity (PointingArrow) is spawned separately and is unaffected.
+                //var message = viewerEntity == source
+                //    ? selfMessage
+                //    : viewerEntity == pointed && viewerPointedAtMessage != null
+                //        ? viewerPointedAtMessage
+                //        : viewerMessage;
 
-                RaiseNetworkEvent(new PopupEntityEvent(message, PopupType.Small, netSource), viewerEntity);
+                //RaiseNetworkEvent(new PopupEntityEvent(message, PopupType.Small, netSource), viewerEntity);
             }
 
             _replay.RecordServerMessage(new PopupEntityEvent(viewerMessage, PopupType.Small, netSource));

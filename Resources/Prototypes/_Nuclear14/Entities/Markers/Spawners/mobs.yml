@@ -876,6 +876,22 @@
     prototypes:
       - N14MobRobotEyebot
 
+# Misfits Change /Add: Sentry Bot spawner
+- type: entity
+  name: Sentry Bot Spawner
+  id: N14SpawnMobSentryBot
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/sentrybot.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotSentryBot
+
 - type: entity
   name: Spore Plant Spawner
   id: N14SpawnMobSporePlant
@@ -1072,3 +1088,140 @@
   - type: ConditionalSpawner
     prototypes:
       - N14MobNPCTribeWarr
+
+# Misfits Change - Super Mutant spawners (DesertRose2/desertrose port)
+- type: entity
+  name: Super Mutant Spawner
+  id: N14SpawnMobSuperMutant
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+        state: base
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobSuperMutantNPC
+
+- type: entity
+  name: Super Mutant Brute Spawner
+  id: N14SpawnMobSuperMutantMelee
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+        state: melee
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobSuperMutantMelee
+
+- type: entity
+  name: Super Mutant Hunter Spawner
+  id: N14SpawnMobSuperMutantRanged
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+        state: ranged
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobSuperMutantRanged
+
+- type: entity
+  name: Nightkin Spawner
+  id: N14SpawnMobNightkin
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+        state: nightkin
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobNightkin
+
+- type: entity
+  name: Nightkin Veteran Spawner
+  id: N14SpawnMobNightkinVeteran
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+        state: nightkin_ranged
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobNightkinVeteran
+
+- type: entity
+  name: Nightkin Elite Spawner
+  id: N14SpawnMobNightkinElite
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+        state: nightkin_boss
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobNightkinElite
+
+- type: entity
+  name: Super Mutant Suicider Spawner
+  id: N14SpawnMobSuperMutantSuicider
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+        state: suicider
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobSuperMutantSuicider
+
+- type: entity
+  name: Super Mutant Armored Spawner
+  id: N14SpawnMobSuperMutantArmored
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/SuperMutants/supermutant.rsi
+        state: armored
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobSuperMutantArmored
+
+- type: entity
+  name: Centaur Spawner
+  id: N14SpawnMobCentaur
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Animals/centaur.rsi
+        state: alive
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobCentaur
+      - N14MobSuperMutantArmored

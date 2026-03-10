@@ -39,13 +39,26 @@
 
 - type: entity
   parent: MobHuman
-  id: N14MobHumanCaesarLegionVenator
-  name: Explorer
+  id: N14MobHumanCaesarLegionFrumentarii
+  name: Frumentarii
   components:
     - type: RandomHumanoidAppearance
       randomizeName: true
     - type: Loadout
-      prototypes: [CaesarLegionVenatorGear]
+      prototypes: [CaesarLegionFrumentariiGear]
+    - type: NpcFactionMember
+      factions:
+      - CaesarLegion
+
+- type: entity
+  parent: MobHuman
+  id: N14MobHumanCaesarLegionPrimeDecanus
+  name: Prime Decanus
+  components:
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [CaesarLegionPrimeDecanusGear]
     - type: NpcFactionMember
       factions:
       - CaesarLegion
@@ -59,6 +72,32 @@
       randomizeName: true
     - type: Loadout
       prototypes: [CaesarLegionVexillariusGear]
+    - type: NpcFactionMember
+      factions:
+      - CaesarLegion
+
+- type: entity
+  parent: MobHuman
+  id: N14MobHumanCaesarLegionExplorer
+  name: Legion Explorer
+  components:
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [CaesarLegionExplorerGear]
+    - type: NpcFactionMember
+      factions:
+      - CaesarLegion
+
+- type: entity
+  parent: MobHuman
+  id: N14MobHumanCaesarLegionOrator
+  name: Legion Orator
+  components:
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [CaesarLegionOratorGear]
     - type: NpcFactionMember
       factions:
       - CaesarLegion

@@ -1,4 +1,5 @@
 // #Misfits Change - Ported from Delta-V addiction system
+using Content.Shared.Damage;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Prototypes;
 
@@ -25,15 +26,20 @@ public abstract class SharedAddictionSystem : EntitySystem
     /// <summary>
     ///     Attempts to apply an addiction to the entity.
     ///     If the entity already has the effect, extends its duration.
+    ///     Calls <see cref="OnAddictionApplied"/> so the server can send drug-specific chat messages.
     /// </summary>
-    public virtual void TryApplyAddiction(EntityUid uid, float addictionTime, StatusEffectsComponent? status = null)
+    /// <param name="drugName">Localized name of the drug (e.g. "hydra"). Empty skips chat messages.</param>
+    public virtual void TryApplyAddiction(EntityUid uid, float addictionTime, string drugName = "", StatusEffectsComponent? status = null)
     {
         if (!Resolve(uid, ref status, false))
             return;
 
         UpdateTime(uid);
 
-        if (!_statusEffects.HasStatusEffect(uid, StatusEffectKey, status))
+        // #Misfits Change /Tweak:/ Track whether this is a new addiction or an existing one deepening
+        var isNew = !_statusEffects.HasStatusEffect(uid, StatusEffectKey, status);
+
+        if (isNew)
         {
             _statusEffects.TryAddStatusEffect<AddictedComponent>(
                 uid,
@@ -46,7 +52,58 @@ public abstract class SharedAddictionSystem : EntitySystem
         {
             _statusEffects.TryAddTime(uid, StatusEffectKey, TimeSpan.FromSeconds(addictionTime), status);
         }
+
+        // Store drug name and increment dose count on the component
+        if (TryComp<AddictedComponent>(uid, out var addicted))
+        {
+            if (!string.IsNullOrEmpty(drugName))
+                addicted.DrugName = drugName;
+
+            addicted.DoseCount++;
+        }
+
+        OnAddictionApplied(uid, isNew);
     }
+
+    // #Misfits Change /Add:/ Store per-drug withdrawal effect parameters on the component.
+    /// <summary>
+    ///     Stores withdrawal gameplay effect parameters on the entity's <see cref="AddictedComponent"/>.
+    ///     Called by the <c>Addicting</c> reagent effect after <see cref="TryApplyAddiction"/>.
+    ///     Only updates a field if the new value represents a stronger effect than what is already set,
+    ///     preventing a milder drug from overriding a harsher one's withdrawal on a multi-drug user.
+    /// </summary>
+    public void SetWithdrawalEffects(
+        EntityUid uid,
+        string moodEffect = "",
+        DamageSpecifier? damage = null,
+        float speedPenalty = 1.0f,
+        float staminaDrain = 0.0f)
+    {
+        if (!TryComp<AddictedComponent>(uid, out var addicted))
+            return;
+
+        // Only update mood if not already set (first drug setting mood wins across different drugs)
+        if (!string.IsNullOrEmpty(moodEffect) && string.IsNullOrEmpty(addicted.WithdrawalMoodEffect))
+            addicted.WithdrawalMoodEffect = moodEffect;
+
+        // Take the highest damage value
+        if (damage != null)
+            addicted.WithdrawalDamage = damage;
+
+        // Take the lowest (most punishing) speed penalty
+        if (speedPenalty < addicted.WithdrawalSpeedPenalty)
+            addicted.WithdrawalSpeedPenalty = speedPenalty;
+
+        // Take the highest stamina drain
+        if (staminaDrain > addicted.WithdrawalStaminaDrain)
+            addicted.WithdrawalStaminaDrain = staminaDrain;
+    }
+
+    /// <summary>
+    ///     Called after addiction is applied or extended.
+    ///     Server override uses this to send drug-specific chat messages based on dose count / severity.
+    /// </summary>
+    protected virtual void OnAddictionApplied(EntityUid uid, bool isNew) { }
 
     /// <summary>
     ///     Suppresses active addiction symptoms for a duration.

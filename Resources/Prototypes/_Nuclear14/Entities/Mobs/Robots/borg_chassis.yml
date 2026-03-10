@@ -19,6 +19,15 @@
   id: N14RobotProtectron
   name: protectron
   components:
+  - type: IdleSound # #Misfits Change: give protectrons their ambient voice lines again
+  - type: SpamEmitSound # #Misfits Change: periodic idle chatter from the Protectron sound set
+    minInterval: 12
+    maxInterval: 45
+    sound:
+      collection: N14ProtectronIdle
+      params:
+        volume: -7
+        maxDistance: 6
   - type: Sprite
     sprite: _Nuclear14/Mobs/Robots/protectron.rsi
     layers:
@@ -180,6 +189,15 @@
   id: N14RobotMrHandy
   name: mr handy
   components:
+  - type: IdleSound # #Misfits Change: give Mr. Handy chassis their ambient voice lines again
+  - type: SpamEmitSound # #Misfits Change: periodic idle chatter from the Mr. Handy sound set
+    minInterval: 12
+    maxInterval: 45
+    sound:
+      collection: N14HandyIdle
+      params:
+        volume: -7
+        maxDistance: 6
   - type: Sprite
     sprite: _Nuclear14/Mobs/Robots/mrhandyclaw.rsi
     layers:
@@ -244,6 +262,15 @@
   id: N14RobotMrGutsy
   name: mr gutsy
   components:
+  - type: IdleSound # #Misfits Change: give Mr. Gutsy chassis their ambient voice lines again
+  - type: SpamEmitSound # #Misfits Change: periodic idle chatter from the Mr. Gutsy sound set
+    minInterval: 12
+    maxInterval: 45
+    sound:
+      collection: N14GutsyIdle
+      params:
+        volume: -7
+        maxDistance: 6
   - type: Sprite
     sprite: _Nuclear14/Mobs/Robots/mrhandygutsy.rsi
   - type: BorgChassis

@@ -446,6 +446,17 @@
       key_slots:
       - EncryptionKeyNCR
 
+# #Misfits Change /Add/: Legion telecom rack preset for maps that want dedicated Legion radio infrastructure.
+- type: entity
+  parent: N14MachineRackTelecomsServer
+  id: N14MachineRackTelecomsServerLegion
+  suffix: Legion
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyLegion
+
 - type: entity
   parent: N14MachineRackTelecomsServer
   id: N14MachineRackTelecomsServerVault

@@ -28,7 +28,7 @@
   supervisors: job-name-caesar-legion
   canBeAntag: false
   requireAdminNotify: true
-  access:
+  accessGroups:
   - CaesarLegionLegate
   special:
   - !type:AddComponentSpecial
@@ -60,7 +60,7 @@
   innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
   storage:
     back:
-    - N14BoxPlasticFilledMilitary
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
     - N14HealingPowder
 
 - type: playTimeTracker

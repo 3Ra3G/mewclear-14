@@ -39,10 +39,22 @@
 - type: entity
   id: N14SpawnPointVenator
   parent: N14SpawnPointCenturion
+  name: legion frumentarii
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionFrumentarii
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+- type: entity
+  id: N14SpawnPointExplorer
+  parent: N14SpawnPointCenturion
   name: legion explorer
   components:
   - type: SpawnPoint
-    job_id: CaesarLegionVenator
+    job_id: CaesarLegionExplorer
   - type: Sprite
     layers:
       - state: green

@@ -1,6 +1,7 @@
 # Factions
 guide-entry-factions = Factions & Roles
 guide-entry-brotherhoodofsteel = Brotherhood of Steel (BoS)
+guide-entry-caesarslegion = Caesar's Legion
 guide-entry-caravancompany = Caravan Company
 guide-entry-childrenofatom = Children of Atom
 guide-entry-enclave = Enclave
@@ -8,7 +9,7 @@ guide-entry-followersoftheapocalypse = Followers of the Apocalypse
 guide-entry-minorfactions = Minor Factions
 guide-entry-ncr = NCR
 guide-entry-townsfolk = Townspeople
-guide-entry-tribes = Tribes
+guide-entry-tribes = Tribe
 guide-entry-vaultdwellers = Vault Dwellers
 guide-entry-wastelanders = Wastelanders
 guide-entry-zetan = Zetans

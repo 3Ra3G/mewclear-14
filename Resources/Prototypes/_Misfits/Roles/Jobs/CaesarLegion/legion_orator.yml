@@ -1,0 +1,64 @@
+- type: job
+  id: CaesarLegionOrator
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: true # #Misfits Change
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 40
+  showBorder: true
+  name: job-name-caesar-legion-orator
+  description: job-description-caesar-legion-orator
+  playTimeTracker: CaesarLegionOrator
+  requirements:
+  - !type:CharacterDepartmentTimeRequirement
+      department: CaesarLegion
+      min: 900 # 15 hours
+  - !type:CharacterWhitelistRequirement
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+  - !type:CharacterSexRequirement
+    sex: Male
+  - !type:CharacterGenderRequirement
+    gender: Male
+  startingGear: CaesarLegionOratorGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerVenator"
+  supervisors: job-name-caesar-legion-other
+  canBeAntag: false
+  accessGroups:
+  - CaesarLegionOrator
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - CaesarLegion
+      - type: ReplacementAccent
+        accent: latin
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin ]
+
+- type: startingGear
+  id: CaesarLegionOratorGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitLegionnaire
+    ears: N14ClothingHeadsetLegion
+    neck: N14ClothingNeckCloakLegionRed
+    mask: N14ClothingMaskBrownMask
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingShoesKaligi
+    head: N14ClothingHeadHatLegionHood
+    outerClothing: N14ClothingOuterLegionnaireOratorArmor
+    gloves: N14ClothingHandsGlovesTribal
+    belt: N14Gladius
+    suitstorage: N14PilumSpear
+    pocket1: LegionOratorloadoutkits
+    id: N14IDLegionaryMedalOrator
+  innerClothingSkirt: N14ClothingUniformJumpsuitLegionnaireOther
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitaryLegion #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+    - N14HealingPowder
+
+- type: playTimeTracker
+  id: CaesarLegionOrator

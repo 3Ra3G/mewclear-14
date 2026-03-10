@@ -37,6 +37,8 @@
     back: N14ClothingBackpackNCR # Corvax-Change
     jumpsuit: N14ClothingUniformNCRDesert # Corvax-Change
     shoes: N14ClothingBootsLeatherFilled
+    neck: ClothingNeckPinNCRRecruit
+    belt: ClothingBeltNCR
     pocket1: NCRcadetloadoutkits
     id: N14IDNCRDogtag
   innerClothingSkirt: N14ClothingUniformNCRDesert # Corvax-Change

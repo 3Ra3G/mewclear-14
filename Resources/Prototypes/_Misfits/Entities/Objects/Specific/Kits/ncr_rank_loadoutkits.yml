@@ -134,6 +134,7 @@
     items:
       - id: N14ClothingOuterNCRCombatArmor
       - id: ClothingBeltNCR
+      - id: ClothingNeckPinNCRSergeant1st
       - id: N14WeaponRifle308Battle
       - id: ClipMagazine308Rifle
         amount: 6
@@ -165,6 +166,7 @@
     items:
       - id: N14ClothingOuterNCRTrenchCoat
       - id: ClothingBeltRevolverfilled
+      - id: ClothingNeckPinNCRMasterSergeant
       - id: N14WeaponRifle308Battle
       - id: ClipMagazine308Rifle
         amount: 6
@@ -196,6 +198,7 @@
     items:
       - id: N14ClothingOuterNCRCombatArmor
       - id: ClothingBeltRevolverCaptainfilled
+      - id: ClothingNeckPinNCRCaptain
       - id: N14WeaponRifle308Battle
       - id: ClipMagazine308Rifle
         amount: 6
@@ -228,6 +231,7 @@
     items:
       - id: N14ClothingOuterNCRTrenchCoat
       - id: ClothingBeltRevolverCaptainfilled
+      - id: ClothingNeckPinNCRCaptain
       - id: N14WeaponSniper50NCRRifle
       - id: MagazineBox50
       - id: RadioHandheld
@@ -235,6 +239,52 @@
       - id: N14BoxCardboardMREBoxCFilled
       - id: N14Stimpak
       - id: N14SuperStimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+        amount: 2
+      - id: N14Flare
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: UndecidedLoadoutBackpackSet
+  id: NCRA_CaptainServiceRifleSet
+  name: captain field officer kit
+  description: A field officer package built around the iconic NCR service rifle, for a captain who leads by example and holds the line.
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitNCR_CaptainServiceRifle
+
+- type: entity
+  name: captain field officer kit
+  parent: KitBase
+  id: KitNCR_CaptainServiceRifle
+  description: A crate containing field officer gear for an NCR captain who favors the service rifle on the front line.
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14ClothingOuterNCRCombatArmor
+      - id: ClothingBeltNCR
+      - id: ClothingNeckPinNCRCaptain
+      - id: N14WeaponRifle556ServiceScoped
+      - id: Magazine556Rifle
+        amount: 6
+      - id: N14WeaponPistol9mm
+      - id: N14MagazinePistol9mm
+        amount: 3
+      - id: RadioHandheld
+      - id: SmokeGrenade
+        amount: 2
+      - id: GrenadeFrag
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14SuperStimpak
+        amount: 2
       - id: N14RadAwayBloodbag
       - id: N14CleanGauze10
         amount: 2

@@ -92,7 +92,10 @@
           CaesarLegionLegionnaireWarrior: [ 2, 2 ] # Forge-Legion
           CaesarLegionLegionnaireRecruit: [ 4, 4 ] # Forge-Legion
           CaesarLegionVexillarius: [ 1, 1 ] # Forge-Legion
-          CaesarLegionVenator: [ 1, 1 ] # Forge-Legion
+          CaesarLegionFrumentarii: [ 1, 1 ] # Forge-Legion
+          CaesarLegionPrimeDecanus: [ 1, 1 ] # Misfits-Legion
+          CaesarLegionExplorer: [ 1, 2 ] # Misfits-Legion
+          CaesarLegionOrator: [ 1, 1 ] # Misfits-Legion
           CaesarLegionHoundmaster: [ 1, 1 ] # Forge-Legion
           CaesarLegionRecruit: [ 2, 2 ] # Forge-Legion
           CaesarLegionSlave: [ 3, 3 ] # Forge-Legion

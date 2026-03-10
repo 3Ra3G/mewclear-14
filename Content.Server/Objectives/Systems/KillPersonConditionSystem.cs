@@ -3,6 +3,8 @@ using Content.Server.Objectives.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Mind;
+using Content.Shared.NPC.Components; // #Misfits Change /Add/
+using Content.Shared.NPC.Systems; // #Misfits Change /Add/
 using Content.Shared.Objectives.Components;
 using Content.Shared.Roles.Jobs;
 using Robust.Shared.Configuration;
@@ -17,6 +19,7 @@ public sealed class KillPersonConditionSystem : EntitySystem
 {
     [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private readonly NpcFactionSystem _npcFaction = default!; // #Misfits Change /Add/
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedJobSystem _job = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
@@ -31,6 +34,9 @@ public sealed class KillPersonConditionSystem : EntitySystem
         SubscribeLocalEvent<PickRandomPersonComponent, ObjectiveAssignedEvent>(OnPersonAssigned);
 
         SubscribeLocalEvent<PickRandomHeadComponent, ObjectiveAssignedEvent>(OnHeadAssigned);
+
+        // #Misfits Change /Add/ - faction-aware head kill target
+        SubscribeLocalEvent<PickRandomEnemyHeadComponent, ObjectiveAssignedEvent>(OnEnemyHeadAssigned);
     }
 
     private void OnGetProgress(EntityUid uid, KillPersonConditionComponent comp, ref ObjectiveGetProgressEvent args)
@@ -98,6 +104,74 @@ public sealed class KillPersonConditionSystem : EntitySystem
             allHeads = allHumans.Select(human => human.Owner).ToList(); // fallback to non-head target
 
         _target.SetTarget(uid, _random.Pick(allHeads), target);
+    }
+
+    // #Misfits Change /Add/ - kill target that excludes the assigner's own faction
+    private void OnEnemyHeadAssigned(EntityUid uid, PickRandomEnemyHeadComponent comp, ref ObjectiveAssignedEvent args)
+    {
+        // invalid prototype
+        if (!TryComp<TargetObjectiveComponent>(uid, out var target))
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        // target already assigned
+        if (target.Target != null)
+            return;
+
+        // resolve assigner's body to read their faction membership
+        if (!TryComp<MindComponent>(args.MindId, out var assignerMind) || assignerMind.OwnedEntity == null)
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        TryComp<NpcFactionMemberComponent>(assignerMind.OwnedEntity.Value, out var assignerFactionComp);
+
+        // get every alive human except ourselves
+        var allHumans = _mind.GetAliveHumans(args.MindId);
+        if (allHumans.Count == 0)
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        // filter out same-faction members — they should never be targeted
+        var enemies = new List<EntityUid>();
+        foreach (var mindEntity in allHumans)
+        {
+            var candidateMind = mindEntity.Comp;
+            if (candidateMind.OwnedEntity == null)
+                continue;
+
+            // if the player has a known faction and the candidate shares it, skip them
+            // #Misfits Change /Fix/ - use NpcFactionSystem.IsMemberOfAny instead of .Factions.Overlaps() (RA0002)
+            if (assignerFactionComp != null
+                && _npcFaction.IsMemberOfAny(candidateMind.OwnedEntity.Value, assignerFactionComp.Factions))
+                continue;
+
+            enemies.Add(mindEntity.Owner);
+        }
+
+        if (enemies.Count == 0)
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        // prefer command heads (RequireAdminNotify job), fall back to any non-same-faction person
+        var enemyHeads = new List<EntityUid>();
+        foreach (var enemyMind in enemies)
+        {
+            if (_job.MindTryGetJob(enemyMind, out _, out var prototype) && prototype.RequireAdminNotify)
+                enemyHeads.Add(enemyMind);
+        }
+
+        if (enemyHeads.Count == 0)
+            enemyHeads = enemies;
+
+        _target.SetTarget(uid, _random.Pick(enemyHeads), target);
     }
 
     private float GetProgress(EntityUid target, bool requireDead)

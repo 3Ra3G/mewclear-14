@@ -661,20 +661,46 @@
           Quantity: 20
 
 - type: entity
-  parent: DrinkBottleGlassBaseFull
+  parent: DrinkBase
+  id: N14AntidoteBottleBase
+  abstract: true
+  name: antidote bottle
+  description: A glass bottle for storing wasteland antidotes.
+  components:
+  - type: Tag
+    tags:
+    - Bottle
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 100
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Specific/Medical/fallout2.rsi
+    state: antidote
+  - type: Item
+    size: Tiny
+    sprite: _Nuclear14/Objects/Specific/Medical/fallout2.rsi
+
+- type: entity
+  parent: N14AntidoteBottleBase
+  id: N14AntidoteEmpty
+  suffix: empty
+  name: antidote bottle
+  description: An empty glass bottle sized for antidote batches.
+
+- type: entity
+  parent: N14AntidoteBottleBase
   id: N14Antidote
   name: antidote
-  description: A toxin antidote made from radscorpion tail and ethanol.
+  description: A toxin antidote made from radscorpion tail, ethanol, and tarberries.
   components:
   - type: SolutionContainerManager
     solutions:
       drink:
+        maxVol: 100
         reagents:
-        - ReagentId: AntidoteMixture
+        - ReagentId: Antidote
           Quantity: 100
-  - type: Sprite
-    sprite: _Nuclear14/Objects/Specific/Medical/fallout2.rsi
-    state: antidote
 
 - type: entity
   parent: N14ChemicalSyringe
@@ -722,7 +748,35 @@
           Quantity: 20
 
 - type: entity
-  parent: DrinkBottleGlassBaseFull
+  parent: DrinkBase
+  id: N14BitterdrinkBottleBase
+  abstract: true
+  name: bitterdrink bottle
+  description: A bottle for storing brewed tribal remedies.
+  components:
+  - type: Tag
+    tags:
+    - Bottle
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: bitterdrink
+  - type: Item
+    size: Tiny
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+
+- type: entity
+  parent: N14BitterdrinkBottleBase
+  id: N14BitterdrinkEmpty
+  suffix: empty
+  name: bitterdrink bottle
+  description: An empty bottle meant for bitterdrink and similar herbal brews.
+
+- type: entity
+  parent: N14BitterdrinkBottleBase
   id: N14Bitterdrink
   name: Bitterdrink
   description: A bottle containing a mixture of plants to aid against poisons and radiation.
@@ -730,12 +784,10 @@
   - type: SolutionContainerManager
     solutions:
       drink:
+        maxVol: 50
         reagents:
         - ReagentId: Bitterdrink
           Quantity: 50
-  - type: Sprite
-    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
-    state: bitterdrink
 
 - type: entity
   parent: N14HealingPowder

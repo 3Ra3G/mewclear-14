@@ -72,6 +72,13 @@
     - id: N14FoodBloatflyAcidSac
       amount: 1
       prob: 0.75
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14BloatflyAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 #MARK: Giant Ant
 - type: entity
@@ -131,6 +138,13 @@
     damage:
       groups:
         Brute: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14RadroachAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 #MARK: Giant Fire Ant
 - type: entity
@@ -174,6 +188,13 @@
     - id: N14FoodFireantNectar
       amount: 1
       prob: 0.75
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14RadroachAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 
 #MARK: Radroach
 - type: entity
@@ -237,6 +258,13 @@
       params:
         volume: -12
         maxDistance: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14RadroachAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
   - type: Butcherable
     spawned:
     - id: N14FoodMeatRadroachFillet
@@ -316,6 +344,13 @@
       params:
         volume: -10
         maxDistance: 5
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14RadscorpionAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
   - type: SolutionContainerManager
     solutions:
       melee:
@@ -360,7 +395,13 @@
       reagents:
       - ReagentId: Toxin
         Quantity: 0.2
-
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14RadscorpionAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25
 #MARK: Cazador
 #SCARY FUCKERS, RUUUN!!
 - type: entity
@@ -448,3 +489,10 @@
     thresholds:
       0: Alive
       100: Dead # Corvax-Change
+  - type: AggroSound #Misfits Change
+    sound:
+      collection: N14CazadorAttack
+      params:
+        volume: -3
+        maxDistance: 10
+    cooldownDuration: 25

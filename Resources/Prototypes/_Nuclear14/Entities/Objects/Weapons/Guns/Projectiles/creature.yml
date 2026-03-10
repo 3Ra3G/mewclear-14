@@ -22,3 +22,28 @@
       muzzleFlash: null
     - type: TimedDespawn
       lifetime: 1
+
+# Misfits Change - Centaur neurotoxin spit. DesertRose: /obj/item/projectile/neurotox damage=30
+- type: entity
+  id: N14BulletCentaurSpit
+  name: centaur spit
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Physics
+      bodyType: Dynamic
+      linearDamping: 0.3
+      angularDamping: 0.5
+    - type: Projectile
+      damage:
+        types:
+          Poison: 12
+    - type: Sprite
+      sprite: Objects/Weapons/Guns/Projectiles/xeno_toxic.rsi
+      layers:
+        - state: xeno_toxic
+          color: "#88FF66"
+    - type: Ammo
+      muzzleFlash: null
+    - type: TimedDespawn
+      lifetime: 2

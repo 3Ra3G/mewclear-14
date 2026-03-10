@@ -23,6 +23,21 @@
     sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
     state: holotape_green
 
+- type: stealTargetGroup
+  id: FactionPlansBOSW
+  name: Brotherhood Plans Holotape
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
+    state: holotape_blue
+
+# #Misfits Change - Legion intelligence holotape for cross-faction steal objectives
+- type: stealTargetGroup
+  id: FactionPlansLegion
+  name: Legion Orders Holotape
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
+    state: holotape_black
+
 ## Quests
 - type: stealTargetGroup
   id: QuestHolotapeFusionplans

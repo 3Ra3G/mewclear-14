@@ -15,12 +15,20 @@
   name: id-card-access-level-legion-houndmaster
 
 - type: accessLevel
-  id: CaesarLegionVenator
-  name: id-card-access-level-legion-explorer
+  id: CaesarLegionFrumentarii
+  name: id-card-access-level-legion-frumentarii
 
 - type: accessLevel
   id: CaesarLegionVexillarius
   name: id-card-access-level-legion-vexillarius
+
+- type: accessLevel
+  id: CaesarLegionExplorer
+  name: id-card-access-level-legion-explorer
+
+- type: accessLevel
+  id: CaesarLegionOrator
+  name: id-card-access-level-legion-orator
 
 - type: accessLevel
   id: CaesarLegionLegionnaireRecruit
@@ -72,12 +80,12 @@
   - CaesarLegionHoundmaster
 
 - type: accessGroup
-  id: CaesarLegionVenator
+  id: CaesarLegionFrumentarii
   tags:
   - CaesarLegion
   - CaesarLegionSlave
   - CaesarLegionRecruit
-  - CaesarLegionVenator
+  - CaesarLegionFrumentarii
 
 - type: accessGroup
   id: CaesarLegionVexillarius
@@ -86,6 +94,22 @@
   - CaesarLegionSlave
   - CaesarLegionRecruit
   - CaesarLegionVexillarius
+
+- type: accessGroup
+  id: CaesarLegionExplorer
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+  - CaesarLegionExplorer
+
+- type: accessGroup
+  id: CaesarLegionOrator
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+  - CaesarLegionOrator
 
 - type: accessGroup
   id: CaesarLegionLegionnaireRecruit
@@ -157,8 +181,10 @@
   - CaesarLegionSlave
   - CaesarLegionRecruit
   - CaesarLegionHoundmaster
-  - CaesarLegionVenator
+  - CaesarLegionFrumentarii
   - CaesarLegionVexillarius
+  - CaesarLegionExplorer
+  - CaesarLegionOrator
   - CaesarLegionLegionnaireRecruit
   - CaesarLegionLegionnaireWarrior
   - CaesarLegionLegionnaireVeteran

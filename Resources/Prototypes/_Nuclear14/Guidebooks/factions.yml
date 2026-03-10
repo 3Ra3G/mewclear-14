@@ -6,12 +6,12 @@
   text: "/ServerInfo/_Nuclear14/Guidebooks/Factions/factions.xml"
   children:
   - N14NCR
+  - N14BrotherhoodOfSteel
+  - N14CaesarsLegion
   - N14Townsfolk
-  - N14Tribes
   - N14VaultDwellers
   - N14Wastelanders
-  - N14CaravanCompany
-  - N14BrotherhoodOfSteel
+  - N14Tribes
   - N14MinorFactions
 
 # NCR
@@ -63,6 +63,14 @@
   text: "/ServerInfo/_Nuclear14/Guidebooks/Factions/BrotherhoodOfSteel/index.xml"
   filterEnabled: True
 
+# Caesar's Legion
+# #Misfits Add: Caesar's Legion is now a playable faction.
+- type: guideEntry
+  id: N14CaesarsLegion
+  name: guide-entry-caesarslegion
+  text: "/ServerInfo/_Nuclear14/Guidebooks/Factions/CaesarsLegion/index.xml"
+  filterEnabled: True
+
 # Minor Factions
 - type: guideEntry
   id: N14MinorFactions
@@ -73,6 +81,7 @@
   - N14Enclave
   - N14FollowersOfTheApocalypse
   - N14Zetan
+  - N14CaravanCompany
 
 - type: guideEntry
   id: N14ChildrenOfAtom

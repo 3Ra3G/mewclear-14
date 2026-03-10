@@ -248,3 +248,19 @@
   completetime: 3
   materials:
     Steel: 50
+
+# MARK: Explosives
+# Misfits Add - anti-personnel landmine recipe; high cost reflecting real-world materials (steel body, large powder charge, lead shrapnel)
+- type: latheRecipe
+  id: N14LandMine
+  icon:
+    sprite: _Nuclear14/Objects/Misc/landmine.rsi
+    state: landmine
+  result: N14LandMine
+  category: N14Weapons
+  completetime: 20
+  materials:
+    Steel: 800
+    N14Gunpowder: 500
+    Lead: 200
+

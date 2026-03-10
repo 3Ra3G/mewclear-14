@@ -194,14 +194,38 @@
 - type: entity
   parent: MisfitsSpawnPointCaesarLegionCenturion
   id: MisfitsSpawnPointCaesarLegionVenator
-  name: Legion Explorer
+  name: Legion Frumentarii
   components:
   - type: SpawnPoint
-    job_id: CaesarLegionVenator
+    job_id: CaesarLegionFrumentarii
   - type: Sprite
     layers:
       - state: green
       - state: venator
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionExplorer
+  name: Legion Explorer
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionExplorer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionPrimeDecanus
+  name: Legion Prime Decanus
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionPrimeDecanus
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
 
 - type: entity
   parent: MisfitsSpawnPointCaesarLegionCenturion

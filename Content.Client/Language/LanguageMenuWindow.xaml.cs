@@ -47,7 +47,8 @@ public sealed partial class LanguageMenuWindow : DefaultWindow
 
     public void UpdateState(ProtoId<LanguagePrototype> currentLanguage, List<ProtoId<LanguagePrototype>> spokenLanguages)
     {
-        var langName = Loc.GetString($"language-{currentLanguage}-name");
+        // #Misfits Change Fix: use prototype fallback localization so missing keys do not render as raw ids in the menu.
+        var langName = _clientLanguageSystem.GetLanguagePrototype(currentLanguage)?.Name ?? currentLanguage;
         CurrentLanguageLabel.Text = Loc.GetString("language-menu-current-language", ("language", langName));
 
         OptionsList.RemoveAllChildren();

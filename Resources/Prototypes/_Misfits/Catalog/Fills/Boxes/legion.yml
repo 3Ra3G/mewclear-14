@@ -1,0 +1,29 @@
+# #Misfits Change /Add/: Legion-specific military box with healing powder instead of stimpaks.
+# Legion ideology forbids advanced chems/stimpaks; tribal medicine (healing powder, poultice, hydra) is used instead.
+- type: entity
+  name: legion medical box
+  parent: N14BoxPlastic
+  id: N14BoxPlasticFilledMilitaryLegion
+  components:
+    - type: StorageFill
+      contents:
+        - id: N14HealingPowder    # common medical item (replaces stimpak)
+          prob: 0.7
+          orGroup: RandomMed
+        - id: N14HealingPoultice  # uncommon tribal remedy (replaces antidote syringe)
+          prob: 0.2
+          orGroup: RandomMed
+        - id: N14Hydra            # rare stimulant (replaces super stimpak)
+          prob: 0.1
+          orGroup: RandomMed
+        - id: N14CleanGauze10
+          amount: 1
+        - id: N14RadXPill
+          amount: 1
+        - id: N14CurrencyCap
+          amount: 0
+          maxAmount: 100
+          prob: 0.5
+          orGroup: Currency
+        - id: Flare
+          amount: 2

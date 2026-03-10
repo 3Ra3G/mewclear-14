@@ -19,9 +19,9 @@
     AntidoteMixture: 2
 
 - type: reaction
-  id: AntidoteMixtureConversion
+  id: AntidoteBottleConversion
   reactants:
-    AntidoteMixture:
+    Antidote:
       amount: 100
     Silicon:
       amount: 20 # 2 grinded glass
@@ -159,6 +159,17 @@
       amount: 1
   products:
     Bitterdrink: 1
+
+- type: reaction
+  id: BitterdrinkBottleConversion
+  reactants:
+    Bitterdrink:
+      amount: 50
+    Silicon:
+      amount: 10
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: N14Bitterdrink
 
 - type: reaction
   id: N14Ointment1

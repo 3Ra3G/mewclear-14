@@ -8,6 +8,7 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
+using Content.Shared.Tag;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 
@@ -15,11 +16,14 @@ namespace Content.Shared.Clothing.EntitySystems;
 
 public abstract class ClothingSystem : EntitySystem
 {
+    private const string HidesHairTag = "HidesHair";
+
     [Dependency] private readonly SharedItemSystem _itemSys = default!;
     [Dependency] private readonly SharedContainerSystem _containerSys = default!;
     [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoidSystem = default!;
     [Dependency] private readonly InventorySystem _invSystem = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
+    [Dependency] private readonly TagSystem _tagSystem = default!;
 
     public override void Initialize()
     {
@@ -123,6 +127,12 @@ public abstract class ClothingSystem : EntitySystem
                         }
                     }
                 }
+
+                if (layer == HumanoidVisualLayers.Hair && _tagSystem.HasTag(item, HidesHairTag))
+                {
+                    shouldLayerShow = false;
+                    break;
+                }
             }
             _humanoidSystem.SetLayerVisibility(equipee, layer, shouldLayerShow);
         }
@@ -201,9 +211,6 @@ public abstract class ClothingSystem : EntitySystem
         var enumerator = _invSystem.GetSlotEnumerator(ent.Owner);
         while (enumerator.NextItem(out var item))
         {
-            if (!TryComp<HideLayerClothingComponent>(item, out var comp))
-                continue;
-
             CheckEquipmentForLayerHide(item, ent.Owner);
         }
     }
@@ -226,8 +233,14 @@ public abstract class ClothingSystem : EntitySystem
 
     private void CheckEquipmentForLayerHide(EntityUid equipment, EntityUid equipee)
     {
-        if (TryComp(equipment, out HideLayerClothingComponent? clothesComp) && TryComp(equipee, out HumanoidAppearanceComponent? appearanceComp))
+        if (!TryComp(equipee, out HumanoidAppearanceComponent? appearanceComp))
+            return;
+
+        if (TryComp(equipment, out HideLayerClothingComponent? clothesComp))
             ToggleVisualLayers(equipee, clothesComp.Slots, appearanceComp.HideLayersOnEquip, clothesComp.Force);
+
+        if (_tagSystem.HasTag(equipment, HidesHairTag))
+            ToggleVisualLayers(equipee, new HashSet<HumanoidVisualLayers> { HumanoidVisualLayers.Hair }, appearanceComp.HideLayersOnEquip);
     }
 
     #region Public API

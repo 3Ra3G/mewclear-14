@@ -65,3 +65,4 @@
   - type: InteractionVerbs
     allowedVerbs:
     - Rattle
+  - type: Climbable
