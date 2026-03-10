@@ -847,3 +847,49 @@ Entries:
   id: 5626
   time: '2026-03-09T19:29:00.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/86
+- author: cythisia
+  changes:
+    - type: Add
+      message: >-
+        Added persistent currency HUD access and quick held-currency deposit
+        support.
+    - type: Add
+      message: >-
+        Added Enclave tactical map support and expanded faction ID/loadout kit
+        content, including new NCR identification and rank kit prototypes.
+    - type: Add
+      message: >-
+        Added admin whitelist search and slot-management UI/command work across
+        client and server.
+    - type: Add
+      message: >-
+        Added NF procedural dungeon content, including new spawn UI/controller,
+        themes, and dungeon maps.
+    - type: Add
+      message: >-
+        Added new drug-effect systems and overlays, ambient drug flavor text,
+        throw-speed modifiers (javelins, spear), and no-self-unbuckle support on
+        Legion crucifix (flagpole)
+    - type: Fix
+      message: >-
+        Switched MHelp access and mentor categorization to ViewNotes, deprecated
+        Mentorhelp safely, and made Host imply all flags for permission checks.
+    - type: Fix
+      message: >-
+        Fixed and polished admin panels, player panel/adminbus tabs,
+        chat/sandbox UI behavior, and related localization.
+    - type: Fix
+      message: >-
+        Fixed faction/job/map/prototype consistency across Brotherhood, NCR,
+        Legion, townsfolk, ranger, tribal, and wastelander content.
+    - type: Tweak
+      message: >-
+        Rebalanced or adjusted melee weapons, armor, medical items, reagents,
+        crafting data, NPC melee values, and starter gear/loadouts.
+    - type: Tweak
+      message: >-
+        Updated M14 branding/config text, guidebook and locale entries, tags,
+        spawners, traits, and assorted map polish for Wendover/Yuma.
+  id: 5627
+  time: '2026-03-09T23:29:57.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/93
