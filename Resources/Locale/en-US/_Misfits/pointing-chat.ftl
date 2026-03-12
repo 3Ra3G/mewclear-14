@@ -52,15 +52,15 @@ misfits-chat-blocking-stop = lowers {$shield}
 misfits-chat-power-armor-close = locks into {$armor}
 misfits-chat-power-armor-open = disengages {$armor}
 
-## EnsnareableSystem
-# Emotes for thrown bolas and similar throw-triggered ensnares.
-misfits-chat-ensnare-hit = is hit by {$ensnare} and snared
-misfits-chat-ensnare-free-start-self = starts working free from {$ensnare}
-misfits-chat-ensnare-free-start-other = starts removing {$ensnare} from {$target}
-misfits-chat-ensnare-free-fail-self = fails to get free of {$ensnare}
-misfits-chat-ensnare-free-fail-other = fails to remove {$ensnare} from {$target}
-misfits-chat-ensnare-free-complete-self = breaks free of {$ensnare}
-misfits-chat-ensnare-free-complete-other = removes {$ensnare} from {$target}
+## BodySystem
+# Emote broadcast when a mob is fully gibbed.
+misfits-chat-gib-body-1 = explodes into giblets.
+misfits-chat-gib-body-2 = bursts apart in a shower of gore.
+misfits-chat-gib-body-3 = comes apart in a wet spray of viscera.
+# Emote broadcast when a specific body part is gibbed.
+misfits-chat-gib-part-1 = has their {$part} violently blown apart.
+misfits-chat-gib-part-2 = loses their {$part} in a spray of gore.
+misfits-chat-gib-part-3 = has their {$part} ripped into bloody chunks.
 
 ## DoubleGrabSystem
 # Carrier locks the victim into an active carry hold.

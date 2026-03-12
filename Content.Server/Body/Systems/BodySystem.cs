@@ -14,6 +14,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Audio;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Numerics;
 
@@ -25,6 +26,10 @@ namespace Content.Server.Body.Systems;
 
 public sealed class BodySystem : SharedBodySystem
 {
+    // #Misfits Change Add: keep gib emote flavor counts centralized so body and part gibbing can randomize cleanly.
+    private const int GibBodyMessageCount = 3;
+    private const int GibPartMessageCount = 3;
+
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly GameTicker _ticker = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
@@ -32,6 +37,8 @@ public sealed class BodySystem : SharedBodySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!; // Shitmed Change
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
+    // #Misfits Change Add: randomized selection keeps repeated gib chat from feeling identical every time.
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -140,7 +147,7 @@ public sealed class BodySystem : SharedBodySystem
         if (HasComp<MobStateComponent>(bodyId))
         {
             _chat.TrySendInGameICMessage(bodyId,
-                Loc.GetString("misfits-chat-gib-body"),
+                Loc.GetString($"misfits-chat-gib-body-{_random.Next(1, GibBodyMessageCount + 1)}"),
                 InGameICChatType.Emote,
                 ChatTransmitRange.Normal,
                 ignoreActionBlocker: true);
@@ -180,7 +187,7 @@ public sealed class BodySystem : SharedBodySystem
         {
             var slotName = GetSlotFromBodyPart(part);
             _chat.TrySendInGameICMessage(bodyUid,
-                Loc.GetString("misfits-chat-gib-part", ("part", slotName)),
+                Loc.GetString($"misfits-chat-gib-part-{_random.Next(1, GibPartMessageCount + 1)}", ("part", slotName)),
                 InGameICChatType.Emote,
                 ChatTransmitRange.Normal,
                 ignoreActionBlocker: true);

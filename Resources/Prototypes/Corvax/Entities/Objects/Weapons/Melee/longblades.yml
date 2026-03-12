@@ -44,6 +44,12 @@
   - type: Item
     sprite: Corvax/Objects/Weapons/Melee/thermospear.rsi
     size: Huge
+    # Misfits Fix - explicit inhand visuals so the weapon sprite shows correctly when held
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
   - type: Clothing
     sprite: Corvax/Objects/Weapons/Melee/thermospear.rsi
     quickEquip: false
@@ -133,6 +139,12 @@
   - type: Item
     sprite: Corvax/Objects/Weapons/Melee/kebab.rsi
     size: Huge
+    # Misfits Fix - explicit inhand visuals so the weapon sprite shows correctly when held
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
   - type: Clothing
     sprite: Corvax/Objects/Weapons/Melee/kebab.rsi
     quickEquip: false

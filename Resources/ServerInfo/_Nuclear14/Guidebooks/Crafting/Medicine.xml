@@ -146,19 +146,25 @@ Ingredients:
 <GuideEntityEmbed Entity="SheetPlastic"/>
 </Box>
 
+<!-- #Misfits Fix: Hydra recipe corrected to match actual implementation. Previous entry incorrectly showed Jet + Turbo inhalers. Actual recipe: fill empty HydraInhaler with 15u Hydra reagent (ScorpionTail + ExtractFungus + NightstalkerBlood via chemistry), then seal with screwdriver. -->
 ## Hydra
 
-Hydra can be assembled in the crafting menu once you have the right wasteland chems. Build or acquire an empty hydra inhaler shell, then combine it with one Jet inhaler and one Turbo inhaler in the medical tab.
+Hydra requires chemistry first. Mix radscorpion tail, cave fungus extract, and nightstalker blood at a chemistry set to produce Hydra reagent (2 units per batch — you need 8 batches to reach the 15u required). Once you have 15u of Hydra, pour it into an empty hydra inhaler, then seal it with a screwdriver in the medical tab of the crafting menu.
 
 <Box>
 <GuideEntityEmbed Entity="N14Hydra" Caption="Hydra"/>
 </Box>
 
-Ingredients:
+Chemistry reagents (per batch → 2u Hydra):
 <Box>
-<GuideEntityEmbed Entity="N14HydraInhaler" Caption="Empty Hydra Inhaler"/>
-<GuideEntityEmbed Entity="N14Jet" Caption="Jet Inhaler"/>
-<GuideEntityEmbed Entity="N14Turbo" Caption="Turbo Inhaler"/>
+<GuideReagentEmbed Reagent="ScorpionTail"/>
+<GuideReagentEmbed Reagent="ExtractFungus"/>
+<GuideReagentEmbed Reagent="NightstalkerBlood"/>
+</Box>
+
+Assembly:
+<Box>
+<GuideEntityEmbed Entity="N14HydraInhaler" Caption="Empty Hydra Inhaler (fill with 15u Hydra, then seal with screwdriver)"/>
 </Box>
 
 ## RadAway Inhaler

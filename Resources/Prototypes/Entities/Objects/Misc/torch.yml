@@ -15,7 +15,9 @@
       layers:
         - map: [ enum.ExpendableLightVisualLayers.Base ]
           state: torch_unlit
-        - map: [ enum.ExpendableLightVisualLayers.Glow ]
+        # #Misfits Fix: Use plain string key so ToggleableLightVisualsSystem (SpriteLayer is string?) can find this layer via LayerMapTryGet.
+        # Previously used enum.ExpendableLightVisualLayers.Glow which caused a string/enum key mismatch, preventing the fire sprite from showing on the ground.
+        - map: [ "torch_glow" ]
           state: lit_overlay
           color: "#FFFFFF"
           visible: false
@@ -29,7 +31,7 @@
       sprite: Objects/Misc/torch.rsi
       heldPrefix: unlit
     - type: ToggleableLightVisuals
-      spriteLayer: enum.ExpendableLightVisualLayers.Glow
+      spriteLayer: torch_glow
       inhandVisuals:
         left:
         - state: lit-inhand-left
