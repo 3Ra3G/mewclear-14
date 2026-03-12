@@ -1160,3 +1160,16 @@ Entries:
   id: 5633
   time: '2026-03-12T02:36:49.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/105
+- author: Dpellowski
+  changes:
+    - type: Add
+      message: >-
+        Migrated persistent currency system from JSON storage to PostgreSQL
+        database, persisting only Bottle Caps per-character
+    - type: Tweak
+      message: >-
+        Simplified wallet UI to display only Bottle Caps (other currency types
+        remain as in-game items only)
+  id: 5634
+  time: '2026-03-12T03:34:04.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/106
