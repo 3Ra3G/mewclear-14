@@ -146,7 +146,6 @@ Ingredients:
 <GuideEntityEmbed Entity="SheetPlastic"/>
 </Box>
 
-<!-- #Misfits Fix: Hydra recipe corrected to match actual implementation. Previous entry incorrectly showed Jet + Turbo inhalers. Actual recipe: fill empty HydraInhaler with 15u Hydra reagent (ScorpionTail + ExtractFungus + NightstalkerBlood via chemistry), then seal with screwdriver. -->
 ## Hydra
 
 Hydra requires chemistry first. Mix radscorpion tail, cave fungus extract, and nightstalker blood at a chemistry set to produce Hydra reagent (2 units per batch — you need 8 batches to reach the 15u required). Once you have 15u of Hydra, pour it into an empty hydra inhaler, then seal it with a screwdriver in the medical tab of the crafting menu.

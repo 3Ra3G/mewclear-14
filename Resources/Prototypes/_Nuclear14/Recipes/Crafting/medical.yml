@@ -136,6 +136,11 @@
   objectType: Item
 
 # Hydra
+# #Misfits Fix: Hidden from G-menu. Hydra requires in-world workflow: fill the empty
+# HydraInhaler entity with 15u Hydra reagent (chemistry: ScorpionTail + ExtractFungus +
+# NightstalkerBlood), then use a screwdriver on it. The G-menu entry had no displayable
+# material steps (MinSolution conditions and tool steps are not rendered by the recipe
+# step list), leaving an empty ingredient panel and confusing players.
 - type: construction
   name: hydra inhaler
   id: N14Hydra
@@ -144,7 +149,7 @@
   targetNode: hydra
   category: construction-category-medical
   description: Fill an empty hydra inhaler with 15u of Hydra after mixing the chem from radscorpion tail, cave fungus, and nightstalker blood.
-  hide: false
+  hide: true
   icon:
     sprite: _Nuclear14/Objects/Specific/Medical/ms13_drugs.rsi
     state: hydra

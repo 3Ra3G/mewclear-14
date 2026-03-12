@@ -69,9 +69,9 @@
           # CaravanGuard: [ 2, 2 ]
           BoSWestElderCommander: [ 1, 1 ] # Misfits Change
           BoSWashingtonCommander: [ 1, 1 ] # Misfits Change
-          # BoSWashingtonPaladin: [ 1, 0 ]
-          # BoSWashingtonScribe: [ 2, 0 ]
-          # BoSWashingtonKnight: [ 2, 2 ]
+          BoSWashingtonPaladin: [ 1, 1 ] # #Misfits Change - activated
+          BoSWashingtonScribe: [ 2, 1 ] # #Misfits Change - activated
+          BoSWashingtonKnight: [ 2, 2 ] # #Misfits Change - activated
           # BoSWashingtonInitiate: [ 0, 2 ]
           BoSMidPaladinCommander: [ 1, 1 ]
           BoSWestScribe: [ 1, 1 ] # Misfits Change
@@ -99,8 +99,9 @@
           CaesarLegionOrator: [ 1, 1 ] # Misfits-Legion
           CaesarLegionHoundmaster: [ 1, 1 ] # Forge-Legion
           CaesarLegionRecruit: [ 2, 2 ] # Forge-Legion
+          CaesarLegionAuxilia: [ 2, 2 ] # #Misfits Change - activated
           CaesarLegionSlave: [ 3, 3 ] # Forge-Legion
-          # Raider: [3,3]
+          Raider: [ 3, 3 ] # #Misfits Change - activated
           Followers: [ 2, 2 ]
           SyntheticMrHandy: [ 1, 2 ]
           SyntheticProtectron: [ 1, 2 ]
