@@ -253,7 +253,10 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool shouldCapitalizeTheWordI = (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
             || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en");
 
-        message = SanitizeInGameICMessage(source, message, out var emoteStr, shouldCapitalize, shouldPunctuate, shouldCapitalizeTheWordI);
+        // Misfits Tweak - Keyboard emotes (smileys) are only permitted in Telepathic channel;
+        // Local, Emote, Radio, and Whisper chat should carry the text as-is.
+        var allowEmoteStripping = desiredType == InGameICChatType.Telepathic;
+        message = SanitizeInGameICMessage(source, message, out var emoteStr, shouldCapitalize, shouldPunctuate, shouldCapitalizeTheWordI, allowEmoteStripping);
 
         // Was there an emote in the message? If so, send it.
         if (player != null && emoteStr != message && emoteStr != null)
@@ -790,7 +793,8 @@ public sealed partial class ChatSystem : SharedChatSystem
     }
 
     // ReSharper disable once InconsistentNaming
-    private string SanitizeInGameICMessage(EntityUid source, string message, out string? emoteStr, bool capitalize = true, bool punctuate = false, bool capitalizeTheWordI = true)
+    // Misfits Tweak - Added allowEmoteStripping param so keyboard emotes can be blocked on specific channels
+    private string SanitizeInGameICMessage(EntityUid source, string message, out string? emoteStr, bool capitalize = true, bool punctuate = false, bool capitalizeTheWordI = true, bool allowEmoteStripping = true)
     {
         var newMessage = message.Trim();
         newMessage = SanitizeMessageReplaceWords(newMessage);
@@ -802,7 +806,11 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (punctuate)
             newMessage = SanitizeMessagePeriod(newMessage);
 
-        _sanitizer.TrySanitizeOutSmilies(newMessage, source, out newMessage, out emoteStr);
+        // Misfits Tweak - Only strip keyboard emotes when the channel explicitly allows it
+        if (allowEmoteStripping)
+            _sanitizer.TrySanitizeOutSmilies(newMessage, source, out newMessage, out emoteStr);
+        else
+            emoteStr = null;
 
         return newMessage;
     }

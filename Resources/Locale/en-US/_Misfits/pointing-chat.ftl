@@ -22,6 +22,11 @@ misfits-chat-double-grab-throw = hurls {$victim} across the room
 misfits-chat-cuff-applied = restrains {$target}
 misfits-chat-cuff-self = restrains themselves
 
+## StrippableSystem
+# Emotes broadcast when a player visibly removes worn gear from another player.
+misfits-chat-strip-remove = removes {$item} from {$target}
+misfits-chat-strip-victim-remove = has their {$item} removed by {$user}
+
 ## FactionBankTerminalSystem
 # Observable emote broadcast to bystanders when a player uses a terminal.
 misfits-chat-terminal-use = uses the {$terminal} terminal

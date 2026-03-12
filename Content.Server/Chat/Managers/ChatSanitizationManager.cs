@@ -1,3 +1,4 @@
+// Misfits Add - Extended SmileyToEmote dictionary with new keyboard emote entries (O_o, >_<, etc.)
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
@@ -89,7 +90,6 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         { "]'=", "chatsan-cries" },
         { ";-;", "chatsan-cries" },
         { ";_;", "chatsan-cries" },
-        { "qwq", "chatsan-cries" },
         { ":u", "chatsan-smiles-smugly" },
         { ":v", "chatsan-smiles-smugly" },
         { ">:i", "chatsan-annoyed" },
@@ -104,30 +104,12 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         { "._.", "chatsan-surprised" },
         { ".-.", "chatsan-confused" },
         { "-_-", "chatsan-unimpressed" },
-        { "smh", "chatsan-unimpressed" },
-        { "smh.", "chatsan-unimpressed" },
         { "o/", "chatsan-waves" },
         { "^^/", "chatsan-waves" },
         { ":/", "chatsan-uncertain" },
         { ":\\", "chatsan-uncertain" },
-        { "lmao", "chatsan-laughs" },
-        { "lmao.", "chatsan-laughs" },
-        { "lmfao", "chatsan-laughs" },
-        { "lmfao.", "chatsan-laughs" },
-        { "lol", "chatsan-laughs" },
-        { "lol.", "chatsan-laughs" },
-        { "lel", "chatsan-laughs" },
-        { "lel.", "chatsan-laughs" },
-        { "kek", "chatsan-laughs" },
-        { "kek.", "chatsan-laughs" },
-        { "rofl", "chatsan-laughs" },
-        { "rofl.", "chatsan-laughs" },
         { "o7", "chatsan-salutes" },
         { ";_;7", "chatsan-tearfully-salutes"},
-        { "idk", "chatsan-shrugs" },
-        { "idk.", "chatsan-shrugs" },
-        { "bruh", "chatsan-unimpressed" },
-        { "bruh.", "chatsan-unimpressed" },
         { ";)", "chatsan-winks" },
         { ";]", "chatsan-winks" },
         { "(;", "chatsan-winks" },
@@ -145,25 +127,63 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         { ":0", "chatsan-surprised" },
         { "T_T", "chatsan-cries" },
         { "=_(", "chatsan-cries" },
-        { "!s", "chatsan-laughs" },
-        { "!v", "chatsan-sighs" },
-        { "!kh", "chatsan-claps" },
-        { "!sh", "chatsan-snaps" },
-        { "))", "chatsan-smiles-widely" },
-        { ")", "chatsan-smiles" },
-        { "((", "chatsan-frowns-deeply" },
-        { "(", "chatsan-frowns" },
-        { "masturbates", "prays" },
-        { "screws", "prays" },
-        { "has sex", "prays" },
-        { "poops", "prays" },
-        { "pees", "prays" },
-        { "peed on", "prayed" },
-        { "salutes", "hits self in the face" },
-        { "saluted", "hits self in the face" },
-        { "threw a heavy punch", "hits self in the face" },
-        { "threw a sloppy punch", "hits self in the face" },
         // Corvax-Localization-End
+
+        // Misfits Add - Extended keyboard emote list (symbol-only emoticons)
+        // Boggle / wide-eyed confusion variants
+        { "O_o", "chatsan-boggles" },
+        { "o_O", "chatsan-boggles" },
+        { "O_O", "chatsan-boggles" },
+        { "o_o", "chatsan-boggles" },
+        // Frustration / grimace
+        { ">_<", "chatsan-frustrated" },
+        { ">.<", "chatsan-frustrated" },
+        // Shifty / side-eye
+        { ">_>", "chatsan-shifty" },
+        { "<_<", "chatsan-shifty" },
+        { ">.>", "chatsan-shifty" },
+        { "<.<", "chatsan-shifty" },
+        // Happy beam
+        { "^_^", "chatsan-beams" },
+        { "^.^", "chatsan-beams" },
+        { "n_n", "chatsan-beams" },
+        // Wicked / mischievous grin
+        { ">:)", "chatsan-grins-wickedly" },
+        { ">:D", "chatsan-grins-wickedly" },
+        { ">;)", "chatsan-grins-wickedly" },
+        // Scowl / angry frown
+        { ">:(", "chatsan-scowls" },
+        { ">:[", "chatsan-scowls" },
+        // Dejected / resigned
+        { "u_u", "chatsan-dejected" },
+        { "v_v", "chatsan-dejected" },
+        // Starstruck / amazed
+        { "*_*", "chatsan-starstruck" },
+        { "★_★", "chatsan-starstruck" },
+        // Dizzy / disoriented
+        { "@_@", "chatsan-dizzy" },
+        // Dazed / knocked out
+        { "x_x", "chatsan-dazed" },
+        { "X_X", "chatsan-dazed" },
+        { "x.x", "chatsan-dazed" },
+        // Zipping lips
+        { ":x", "chatsan-zips-lips" },
+        { ":X", "chatsan-zips-lips" },
+        { ":-x", "chatsan-zips-lips" },
+        { ":-X", "chatsan-zips-lips" },
+        // Blowing a kiss
+        { ":*", "chatsan-blows-kiss" },
+        { ":-*", "chatsan-blows-kiss" },
+        { ";*", "chatsan-blows-kiss" },
+        // Cheering / throwing arms up
+        { "\\o/", "chatsan-cheers" },
+        // Nervous sweat
+        { "^^;", "chatsan-nervous" },
+        { "^_^;", "chatsan-nervous" },
+        { "^^;;", "chatsan-nervous" },
+        // Facepalm
+        { ">_<;", "chatsan-facepalms" },
+        // End Misfits Add
     };
 
     private bool _doSanitize;
