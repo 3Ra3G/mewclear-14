@@ -20,9 +20,9 @@
     scalingDoAfter: 0.3
     damage: -5
     treatBeginSound:
-      path: /Audio/Items/Medical/bandage_apply.ogg
+      path: /Audio/Items/Medical/brutepack_begin.ogg # #Misfits Fix - bandage_apply.ogg does not exist; brutepack_begin is the closest equivalent
     treatEndSound:
-      path: /Audio/Items/Medical/bandage_apply.ogg
+      path: /Audio/Items/Medical/brutepack_end.ogg # #Misfits Fix - bandage_apply.ogg does not exist; brutepack_end is the closest equivalent
     userPopup: wounds-bandage-begin-user
     targetPopup: wounds-bandage-begin-target
     othersPopup: wounds-bandage-begin-others
@@ -52,9 +52,9 @@
     scalingDoAfter: 0.5
     damage: -5
     treatBeginSound:
-      path: /Audio/Items/Medical/bandage_apply.ogg
+      path: /Audio/Items/Medical/ointment_begin.ogg # #Misfits Fix - bandage_apply.ogg does not exist; ointment_begin used for burn wrap
     treatEndSound:
-      path: /Audio/Items/Medical/bandage_apply.ogg
+      path: /Audio/Items/Medical/ointment_end.ogg # #Misfits Fix - bandage_apply.ogg does not exist; ointment_end used for burn wrap
     userPopup: wounds-burnwrap-begin-user
     targetPopup: wounds-burnwrap-begin-target
     othersPopup: wounds-burnwrap-begin-others

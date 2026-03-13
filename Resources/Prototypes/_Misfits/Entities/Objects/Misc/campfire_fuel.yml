@@ -14,10 +14,11 @@
     size: Normal
   - type: CampfireFuel
     fuelAmount: 1
-  - type: Stack
-    stackType: Firewood
-    count: 1
-    maxCount: 5
+  # #Misfits Fix - Stack component commented out: Firewood StackPrototype does not exist and maxCount is not a valid StackComponent field
+  #- type: Stack
+  #  stackType: Firewood
+  #  count: 1
+  #  maxCount: 5
 
 - type: entity
   id: MisfitsCampfireScrapFuel
