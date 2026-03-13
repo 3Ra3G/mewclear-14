@@ -656,4 +656,10 @@ binds:
   key: G
   mod1: Alt
 # Misfits Add End
-
+# Misfits Add - Gun keybinds: J = eject magazine, L = toggle bolt
+- function: EjectMagazine
+  type: State
+  key: J
+- function: ToggleBoltAction
+  type: State
+  key: L

@@ -71,6 +71,7 @@
         Blunt: 2.5
   - type: DamageOtherOnHit
     staminaCost: 7.5
+  - type: FarGunshot # #Misfits Add - distant gunshot audio for players at range
 
 - type: entity
   name: AKMS

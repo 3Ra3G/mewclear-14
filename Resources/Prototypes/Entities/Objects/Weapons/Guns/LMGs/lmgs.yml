@@ -83,6 +83,7 @@
         Blunt: 3
   - type: DamageOtherOnHit
     staminaCost: 12
+  - type: FarGunshot # #Misfits Add - distant gunshot audio for players at range
 
 - type: entity
   name: L6 SAW

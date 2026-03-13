@@ -45,4 +45,5 @@ chatsan-laughs-heartily = laughs heartily.
 chatsan-rolls-laughing = rolls on the floor laughing.
 chatsan-shakes-head = shakes { POSS-ADJ($ent) } head.
 chatsan-nods = nods.
+chatsan-looks-flustered = looks flustered.
 # End Misfits Add

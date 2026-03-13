@@ -196,6 +196,9 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         { "kek", "chatsan-laughs" },             // kek (lol variant)
         { "lel", "chatsan-laughs" },             // lel (lol variant)
         { "lol", "chatsan-laughs" },             // laugh out loud
+        // Expressive / reaction
+        { "owo", "chatsan-looks-flustered" },    // flustered/cute reaction
+        { "uwu", "chatsan-looks-flustered" },    // flustered/cute reaction
         // Confusion / uncertainty
         { "omfg", "chatsan-surprised" },         // oh my f***ing god
         { "omg", "chatsan-surprised" },          // oh my god

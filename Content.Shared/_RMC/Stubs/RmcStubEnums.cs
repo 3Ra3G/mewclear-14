@@ -38,8 +38,8 @@ public enum CMMobStateActionsUI { Key }
 [Serializable, NetSerializable]
 public enum CMSurgeryUIKey { Key }
 
-[Serializable, NetSerializable]
-public enum CampfireVisuals { Lit }
+// #Misfits Change - CampfireVisuals moved to Content.Shared/_Misfits/Campfire/CampfireComponent.cs
+// public enum CampfireVisuals { Lit }
 
 [Serializable, NetSerializable]
 public enum CommunicationsTowerLayers { Layer }

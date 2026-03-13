@@ -799,18 +799,20 @@ public sealed partial class ChatSystem : SharedChatSystem
         var newMessage = message.Trim();
         newMessage = SanitizeMessageReplaceWords(newMessage);
 
+        // Misfits Fix - Emote/smiley stripping must run BEFORE capitalization and punctuation.
+        // SanitizeMessagePeriod appends "." when the message ends in a letter, which breaks
+        // text-based acronym matches (e.g. "rofl" → "Rofl." fails EndsWith("rofl")).
+        if (allowEmoteStripping)
+            _sanitizer.TrySanitizeOutSmilies(newMessage, source, out newMessage, out emoteStr);
+        else
+            emoteStr = null;
+
         if (capitalize)
             newMessage = SanitizeMessageCapital(newMessage);
         if (capitalizeTheWordI)
             newMessage = SanitizeMessageCapitalizeTheWordI(newMessage, "i");
         if (punctuate)
             newMessage = SanitizeMessagePeriod(newMessage);
-
-        // Misfits Tweak - Only strip keyboard emotes when the channel explicitly allows it
-        if (allowEmoteStripping)
-            _sanitizer.TrySanitizeOutSmilies(newMessage, source, out newMessage, out emoteStr);
-        else
-            emoteStr = null;
 
         return newMessage;
     }

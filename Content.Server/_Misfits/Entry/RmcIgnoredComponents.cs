@@ -52,8 +52,8 @@ public static class RmcIgnoredComponents
         "AutoAssignHive",
         "Barbed",
         "BarbedWire",
-        "Barricade",
-        "BarricadeSandbag",
+        // "Barricade", // #Misfits Change - implemented in Content.Shared/_Misfits/Entrenching/BarricadeComponent.cs
+        // "BarricadeSandbag", // #Misfits Change - implemented in Content.Shared/_Misfits/Entrenching/BarricadeSandbagComponent.cs
         "BlockEntityStorage",
         "BlockExamine",
         "BlockIdExamine",
@@ -113,8 +113,8 @@ public static class RmcIgnoredComponents
         "CMVocalizeTrigger",
         "CPRDummy",
         "CameraSignalGranter",
-        "Campfire",
-        "CampfireFuel",
+        // "Campfire", // #Misfits Change - implemented in Content.Shared/_Misfits/Campfire/CampfireComponent.cs
+        // "CampfireFuel", // #Misfits Change - implemented in Content.Shared/_Misfits/Campfire/CampfireFuelComponent.cs
         "CanBeFirePatted",
         "CanBeSupplyDropped",
         "CanBuildThickFromConstructNode",
@@ -207,9 +207,9 @@ public static class RmcIgnoredComponents
         "EggPlantingDistance",
         "EmitSoundOnAction",
         "EmoteCooldown",
-        "EmptySandbag",
+        // "EmptySandbag", // #Misfits Change - implemented in Content.Shared/_Misfits/Entrenching/EmptySandbagComponent.cs
         "EntityStorageCloseOnMapInit",
-        "EntrenchingTool",
+        // "EntrenchingTool", // #Misfits Change - implemented in Content.Shared/_Misfits/Entrenching/EntrenchingToolComponent.cs
         "EvacuationComputer",
         "EvacuationDoor",
         "EvacuationPump",
@@ -228,7 +228,7 @@ public static class RmcIgnoredComponents
         "FlareSignal",
         "Fog",
         "ForTheHive",
-        "FullSandbag",
+        // "FullSandbag", // #Misfits Change - implemented in Content.Shared/_Misfits/Entrenching/FullSandbagComponent.cs
         "GhillieSuit",
         "GiveHands",
         "GrantAreaInfo",

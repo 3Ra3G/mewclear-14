@@ -1,0 +1,140 @@
+// #Misfits Add - Server-side CPR system.
+// Inspired by CPR concepts in stalker-14-EN, designed and built independently for N14.
+// Allows a player to perform CPR on a critically-injured target to stabilise them and
+// partially reverse damage, giving medics a meaningful emergency tool.
+using Content.Server.Atmos.EntitySystems;
+using Content.Shared._Misfits.Medical.CPR;
+using Content.Shared.Damage;
+using Content.Shared.DoAfter;
+using Content.Shared.Interaction;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Popups;
+using Robust.Server.Audio;
+using Robust.Shared.Audio;
+using Robust.Shared.Timing;
+
+namespace Content.Server._Misfits.Medical.CPR;
+
+/// <summary>
+/// CPR lets any humanoid (empty-handed) perform chest compressions on a critically injured player.
+/// - Performer must have empty active hand (no item) or have hands at all.
+/// - Target must be in <see cref="MobState.Critical"/> (not fully dead).
+/// - 8-second do-after; cancels if the performer moves or takes damage.
+/// - On success: heals 25 points of brute-group damage, giving the target a fighting chance.
+/// - 20-second cooldown per performer to prevent spam.
+/// </summary>
+public sealed class CPRSystem : EntitySystem
+{
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+
+    // How many damage points to heal total across Brute group on CPR success.
+    private const float CPRHealAmount = 25f;
+
+    // Sound to play when CPR completes (compressions).
+    private static readonly SoundPathSpecifier CPRSound =
+        new("/Audio/Effects/hit_kick.ogg");
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<InteractHandEvent>(OnInteractHand);
+        SubscribeLocalEvent<CPRDoAfterEvent>(OnCPRDoAfter);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+        // Clean up expired cooldown components.
+        var query = EntityQueryEnumerator<CPRCooldownComponent>();
+        while (query.MoveNext(out var uid, out var cooldown))
+        {
+            if (_timing.CurTime >= cooldown.ExpireTime)
+                RemComp<CPRCooldownComponent>(uid);
+        }
+    }
+
+    private void OnInteractHand(InteractHandEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        var user = args.User;
+        var target = args.Target;
+
+        // No self-CPR.
+        if (user == target)
+            return;
+
+        // Target must be in critical state.
+        if (!_mobState.IsCritical(target))
+            return;
+
+        // Performer must not be on cooldown.
+        if (HasComp<CPRCooldownComponent>(user))
+        {
+            _popup.PopupEntity(Loc.GetString("cpr-on-cooldown"), user, user, PopupType.Small);
+            return;
+        }
+
+        args.Handled = true;
+
+        _popup.PopupEntity(
+            Loc.GetString("cpr-start-performer", ("target", target)),
+            user, user, PopupType.Medium);
+        _popup.PopupEntity(
+            Loc.GetString("cpr-start-target", ("user", user)),
+            target, target, PopupType.Medium);
+
+        var doAfterArgs = new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(8f), new CPRDoAfterEvent(), user, target)
+        {
+            NeedHand = true,
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            Hidden = false,
+        };
+        _doAfter.TryStartDoAfter(doAfterArgs);
+    }
+
+    private void OnCPRDoAfter(CPRDoAfterEvent args)
+    {
+        if (args.Cancelled || args.Target == null)
+            return;
+
+        var user = args.User;
+        var target = args.Target.Value;
+
+        // Re-validate: target must still be critical.
+        if (!_mobState.IsCritical(target))
+        {
+            _popup.PopupEntity(Loc.GetString("cpr-target-no-longer-critical"), user, user, PopupType.Small);
+            return;
+        }
+
+        // Heal a flat amount of brute-type damage to help pull them from the threshold.
+        // Using DamageSpecifier with a negative value heals; we spread across common Brute types.
+        var healSpec = new DamageSpecifier();
+        healSpec.DamageDict.Add("Blunt", -CPRHealAmount / 3f);
+        healSpec.DamageDict.Add("Slash", -CPRHealAmount / 3f);
+        healSpec.DamageDict.Add("Piercing", -CPRHealAmount / 3f);
+        _damageable.TryChangeDamage(target, healSpec, true, origin: user);
+
+        _popup.PopupEntity(
+            Loc.GetString("cpr-success-performer", ("target", target)),
+            user, user, PopupType.Medium);
+        _popup.PopupEntity(
+            Loc.GetString("cpr-success-target", ("user", user)),
+            target, target, PopupType.Medium);
+
+        _audio.PlayPvs(CPRSound, target, AudioParams.Default.WithVolume(-2f));
+
+        // Apply cooldown: performer cannot immediately repeat.
+        var cooldown = EnsureComp<CPRCooldownComponent>(user);
+        cooldown.ExpireTime = _timing.CurTime + TimeSpan.FromSeconds(cooldown.CooldownDuration);
+    }
+}

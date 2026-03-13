@@ -63,6 +63,7 @@
       collection: MetalThud
   - type: DamageOtherOnHit
     staminaCost: 5
+  - type: FarGunshot # #Misfits Add - distant gunshot audio for players at range
 
 - type: entity
   name: Deckard

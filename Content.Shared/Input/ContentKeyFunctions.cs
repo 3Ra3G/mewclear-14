@@ -141,5 +141,9 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction MappingRemoveDecal = "MappingRemoveDecal";
         public static readonly BoundKeyFunction MappingCancelEraseDecal = "MappingCancelEraseDecal";
         public static readonly BoundKeyFunction MappingOpenContextMenu = "MappingOpenContextMenu";
+
+        // #Misfits Add - Gun keybinds: eject magazine (J) and toggle bolt (L).
+        public static readonly BoundKeyFunction EjectMagazine = "EjectMagazine";
+        public static readonly BoundKeyFunction ToggleBoltAction = "ToggleBoltAction";
     }
 }

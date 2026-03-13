@@ -109,6 +109,10 @@ namespace Content.Client.Input
             human.AddFunction(CMKeyFunctions.RMCPickUpDroppedItems);
             // #Misfits Add End
 
+            // #Misfits Add - Gun keybinds: J = eject magazine, L = toggle bolt
+            human.AddFunction(ContentKeyFunctions.EjectMagazine);
+            human.AddFunction(ContentKeyFunctions.ToggleBoltAction);
+
             // actions should be common (for ghosts, mobs, etc)
             common.AddFunction(ContentKeyFunctions.OpenActionsMenu);
 

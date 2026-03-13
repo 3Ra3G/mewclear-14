@@ -290,11 +290,13 @@ public sealed partial class LatheMenu : DefaultWindow
 
     private bool IsBlueprintRecipe(LatheRecipePrototype recipe)
     {
-        if (recipe.Result is not { } result)
-            return false;
-
-        return _prototypeManager.TryIndex<EntityPrototype>(result, out var proto) &&
-               proto.HasComponent<STBlueprintComponent>();
+        // #Misfits Fix: Previously this checked whether the RESULT entity had STBlueprintComponent,
+        // which classified "print a blueprint for Paper" recipes into the Blueprints tab.  That was
+        // wrong — those print-recipes should not exist / should not be staticRecipes on any bench.
+        // Instead, we use the explicit RequiresBlueprint flag: recipes in Section B (unlocked only
+        // when the matching blueprint is placed in the workbench storage) set this to true and are
+        // shown in the Blueprints sub-section with the item's actual material cost as the tooltip.
+        return recipe.RequiresBlueprint;
     }
 
     private string GenerateTooltipText(LatheRecipePrototype prototype)

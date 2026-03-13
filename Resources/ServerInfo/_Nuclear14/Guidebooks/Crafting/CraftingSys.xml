@@ -12,7 +12,6 @@ Blueprints define what you can make and what each recipe needs.
 <GuideEntityEmbed Entity="N14WeaponSniper556TribalBlueprint"/>
 </Box>
 
-<!-- #Misfits Fix: Changed N14WorkbenchStation to N14WorkbenchWeaponbench; N14WorkbenchStation does not exist in the codebase. -->
 Workbenches determine where a recipe can be completed.
 
 <Box>
