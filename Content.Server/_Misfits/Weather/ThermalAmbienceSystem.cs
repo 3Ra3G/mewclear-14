@@ -190,9 +190,15 @@ public sealed class ThermalAmbienceSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        UpdateMapTemperatures();
-        UpdatePlayerFlavor();
-        UpdatePlayerOutdoorFlavor();
+        // #Misfits Tweak: Thermal ambience disabled — map temperature updates and player
+        // flavor text (sweating/shivering/outdoor messages) have been turned off to reduce
+        // per-tick CPU cost. All three sub-passes iterated over player entities every tick
+        // for cooldowns measured in minutes, which was disproportionate.
+        // Uncomment to restore day/night map temperature changes and thermal flavor text.
+        //
+        // UpdateMapTemperatures();
+        // UpdatePlayerFlavor();
+        // UpdatePlayerOutdoorFlavor();
     }
 
     // ── Part A: Ambient outdoor temperature ───────────────────────────────────

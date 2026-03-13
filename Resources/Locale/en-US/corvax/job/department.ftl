@@ -1,11 +1,11 @@
 # Names
-Raider = Blood Hounds
-department-Raider = Blood Hounds
+Raider = Outlaws # #Misfits Tweak - renamed from Blood Hounds
+department-Raider = Outlaws # #Misfits Tweak - renamed from Blood Hounds
 # Misfits Change /Comment-out/: Western BoS chapter removed.
 # department-BrotherhoodWest = Western BoS
 # Descriptions
 department-Raider-description =
-    The Blood Hounds are disorganized but deadly gangs that live by the law of the strong.
+    The Outlaws are disorganized but deadly gangs that live by the law of the strong. # #Misfits Tweak - renamed from Blood Hounds
     They raid, kill and subjugate the weak, turning the wasteland into their hunting grounds.
     They have no ideology except one rule: "Take what you want and show no mercy."
 # department-BrotherhoodWest-description =
