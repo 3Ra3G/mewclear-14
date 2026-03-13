@@ -4,7 +4,6 @@
 
 using Content.Shared._Misfits.PlayerData.Components;
 using Content.Shared.GameTicking;
-using Content.Shared.Storage;
 using Robust.Shared.Random;
 
 namespace Content.Server._Misfits.SpecialStats;
@@ -28,7 +27,9 @@ public sealed class SpecialLuckSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<LuckJunkBonusComponent, ComponentShutdown>(OnLuckCompShutdown);
-        SubscribeLocalEvent<StorageComponent, BoundUIOpenedEvent>(OnStorageOpened);
+        // #Misfits Fix: subscribe on LuckJunkBonusComponent (not StorageComponent) to avoid
+        // duplicate subscription conflict with SharedStorageSystem.Initialize().
+        SubscribeLocalEvent<LuckJunkBonusComponent, BoundUIOpenedEvent>(OnStorageOpened);
 
         // Clear tracking between rounds so next-round respawned piles start fresh.
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
@@ -45,11 +46,10 @@ public sealed class SpecialLuckSystem : EntitySystem
         _alreadyRolled.Remove(ent.Owner);
     }
 
-    private void OnStorageOpened(Entity<StorageComponent> ent, ref BoundUIOpenedEvent args)
+    private void OnStorageOpened(Entity<LuckJunkBonusComponent> ent, ref BoundUIOpenedEvent args)
     {
-        // Only process storage entities that carry the luck bonus component.
-        if (!TryComp<LuckJunkBonusComponent>(ent.Owner, out var luck))
-            return;
+        // ent.Comp is LuckJunkBonusComponent — entity is guaranteed to have it.
+        var luck = ent.Comp;
 
         var actor = args.Actor;
         if (!TryComp<PersistentPlayerDataComponent>(actor, out var playerData))
