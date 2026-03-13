@@ -39,6 +39,7 @@
           conditions:
           - !type:ReagentThreshold
             min: 50
+          - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
           damage:
             types:
               Poison: 1.5
@@ -84,6 +85,7 @@
         conditions:
         - !type:ReagentThreshold
           min: 50
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         damage:
           types:
             Poison: 1
@@ -228,6 +230,7 @@
         conditions:
         - !type:ReagentThreshold
           min: 30
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         damage:
           groups:
             Burn: -2.5

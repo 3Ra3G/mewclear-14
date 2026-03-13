@@ -121,10 +121,13 @@
         conditions:
         - !type:ReagentThreshold
           min: 15
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         damage:
           types:
             Asphyxiation: 6
       - !type:OverdoseScaledDamage #Misfits Change /Add:/ Toxic damage scaling with excess Turbo in bloodstream
+        conditions:
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         threshold: 15
         damagePerUnit: 0.05
 
@@ -159,10 +162,13 @@
         conditions:
         - !type:ReagentThreshold
           min: 30
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         damage:
           types:
             Asphyxiation: 20
       - !type:OverdoseScaledDamage #Misfits Change /Add:/ Toxic damage scaling with excess Psycho in bloodstream
+        conditions:
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         threshold: 30
         damagePerUnit: 0.05
     Narcotic:
@@ -267,10 +273,13 @@
         conditions:
         - !type:ReagentThreshold
           min: 30
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         damage:
           types:
             Asphyxiation: 15
       - !type:OverdoseScaledDamage #Misfits Change /Add:/ Toxic damage scaling with excess Buffout in bloodstream
+        conditions:
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         threshold: 30
         damagePerUnit: 0.05
       - !type:SpecialStatBoostEffect #Misfits Change /Add:/ Temporary Strength boost — scales melee damage while drug is active.
@@ -479,10 +488,13 @@
         conditions:
         - !type:ReagentThreshold
           min: 30
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         damage:
           types:
             Asphyxiation: 20
       - !type:OverdoseScaledDamage #Misfits Change /Add:/ Toxic damage scaling with excess Med-X in bloodstream
+        conditions:
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         threshold: 30
         damagePerUnit: 0.05
 
@@ -523,10 +535,13 @@
         conditions:
         - !type:ReagentThreshold
           min: 22
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         damage:
           types:
             Asphyxiation: 15
       - !type:OverdoseScaledDamage #Misfits Change /Add:/ Toxic damage scaling with excess Hydra in bloodstream
+        conditions:
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         threshold: 22
         damagePerUnit: 0.05
 

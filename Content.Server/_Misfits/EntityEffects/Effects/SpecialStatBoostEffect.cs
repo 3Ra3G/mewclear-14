@@ -7,6 +7,7 @@
 using Content.Shared._Misfits.SpecialStats;
 using Content.Shared.EntityEffects;
 using Content.Shared.Movement.Systems;
+using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Misfits.EntityEffects.Effects;
