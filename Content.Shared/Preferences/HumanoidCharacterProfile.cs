@@ -247,7 +247,9 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
 
         var species = random.Pick(prototypeManager
             .EnumeratePrototypes<SpeciesPrototype>()
-            .Where(x => ignoredSpecies == null ? x.RoundStart : x.RoundStart && !ignoredSpecies.Contains(x.ID))
+            .Where(x => x.RoundStart
+                && !x.WhitelistRequired // #Misfits Change: exclude whitelist-required species (SuperMutant, robots) from random selection; they must be explicitly chosen by whitelisted players
+                && (ignoredSpecies == null || !ignoredSpecies.Contains(x.ID)))
             .ToArray()
         ).ID;
 
