@@ -1653,3 +1653,22 @@ Entries:
   id: 5647
   time: '2026-03-14T20:56:16.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/129
+- author: cythisiax
+  changes:
+    - type: Add
+      message: Wendover credits to mc_rainbow32 publicly facing.
+    - type: Add
+      message: >-
+        Notifications to new objectives in 'Lore' tab, provided to faction
+        leaders.
+    - type: Tweak
+      message: Nerfed cazador. Venom > 0.5. Poison > 1. Air > 1.5.
+    - type: Tweak
+      message: 'Removed #Misfits Add comments from .ftl localization files.'
+    - type: Tweak
+      message: >-
+        MisfitsOre used same sprite prototype for walls as indestructible.
+        Changed to bassalt/grey prototype sooo you can see it easier.
+  id: 5648
+  time: '2026-03-15T00:24:06.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/131
