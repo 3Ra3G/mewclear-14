@@ -344,6 +344,7 @@ ncrCredit = NCR credit
 # Misfits Add: Missing material keys for N14 organics/crafting materials
 materials-fertilizer = fertilizer
 materials-timber = timber
+materials-N14paper = paper
 
 reagent-name-gunpowder = gunpowder
 reagent-desc-gunpowder = Small pellet gunpowder. Now just add lead.

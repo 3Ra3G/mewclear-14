@@ -39,6 +39,7 @@
       - type: NpcFactionMember
         factions:
           - BrotherhoodOfSteel
+      - type: PowerArmorProficiency # #Misfits Fix: Head Paladin wears T-51b; grant proficiency so they can re-equip PA after removal.
 
 - type: startingGear
   id: BoSMidPaladinCommanderGear
