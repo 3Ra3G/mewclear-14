@@ -65,9 +65,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterPlaytimeRequirement
-      tracker: BoSMidSquire
-      min: 72000 # 20 hours
+    #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
+    #  tracker: BoSMidSquire
+    #  min: 72000 # 20 hours
   startingGear: BoSPaladinGear
   alwaysUseSpawner: true
   icon: "JobIconBosMPaladin"

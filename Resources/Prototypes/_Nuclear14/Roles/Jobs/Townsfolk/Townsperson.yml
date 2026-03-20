@@ -12,8 +12,8 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterOverallTimeRequirement
-      min: 0 # 1 hour
+    #- !type:CharacterOverallTimeRequirement # TEMP REMOVED
+    #  min: 0 # 1 hour
   startingGear: TownspersonGear
   icon: "JobIconTownPerson" # Corvax-Change
   supervisors: job-supervisors-townsfolk

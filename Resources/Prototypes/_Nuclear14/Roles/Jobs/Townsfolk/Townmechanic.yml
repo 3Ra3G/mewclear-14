@@ -12,9 +12,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: Townsfolk
-      min: 0 # 2 hours
+    #- !type:CharacterDepartmentTimeRequirement # TEMP REMOVED
+    #  department: Townsfolk
+    #  min: 0 # 2 hours
   startingGear: TownMechanicGear
   icon: "JobIconTownMechanic" # Forge-Change
   supervisors: job-supervisors-townsfolk

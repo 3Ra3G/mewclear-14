@@ -13,9 +13,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: Townsfolk
-      min: 18000 # 5 hours
+    #- !type:CharacterDepartmentTimeRequirement # TEMP REMOVED
+    #  department: Townsfolk
+    #  min: 18000 # 5 hours
   startingGear: TownShopkeeperHelperGear
   icon: "JobIconTownShopKeeper"
   supervisors: job-supervisors-townsfolk

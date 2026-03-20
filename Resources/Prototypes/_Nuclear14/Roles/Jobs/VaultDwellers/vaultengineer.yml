@@ -10,9 +10,9 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
-  - !type:CharacterPlaytimeRequirement
-    tracker: VaultDweller
-    min: 18000 # 5 hours
+  #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
+  #  tracker: VaultDweller
+  #  min: 18000 # 5 hours
   setPreference: true
   overrideConsoleVisibility: true
   canBeAntag: false

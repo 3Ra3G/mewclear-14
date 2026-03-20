@@ -68,8 +68,8 @@
           species:
             - Human
             - Ghoul
-    - !type:CharacterOverallTimeRequirement
-      min: 0
+    #- !type:CharacterOverallTimeRequirement # TEMP REMOVED
+    #  min: 0
   startingGear: BoSInitiateGear
   alwaysUseSpawner: true
   icon: "JobIconBosMSquire"

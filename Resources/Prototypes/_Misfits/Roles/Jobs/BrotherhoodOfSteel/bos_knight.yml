@@ -65,9 +65,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterPlaytimeRequirement
-      tracker: BoSMidSquire
-      min: 36000 # 10 hours
+    #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
+    #  tracker: BoSMidSquire
+    #  min: 36000 # 10 hours
   startingGear: BoSKnightGear
   alwaysUseSpawner: true
   icon: "JobIconBosMKnight"
