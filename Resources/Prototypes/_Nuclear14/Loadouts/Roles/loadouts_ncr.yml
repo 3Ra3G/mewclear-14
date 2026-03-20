@@ -337,7 +337,7 @@
         - NCRCaptain
         - NCRMPinvestigator
         - NCRRanger
-        - NCRRangerVeteran
+        - RangerVeteran
   items:
     - N14ClothingEyesGlassesGoggles
 
@@ -363,7 +363,7 @@
         - NCRCaptain
         - NCRMPinvestigator
         - NCRRanger
-        - NCRRangerVeteran
+        - RangerVeteran
   items:
     - N14ClothingHandsGlovesNCR
 
@@ -404,7 +404,7 @@
         - NCRCaptain
         - NCRMPinvestigator
         - NCRRanger
-        - NCRRangerVeteran
+        - RangerVeteran
   items:
     - N14ClothingHeadHatWinterBoonie
 
@@ -430,7 +430,7 @@
         - NCRCaptain
         - NCRMPinvestigator
         - NCRRanger
-        - NCRRangerVeteran
+        - RangerVeteran
   items:
     - N14ClothingHeadHatWoodBoonie
 
@@ -456,7 +456,7 @@
         - NCRCaptain
         - NCRMPinvestigator
         - NCRRanger
-        - NCRRangerVeteran
+        - RangerVeteran
   items:
     - N14ClothingHeadHatDesertBoonie
 
@@ -482,7 +482,7 @@
         - NCRCaptain
         - NCRMPinvestigator
         - NCRRanger
-        - NCRRangerVeteran
+        - RangerVeteran
   items:
     - N14ClothingNeckCloakNCR
 
@@ -508,7 +508,7 @@
         - NCRCaptain
         - NCRMPinvestigator
         - NCRRanger
-        - NCRRangerVeteran
+        - RangerVeteran
   items:
     - N14ClothingNeckCloakGhillie
 
@@ -534,7 +534,7 @@
         - NCRCaptain
         - NCRMPinvestigator
         - NCRRanger
-        - NCRRangerVeteran
+        - RangerVeteran
   items:
     - N14ClothingNeckCloakNCRSnow
 
@@ -560,7 +560,7 @@
         - NCRCaptain
         - NCRMPinvestigator
         - NCRRanger
-        - NCRRangerVeteran
+        - RangerVeteran
   items:
     - N14ClothingNeckCloakNCRWoods
 
@@ -586,7 +586,7 @@
         - NCRCaptain
         - NCRMPinvestigator
         - NCRRanger
-        - NCRRangerVeteran
+        - RangerVeteran
   items:
     - N14ClothingMaskBrownBalaclava
 

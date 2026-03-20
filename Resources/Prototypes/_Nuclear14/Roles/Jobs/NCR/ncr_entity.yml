@@ -191,21 +191,22 @@
       - Wastelander
       - NCR
 
-- type: entity
-  parent: N14MobHumanNCRCadet
-  id: N14MobHumanNCRRangerVeteran
-  name: NCRRangerVeteran
-  components:
-    - type: Icon
-      state: rangerveteran
-    - type: RandomHumanoidAppearance
-      randomizeName: true
-    - type: Loadout
-      prototypes: [NCRRangerVeteranGear]
-    - type: NpcFactionMember
-      factions:
-      - Wastelander
-      - NCR
+#Misfits Change /Comment-out/: NCRRangerVeteran mob consolidated into RangerVeteran. Use N14MobHumanRangerVeteran instead.
+#- type: entity
+#  parent: N14MobHumanNCRCadet
+#  id: N14MobHumanNCRRangerVeteran
+#  name: NCRRangerVeteran
+#  components:
+#    - type: Icon
+#      state: rangerveteran
+#    - type: RandomHumanoidAppearance
+#      randomizeName: true
+#    - type: Loadout
+#      prototypes: [NCRRangerVeteranGear]
+#    - type: NpcFactionMember
+#      factions:
+#      - Wastelander
+#      - NCR
 
 - type: entity
   parent: N14MobHumanNCRCadet
