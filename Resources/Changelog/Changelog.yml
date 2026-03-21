@@ -1865,3 +1865,12 @@ Entries:
   id: 5659
   time: '2026-03-21T00:30:32.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/152
+- author: Chancerous
+  changes:
+    - type: Fix
+      message: Orator Spawn
+    - type: Tweak
+      message: Moved NCR Tac-Map (Currently have 2 need to remove 1)
+  id: 5660
+  time: '2026-03-21T00:30:54.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/153
