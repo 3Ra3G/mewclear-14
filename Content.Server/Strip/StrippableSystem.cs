@@ -15,6 +15,8 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
+using Content.Shared.UserInterface;
+using Content.Server.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Popups;
@@ -59,7 +61,8 @@ namespace Content.Server.Strip
 
             SubscribeLocalEvent<StrippableComponent, GetVerbsEvent<Verb>>(AddStripVerb);
             SubscribeLocalEvent<StrippableComponent, GetVerbsEvent<ExamineVerb>>(AddStripExamineVerb);
-            SubscribeLocalEvent<StrippableComponent, ActivateInWorldEvent>(OnActivateInWorld);
+            SubscribeLocalEvent<StrippableComponent, ActivateInWorldEvent>(OnActivateInWorld,
+                after: new[] { typeof(ActivatableUISystem), typeof(InteractionPopupSystem) });
 
             // BUI
             SubscribeLocalEvent<StrippableComponent, StrippingSlotButtonPressed>(OnStripButtonPressed);
@@ -109,6 +112,9 @@ namespace Content.Server.Strip
 
         private void OnActivateInWorld(EntityUid uid, StrippableComponent component, ActivateInWorldEvent args)
         {
+            if (args.Handled)
+                return;
+
             if (args.Target == args.User)
                 return;
 
@@ -116,6 +122,7 @@ namespace Content.Server.Strip
                 return;
 
             StartOpeningStripper(args.User, (uid, component));
+            args.Handled = true;
         }
 
         public override void StartOpeningStripper(EntityUid user, Entity<StrippableComponent> strippable, bool openInCombat = false)
