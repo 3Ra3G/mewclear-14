@@ -2,7 +2,7 @@
 - type: reaction
   id: HotCornoilAndWater
   impact: Medium
-  minTemp: 373.15
+  minTemp: 374
   reactants:
     Cornoil:
       amount: 1
@@ -15,7 +15,7 @@
 - type: reaction
   id: HotOilGheeAndWater
   impact: Medium
-  minTemp: 373.15
+  minTemp: 374
   reactants:
     OilGhee:
       amount: 1
@@ -28,7 +28,7 @@
 - type: reaction
   id: HotOilOliveAndWater
   impact: Medium
-  minTemp: 373.15
+  minTemp: 374
   reactants:
     OilOlive:
       amount: 1

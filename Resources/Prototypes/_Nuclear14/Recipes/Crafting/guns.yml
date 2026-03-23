@@ -1,5 +1,5 @@
 - type: construction
-  name: 12.7mm autopipe
+  name: 13mm autopipe
   id: N14WeaponSMG12mmPipeEmpty
   graph: N14WeaponSMG12mmPipeEmpty
   startNode: start

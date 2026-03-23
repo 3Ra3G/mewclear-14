@@ -1,7 +1,7 @@
 # Water Purification
 - type: reaction
   id: WaterClean
-  minTemp: 372.15 # Corvax-Change
+  minTemp: 373 # Corvax-Change
   reactants:
     WaterFiltered:
       amount: 1
@@ -30,7 +30,7 @@
 
 - type: reaction
   id: WaterSalt
-  minTemp: 373.15 # 100 degrees Celcius.
+  minTemp: 374 # 100 degrees Celcius.
   reactants:
     WaterSalt:
       amount: 2 # Corvax-Change
@@ -41,7 +41,7 @@
 # Plant Teas
 - type: reaction
   id: TeaAgave
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractAgaveNectar:
       amount: 1
@@ -52,7 +52,7 @@
 
 - type: reaction
   id: TeaBlackberry
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractBlackberries:
       amount: 1
@@ -63,7 +63,7 @@
 
 - type: reaction
   id: TeaBarrelCactus
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractCactusWater:
       amount: 1
@@ -74,7 +74,7 @@
 
 - type: reaction
   id: TeaBroc
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractBroc:
       amount: 1
@@ -85,7 +85,7 @@
 
 - type: reaction
   id: TeaDatura
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractDatura:
       amount: 1
@@ -96,7 +96,7 @@
 
 - type: reaction
   id: TeaHoneyMesquite
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractHoneyMesquitePod:
       amount: 1
@@ -107,7 +107,7 @@
 
 - type: reaction
   id: TeaMutfruit
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractMutfruit:
       amount: 1
@@ -118,7 +118,7 @@
 
 - type: reaction
   id: TeaNettle
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractNettle:
       amount: 1
@@ -129,7 +129,7 @@
 
 - type: reaction
   id: TeaPricklyPear
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractPricklyPearFruit:
       amount: 1
@@ -140,7 +140,7 @@
 
 - type: reaction
   id: TeaStarlightberry
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractStarlightBerries:
       amount: 1
@@ -151,7 +151,7 @@
 
 - type: reaction
   id: TeaTarberry
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractTarberries:
       amount: 1
@@ -162,7 +162,7 @@
 
 - type: reaction
   id: TeaWhiteHorsenettle
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractWhiteHorsenettle:
       amount: 1
@@ -173,7 +173,7 @@
 
 - type: reaction
   id: TeaXander
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     ExtractXander:
       amount: 1
@@ -185,7 +185,7 @@
 # Other Teas
 - type: reaction
   id: TeaFireantNectar
-  minTemp: 353.15 # 80 degrees Celcius.
+  minTemp: 354 # 80 degrees Celcius.
   reactants:
     N14FireAntNectar:
       amount: 1

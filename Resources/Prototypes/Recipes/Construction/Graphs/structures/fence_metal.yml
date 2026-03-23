@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: FenceMetal
   start: start
   graph:
@@ -49,9 +49,9 @@
         amount: 1
       steps:
       - tool: Welding
-        doAfter: 4.0
+        doAfter: 4
       - tool: Cutting
-        doAfter: 1.0
+        doAfter: 1
 
   - node: corner
     entity: FenceMetalCorner
@@ -64,9 +64,9 @@
       - !type:DeleteEntity
       steps:
       - tool: Welding
-        doAfter: 4.0
+        doAfter: 4
       - tool: Cutting
-        doAfter: 2.0
+        doAfter: 2
 
   - node: end
     entity: FenceMetalEnd
@@ -79,9 +79,9 @@
       - !type:DeleteEntity
       steps:
       - tool: Welding
-        doAfter: 4.0
+        doAfter: 4
       - tool: Cutting
-        doAfter: 2.0
+        doAfter: 2
 
   - node: gate
     entity: FenceMetalGate
@@ -94,9 +94,9 @@
       - !type:DeleteEntity
       steps:
       - tool: Welding
-        doAfter: 4.0
+        doAfter: 4
       - tool: Cutting
-        doAfter: 2.0
+        doAfter: 2
 
   - node: broken
     entity: FenceMetalBroken
@@ -109,4 +109,4 @@
       - !type:DeleteEntity
       steps:
       - tool: Cutting
-        doAfter: 1.0
+        doAfter: 1

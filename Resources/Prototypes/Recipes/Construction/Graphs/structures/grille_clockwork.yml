@@ -26,7 +26,7 @@
             - !type:DeleteEntity
           steps:
             - tool: Cutting
-              doAfter: 0.25
+              doAfter: 1
 
     - node: clockGrilleBroken
       entity: ClockworkGrilleBroken
@@ -43,4 +43,4 @@
           steps:
             - material: MetalRod
               amount: 1
-              doAfter: 0.5
+              doAfter: 1

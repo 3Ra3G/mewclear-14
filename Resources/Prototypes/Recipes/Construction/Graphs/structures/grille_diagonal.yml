@@ -35,7 +35,7 @@
             - !type:DeleteEntity
           steps:
             - tool: Cutting
-              doAfter: 0.25
+              doAfter: 1
               
     - node: clockworkGrilleDiagonal
       entity: ClockworkGrilleDiagonal
@@ -50,4 +50,4 @@
             - !type:DeleteEntity
           steps:
             - tool: Cutting
-              doAfter: 0.25
+              doAfter: 1

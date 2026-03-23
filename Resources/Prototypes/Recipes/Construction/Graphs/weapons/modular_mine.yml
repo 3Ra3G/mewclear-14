@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: ModularMineGraph
   start: start
   graph:
@@ -17,7 +17,7 @@
     - to: wiredCase
       steps:
       - material: Cable
-        doAfter: 0.5
+        doAfter: 1
       - tag: ProximitySensor
         icon:
           sprite: Objects/Misc/proximity_sensor.rsi
@@ -42,7 +42,7 @@
     - to: emptyCase
       steps:
       - tool: Cutting
-        doAfter: 0.5
+        doAfter: 1
         completed:
         - !type:SpawnPrototype
           prototype: CableApcStack1
@@ -53,7 +53,7 @@
       - tag: Payload
         store: payload
         name: Payload
-        doAfter: 0.5
+        doAfter: 1
 
   - node: mine
     actions:
@@ -65,7 +65,7 @@
     - to: wiredCase
       steps:
       - tool: Prying
-        doAfter: 0.5
+        doAfter: 1
         completed:
         - !type:EmptyContainer
           container: payload

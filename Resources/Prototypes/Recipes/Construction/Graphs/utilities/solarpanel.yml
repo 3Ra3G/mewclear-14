@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: SolarPanel
   start: start
   graph:
@@ -31,7 +31,7 @@
           steps:
             - material: PlasmaGlass
               amount: 2
-              doAfter: 0.5
+              doAfter: 1
           completed:
             - !type:SnapToGrid
         - to: solarpaneluranium
@@ -40,7 +40,7 @@
           steps:
             - material: UraniumGlass
               amount: 2
-              doAfter: 0.5
+              doAfter: 1
           completed:
             - !type:SnapToGrid
         - to: solarpanel
@@ -49,7 +49,7 @@
           steps:
             - material: Glass
               amount: 2
-              doAfter: 0.5
+              doAfter: 1
           completed:
             - !type:SnapToGrid
         - to: solartracker
@@ -83,7 +83,7 @@
               anchored: true
           steps:
             - tool: Prying
-              doAfter: 0.5
+              doAfter: 1
 
     - node: solarpaneluranium
       entity: SolarPanelUranium
@@ -100,7 +100,7 @@
               anchored: true
           steps:
             - tool: Prying
-              doAfter: 0.5
+              doAfter: 1
 
     - node: solarpanel
       entity: SolarPanel
@@ -117,7 +117,7 @@
               anchored: true
           steps:
             - tool: Prying
-              doAfter: 0.5
+              doAfter: 1
 
     - node: solarpanel_broken
       entity: SolarPanelBroken
@@ -134,7 +134,7 @@
               anchored: true
           steps:
             - tool: Prying
-              doAfter: 0.5
+              doAfter: 1
 
     - node: solarpanelplasma_broken
       entity: SolarPanelPlasmaBroken
@@ -151,7 +151,7 @@
           anchored: true
         steps:
         - tool: Prying
-          doAfter: 0.5
+          doAfter: 1
 
     - node: solarpaneluranium_broken
       entity: SolarPanelUraniumBroken
@@ -168,7 +168,7 @@
           anchored: true
         steps:
         - tool: Prying
-          doAfter: 0.5
+          doAfter: 1
 
     - node: solartracker
       entity: SolarTracker

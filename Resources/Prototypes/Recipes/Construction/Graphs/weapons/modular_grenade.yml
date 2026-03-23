@@ -19,7 +19,7 @@
     - to: wiredCase
       steps:
       - material: Cable
-        doAfter: 0.5
+        doAfter: 1
     - to: start
       completed:
       - !type:SpawnPrototype
@@ -40,7 +40,7 @@
     - to: emptyCase
       steps:
       - tool: Cutting
-        doAfter: 0.5
+        doAfter: 1
         completed:
         - !type:SpawnPrototype
           prototype: CableApcStack1
@@ -49,7 +49,7 @@
       - component: PayloadTrigger
         store: payloadTrigger
         name: Trigger
-        doAfter: 0.5
+        doAfter: 1
 
   - node: caseWithTrigger
     actions:
@@ -60,7 +60,7 @@
     - to: wiredCase
       steps:
       - tool: Prying
-        doAfter: 0.5
+        doAfter: 1
         completed:
         - !type:EmptyContainer
           container: payloadTrigger
@@ -69,7 +69,7 @@
       - tag: Payload
         store: payload
         name: Payload
-        doAfter: 0.5
+        doAfter: 1
 
   - node: grenade
     actions:
@@ -82,7 +82,7 @@
     - to: caseWithTrigger
       steps:
       - tool: Prying
-        doAfter: 0.5
+        doAfter: 1
         completed:
         - !type:EmptyContainer
           container: payload

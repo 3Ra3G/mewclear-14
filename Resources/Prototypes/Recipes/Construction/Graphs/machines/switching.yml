@@ -41,7 +41,7 @@
           steps:
             - material: Steel
               amount: 1
-              doAfter: 2.0
+              doAfter: 2
             - material: Cable
               amount: 1
     - node: LightSwitchNode
@@ -50,7 +50,7 @@
         - to: start
           steps:
             - tool: Screwing
-              doAfter: 2.0
+              doAfter: 2
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
@@ -70,7 +70,7 @@
           steps:
             - material: Steel
               amount: 1
-              doAfter: 2.0
+              doAfter: 2
             - material: Cable
               amount: 1
     - node: SignalSwitchNode
@@ -79,7 +79,7 @@
         - to: start
           steps:
             - tool: Screwing
-              doAfter: 2.0
+              doAfter: 2
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
@@ -99,7 +99,7 @@
           steps:
             - material: Steel
               amount: 1
-              doAfter: 2.0
+              doAfter: 2
             - material: Cable
               amount: 1
     - node: SignalButtonNode
@@ -108,7 +108,7 @@
         - to: start
           steps:
             - tool: Screwing
-              doAfter: 2.0
+              doAfter: 2
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
@@ -128,7 +128,7 @@
           steps:
             - material: Steel
               amount: 1
-              doAfter: 2.0
+              doAfter: 2
             - material: Cable
               amount: 1
     - node: LightSwitchDirectionalNode
@@ -137,7 +137,7 @@
         - to: start
           steps:
             - tool: Screwing
-              doAfter: 2.0
+              doAfter: 2
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
@@ -157,7 +157,7 @@
           steps:
             - material: Steel
               amount: 1
-              doAfter: 2.0
+              doAfter: 2
             - material: Cable
               amount: 1
     - node: SignalSwitchDirectionalNode
@@ -166,7 +166,7 @@
         - to: start
           steps:
             - tool: Screwing
-              doAfter: 2.0
+              doAfter: 2
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
@@ -186,7 +186,7 @@
           steps:
             - material: Steel
               amount: 1
-              doAfter: 2.0
+              doAfter: 2
             - material: Cable
               amount: 1
     - node: SignalButtonDirectionalNode
@@ -195,7 +195,7 @@
         - to: start
           steps:
             - tool: Screwing
-              doAfter: 2.0
+              doAfter: 2
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1

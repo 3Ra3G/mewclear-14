@@ -18,7 +18,7 @@
               name: mainboard
               icon: {sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi, state: frame}
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
         - to: start
           completed:
             - !type:GivePrototype
@@ -41,7 +41,7 @@
       - to: apcFrame
         steps:
         - tool: Prying
-          doAfter: 0.5
+          doAfter: 1
         completed:
         - !type:GivePrototype
           prototype: N14JunkComponentMainboard
@@ -60,4 +60,4 @@
               open: true
           steps:
             - tool: Cutting
-              doAfter: 0.5
+              doAfter: 1

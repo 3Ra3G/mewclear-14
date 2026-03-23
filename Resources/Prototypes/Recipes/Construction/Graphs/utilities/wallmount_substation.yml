@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: WallmountSubstation
   start: start
   graph:
@@ -26,13 +26,13 @@
         steps:
         - material: Cable
           amount: 5
-          doAfter: 0.5
+          doAfter: 1
         - material: CableMV
           amount: 5
-          doAfter: 0.5
+          doAfter: 1
         - material: CableHV
           amount: 5
-          doAfter: 0.5
+          doAfter: 1
         - tool: Screwing
           doAfter: 2
 
@@ -47,7 +47,7 @@
           icon:
             sprite: "Objects/Misc/module.rsi"
             state: "charger_APC"
-          doAfter: 0.5
+          doAfter: 1
         - anyTags:
             - PowerCell
             - PowerCellSmall
@@ -56,14 +56,14 @@
           icon:
             sprite: "Objects/Power/power_cells.rsi"
             state: "medium"
-          doAfter: 0.5
+          doAfter: 1
         - tag: CapacitorStockPart
           name: a capacitor
           store: capacitor
           icon:
             sprite: "Objects/Misc/stock_parts.rsi"
             state: "capacitor"
-          doAfter: 0.5
+          doAfter: 1
       - to: frame
         completed:
         - !type:GivePrototype

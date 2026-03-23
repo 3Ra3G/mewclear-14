@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: ParticleAcceleratorControlBox
   start: start
   graph:
@@ -12,7 +12,7 @@
             - !type:EntityAnchored {}
           steps:
             - material: Cable
-              doAfter: 0.5
+              doAfter: 1
 
     - node: wired
       entity: ParticleAcceleratorControlBoxUnfinished
@@ -26,7 +26,7 @@
             - !type:SnapToGrid {}
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
         - to: start
           conditions:
             - !type:EntityAnchored {}
@@ -35,7 +35,7 @@
               prototype: CableApcStack1
           steps:
             - tool: Cutting
-              doAfter: 0.5
+              doAfter: 1
 
     - node: completed
       entity: ParticleAcceleratorControlBox
@@ -45,7 +45,7 @@
             - !type:EntityAnchored { }
           steps:
             - tool: Prying
-              doAfter: 0.5
+              doAfter: 1
 
 
 - type: constructionGraph
@@ -62,7 +62,7 @@
             - !type:EntityAnchored {}
           steps:
             - material: Cable
-              doAfter: 0.5
+              doAfter: 1
 
     - node: wired
       entity: ParticleAcceleratorPowerBoxUnfinished
@@ -76,7 +76,7 @@
             - !type:SnapToGrid {}
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
         - to: start
           conditions:
             - !type:EntityAnchored {}
@@ -85,7 +85,7 @@
               prototype: CableApcStack1
           steps:
             - tool: Cutting
-              doAfter: 0.5
+              doAfter: 1
 
     - node: completed
       entity: ParticleAcceleratorPowerBox
@@ -95,7 +95,7 @@
             - !type:EntityAnchored { }
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
 
 
 - type: constructionGraph
@@ -112,7 +112,7 @@
             - !type:EntityAnchored {}
           steps:
             - material: Cable
-              doAfter: 0.5
+              doAfter: 1
 
     - node: wired
       entity: ParticleAcceleratorFuelChamberUnfinished
@@ -126,7 +126,7 @@
             - !type:SnapToGrid {}
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
         - to: start
           conditions:
             - !type:EntityAnchored {}
@@ -135,7 +135,7 @@
               prototype: CableApcStack1
           steps:
             - tool: Cutting
-              doAfter: 0.5
+              doAfter: 1
 
     - node: completed
       entity: ParticleAcceleratorFuelChamber
@@ -145,7 +145,7 @@
             - !type:EntityAnchored { }
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
 
 - type: constructionGraph
   id: ParticleAcceleratorEndCap
@@ -161,7 +161,7 @@
             - !type:EntityAnchored {}
           steps:
             - material: Cable
-              doAfter: 0.5
+              doAfter: 1
 
     - node: wired
       entity: ParticleAcceleratorEndCapUnfinished
@@ -175,7 +175,7 @@
             - !type:SnapToGrid {}
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
         - to: start
           conditions:
             - !type:EntityAnchored {}
@@ -184,7 +184,7 @@
               prototype: CableApcStack1
           steps:
             - tool: Cutting
-              doAfter: 0.5
+              doAfter: 1
 
     - node: completed
       entity: ParticleAcceleratorEndCap
@@ -194,7 +194,7 @@
             - !type:EntityAnchored { }
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
 
 - type: constructionGraph
   id: ParticleAcceleratorEmitterPort
@@ -210,7 +210,7 @@
             - !type:EntityAnchored {}
           steps:
             - material: Cable
-              doAfter: 0.5
+              doAfter: 1
 
     - node: wired
       entity: ParticleAcceleratorEmitterPortUnfinished
@@ -224,7 +224,7 @@
             - !type:SnapToGrid {}
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
         - to: start
           conditions:
             - !type:EntityAnchored {}
@@ -233,7 +233,7 @@
               prototype: CableApcStack1
           steps:
             - tool: Cutting
-              doAfter: 0.5
+              doAfter: 1
 
     - node: completed
       entity: ParticleAcceleratorEmitterPort
@@ -243,7 +243,7 @@
             - !type:EntityAnchored { }
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
 
 - type: constructionGraph
   id: ParticleAcceleratorEmitterFore
@@ -259,7 +259,7 @@
             - !type:EntityAnchored {}
           steps:
             - material: Cable
-              doAfter: 0.5
+              doAfter: 1
 
     - node: wired
       entity: ParticleAcceleratorEmitterForeUnfinished
@@ -273,7 +273,7 @@
             - !type:SnapToGrid {}
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
         - to: start
           conditions:
             - !type:EntityAnchored {}
@@ -282,7 +282,7 @@
               prototype: CableApcStack1
           steps:
             - tool: Cutting
-              doAfter: 0.5
+              doAfter: 1
 
     - node: completed
       entity: ParticleAcceleratorEmitterFore
@@ -292,7 +292,7 @@
             - !type:EntityAnchored { }
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
 
 - type: constructionGraph
   id: ParticleAcceleratorEmitterStarboard
@@ -308,7 +308,7 @@
             - !type:EntityAnchored {}
           steps:
             - material: Cable
-              doAfter: 0.5
+              doAfter: 1
 
     - node: wired
       entity: ParticleAcceleratorEmitterStarboardUnfinished
@@ -322,7 +322,7 @@
             - !type:SnapToGrid {}
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
         - to: start
           conditions:
             - !type:EntityAnchored {}
@@ -331,7 +331,7 @@
               prototype: CableApcStack1
           steps:
             - tool: Cutting
-              doAfter: 0.5
+              doAfter: 1
 
     - node: completed
       entity: ParticleAcceleratorEmitterStarboard
@@ -341,4 +341,4 @@
             - !type:EntityAnchored { }
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1

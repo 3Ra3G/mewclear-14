@@ -241,7 +241,7 @@
 - type: latheRecipe
   id: MaterialSheetMeat
   result: MaterialSheetMeat1
-  completetime: 6.4
+  completetime: 7
   materials:
     Meaterial: 200
 

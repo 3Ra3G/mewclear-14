@@ -4,9 +4,9 @@
   minTemp: 347
   reactants:
     UncookedAnimalProteins:
-      amount: 0.5
+      amount: 1
   products:
-    Protein: 0.5
+    Protein: 1
 
 - type: reaction
   id: EggCooking
@@ -14,9 +14,9 @@
   minTemp: 344
   reactants:
     Egg:
-      amount: 0.5
+      amount: 1
   products:
-    EggCooked: 0.5
+    EggCooked: 1
 
 - type: reaction
   id: SapBoiling
@@ -24,12 +24,12 @@
   minTemp: 377
   reactants:
     Sap:
-      amount: 1.2
+      amount: 2
   effects:
   - !type:CreateGas
     gas: WaterVapor
   products:
-    Syrup: 0.1 #12:1 sap to syruop
+    Syrup: 1 #12:1 sap to syruop
 
 # Holy - TODO: make it so only the chaplain can use the bible to start these reactions, not anyone with a bible
 

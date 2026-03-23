@@ -43,7 +43,7 @@
   id: N14TrashBag
   result: TrashBag
   category: N14Cleaning
-  completetime: 1.2
+  completetime: 2
   materials:
     Plastic: 100
 
@@ -51,7 +51,7 @@
   id: N14LightReplacer
   result: LightReplacerEmpty
   category: N14Misc
-  completetime: 2.4
+  completetime: 3
   materials:
     Steel: 100
     Glass: 500

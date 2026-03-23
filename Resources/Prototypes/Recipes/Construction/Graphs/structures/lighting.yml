@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: LightFixture
   start: start
   graph:
@@ -8,22 +8,22 @@
           steps:
             - material: Steel
               amount: 1
-              doAfter: 2.0
+              doAfter: 2
         - to: tubeLight
           steps:
             - material: Steel
               amount: 2
-              doAfter: 2.0
+              doAfter: 2
         - to: groundLight
           steps:
             - material: Steel
               amount: 5
-              doAfter: 2.0
+              doAfter: 2
         - to: strobeLight
           steps:
             - material: Steel
               amount: 1
-              doAfter: 2.0
+              doAfter: 2
     - node: tubeLight
       entity: PoweredlightEmpty
       edges:
@@ -33,7 +33,7 @@
               container: "light_bulb"
           steps:
             - tool: Screwing
-              doAfter: 2.0
+              doAfter: 2
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
@@ -48,7 +48,7 @@
               container: "light_bulb"
           steps:
             - tool: Screwing
-              doAfter: 2.0
+              doAfter: 2
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
@@ -63,7 +63,7 @@
               container: "light_bulb"
           steps:
             - tool: Screwing
-              doAfter: 4.0
+              doAfter: 4
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1
@@ -78,7 +78,7 @@
               container: "light_bulb"
           steps:
             - tool: Screwing
-              doAfter: 2.0
+              doAfter: 2
           completed:
             - !type:SpawnPrototype
               prototype: SheetSteel1

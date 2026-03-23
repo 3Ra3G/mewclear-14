@@ -62,7 +62,7 @@
 
 - type: reaction
   id: ArsonistsBrew
-  minTemp: 373.15
+  minTemp: 374
   reactants:
     Thermite:
       amount: 1

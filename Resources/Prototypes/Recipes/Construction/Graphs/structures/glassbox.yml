@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: GlassBox
   start: start
   graph:
@@ -24,7 +24,7 @@
           steps:
             - material: Cable
               amount: 2
-              doAfter: 0.5
+              doAfter: 1
 
         - to: start
           steps:
@@ -46,14 +46,14 @@
               icon:
                 sprite: Objects/Devices/signaltrigger.rsi
                 state: signaltrigger
-              doAfter: 0.5
+              doAfter: 1
 
         - to: boxMissingWires
           conditions:
             - !type:EntityAnchored
           steps:
             - tool: Cutting
-              doAfter: 0.25
+              doAfter: 1
           completed:
             - !type:SpawnPrototype
               prototype: CableApcStack1
@@ -66,14 +66,14 @@
             - !type:EntityAnchored
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
 
         - to: boxMissingTrigger
           conditions:
             - !type:EntityAnchored
           steps:
             - tool: Prying
-              doAfter: 0.5
+              doAfter: 1
           completed:
             - !type:SpawnPrototype
               prototype: SignalTrigger
@@ -87,14 +87,14 @@
           steps:
             - material: ReinforcedGlass
               amount: 5
-              doAfter: 2.5
+              doAfter: 3
 
         - to: boxTriggerUnsecured
           conditions:
             - !type:EntityAnchored
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
 
     - node: boxRGlassUnsecured
       edges:
@@ -103,7 +103,7 @@
             - !type:EntityAnchored
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
 
         - to: boxMissingRGlass
           conditions:

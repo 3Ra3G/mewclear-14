@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: Firelock
   start: start
   graph:
@@ -65,7 +65,7 @@
               anchored: true
           steps:
             - tool: Cutting
-              doAfter: 1.5
+              doAfter: 2
 
     - node: frame3
       actions:
@@ -77,7 +77,7 @@
               anchored: true
           steps:
             - tool: Screwing
-              doAfter: 0.25
+              doAfter: 1
         - to: frame2
           completed:
             - !type:EmptyAllContainers
@@ -88,7 +88,7 @@
               anchored: true
           steps:
             - tool: Prying
-              doAfter: 0.25
+              doAfter: 1
 
     - node: frame4
       entity: FirelockFrame
@@ -109,7 +109,7 @@
               anchored: true
           steps:
             - tool: Welding
-              doAfter: 0.5
+              doAfter: 1
 
         - to: FirelockGlassFrame
           conditions:
@@ -126,7 +126,7 @@
               anchored: true
           steps:
             - tool: Screwing
-              doAfter: 0.75
+              doAfter: 1
 
     - node: Firelock
       entity: Firelock
@@ -137,7 +137,7 @@
               welded: true
           steps:
             - tool: Anchoring
-              doAfter: 0.25
+              doAfter: 1
 
     - node: FirelockGlassFrame
       edges:
@@ -178,4 +178,4 @@
               welded: true
           steps:
             - tool: Anchoring
-              doAfter: 0.25
+              doAfter: 1

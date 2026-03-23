@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: Computer
   start: start
   graph:
@@ -11,7 +11,7 @@
           steps:
             - material: Steel
               amount: 5
-              doAfter: 2.5
+              doAfter: 3
 
     - node: frameUnsecured
       actions:

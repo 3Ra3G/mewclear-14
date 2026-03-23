@@ -135,11 +135,11 @@
     Nitrogen:
       amount: 2
     Cryoxadone:
-      amount: 0.22
+      amount: 1
     TableSalt:
-      amount: 0.08
+      amount: 1
     Water:
-      amount: 1.5
+      amount: 2
   effects:
   - !type:CreateGas
     gas: Nitrogen

@@ -18,7 +18,7 @@
               name: circuit board
               icon: {sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi, state: board_1}
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
         - to: start
           completed:
             - !type:GivePrototype
@@ -49,7 +49,7 @@
       - to: substationFrame
         steps:
         - tool: Prying
-          doAfter: 0.5
+          doAfter: 1
         completed:
         - !type:GivePrototype
           prototype: N14JunkComponentBoard1
@@ -77,6 +77,6 @@
               open: true
           steps:
             - tool: Cutting
-              doAfter: 0.5
+              doAfter: 1
             - tool: Welding
               doAfter: 2

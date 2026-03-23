@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: N14TallMachineFrame
   start: start
   graph:
@@ -12,12 +12,12 @@
           steps:
             - material: Steel
               amount: 5
-              doAfter: 2.5
+              doAfter: 3
         - to: destroyedMachineFrame
           steps:
             - material: Steel
               amount: 5
-              doAfter: 2.5
+              doAfter: 3
 
     - node: missingWires
       entity: N14MachineFrameTall
@@ -41,17 +41,17 @@
         - to: ElectronicsRack
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
             - material: Circuitry
         - to: ServerRack
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
             - material: Circuitry
         - to: RecorderRack
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
             - material: Circuitry
 
         - to: missingWires
@@ -60,7 +60,7 @@
               prototype: CableApcStack1
           steps:
             - tool: Cutting
-              doAfter: 0.25
+              doAfter: 1
 
     - node: ElectronicsRack
       entity: N14MachineRackElectronics

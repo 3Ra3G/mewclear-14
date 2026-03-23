@@ -1,4 +1,4 @@
-﻿# New Terminal
+# New Terminal
 - type: constructionGraph
   id: TerminalNew
   start: start
@@ -13,12 +13,12 @@
           steps:
             - material: Steel
               amount: 2
-              doAfter: 2.5
+              doAfter: 3
         - to: Broken
           steps:
             - material: Steel
               amount: 2
-              doAfter: 2.5
+              doAfter: 3
 
     - node: missingWires
       entity: N14ComputerTerminalBase
@@ -42,7 +42,7 @@
         - to: Terminal
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
             - material: Circuitry
 
         - to: missingWires
@@ -51,7 +51,7 @@
               prototype: CableApcStack1
           steps:
             - tool: Cutting
-              doAfter: 0.25
+              doAfter: 1
 
     - node: Terminal
       entity: N14ComputerTerminalNew
@@ -98,12 +98,12 @@
           steps:
             - material: Steel
               amount: 2
-              doAfter: 2.5
+              doAfter: 3
         - to: Broken
           steps:
             - material: Steel
               amount: 2
-              doAfter: 2.5
+              doAfter: 3
 
     - node: missingWires
       entity: N14ComputerTerminalBase
@@ -127,7 +127,7 @@
         - to: Terminal
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
             - material: Circuitry
 
         - to: missingWires
@@ -136,7 +136,7 @@
               prototype: CableApcStack1
           steps:
             - tool: Cutting
-              doAfter: 0.25
+              doAfter: 1
 
     - node: Terminal
       entity: N14ComputerTerminal
@@ -157,7 +157,7 @@
         - to: Rigged
           steps:
             - tool: Screwing
-              doAfter: 0.5
+              doAfter: 1
             - tag: Bomb # Corvax-Change
               store: bomb
               name: explosive

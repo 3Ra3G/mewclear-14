@@ -1,6 +1,6 @@
 - type: reaction
   id: Jet
-  minTemp: 373.15 # 100 degrees Celcius.
+  minTemp: 374 # 100 degrees Celcius.
   reactants:
     Ammonia:
       amount: 1

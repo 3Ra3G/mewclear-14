@@ -325,6 +325,13 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
             return false;
 
         var leftover = -remaining;
-        return leftover <= 0 || TryChangeMaterialAmount(uid, materialId, leftover, component, utilizer);
+        if (leftover > 0 && !TryChangeMaterialAmount(uid, materialId, leftover, component, utilizer))
+        {
+            // If we cannot refund over-consumed remainder into the pool (typically capacity-limited),
+            // do not fail the entire recipe queue operation.
+            Log.Warning($"TryConsumeStoredMaterial: could not refund leftover {leftover} of {materialId} to {uid}; continuing.");
+        }
+
+        return true;
     }
 }

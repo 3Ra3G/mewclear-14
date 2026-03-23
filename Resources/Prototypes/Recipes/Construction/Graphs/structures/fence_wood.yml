@@ -8,59 +8,59 @@
           steps:
             - material: WoodPlank
               amount: 2
-              doAfter: 2.0
+              doAfter: 2
         - to: end
           steps:
             - material: WoodPlank
               amount: 2
-              doAfter: 2.0
+              doAfter: 2
         - to: corner
           steps:
             - material: WoodPlank
               amount: 2
-              doAfter: 2.0
+              doAfter: 2
         - to: tjunction
           steps:
             - material: WoodPlank
               amount: 2
-              doAfter: 2.0
+              doAfter: 2
         - to: gate
           steps:
             - material: WoodPlank
               amount: 2
-              doAfter: 2.0
+              doAfter: 2
         - to: straight_small
           steps:
             - material: WoodPlank
               amount: 2
-              doAfter: 2.0
+              doAfter: 2
         - to: end_small
           steps:
             - material: WoodPlank
               amount: 2
-              doAfter: 2.0
+              doAfter: 2
         - to: corner_small
           steps:
             - material: WoodPlank
               amount: 2
-              doAfter: 2.0
+              doAfter: 2
         - to: tjunction_small
           steps:
             - material: WoodPlank
               amount: 2
-              doAfter: 2.0
+              doAfter: 2
         - to: gate_small
           steps:
             - material: WoodPlank
               amount: 2
-              doAfter: 2.0
+              doAfter: 2
     - node: straight
       entity: FenceWoodHighStraight
       edges:
         - to: start
           steps:
             - tool: Prying
-              doAfter: 5.0
+              doAfter: 5
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
@@ -72,7 +72,7 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 2.5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
@@ -84,7 +84,7 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 5.0
+              doAfter: 5
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
@@ -96,7 +96,7 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 5.0
+              doAfter: 5
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
@@ -108,7 +108,7 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 5.0
+              doAfter: 5
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
@@ -120,7 +120,7 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 2.5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
@@ -132,7 +132,7 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 1.25
+              doAfter: 2
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
@@ -144,7 +144,7 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 2.5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
@@ -156,7 +156,7 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 2.5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
@@ -168,7 +168,7 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 2.5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1

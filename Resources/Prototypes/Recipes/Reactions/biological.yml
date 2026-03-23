@@ -8,7 +8,7 @@
       amount: 20
   products:
     Water: 11
-    Iron: 0.5
+    Iron: 1
     Sugar: 2
     CarbonDioxide: 3
     Protein: 4
@@ -35,7 +35,7 @@
       # amount: 20
   # products:
     # Water: 11
-    # Copper: 0.5
+    # Copper: 1
     # Sugar: 2
     # CarbonDioxide: 3
     # Protein: 4

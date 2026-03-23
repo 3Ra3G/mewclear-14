@@ -402,7 +402,7 @@
 
 - type: reaction
   id: Saline
-  minTemp: 308.15 # N14Changes
+  minTemp: 309 # N14Changes
   reactants:
     Water:
       amount: 4
@@ -517,7 +517,7 @@
 - type: reaction
   id: Diphenhydramine
   impact: Medium
-  minTemp: 377.59
+  minTemp: 378
   reactants:
     Diethylamine:
       amount: 1

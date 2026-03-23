@@ -8,6 +8,6 @@
       steps:
       - material: Cloth
         amount: 2
-        doAfter: 0.5
+        doAfter: 1
   - node: bandage
     entity: N14Bandage1

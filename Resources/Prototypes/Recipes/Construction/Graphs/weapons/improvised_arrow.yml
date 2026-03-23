@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: ImprovisedArrow
   start: start
   graph:
@@ -8,16 +8,16 @@
       steps:
       - material: MetalRod
         amount: 1
-        doAfter: 0.5
+        doAfter: 1
       - material: Cloth
         amount: 1
-        doAfter: 0.5
+        doAfter: 1
       - tag: GlassShard
         name: Glass Shard
         icon:
           sprite: Objects/Materials/Shards/shard.rsi
           state: shard1
-        doAfter: 0.5
+        doAfter: 1
 
   - node: ImprovisedArrow
     entity: ArrowImprovised

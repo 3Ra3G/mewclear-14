@@ -44,14 +44,14 @@
 - type: latheRecipe
   id: TrashBag
   result: TrashBag
-  completetime: 1.2
+  completetime: 2
   materials:
     Plastic: 100
 
 - type: latheRecipe
   id: LightReplacer
   result: LightReplacerEmpty
-  completetime: 2.4
+  completetime: 3
   materials:
     Steel: 100
     Glass: 500
