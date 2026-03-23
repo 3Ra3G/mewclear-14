@@ -1925,3 +1925,36 @@ Entries:
   id: 5665
   time: '2026-03-22T20:10:40.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/161
+- author: Dpellowski
+  changes:
+    - type: Add
+      message: >-
+        Added blueprint items that unlock lathe/workbench recipes when inserted
+        into the bench.
+    - type: Add
+      message: >-
+        Added faction-specific blueprint recipe packs with tiered weapon, armor,
+        and ammo progression (NCR, Legion, BoS, Town, Vault, Tribe).
+    - type: Tweak
+      message: >-
+        Updated crafting benches to support blueprint storage and to refresh
+        available recipes immediately when blueprints are inserted or removed.
+    - type: Fix
+      message: >-
+        Fixed blueprint faction permission checks to evaluate all job
+        departments, preventing valid users from being incorrectly denied.
+    - type: Add
+      message: >-
+        Crafted weapons now spawn unloaded, including internal/tube-fed firearms
+        (like lever-action carbines).
+    - type: Tweak
+      message: >-
+        Removed the faction-gating requirement from workbench/lathe blueprint
+        crafting while keeping all other recipe and material checks intact.
+    - type: Fix
+      message: >-
+        Fixed crafted guns still spawning with ammo in non-magazine ammo
+        systems.
+  id: 5666
+  time: '2026-03-23T17:49:21.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/165
