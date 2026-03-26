@@ -13,9 +13,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: Townsfolk
-      min: 36000 # 10 hours
+    #- !type:CharacterDepartmentTimeRequirement # #Misfits Change - removed Town guard timelock
+    #  department: Townsfolk
+    #  min: 36000 # 10 hours
   startingGear: TownDeputyGear
   icon: "JobIconTownDeputy" # Forge-Change
   supervisors: job-supervisors-townsfolk
