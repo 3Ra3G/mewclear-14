@@ -2115,3 +2115,12 @@ Entries:
   id: 5674
   time: '2026-03-25T22:22:29.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/188
+- author: Nope1356
+  changes:
+    - type: Tweak
+      message: >-
+        THE GREAT MELEE BUFF! All melees have gotten a moderate to significant
+        damage buff. Do not underestimate a sword now.
+  id: 5675
+  time: '2026-03-26T15:40:19.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/191
