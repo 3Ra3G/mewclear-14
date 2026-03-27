@@ -150,3 +150,187 @@
           steps:
             - tool: Welding
               doAfter: 25
+
+# #Misfits Add: Concrete wall construction graph
+- type: constructionGraph
+  id: N14ConcreteWall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: ConcreteWallLight
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: N14Concrete
+              amount: 4
+              doAfter: 3
+
+        - to: ConcreteWallDark
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: N14Concrete
+              amount: 4
+              doAfter: 3
+
+    - node: ConcreteWallLight
+      entity: N14WallConcreteLight
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialConcrete1
+              amount: 2
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 15
+
+    - node: ConcreteWallDark
+      entity: N14WallConcreteDark
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialConcrete1
+              amount: 2
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 15
+
+# #Misfits Add: Brick wall construction graph
+- type: constructionGraph
+  id: N14BrickWall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: BrickWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: N14Brick
+              amount: 6
+              doAfter: 4
+
+    - node: BrickWall
+      entity: N14WallBrick
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialBrick1
+              amount: 3
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 20
+
+# #Misfits Add: Tent construction graphs
+
+- type: constructionGraph
+  id: N14TentWall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: LeatherTentWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Leather
+              amount: 3
+              doAfter: 2
+
+        - to: ClothTentWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Thread
+              amount: 4
+              doAfter: 2
+
+        - to: LeatherTentCorner
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Leather
+              amount: 2
+              doAfter: 1
+
+        - to: ClothTentCorner
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Thread
+              amount: 3
+              doAfter: 1
+
+    - node: LeatherTentWall
+      entity: N14TentLeatherWall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialLeather1
+              amount: 2
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: ClothTentWall
+      entity: N14TentClothWall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialThread1
+              amount: 2
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: LeatherTentCorner
+      entity: N14TentLeatherCorner
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialLeather1
+              amount: 1
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 5
+
+    - node: ClothTentCorner
+      entity: N14TentClothCorner
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialThread1
+              amount: 2
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 5

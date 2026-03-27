@@ -147,6 +147,8 @@ namespace Content.Server.Administration.Systems
             SubscribeNetworkEvent<HelpTicketRequestListMessage>(OnTicketRequestList);
             // #Misfits Add — subscribe to admin audit log requests so past-round tickets can be queried
             SubscribeNetworkEvent<HelpTicketAuditRequestMessage>(OnAuditRequest);
+            // #Misfits Add — subscribe to chat history requests so admins can replay conversations
+            SubscribeNetworkEvent<HelpTicketChatRequestMessage>(OnChatHistoryRequest);
 
         	_rateLimit.Register(
                 RateLimitKey,
@@ -264,7 +266,7 @@ namespace Content.Server.Administration.Systems
             {
                 var list = _tickets.Values.ToList();
                 if (list.Count > 0)
-                    RaiseNetworkEvent(new HelpTicketListMessage(list), e.Session.Channel);
+                    RaiseNetworkEvent(new HelpTicketListMessage(list, HelpTicketType.AdminHelp), e.Session.Channel);
 
                 // #Misfits Add — replay all stored bwoink message history so the late-joining
                 // admin can read the full conversation threads in the bwoink panel.
@@ -659,13 +661,36 @@ namespace Content.Server.Administration.Systems
             }, TaskScheduler.Default);
         }
 
-        // #Misfits Add — persist individual ticket messages so complete conversation history is auditable.
-        private void LogAHelpTicketMessage(int? ticketId, string senderName, bool senderIsStaff, string messageText)
+        // #Misfits Change — also persist individual ticket messages to DB so full chat history is
+        // auditable across rounds from the Audit Log window (not just the current round).
+        private void LogAHelpTicketMessage(int? ticketId, NetUserId? playerId, HelpTicketType ticketType,
+            string senderName, bool senderIsStaff, string messageText)
         {
             var ticketText = ticketId.HasValue ? $"#{ticketId.Value}" : "<none>";
             var direction = senderIsStaff ? "staff->player" : "player->staff";
             _adminLog.Add(LogType.AdminMessage, LogImpact.Low,
                 $"AHELP message ticket={ticketText} direction={direction} sender={senderName}: {messageText}");
+
+            // Persist to DB only when we have enough context to make it useful.
+            if (ticketId.HasValue && playerId.HasValue)
+            {
+                var record = new HelpTicketMessage
+                {
+                    TicketId = ticketId.Value,
+                    TicketType = (int) ticketType,
+                    PlayerId = playerId.Value.UserId,
+                    SenderName = senderName,
+                    SenderIsStaff = senderIsStaff,
+                    MessageText = messageText,
+                    SentAt = DateTime.UtcNow,
+                };
+                var task = _dbManager.AddHelpTicketMessageAsync(record);
+                task.ContinueWith(t =>
+                {
+                    if (t.IsFaulted)
+                        Log.Error($"[HelpTicket] Failed to persist chat message for ticket #{ticketId}: {t.Exception}");
+                }, TaskScheduler.Default);
+            }
         }
 
         // #Misfits Add — admin requests full ticket list (e.g. on connect or UI open)
@@ -678,7 +703,7 @@ namespace Content.Server.Administration.Systems
                 return;
 
             var list = _tickets.Values.ToList();
-            RaiseNetworkEvent(new HelpTicketListMessage(list), args.SenderSession.Channel);
+            RaiseNetworkEvent(new HelpTicketListMessage(list, HelpTicketType.AdminHelp), args.SenderSession.Channel);
         }
 
         // #Misfits Add — admin requests persistent audit log from DB (cross-round, paginated)
@@ -705,6 +730,27 @@ namespace Content.Server.Administration.Systems
 
             RaiseNetworkEvent(
                 new HelpTicketAuditResponseMessage { Entries = entries, TotalCount = total, Offset = msg.Offset },
+                args.SenderSession.Channel);
+        }
+
+        // #Misfits Add — admin requests full chat history for a specific ticket from DB
+        private async void OnChatHistoryRequest(HelpTicketChatRequestMessage msg, EntitySessionEventArgs args)
+        {
+            if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.Adminhelp) ?? false))
+                return;
+
+            var messages = await _dbManager.GetHelpTicketMessagesAsync(msg.TicketId, (int) msg.TicketType, msg.PlayerId);
+
+            var entries = messages.Select(m => new HelpTicketChatEntry
+            {
+                SenderName = m.SenderName,
+                SenderIsStaff = m.SenderIsStaff,
+                MessageText = m.MessageText,
+                SentAt = m.SentAt,
+            }).ToList();
+
+            RaiseNetworkEvent(
+                new HelpTicketChatResponseMessage { TicketId = msg.TicketId, TicketType = msg.TicketType, Messages = entries },
                 args.SenderSession.Channel);
         }
 
@@ -1189,7 +1235,7 @@ namespace Content.Server.Administration.Systems
             // #Misfits Add — persist each AHELP message for long-term moderation audits.
             var senderIsStaff = bwoinkParams.SenderAdmin?.HasFlag(AdminFlags.Adminhelp) ?? false;
             int? ticketId = _tickets.TryGetValue(msg.UserId, out var historyTicket) ? historyTicket.TicketId : null;
-            LogAHelpTicketMessage(ticketId, bwoinkParams.SenderName, senderIsStaff, bwoinkParams.Message.Text);
+            LogAHelpTicketMessage(ticketId, msg.UserId, HelpTicketType.AdminHelp, bwoinkParams.SenderName, senderIsStaff, bwoinkParams.Message.Text);
 
             var admins = GetTargetAdmins();
 

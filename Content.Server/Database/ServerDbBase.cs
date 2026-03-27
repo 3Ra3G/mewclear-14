@@ -2053,6 +2053,25 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             return (events, total);
         }
 
+        // #Misfits Add — persist / retrieve individual bwoink/mhelp chat messages
+        public async Task AddHelpTicketMessageAsync(HelpTicketMessage message)
+        {
+            await using var db = await GetDb();
+            db.DbContext.HelpTicketMessage.Add(message);
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<List<HelpTicketMessage>> GetHelpTicketMessagesAsync(
+            int ticketId, int ticketType, Guid playerId, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            return await db.DbContext.HelpTicketMessage
+                .Where(m => m.TicketId == ticketId && m.TicketType == ticketType && m.PlayerId == playerId)
+                .OrderBy(m => m.SentAt)
+                .ToListAsync(cancel);
+        }
+
         #endregion
 
         protected void NotificationReceived(DatabaseNotification notification) =>

@@ -174,3 +174,140 @@
     state: full
   conditions:
     - !type:TileNotBlocked
+
+# #Misfits Add: Concrete and brick wall construction recipes
+
+- type: construction
+  name: concrete wall (light)
+  id: N14WallConcreteLight
+  graph: N14ConcreteWall
+  startNode: start
+  targetNode: ConcreteWallLight
+  category: construction-category-structures
+  description: A solid concrete wall. Sturdy and reliable.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/concrete.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: concrete wall (dark)
+  id: N14WallConcreteDark
+  graph: N14ConcreteWall
+  startNode: start
+  targetNode: ConcreteWallDark
+  category: construction-category-structures
+  description: A solid concrete wall with dark finish. Sturdy and reliable.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/concretedark.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: brick wall
+  id: N14WallBrick
+  graph: N14BrickWall
+  startNode: start
+  targetNode: BrickWall
+  category: construction-category-structures
+  description: A traditional brick wall. Classic and durable.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/brick.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+# #Misfits Add: Tent construction recipes
+
+- type: construction
+  name: leather tent wall
+  id: N14TentLeatherWall
+  graph: N14TentWall
+  startNode: start
+  targetNode: LeatherTentWall
+  category: construction-category-structures
+  description: A flexible leather tent wall. Good for temporary shelter.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi
+    state: leather_wall
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: cloth tent wall
+  id: N14TentClothWall
+  graph: N14TentWall
+  startNode: start
+  targetNode: ClothTentWall
+  category: construction-category-structures
+  description: A lightweight cloth tent wall. Portable and easy to set up.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi
+    state: cloth_wall
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: leather tent corner
+  id: N14TentLeatherCorner
+  graph: N14TentWall
+  startNode: start
+  targetNode: LeatherTentCorner
+  category: construction-category-structures
+  description: A leather tent corner piece for structural support.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi
+    state: leather_corner
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: cloth tent corner
+  id: N14TentClothCorner
+  graph: N14TentWall
+  startNode: start
+  targetNode: ClothTentCorner
+  category: construction-category-structures
+  description: A cloth tent corner piece for structural support.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi
+    state: cloth_corner
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked

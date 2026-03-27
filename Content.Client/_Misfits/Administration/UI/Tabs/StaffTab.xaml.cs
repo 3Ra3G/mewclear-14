@@ -57,6 +57,7 @@ public sealed partial class StaffTab : Control
             }
 
             _auditLogWindow = new TicketAuditLogWindow();
+            _auditLogWindow.OnClose += () => _auditLogWindow = null;
             _auditLogWindow.OpenCentered();
         };
 

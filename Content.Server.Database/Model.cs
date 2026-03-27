@@ -54,6 +54,7 @@ namespace Content.Server.Database
         public DbSet<PersistentDecal> PersistentDecal { get; set; } = default!; // #Misfits Change - Persistent decal spawn
         public DbSet<AtmPlacement> AtmPlacement { get; set; } = default!; // #Misfits Change - Persistent ATM placements
         public DbSet<HelpTicketEvent> HelpTicketEvent { get; set; } = default!; // #Misfits Change - Persistent help ticket audit log
+        public DbSet<HelpTicketMessage> HelpTicketMessage { get; set; } = default!; // #Misfits Add - Persistent individual bwoink/mhelp chat messages for audit replay
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -1192,6 +1193,43 @@ namespace Content.Server.Database
         /// <summary>UTC timestamp when this event occurred.</summary>
         [Required]
         public DateTime OccurredAt { get; set; }
+    }
+
+    // #Misfits Add — One row per individual bwoink/mhelp chat message.
+    // Lets admins replay the full conversation for any past ticket via the Audit Log window.
+    [Table("help_ticket_message")]
+    public sealed class HelpTicketMessage
+    {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        /// <summary>The player who owns the ticket (for joining with HelpTicketEvent).</summary>
+        [Required]
+        public Guid PlayerId { get; set; }
+
+        /// <summary>In-round sequential ticket number.</summary>
+        [Required]
+        public int TicketId { get; set; }
+
+        /// <summary>HelpTicketType stored as int (AdminHelp=0, MentorHelp=1).</summary>
+        [Required]
+        public int TicketType { get; set; }
+
+        /// <summary>Display name of the sender at the time of sending.</summary>
+        [Required]
+        public string SenderName { get; set; } = null!;
+
+        /// <summary>True when the sender is staff (admin/mentor), false when the player.</summary>
+        [Required]
+        public bool SenderIsStaff { get; set; }
+
+        /// <summary>Raw (unformatted) message text.</summary>
+        [Required]
+        public string MessageText { get; set; } = null!;
+
+        /// <summary>UTC timestamp when the message was sent.</summary>
+        [Required]
+        public DateTime SentAt { get; set; }
     }
 
     [Table("uploaded_resource_log")]

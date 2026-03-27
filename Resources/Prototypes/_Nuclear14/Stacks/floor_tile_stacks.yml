@@ -4,6 +4,8 @@
   id: FloorTileMetalBlue
   name: metal floor blue
   spawn: FloorTileItemMetalBlue
+  maxCount: 30
+  itemSize: 5
   
 - type: stack
   id: FloorTileMetalBlueSolid
@@ -101,16 +103,46 @@
   id: FloorTileWoodOak
   name: wood floor
   spawn: FloorTileItemWoodOak
+  maxCount: 30
+  itemSize: 5
+
+# #Misfits Add: Plating-compatible stack for base SS14 areas
+- type: stack
+  id: FloorTileWoodOakCompat
+  name: wood floor (station compatible)
+  spawn: FloorTileItemWoodOakCompat
+  maxCount: 30
+  itemSize: 5
   
 - type: stack
   id: FloorTileWoodHouse
   name: wood floor
   spawn: FloorTileItemWoodHouse
-  
+  maxCount: 30
+  itemSize: 5
+
+# #Misfits Add: Plating-compatible stack for base SS14 areas
+- type: stack
+  id: FloorTileWoodHouseCompat
+  name: wood floor (station compatible)
+  spawn: FloorTileItemWoodHouseCompat
+  maxCount: 30
+  itemSize: 5
+
 - type: stack
   id: FloorTileWoodMaple
   name: wood floor
   spawn: FloorTileItemWoodMaple
+  maxCount: 30
+  itemSize: 5
+
+# #Misfits Add: Plating-compatible stack for base SS14 areas
+- type: stack
+  id: FloorTileWoodMapleCompat
+  name: wood floor (station compatible)
+  spawn: FloorTileItemWoodMapleCompat
+  maxCount: 30
+  itemSize: 5
   
 - type: stack
   id: FloorTileCarpetRed

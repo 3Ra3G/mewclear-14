@@ -146,7 +146,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         {
             var list = _mhelpTickets.Values.ToList();
             if (list.Count > 0)
-                RaiseNetworkEvent(new HelpTicketListMessage(list), e.Session.Channel);
+                RaiseNetworkEvent(new HelpTicketListMessage(list, HelpTicketType.MentorHelp), e.Session.Channel);
         }
 
         if (e.NewStatus != SessionStatus.Connected && e.NewStatus != SessionStatus.Disconnected)
@@ -481,7 +481,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
             return;
 
         var list = _mhelpTickets.Values.ToList();
-        RaiseNetworkEvent(new HelpTicketListMessage(list), args.SenderSession.Channel);
+        RaiseNetworkEvent(new HelpTicketListMessage(list, HelpTicketType.MentorHelp), args.SenderSession.Channel);
     }
 
     private void OnFooterIconChanged(string url) => _footerIconUrl = url;

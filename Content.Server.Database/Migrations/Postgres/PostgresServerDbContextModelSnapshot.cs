@@ -1756,6 +1756,58 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("help_ticket_event", (string)null);
                 });
 
+            // #Misfits Add — Individual bwoink/mhelp chat messages (persistent, cross-round).
+            modelBuilder.Entity("Content.Server.Database.HelpTicketMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("help_ticket_message_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("MessageText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("message_text");
+
+                    b.Property<Guid>("PlayerId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_id");
+
+                    b.Property<bool>("SenderIsStaff")
+                        .HasColumnType("boolean")
+                        .HasColumnName("sender_is_staff");
+
+                    b.Property<string>("SenderName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("sender_name");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("sent_at");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("integer")
+                        .HasColumnName("ticket_id");
+
+                    b.Property<int>("TicketType")
+                        .HasColumnType("integer")
+                        .HasColumnName("ticket_type");
+
+                    b.HasKey("Id")
+                        .HasName("PK_help_ticket_message");
+
+                    b.HasIndex("PlayerId")
+                        .HasDatabaseName("IX_help_ticket_message_player_id");
+
+                    b.HasIndex("TicketId", "TicketType")
+                        .HasDatabaseName("IX_help_ticket_message_ticket_id_ticket_type");
+
+                    b.ToTable("help_ticket_message", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
                     b.HasOne("Content.Server.Database.AdminRank", "AdminRank")

@@ -305,6 +305,7 @@
 
 # Wood Tiles
 
+# #Misfits Add: Enhanced wood floor tile that works on both Plating and FloorWasteland
 - type: entity
   name: oak wood floor
   parent: FloorTileItemBase
@@ -323,6 +324,23 @@
 #  - type: Construction
 #    graph: TileWood
 #    node: woodtileoak
+
+# #Misfits Add: Plating-compatible version for base SS14 areas
+- type: entity
+  name: oak wood floor (station compatible)
+  parent: FloorTileItemBase
+  id: FloorTileItemWoodOakCompat
+  components:
+  - type: Sprite
+    state: wood
+  - type: Item
+    heldPrefix: wood
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWoodOak
+  - type: Stack
+    stackType: FloorTileWoodOakCompat
 
 - type: entity
   name: house wood floor
@@ -343,6 +361,23 @@
 #    graph: TileWood
 #    node: woodtiledark
 
+# #Misfits Add: Plating-compatible version for base SS14 areas
+- type: entity
+  name: house wood floor (station compatible)
+  parent: FloorTileItemBase
+  id: FloorTileItemWoodHouseCompat
+  components:
+  - type: Sprite
+    state: wood
+  - type: Item
+    heldPrefix: wood
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWoodHouse
+  - type: Stack
+    stackType: FloorTileWoodHouseCompat
+
 - type: entity
   name: maple floor
   parent: FloorTileItemBase
@@ -361,6 +396,23 @@
 #  - type: Construction
 #    graph: TileWood
 #    node: woodtilelight
+
+# #Misfits Add: Plating-compatible version for base SS14 areas
+- type: entity
+  name: maple floor (station compatible)
+  parent: FloorTileItemBase
+  id: FloorTileItemWoodMapleCompat
+  components:
+  - type: Sprite
+    state: wood
+  - type: Item
+    heldPrefix: wood
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWoodMaple
+  - type: Stack
+    stackType: FloorTileWoodMapleCompat
 
 - type: entity
   name: industrial floor

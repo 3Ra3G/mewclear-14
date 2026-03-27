@@ -27,6 +27,8 @@ namespace Content.Client.Administration.Systems
         public event Action<List<HelpTicketInfo>>? OnTicketListReceived;
         // #Misfits Add — audit log response from server DB query
         public event Action<HelpTicketAuditResponseMessage>? OnAuditLogReceived;
+        // #Misfits Add — chat history response from server DB query
+        public event Action<HelpTicketChatResponseMessage>? OnTicketChatReceived;
 
         // #Misfits Add — track known tickets to only toast on new or significant state changes
         private readonly Dictionary<int, HelpTicketStatus> _knownTickets = new();
@@ -50,6 +52,8 @@ namespace Content.Client.Administration.Systems
             SubscribeNetworkEvent<HelpTicketListMessage>(OnTicketListMsg);
             // #Misfits Add — subscribe to audit log responses from server
             SubscribeNetworkEvent<HelpTicketAuditResponseMessage>(OnAuditLogMsg);
+            // #Misfits Add — subscribe to chat history responses from server
+            SubscribeNetworkEvent<HelpTicketChatResponseMessage>(OnTicketChatMsg);
         }
 
         protected override void OnBwoinkTextMessage(BwoinkTextMessage message, EntitySessionEventArgs eventArgs)
@@ -71,6 +75,11 @@ namespace Content.Client.Administration.Systems
 
         private void OnTicketListMsg(HelpTicketListMessage msg)
         {
+            // #Misfits Fix — ignore lists from the mentor system; each list message is tagged
+            // with the type that sent it so systems don't wipe each other's ticket caches.
+            if (msg.ListType != HelpTicketType.AdminHelp)
+                return;
+
             var ahelpTickets = msg.Tickets.Where(t => t.Type == HelpTicketType.AdminHelp).ToList();
             // #Misfits Fix — replace known ticket cache from authoritative server list.
             // This prevents old round ticket IDs from persisting client-side.
@@ -91,6 +100,12 @@ namespace Content.Client.Administration.Systems
         private void OnAuditLogMsg(HelpTicketAuditResponseMessage msg)
         {
             OnAuditLogReceived?.Invoke(msg);
+        }
+
+        // #Misfits Add — relay server DB chat history response to the UI
+        private void OnTicketChatMsg(HelpTicketChatResponseMessage msg)
+        {
+            OnTicketChatReceived?.Invoke(msg);
         }
 
         // #Misfits Add — show a toast popup for notable ticket events
@@ -170,6 +185,17 @@ namespace Content.Client.Administration.Systems
                 FilterPlayerId = filterPlayerId,
                 Limit = limit,
                 Offset = offset,
+            });
+        }
+
+        // #Misfits Add — request the full chat history for a specific ticket from the server DB
+        public void RequestTicketChat(int ticketId, HelpTicketType ticketType, Guid playerId)
+        {
+            RaiseNetworkEvent(new HelpTicketChatRequestMessage
+            {
+                TicketId = ticketId,
+                TicketType = ticketType,
+                PlayerId = playerId,
             });
         }
 

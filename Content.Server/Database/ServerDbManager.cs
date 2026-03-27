@@ -401,6 +401,15 @@ namespace Content.Server.Database
         /// </summary>
         Task<(List<HelpTicketEvent> Events, int TotalCount)> GetHelpTicketEventsAsync(
             Guid? playerId, int limit, int offset, CancellationToken cancel = default);
+
+        /// <summary>Append one bwoink/mhelp chat message to the persistent log. Fire-and-forget safe.</summary>
+        Task AddHelpTicketMessageAsync(HelpTicketMessage message);
+
+        /// <summary>
+        /// Retrieve all persisted chat messages for a specific ticket, in chronological order.
+        /// </summary>
+        Task<List<HelpTicketMessage>> GetHelpTicketMessagesAsync(
+            int ticketId, int ticketType, Guid playerId, CancellationToken cancel = default);
         #endregion
     }
     /// </summary>
@@ -1218,6 +1227,20 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetHelpTicketEventsAsync(playerId, limit, offset, cancel));
+        }
+
+        // #Misfits Add — persist/retrieve individual chat messages
+        public Task AddHelpTicketMessageAsync(HelpTicketMessage message)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AddHelpTicketMessageAsync(message));
+        }
+
+        public Task<List<HelpTicketMessage>> GetHelpTicketMessagesAsync(
+            int ticketId, int ticketType, Guid playerId, CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetHelpTicketMessagesAsync(ticketId, ticketType, playerId, cancel));
         }
 
         #endregion

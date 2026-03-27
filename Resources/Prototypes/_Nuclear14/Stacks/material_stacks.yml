@@ -264,3 +264,28 @@
   spawn: N14ScrapLead1
   maxCount: 30
   itemSize: 1
+
+# #Misfits Add: Construction materials for building
+- type: stack
+  id: N14Cement
+  name: cement
+  icon: { sprite: "/Textures/_Nuclear14/Objects/Misc/materials.rsi", state: powder_brass }
+  spawn: N14MaterialCement1
+  maxCount: 30
+  itemSize: 1
+
+- type: stack
+  id: N14Concrete
+  name: concrete
+  icon: { sprite: "/Textures/_Nuclear14/Objects/Misc/materials.rsi", state: scrap_3 }
+  spawn: N14MaterialConcrete1
+  maxCount: 30
+  itemSize: 1
+
+- type: stack
+  id: N14Brick
+  name: brick
+  icon: { sprite: "/Textures/_Nuclear14/Objects/Misc/materials.rsi", state: scrap_copper }
+  spawn: N14MaterialBrick1
+  maxCount: 30
+  itemSize: 1
