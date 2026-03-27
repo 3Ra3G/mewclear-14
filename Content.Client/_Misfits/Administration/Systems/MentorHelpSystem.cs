@@ -53,6 +53,11 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
 
     private void OnTicketListMsg(HelpTicketListMessage msg)
     {
+        // #Misfits Fix — ignore lists from the admin bwoink system; each list message is tagged
+        // with the type that sent it so systems don't wipe each other's ticket caches.
+        if (msg.ListType != HelpTicketType.MentorHelp)
+            return;
+
         var mhelpTickets = msg.Tickets.Where(t => t.Type == HelpTicketType.MentorHelp).ToList();
         // #Misfits Fix — replace known ticket cache from authoritative server list.
         // This prevents old round ticket IDs from persisting client-side.

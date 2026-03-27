@@ -54,15 +54,24 @@ public sealed class HelpTicketInfo
 
 /// <summary>
 /// Server → Admin/Mentor: full list of tickets (sent on first connect or when requested).
+/// The <see cref="ListType"/> field identifies which system sent it so client-side systems
+/// don’t accidentally process each other’s list and wipe their own caches. (#Misfits Fix)
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class HelpTicketListMessage : EntityEventArgs
 {
     public List<HelpTicketInfo> Tickets { get; }
 
-    public HelpTicketListMessage(List<HelpTicketInfo> tickets)
+    /// <summary>
+    /// Indicates whether this list contains AdminHelp or MentorHelp tickets.
+    /// Client handlers filter on this field so they ignore lists from the other system.
+    /// </summary>
+    public HelpTicketType ListType { get; }
+
+    public HelpTicketListMessage(List<HelpTicketInfo> tickets, HelpTicketType listType)
     {
         Tickets = tickets;
+        ListType = listType;
     }
 }
 
@@ -227,4 +236,42 @@ public sealed class HelpTicketAuditResponseMessage : EntityEventArgs
     public int TotalCount { get; init; }
     /// <summary>Offset that was used to produce this page.</summary>
     public int Offset { get; init; }
+}
+
+// ──────────────────── Chat History ──────────────────────
+
+/// <summary>
+/// One persisted chat message entry returned from the database.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class HelpTicketChatEntry
+{
+    public string SenderName { get; init; } = string.Empty;
+    /// <summary>True when the sender is staff (admin/mentor), false when the player.</summary>
+    public bool SenderIsStaff { get; init; }
+    public string MessageText { get; init; } = string.Empty;
+    public DateTime SentAt { get; init; }
+}
+
+/// <summary>
+/// Admin → Server: request the full chat history for a specific ticket from the database.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class HelpTicketChatRequestMessage : EntityEventArgs
+{
+    public int TicketId { get; init; }
+    public HelpTicketType TicketType { get; init; }
+    /// <summary>The player (ticket owner) whose conversation to retrieve.</summary>
+    public Guid PlayerId { get; init; }
+}
+
+/// <summary>
+/// Server → Admin: chat history for a ticket returned from the database.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class HelpTicketChatResponseMessage : EntityEventArgs
+{
+    public int TicketId { get; init; }
+    public HelpTicketType TicketType { get; init; }
+    public List<HelpTicketChatEntry> Messages { get; init; } = new();
 }

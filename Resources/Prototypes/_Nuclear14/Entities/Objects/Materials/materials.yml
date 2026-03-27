@@ -697,3 +697,107 @@
   components:
   - type: Stack
     count: 1
+
+# #Misfits Add: Construction materials for concrete and brick building
+#MARK: Cement
+- type: entity
+  parent: N14MaterialBasePowder
+  id: N14MaterialCement
+  name: cement
+  description: Cement powder used for making concrete.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Stack
+    stackType: N14Cement
+    baseLayer: powder_lead
+  - type: PhysicalComposition
+    materialComposition:
+      Cement: 100
+  - type: Sprite
+    sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi
+    state: powder_brass
+    layers:
+    - state: powder_brass
+      map: ["base"]
+  - type: Item
+    size: Small
+  - type: SolutionContainerManager
+    solutions:
+      powder:
+        maxVol: 5
+        reagents:
+        - ReagentId: Cement
+          Quantity: 5
+  - type: Tag
+    tags:
+    - Cement
+
+- type: entity
+  parent: N14MaterialCement
+  id: N14MaterialCement1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+#MARK: Concrete
+- type: entity
+  parent: N14MaterialBase
+  id: N14MaterialConcrete
+  name: concrete
+  description: Solid concrete mix ready for construction.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Stack
+    stackType: N14Concrete
+  - type: PhysicalComposition
+    materialComposition:
+      Concrete: 100
+  - type: Sprite
+    sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi
+    state: scrap_3
+    color: "#b0b0b0"
+  - type: Item
+    size: Small
+  - type: Tag
+    tags:
+    - Concrete
+
+- type: entity
+  parent: N14MaterialConcrete
+  id: N14MaterialConcrete1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+#MARK: Brick
+- type: entity
+  parent: N14MaterialBase
+  id: N14MaterialBrick
+  name: brick
+  description: Clay brick for construction.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Stack
+    stackType: N14Brick
+  - type: PhysicalComposition
+    materialComposition:
+      Brick: 100
+  - type: Sprite
+    sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi
+    state: scrap_copper
+    color: "#8b4513"
+  - type: Item
+    size: Small
+  - type: Tag
+    tags:
+    - Brick
+
+- type: entity
+  parent: N14MaterialBrick
+  id: N14MaterialBrick1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1

@@ -128,7 +128,26 @@ public sealed partial class TicketAuditLogWindow : DefaultWindow
                 row.AddChild(new Label { Text = $"#{entry.TicketId}",             MinWidth = 50,  ClipText = true });
                 row.AddChild(new Label { Text = eventStr,                         MinWidth = 110, ClipText = true });
                 row.AddChild(new Label { Text = entry.PlayerName,                 MinWidth = 170, ClipText = true });
-                row.AddChild(new Label { Text = entry.AdminName ?? "-", HorizontalExpand = true, ClipText = true });
+                row.AddChild(new Label { Text = entry.AdminName ?? "-",           MinWidth = 150, ClipText = true });
+
+                // "View Chat" button — opens the persisted conversation for this ticket
+                var capturedEntry = entry;
+                var chatBtn = new Button
+                {
+                    Text = Loc.GetString("ticket-audit-log-view-chat"),
+                    HorizontalExpand = true,
+                    StyleClasses = { "ButtonSmall" },
+                };
+                chatBtn.OnPressed += _ =>
+                {
+                    var win = new TicketChatHistoryWindow(
+                        capturedEntry.TicketId,
+                        capturedEntry.TicketType,
+                        capturedEntry.PlayerId,
+                        capturedEntry.PlayerName);
+                    win.OpenCentered();
+                };
+                row.AddChild(chatBtn);
 
                 EventList.AddChild(row);
             }

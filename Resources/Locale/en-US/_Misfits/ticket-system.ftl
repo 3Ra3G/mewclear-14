@@ -50,6 +50,13 @@ ticket-audit-log-header-id = Ticket
 ticket-audit-log-header-event = Event
 ticket-audit-log-header-player = Player
 ticket-audit-log-header-admin = Admin
+ticket-audit-log-header-chat = Chat
+ticket-audit-log-view-chat = View Chat
+
+# Chat history window
+ticket-chat-history-window-title = Ticket #{$id} — {$player}
+ticket-chat-history-loading = Loading chat history…
+ticket-chat-history-empty = No messages found for this ticket.
 
 # Audit event type display names
 ticket-audit-event-created = Created

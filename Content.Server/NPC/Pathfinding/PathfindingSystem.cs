@@ -8,10 +8,12 @@ using Content.Server.Destructible;
 using Content.Server.NPC.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Administration;
+using Content.Shared.CCVar; // #Misfits Add
 using Content.Shared.Climbing.Components;
 using Content.Shared.Doors.Components;
 using Content.Shared.NPC;
 using Robust.Server.Player;
+using Robust.Shared.Configuration; // #Misfits Add
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -41,6 +43,7 @@ namespace Content.Server.NPC.Pathfinding
          */
 
         [Dependency] private readonly IAdminManager _adminManager = default!;
+        [Dependency] private readonly IConfigurationManager _configManager = default!; // #Misfits Add
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly IParallelManager _parallel = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -58,7 +61,8 @@ namespace Content.Server.NPC.Pathfinding
         [ViewVariables]
         private readonly List<PathRequest> _pathRequests = new(PathTickLimit);
 
-        private static readonly TimeSpan PathTime = TimeSpan.FromMilliseconds(3);
+        // #Misfits Change: Made pathfinding time configurable via CVar
+        private TimeSpan PathTime => TimeSpan.FromMilliseconds(_configManager.GetCVar(CCVars.NPCPathfindingTimeMs));
 
         /// <summary>
         /// How many paths we can process in a single tick.

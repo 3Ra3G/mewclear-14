@@ -32,7 +32,8 @@
             <Label Text="{Loc 'ticket-audit-log-header-id'}"     MinWidth="50" />
             <Label Text="{Loc 'ticket-audit-log-header-event'}"  MinWidth="110" />
             <Label Text="{Loc 'ticket-audit-log-header-player'}" MinWidth="170" />
-            <Label Text="{Loc 'ticket-audit-log-header-admin'}"  HorizontalExpand="True" />
+            <Label Text="{Loc 'ticket-audit-log-header-admin'}"  MinWidth="150" />
+            <Label Text="{Loc 'ticket-audit-log-header-chat'}"   HorizontalExpand="True" />
         </BoxContainer>
 
         <!-- Scrollable event list -->
