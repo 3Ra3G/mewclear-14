@@ -294,6 +294,7 @@
   unit: materials-unit-roll
   icon: { sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi, state: thread }
   color: "#d2691e"
+  price: 0.01
 
 # #Misfits Add: Construction material prototypes for the cement/concrete/brick building system.
 # PhysicalComposition on N14MaterialCement, N14MaterialConcrete, and N14MaterialBrick reference these IDs.
