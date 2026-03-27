@@ -62,12 +62,9 @@
   description: job-description-bos-initiate
   playTimeTracker: BoSInitiate
   requirements:
-    - !type:CharacterLogicOrRequirement
-      requirements:
-        - !type:CharacterSpeciesRequirement
-          species:
-            - Human
-            - Ghoul
+    - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
+      species:
+        - Human
     #- !type:CharacterOverallTimeRequirement # TEMP REMOVED
     #  min: 0
   startingGear: BoSInitiateGear

@@ -99,7 +99,7 @@
 - type: trait
   id: N14CPRTraining
   category: Mental
-  points: -4
+  points: -8 # #Misfits Tweak - raised from -4; CPR is a strong revival tool, cost should reflect that
   requirements:
     - !type:CharacterJobRequirement
       inverted: true

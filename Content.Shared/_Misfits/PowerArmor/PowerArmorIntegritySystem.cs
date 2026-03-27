@@ -3,6 +3,7 @@ using Content.Shared.Armor;
 using Content.Shared.Clothing;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Damage.Components;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
@@ -65,6 +66,11 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
         // Forward welder interactions on the wearer to the armor entity so
         // RepairableSystem can handle them (InteractUsingEvent is not inventory-relayed).
         SubscribeLocalEvent<PowerArmorWornComponent, InteractUsingEvent>(OnWearerInteractUsing, before: new[] { typeof(SharedArmorSystem) });
+
+        // A suited power armor wearer acts as an immovable wall to other mobs.
+        // Cancelling AttemptMobTargetCollideEvent prevents the mob collision system
+        // from displacing the wearer when others walk into them.
+        SubscribeLocalEvent<PowerArmorWornComponent, AttemptMobTargetCollideEvent>(OnAttemptMobTargetCollide);
     }
 
     /// <summary>
@@ -228,6 +234,16 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     }
 
     /// <summary>
+    ///     Prevents other mobs from displacing a power armor wearer via the mob
+    ///     collision system. A Paladin blocking a corridor should be an immovable
+    ///     wall — others cannot push through or around them by walking into them.
+    /// </summary>
+    private void OnAttemptMobTargetCollide(EntityUid uid, PowerArmorWornComponent comp, ref AttemptMobTargetCollideEvent args)
+    {
+        args.Cancelled = true;
+    }
+
+    /// <summary>
     ///     Fires when the armor item's own DamageableComponent changes (from
     ///     absorbing hits or being repaired). Updates the broken flag and notifies
     ///     the wearer.
@@ -244,6 +260,15 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
         if (integrity <= 0 && !wasBroken)
         {
             comp.Broken = true;
+
+            // Strip ArmorComponent so broken plating provides no coefficient reduction.
+            // Cache the modifiers so they can be restored when the suit is repaired.
+            if (TryComp<ArmorComponent>(uid, out var armorComp))
+            {
+                comp.CachedArmorModifiers = armorComp.Modifiers;
+                RemCompDeferred<ArmorComponent>(uid);
+            }
+
             Dirty(uid, comp);
 
             if (_net.IsServer)
@@ -255,8 +280,17 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
         }
         else if (integrity > 0 && wasBroken)
         {
-            // Armor was repaired above 0.
+            // Armor was repaired above 0 — restore ArmorComponent with cached modifiers.
             comp.Broken = false;
+
+            if (comp.CachedArmorModifiers != null)
+            {
+                var restored = EnsureComp<ArmorComponent>(uid);
+                restored.Modifiers = comp.CachedArmorModifiers;
+                comp.CachedArmorModifiers = null;
+                Dirty(uid, restored);
+            }
+
             Dirty(uid, comp);
 
             if (_net.IsServer)
@@ -302,6 +336,13 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
                 ("max", (int) comp.MaxIntegrity),
                 ("color", color)));
         }
+
+        // Show what absorption the integrity provides.
+        msg.PushNewline();
+        msg.AddMarkupOrThrow(Loc.GetString("power-armor-integrity-examine-absorption-header"));
+        msg.PushNewline();
+        msg.AddMarkupOrThrow(Loc.GetString("power-armor-integrity-examine-absorption-value",
+            ("value", (int) (comp.AbsorptionRatio * 100))));
 
         _examine.AddDetailedExamineVerb(args, comp, msg,
             Loc.GetString("power-armor-integrity-verb-text"),

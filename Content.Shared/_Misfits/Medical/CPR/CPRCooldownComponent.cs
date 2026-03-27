@@ -1,3 +1,5 @@
+// #Misfits Change — Commented out; only used by the Misfits CPR system which has been disabled.
+/*
 // #Misfits Add - CPR system component. Tracks cooldown state for entities performing CPR.
 using Robust.Shared.GameStates;
 
@@ -16,3 +18,4 @@ public sealed partial class CPRCooldownComponent : Component
 
     public TimeSpan ExpireTime;
 }
+*/

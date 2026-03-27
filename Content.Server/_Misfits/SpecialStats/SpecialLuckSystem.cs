@@ -27,9 +27,11 @@ public sealed class SpecialLuckSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<LuckJunkBonusComponent, ComponentShutdown>(OnLuckCompShutdown);
+        // Temporarily disabled — SPECIAL stat bonuses turned off server-wide.
+        // Restore by un-commenting the line below.
         // #Misfits Fix: subscribe on LuckJunkBonusComponent (not StorageComponent) to avoid
         // duplicate subscription conflict with SharedStorageSystem.Initialize().
-        SubscribeLocalEvent<LuckJunkBonusComponent, BoundUIOpenedEvent>(OnStorageOpened);
+        // SubscribeLocalEvent<LuckJunkBonusComponent, BoundUIOpenedEvent>(OnStorageOpened);
 
         // Clear tracking between rounds so next-round respawned piles start fresh.
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);

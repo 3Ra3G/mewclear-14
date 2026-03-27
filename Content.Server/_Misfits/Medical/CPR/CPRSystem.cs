@@ -1,9 +1,12 @@
+// #Misfits Change — Misfits left-click CPR system commented out.
+// Reverted to the upstream verb-based system (Content.Server/Medical/CPR/CPRSystem.cs).
+// Shared support files (CPRDoAfterEvent, CPRCooldownComponent) are also commented out.
+/*
 // #Misfits Add - Server-side CPR system.
 // Inspired by CPR concepts in stalker-14-EN, designed and built independently for N14.
 // Allows a player to perform CPR on a critically-injured target to stabilise them and
 // partially reverse damage, giving medics a meaningful emergency tool.
 // #Misfits Fix - extended to support CPR on dead targets (requires N14CPRTraining trait).
-using Content.Server.Atmos.EntitySystems;
 using Content.Server.Medical.CPR; // for CPRTrainingComponent (N14CPRTraining trait gate)
 using Content.Shared._Misfits.Medical.CPR;
 using Content.Shared.Damage;
@@ -22,9 +25,10 @@ namespace Content.Server._Misfits.Medical.CPR;
 /// <summary>
 /// CPR lets any humanoid (empty-handed) perform chest compressions on a critically injured player.
 /// - Performer must have empty active hand (no item) or have hands at all.
-/// - Target must be in <see cref="MobState.Critical"/> (not fully dead).
+/// - Target must be in <see cref="MobState.Critical"/> or <see cref="MobState.Dead"/>.
 /// - 8-second do-after; cancels if the performer moves or takes damage.
-/// - On success: heals 25 points of brute-group damage, giving the target a fighting chance.
+/// - On dead targets (requires N14CPRTraining): heals 40 Asphyxiation to attempt revival,
+///   matching smelling salts / defibrillator parity. No brute healing is applied.
 /// - 20-second cooldown per performer to prevent spam.
 /// </summary>
 public sealed class CPRSystem : EntitySystem
@@ -37,15 +41,10 @@ public sealed class CPRSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    // How many damage points to heal total across Brute group on CPR success.
-    private const float CPRHealAmount = 25f;
-
-    // How many Asphyxiation damage points to heal on CPR success.
-    // CPR simulates restoring oxygen delivery, so it should address airloss too.
-    // #Misfits Fix - raised from 6 to 25: 6 was negligible against the crit threshold (100 total damage)
-    // and was completely outpaced by the respirator tick, making it appear to heal zero asphyxiation.
-    // 25 matches the brute heal and can meaningfully pull someone out of early-crit asphyxiation.
-    private const float CPRAsphyxiationHeal = 25f;
+    // How many Asphyxiation damage points to heal when reviving a dead target.
+    // Matches smelling salts and defibrillator revival heal for parity.
+    // No brute healing is applied — CPR is purely an oxygen-restoration tool.
+    private const float CPRAsphyxiationHeal = 40f;
 
     // Sound to play when CPR completes (compressions).
     private static readonly SoundPathSpecifier CPRSound =
@@ -152,21 +151,17 @@ public sealed class CPRSystem : EntitySystem
             return;
         }
 
-        // Heal a flat amount of brute-type damage to help pull them from the threshold.
-        // Also heals Asphyxiation since CPR restores oxygen delivery. #Misfits Tweak - added Asphyxiation
-        var healSpec = new DamageSpecifier();
-        healSpec.DamageDict.Add("Blunt", -CPRHealAmount / 3f);
-        healSpec.DamageDict.Add("Slash", -CPRHealAmount / 3f);
-        healSpec.DamageDict.Add("Piercing", -CPRHealAmount / 3f);
-        healSpec.DamageDict.Add("Asphyxiation", -CPRAsphyxiationHeal);
-        _damageable.TryChangeDamage(target, healSpec, true, origin: user);
-
         _audio.PlayPvs(CPRSound, target, AudioParams.Default.WithVolume(-2f));
 
         if (isTargetDead)
         {
-            // #Misfits Fix - attempt to revive: if healing pushed total damage below the death threshold,
-            // transition the target from Dead → Critical. This mirrors the ResuscitationSystem pattern.
+            // #Misfits Tweak - CPR revival parity with smelling salts / defibrillator:
+            // Only heal Asphyxiation (no brute), 40 points to match those tools.
+            // Apply heal first, then check if total damage dropped below the death threshold.
+            var healSpec = new DamageSpecifier();
+            healSpec.DamageDict.Add("Asphyxiation", -CPRAsphyxiationHeal);
+            _damageable.TryChangeDamage(target, healSpec, true, origin: user);
+
             if (TryComp<MobStateComponent>(target, out var mobState) &&
                 _mobThreshold.TryGetThresholdForState(target, MobState.Dead, out var threshold) &&
                 TryComp<DamageableComponent>(target, out var damageable) &&
@@ -203,3 +198,4 @@ public sealed class CPRSystem : EntitySystem
         cooldown.ExpireTime = _timing.CurTime + TimeSpan.FromSeconds(cooldown.CooldownDuration);
     }
 }
+*/

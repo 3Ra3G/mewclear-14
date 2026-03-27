@@ -11,13 +11,12 @@
   description: job-description-bos-mid-paladin
   playTimeTracker: BoSMidPaladin
   requirements:
-    - !type:CharacterSpeciesRequirement
+    - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
       species:
       - Human
-      - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak: Reduced from 50h to 10h — Senior Paladin is still gated but accessible.
       department: BrotherhoodOfSteel
-      min: 180000 # 50 hours
+      min: 36000 # 10 hours
   startingGear: BoSMidPaladinGear
   alwaysUseSpawner: true
   icon: "JobIconBosMPaladin" # Corvax-Change

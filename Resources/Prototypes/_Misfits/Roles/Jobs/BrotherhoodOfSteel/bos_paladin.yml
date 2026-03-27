@@ -61,10 +61,12 @@
   description: job-description-bos-paladin
   playTimeTracker: BoSPaladin
   requirements:
-    - !type:CharacterSpeciesRequirement
+    - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
       species:
       - Human
-      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Add: 5-hour BoS department lock — power armor is not for new recruits.
+      department: BrotherhoodOfSteel
+      min: 18000 # 5 hours
     #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
     #  tracker: BoSMidSquire
     #  min: 72000 # 20 hours

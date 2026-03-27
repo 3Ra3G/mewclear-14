@@ -11,12 +11,9 @@
   description: job-description-bos-mid-squire
   playTimeTracker: BoSMidSquire
   requirements:
-    - !type:CharacterLogicOrRequirement
-      requirements:
-        - !type:CharacterSpeciesRequirement
-          species:
-            - Human
-            - Ghoul
+    - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
+      species:
+        - Human
     #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
     #  tracker: BoSInitiate
     #  min: 18000 # 5 hours
@@ -40,7 +37,7 @@
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsLeatherFilled
     head: N14ClothingHeadHatBanganeBoS
-    outerClothing: N14ClothingOuterMidwestArmor
+    outerClothing: MisfitsBoSSquireArmor # #Misfits Tweak: T2 armor (0.85/0.80) — Squires are still in training, lighter protection than Knights
     pocket1: BoSBrotherhoodSquireKits
     id: N14IDBrotherhoodOfSteelHolotagSquire
     ears: N14ClothingHeadsetBrotherhoodOfSteel

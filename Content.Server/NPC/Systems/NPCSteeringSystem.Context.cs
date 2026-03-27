@@ -291,7 +291,14 @@ public sealed partial class NPCSteeringSystem
         }
         // Stuck detection
         // Check if we have moved further than the movespeed * stuck time.
-        else if (AntiStuck &&
+        // #Misfits Fix — Skip anti-stuck while a path is already being awaited.
+        // Previously the stuck timer accumulated during the path-wait freeze, firing
+        // SteeringStatus.NoPath after ~3 s and triggering HTN replan → new path request
+        // → another freeze, looping every ~4-5 s (the "freeze-unfreeze" symptom).
+        // If Pathfind is true the NPC is deliberately stalled waiting for the queue;
+        // it is not stuck, so don't penalise it.
+        else if (!steering.Pathfind &&
+                 AntiStuck &&
                  ourCoordinates.TryDistance(EntityManager, steering.LastStuckCoordinates, out var stuckDistance) &&
                  stuckDistance < NPCSteeringComponent.StuckDistance)
         {

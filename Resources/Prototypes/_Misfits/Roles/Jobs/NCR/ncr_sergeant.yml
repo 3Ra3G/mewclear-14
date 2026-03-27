@@ -42,7 +42,7 @@
     ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
     neck: ClothingNeckPinNCRSergeant # #Misfits Change - rank pin instead of generic mantle
     belt: ClothingBeltNCR
-    outerClothing: N14ClothingOuterNCRCombatArmor
+    outerClothing: MisfitsNCRHeavyCombatArmor # #Misfits Tweak: T5 armor (0.70/0.65) — Sergeant tier
     pocket1: NCRSGTloadoutkits
     pocket2: RadioHandheld
     id: N14IDNCRDogtagNCO

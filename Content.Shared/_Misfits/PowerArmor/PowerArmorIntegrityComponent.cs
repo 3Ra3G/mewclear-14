@@ -3,6 +3,7 @@ using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Misfits.PowerArmor;
 
@@ -75,6 +76,16 @@ public sealed partial class PowerArmorIntegrityComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Broken;
+
+    /// <summary>
+    ///     Stores the <see cref="Content.Shared.Damage.DamageModifierSet"/> from the
+    ///     <see cref="Content.Shared.Armor.ArmorComponent"/> while the suit is broken.
+    ///     The ArmorComponent is removed when integrity hits zero so that the plating
+    ///     coefficients no longer apply; this cache lets us restore them on repair.
+    ///     Not networked — only the server needs this to restore the component.
+    /// </summary>
+    [DataField]
+    public DamageModifierSet? CachedArmorModifiers;
 
     /// <summary>
     ///     Alert prototype shown on the wearer's HUD while the armor is equipped.

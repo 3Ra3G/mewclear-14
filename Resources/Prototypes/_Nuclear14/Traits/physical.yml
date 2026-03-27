@@ -190,6 +190,7 @@
       species:
         - Human
         - Ghoul
+        - GhoulGlowing # #Misfits Add — allow GhoulGlowing to take Bad Reflexes
   functions:
     - !type:TraitModifyUnarmed
       attackRateModifier: 1.1
@@ -213,6 +214,7 @@
       species:
         - Human
         - Ghoul
+        - GhoulGlowing # #Misfits Add — allow GhoulGlowing to take Lightning Hands
   functions:
     - !type:TraitModifyUnarmed
       attackRateModifier: 0.9

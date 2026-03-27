@@ -61,10 +61,9 @@
   description: job-description-bos-knight
   playTimeTracker: BoSKnight
   requirements:
-    - !type:CharacterSpeciesRequirement
+    - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
       species:
       - Human
-      - Ghoul
     #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
     #  tracker: BoSMidSquire
     #  min: 36000 # 10 hours
@@ -88,7 +87,7 @@
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsLeatherFilled
     head: N14ClothingHeadHatCapkhighBoS
-    outerClothing: N14ClothingOuterCombatArmorBOSMK2
+    outerClothing: MisfitsBoSKnightArmor # #Misfits Tweak: T4 armor (0.75/0.70) — Knight tier, equal to NCR Specialist / Legion Veteran Legionnaire
     hands: N14ClothingHandsGlovesCombat
     pocket1: BoSBrotherhoodKnightKits
     id: N14IDBrotherhoodOfSteelHolotagKnight

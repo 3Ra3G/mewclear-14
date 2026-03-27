@@ -5,6 +5,9 @@ power-armor-integrity-restored = {CAPITALIZE(THE($armor))}'s structural integrit
 power-armor-integrity-examine = Structural integrity: [color={$color}]{$current}/{$max}[/color]
 power-armor-integrity-examine-broken = Structural integrity: [color=red]CRITICAL — armor compromised[/color]
 
+power-armor-integrity-examine-absorption-header = It absorbs the following damage:
+power-armor-integrity-examine-absorption-value = - [color=lightblue]{$value}%[/color] of all incoming damage absorbed.
+
 power-armor-integrity-verb-text = Integrity
 power-armor-integrity-verb-message = Check the armor's structural integrity.
 
