@@ -36,7 +36,9 @@ public sealed class SpecialMovementSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<PersistentPlayerDataComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
+        // Temporarily disabled — SPECIAL stat bonuses turned off server-wide.
+        // Restore by un-commenting the line below.
+        // SubscribeLocalEvent<PersistentPlayerDataComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
     }
 
     private void OnRefreshSpeed(Entity<PersistentPlayerDataComponent> ent, ref RefreshMovementSpeedModifiersEvent args)

@@ -40,7 +40,9 @@ public sealed class SpecialEnduranceSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<PersistentPlayerDataComponent, SpecialStatsReadyEvent>(OnStatsReady);
+        // Temporarily disabled — SPECIAL stat bonuses turned off server-wide.
+        // Restore by un-commenting the line below.
+        // SubscribeLocalEvent<PersistentPlayerDataComponent, SpecialStatsReadyEvent>(OnStatsReady);
     }
 
     private void OnStatsReady(Entity<PersistentPlayerDataComponent> ent, ref SpecialStatsReadyEvent args)

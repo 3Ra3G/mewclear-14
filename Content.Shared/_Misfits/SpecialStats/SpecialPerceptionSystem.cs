@@ -24,8 +24,9 @@ public sealed class SpecialPerceptionSystem : EntitySystem
     {
         base.Initialize();
 
-        // Global subscription — we receive this for every gun and check for a player holder.
-        SubscribeLocalEvent<GunRefreshModifiersEvent>(OnGunRefreshModifiers);
+        // Temporarily disabled — SPECIAL stat bonuses turned off server-wide.
+        // Restore by un-commenting the line below.
+        // SubscribeLocalEvent<GunRefreshModifiersEvent>(OnGunRefreshModifiers);
     }
 
     private void OnGunRefreshModifiers(ref GunRefreshModifiersEvent args)
