@@ -490,6 +490,10 @@ public sealed partial class NPCSteeringSystem : SharedNPCSteeringSystem
         }
 
         steering.PathfindToken = new CancellationTokenSource();
+        // #Misfits Fix — Reset the stuck clock when we start a new path request.
+        // This ensures the anti-stuck window only measures time the NPC spends
+        // truly immobile *after* pathfinding completes, not queue-wait time.
+        ResetStuck(steering, xform.Coordinates);
 
         var flags = _pathfindingSystem.GetFlags(uid);
 
