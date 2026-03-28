@@ -16,6 +16,7 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Network;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects; // #Misfits Add — for IEntitySystemManager
+using Robust.Shared.Timing; // #Misfits Fix — for FrameEventArgs (dirty-flag batching)
 using Robust.Shared.Utility;
 
 namespace Content.Client.Administration.UI.Bwoink
@@ -41,6 +42,17 @@ namespace Content.Client.Administration.UI.Bwoink
         // #Misfits Add — local ticket state cache, keyed by player NetUserId
         private readonly Dictionary<NetUserId, HelpTicketInfo> _tickets = new();
 
+        // #Misfits Fix — keep references so Dispose can unsubscribe and prevent
+        // event handler leaks that crash the client when the control is recreated.
+        private BwoinkSystem? _bwoinkSys;
+
+        // #Misfits Fix — dirty flag for deferred PopulateList calls. During reconnection the
+        // server replays hundreds of messages, each calling OnBwoink → PopulateList(), which
+        // rebuilds the entire player list UI control tree per message. This causes the client
+        // to freeze and crash (no crash logs, total RAM dump). Instead, event handlers set this
+        // flag and a single PopulateList runs on the next FrameUpdate.
+        private bool _listDirty;
+
         public BwoinkControl()
         {
             RobustXamlLoader.Load(this);
@@ -59,7 +71,7 @@ namespace Content.Client.Administration.UI.Bwoink
             // fires automatically with all players. We subscribe here to run our ticket-filtered PopulateList
             // immediately afterward, restoring the ahelp-only filter.
             _adminSystem = _entitySystem.GetEntitySystem<AdminSystem>();
-            _adminSystem.PlayerListChanged += _ => PopulateList();
+            _adminSystem.PlayerListChanged += OnPlayerListChanged;
 
             ChannelSelector.OnSelectionChanged += sel =>
             {
@@ -223,7 +235,8 @@ namespace Content.Client.Administration.UI.Bwoink
             };
 
             // #Misfits Add — ticket claim/resolve button handlers
-            var bwoinkSys = _entitySystem.GetEntitySystem<BwoinkSystem>();
+            _bwoinkSys = _entitySystem.GetEntitySystem<BwoinkSystem>();
+            var bwoinkSys = _bwoinkSys;
 
             ClaimTicket.OnPressed += _ =>
             {
@@ -276,19 +289,52 @@ namespace Content.Client.Administration.UI.Bwoink
             bwoinkSys.RequestTicketList();
         }
 
+        // #Misfits Fix — named handler so it can be unsubscribed in Dispose, preventing
+        // event leaks that crash the client when the control is recreated.
+        private void OnPlayerListChanged(List<PlayerInfo> _)
+        {
+            if (Disposed)
+                return;
+
+            _listDirty = true;
+        }
+
+        // #Misfits Fix — deferred PopulateList batching. FrameUpdate fires once the control
+        // is in the UI tree (window opened). All accumulated dirty flags from message replay,
+        // ticket updates, and player list changes are resolved in a single PopulateList call
+        // per frame instead of per-event.
+        protected override void FrameUpdate(FrameEventArgs args)
+        {
+            if (_listDirty)
+            {
+                _listDirty = false;
+                PopulateList();
+            }
+
+            base.FrameUpdate(args);
+        }
+
         // #Misfits Add — ticket event handlers
         private void OnTicketUpdated(HelpTicketInfo ticket)
         {
+            // #Misfits Fix — guard against events firing on a disposed control,
+            // which causes crashes when the admin window is recreated.
+            if (Disposed)
+                return;
+
             _tickets[ticket.PlayerId] = ticket;
             UpdateTicketStatusBar();
-            // #Misfits Fix — DirtyList() only redraws already-visible rows; it won't add a brand-new
-            // ticketed player to the filtered list. PopulateList() re-runs the ticket filter so the
-            // player shows up immediately in the panel (e.g. admin sends first via Player Panel).
-            PopulateList();
+            // #Misfits Fix — defer PopulateList to next FrameUpdate to batch rapid updates
+            // (e.g. hundreds of ticket events arriving during reconnection replay).
+            _listDirty = true;
         }
 
         private void OnTicketListReceived(List<HelpTicketInfo> tickets)
         {
+            // #Misfits Fix — guard against events firing on a disposed control.
+            if (Disposed)
+                return;
+
             // #Misfits Fix — full list sync should replace local cache,
             // not append, so stale previous-round tickets are removed.
             _tickets.Clear();
@@ -297,9 +343,8 @@ namespace Content.Client.Administration.UI.Bwoink
                 _tickets[ticket.PlayerId] = ticket;
             }
             UpdateTicketStatusBar();
-            // #Misfits Fix — same as OnTicketUpdated: use PopulateList() so the filtered list
-            // reflects the full updated ticket set rather than only resorting visible rows.
-            PopulateList();
+            // #Misfits Fix — defer PopulateList to next FrameUpdate.
+            _listDirty = true;
         }
 
         /// <summary>
@@ -333,7 +378,9 @@ namespace Content.Client.Administration.UI.Bwoink
             };
 
             var msg = new FormattedMessage();
-            msg.AddMarkup($"[bold]Ticket #{ticket.TicketId}[/bold] — [color={statusColor}]{statusText}[/color]");
+            // #Misfits Fix — escape status text to prevent malformed markup from names
+            // containing bracket characters (e.g. "[Admin]") crashing the parser.
+            msg.AddMarkup($"[bold]Ticket #{ticket.TicketId}[/bold] — [color={statusColor}]{FormattedMessage.EscapeText(statusText)}[/color]");
             TicketStatusLabel.SetMessage(msg);
 
             // Show/hide buttons based on ticket state
@@ -353,8 +400,11 @@ namespace Content.Client.Administration.UI.Bwoink
 
         public void OnBwoink(NetUserId channel)
         {
-            // #Misfits Fix — Call ticket-filtered PopulateList, not the raw unfiltered one.
-            PopulateList();
+            // #Misfits Fix — defer to next FrameUpdate instead of rebuilding the full player
+            // list immediately. During reconnection, the server replays hundreds of messages,
+            // each calling OnBwoink. Without batching, this calls PopulateList() hundreds of
+            // times in rapid succession, freezing and crashing the client.
+            _listDirty = true;
         }
 
 
@@ -447,6 +497,10 @@ namespace Content.Client.Administration.UI.Bwoink
 
         public void PopulateList()
         {
+            // #Misfits Fix — guard against events calling PopulateList on a disposed control.
+            if (Disposed)
+                return;
+
             // #Misfits Fix — Source from AdminSystem's master player list, not ChannelSelector.PlayerInfo.
             // ChannelSelector.PlayerInfo is overwritten with the filtered subset each time PopulateList runs,
             // so newly-ticketed players not in the previous subset would never be found — causing the
@@ -454,7 +508,13 @@ namespace Content.Client.Administration.UI.Bwoink
             var allPlayers = _adminSystem.PlayerList;
 
             // #Misfits Change — Only show users with adminhelp tickets
-            var pinnedPlayers = ChannelSelector.PlayerInfo.Where(p => p.IsPinned).ToDictionary(p => p.SessionId);
+            // #Misfits Fix — use dictionary indexer instead of ToDictionary to avoid
+            // ArgumentException crashes when duplicate SessionId entries exist.
+            var pinnedPlayers = new Dictionary<NetUserId, PlayerInfo>();
+            foreach (var p in ChannelSelector.PlayerInfo.Where(p => p.IsPinned))
+            {
+                pinnedPlayers[p.SessionId] = p;
+            }
 
             // Filter to only players with tickets
             var ticketedPlayers = allPlayers.Where(p => _tickets.ContainsKey(p.SessionId)).ToList();
@@ -470,6 +530,26 @@ namespace Content.Client.Administration.UI.Bwoink
             }
 
             UpdateButtons();
+        }
+
+        // #Misfits Fix — unsubscribe from all events on disposal so stale handlers
+        // don't fire on a dead control and crash the client (ObjectDisposedException /
+        // collection-modified during rendering). This was the primary cause of the
+        // admin-only client crash when clicking AHelp.
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            _adminManager.AdminStatusUpdated -= UpdateButtons;
+
+            if (_adminSystem != null!)
+                _adminSystem.PlayerListChanged -= OnPlayerListChanged;
+
+            if (_bwoinkSys != null)
+            {
+                _bwoinkSys.OnTicketUpdated -= OnTicketUpdated;
+                _bwoinkSys.OnTicketListReceived -= OnTicketListReceived;
+            }
         }
     }
 }

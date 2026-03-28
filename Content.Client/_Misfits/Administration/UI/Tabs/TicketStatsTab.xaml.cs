@@ -61,12 +61,15 @@ public sealed partial class TicketStatsTab : Control
 
     private void OnAdminTicketUpdated(HelpTicketInfo ticket)
     {
+        // #Misfits Fix — guard against events firing on a disposed tab.
+        if (Disposed) return;
         _tickets[(HelpTicketType.AdminHelp, ticket.TicketId)] = ticket;
         _statsDirty = true;
     }
 
     private void OnAdminTicketList(List<HelpTicketInfo> tickets)
     {
+        if (Disposed) return;
         foreach (var t in tickets)
             _tickets[(HelpTicketType.AdminHelp, t.TicketId)] = t;
         _statsDirty = true;
@@ -74,12 +77,14 @@ public sealed partial class TicketStatsTab : Control
 
     private void OnMentorTicketUpdated(HelpTicketInfo ticket)
     {
+        if (Disposed) return;
         _tickets[(HelpTicketType.MentorHelp, ticket.TicketId)] = ticket;
         _statsDirty = true;
     }
 
     private void OnMentorTicketList(List<HelpTicketInfo> tickets)
     {
+        if (Disposed) return;
         foreach (var t in tickets)
             _tickets[(HelpTicketType.MentorHelp, t.TicketId)] = t;
         _statsDirty = true;

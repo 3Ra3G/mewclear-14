@@ -26,7 +26,9 @@ public sealed class WastelandMapSystem : EntitySystem
 
     private const int MaxSharedAnnotations = 128;
     private const int MaxStrokePoints = 512; // 256 UV points × 2 floats each
-    private const float UpdateInterval = 0.5f;
+    // #Misfits Fix: Slowed from 0.5 s — the map is informational, not real-time.
+    // GetIdCardBlips does a global PresetIdCard world-scan every update; 2.5 s is imperceptible to players.
+    private const float UpdateInterval = 2.5f;
     private float _updateAccumulator;
     private readonly Dictionary<(MapId MapId, WastelandMapTacticalFeedKind Feed), List<WastelandMapAnnotation>> _sharedFeedAnnotations = new();
 
@@ -52,12 +54,18 @@ public sealed class WastelandMapSystem : EntitySystem
         var query = EntityQueryEnumerator<WastelandMapComponent, UserInterfaceComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var map, out var ui, out var xform))
         {
+            // #Misfits Fix: Skip the expensive BUI rebuild when nobody has this map open.
+            // GetActors() is O(1) with the early-out; the rebuild + GetIdCardBlips world-scan is O(all id cards).
             var viewerMap = xform.MapID;
+            var hasViewer = false;
             foreach (var actor in _uiSystem.GetActors((uid, ui), WastelandMapUiKey.Key))
             {
                 viewerMap = Transform(actor).MapID;
+                hasViewer = true;
                 break;
             }
+            if (!hasViewer)
+                continue;
 
             _uiSystem.SetUiState((uid, ui), WastelandMapUiKey.Key, BuildState(map, viewerMap));
         }

@@ -45,12 +45,20 @@ public sealed partial class TicketLogWindow : DefaultWindow
 
     private void OnTicketUpdated(HelpTicketInfo ticket)
     {
+        // #Misfits Fix — guard against events firing after the window is disposed.
+        if (Disposed)
+            return;
+
         _tickets[ticket.TicketId] = ticket;
         RebuildList();
     }
 
     private void OnTicketListReceived(List<HelpTicketInfo> tickets)
     {
+        // #Misfits Fix — guard against events firing after the window is disposed.
+        if (Disposed)
+            return;
+
         // Full list sync is authoritative for this round.
         _tickets.Clear();
         foreach (var t in tickets)
@@ -89,7 +97,7 @@ public sealed partial class TicketLogWindow : DefaultWindow
                 HelpTicketStatus.Resolved => ("green", Loc.GetString("ticket-system-status-resolved", ("role", ticket.Type == HelpTicketType.AdminHelp ? "Admin" : "Mentor"), ("admin", ticket.ResolvedByName ?? "?"))),
                 _ => ("gray", "Unknown"),
             };
-            statusMsg.AddMarkup($"[color={color}]{text}[/color]");
+            statusMsg.AddMarkup($"[color={color}]{FormattedMessage.EscapeText(text)}[/color]");
             statusLabel.SetMessage(statusMsg);
             row.AddChild(statusLabel);
 

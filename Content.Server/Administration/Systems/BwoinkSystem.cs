@@ -102,6 +102,11 @@ namespace Content.Server.Administration.Systems
         // admins can see the full conversation when they open the bwoink panel.
         private readonly Dictionary<NetUserId, List<BwoinkTextMessage>> _messageHistory = new();
 
+        // #Misfits Fix — cap per-channel history to prevent unbounded memory growth during
+        // long rounds. When an admin reconnects, ALL history is replayed in a tight loop;
+        // thousands of messages cause the client to freeze and crash on F2.
+        private const int MaxHistoryPerChannel = 100;
+
         public override void Initialize()
         {
             base.Initialize();
@@ -149,6 +154,11 @@ namespace Content.Server.Administration.Systems
             SubscribeNetworkEvent<HelpTicketAuditRequestMessage>(OnAuditRequest);
             // #Misfits Add — subscribe to chat history requests so admins can replay conversations
             SubscribeNetworkEvent<HelpTicketChatRequestMessage>(OnChatHistoryRequest);
+
+            // #Misfits Fix — replay ticket list + message history when an admin readmins.
+            // Without this, deadmin → send ahelp → readmin shows the ticket but an empty chat
+            // panel, because the old UI is disposed and the server only replayed on reconnect.
+            _adminManager.OnPermsChanged += OnAdminPermsChanged;
 
         	_rateLimit.Register(
                 RateLimitKey,
@@ -280,6 +290,30 @@ namespace Content.Server.Administration.Systems
             }
         }
 
+        // #Misfits Fix — when an admin readmins (gains Adminhelp flag), replay ticket list
+        // and message history to them. This mirrors the reconnect replay in OnPlayerStatusChanged
+        // but triggers on permission changes instead of session status changes.
+        private void OnAdminPermsChanged(AdminPermsChangedEventArgs args)
+        {
+            // Only act when someone gains (or regains) the Adminhelp flag
+            if (args.Flags == null || !args.Flags.Value.HasFlag(AdminFlags.Adminhelp))
+                return;
+
+            // Push current ticket list
+            var list = _tickets.Values.ToList();
+            if (list.Count > 0)
+                RaiseNetworkEvent(new HelpTicketListMessage(list, HelpTicketType.AdminHelp), args.Player.Channel);
+
+            // Replay message history so the admin sees past conversations
+            foreach (var (_, messages) in _messageHistory)
+            {
+                foreach (var historyMsg in messages)
+                {
+                    RaiseNetworkEvent(historyMsg, args.Player.Channel);
+                }
+            }
+        }
+
         private void NotifyAdmins(ICommonSession session, string message, PlayerStatusType statusType)
         {
             if (!_activeConversations.ContainsKey(session.UserId))
@@ -337,6 +371,10 @@ namespace Content.Server.Administration.Systems
                 _messageHistory[session.UserId] = statusHistory;
             }
             statusHistory.Add(bwoinkMessage);
+
+            // #Misfits Fix — trim old messages to prevent unbounded growth
+            if (statusHistory.Count > MaxHistoryPerChannel)
+                statusHistory.RemoveRange(0, statusHistory.Count - MaxHistoryPerChannel);
 
             var admins = GetTargetAdmins();
             foreach (var admin in admins)
@@ -521,6 +559,10 @@ namespace Content.Server.Administration.Systems
                 _messageHistory[playerId] = sysHistory;
             }
             sysHistory.Add(sysMsg);
+
+            // #Misfits Fix — trim old messages to prevent unbounded growth
+            if (sysHistory.Count > MaxHistoryPerChannel)
+                sysHistory.RemoveRange(0, sysHistory.Count - MaxHistoryPerChannel);
 
             foreach (var admin in GetTargetAdmins())
             {
@@ -1231,6 +1273,12 @@ namespace Content.Server.Administration.Systems
                 _messageHistory[msg.UserId] = history;
             }
             history.Add(historyMsg);
+
+            // #Misfits Fix — trim old messages to prevent unbounded growth during long rounds.
+            // Late-joining admins still see the most recent 100 messages per channel;
+            // full history is available via the audit log DB.
+            if (history.Count > MaxHistoryPerChannel)
+                history.RemoveRange(0, history.Count - MaxHistoryPerChannel);
 
             // #Misfits Add — persist each AHELP message for long-term moderation audits.
             var senderIsStaff = bwoinkParams.SenderAdmin?.HasFlag(AdminFlags.Adminhelp) ?? false;

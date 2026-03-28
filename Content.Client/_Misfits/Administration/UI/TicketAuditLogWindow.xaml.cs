@@ -91,6 +91,10 @@ public sealed partial class TicketAuditLogWindow : DefaultWindow
 
     private void OnAuditLogReceived(HelpTicketAuditResponseMessage msg)
     {
+        // #Misfits Fix — guard against events firing on a disposed window.
+        if (Disposed)
+            return;
+
         _totalCount = msg.TotalCount;
         _currentOffset = msg.Offset;
 

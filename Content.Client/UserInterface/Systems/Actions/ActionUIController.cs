@@ -6,6 +6,7 @@ using Content.Client.Construction;
 using Content.Client.Gameplay;
 using Content.Client.Hands;
 using Content.Client.Interaction;
+using Content.Client._Misfits.Movement; // #Misfits Add
 using Content.Client.Outline;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Actions.Controls;
@@ -50,6 +51,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
     [UISystemDependency] private readonly InteractionOutlineSystem? _interactionOutline = default;
     [UISystemDependency] private readonly TargetOutlineSystem? _targetOutline = default;
     [UISystemDependency] private readonly SpriteSystem _spriteSystem = default!;
+    [UISystemDependency] private readonly MisfitsLagCompensationSystem? _lagComp = default; // #Misfits Add — lag compensation tick stamp
 
     private const int DefaultPageIndex = 0;
     private ActionButtonContainer? _container;
@@ -243,7 +245,10 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
             _actionsSystem.PerformAction(user, actionComp, actionId, action, action.Event, _timing.CurTime);
         }
         else
-            EntityManager.RaisePredictiveEvent(new RequestPerformActionEvent(EntityManager.GetNetEntity(actionId), EntityManager.GetNetCoordinates(coords)));
+            EntityManager.RaisePredictiveEvent(new RequestPerformActionEvent(EntityManager.GetNetEntity(actionId), EntityManager.GetNetCoordinates(coords))
+            {
+                LastRealTick = _lagComp?.GetLastRealTick(), // #Misfits Add
+            });
 
         if (!action.Repeat)
             StopTargeting();
@@ -276,7 +281,10 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
             _actionsSystem.PerformAction(user, actionComp, actionId, action, action.Event, _timing.CurTime);
         }
         else
-            EntityManager.RaisePredictiveEvent(new RequestPerformActionEvent(EntityManager.GetNetEntity(actionId), EntityManager.GetNetEntity(args.EntityUid)));
+            EntityManager.RaisePredictiveEvent(new RequestPerformActionEvent(EntityManager.GetNetEntity(actionId), EntityManager.GetNetEntity(args.EntityUid))
+            {
+                LastRealTick = _lagComp?.GetLastRealTick(), // #Misfits Add
+            });
 
         if (!action.Repeat)
             StopTargeting();
@@ -315,7 +323,10 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
             _actionsSystem.PerformAction(user, actionComp, actionId, action, action.Event, _timing.CurTime);
         }
         else
-            EntityManager.RaisePredictiveEvent(new RequestPerformActionEvent(EntityManager.GetNetEntity(actionId), EntityManager.GetNetEntity(args.EntityUid), EntityManager.GetNetCoordinates(coords)));
+            EntityManager.RaisePredictiveEvent(new RequestPerformActionEvent(EntityManager.GetNetEntity(actionId), EntityManager.GetNetEntity(args.EntityUid), EntityManager.GetNetCoordinates(coords))
+            {
+                LastRealTick = _lagComp?.GetLastRealTick(), // #Misfits Add
+            });
 
         if (!action.Repeat)
             StopTargeting();

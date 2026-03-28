@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using Content.Client._Misfits.Movement; // #Misfits Add
 using Content.Shared.Actions;
 using Content.Shared.Mapping;
 using JetBrains.Annotations;
@@ -27,6 +28,7 @@ namespace Content.Client.Actions
         [Dependency] private readonly IResourceManager _resources = default!;
         [Dependency] private readonly ISerializationManager _serialization = default!;
         [Dependency] private readonly MetaDataSystem _metaData = default!;
+        [Dependency] private readonly MisfitsLagCompensationSystem _lagComp = default!; // #Misfits Add — lag compensation tick stamp
 
         public event Action<EntityUid>? OnActionAdded;
         public event Action<EntityUid>? OnActionRemoved;
@@ -265,7 +267,11 @@ namespace Content.Client.Actions
             }
             else
             {
-                var request = new RequestPerformActionEvent(GetNetEntity(actionId));
+                // #Misfits Add — stamp the client's last-real-tick so the server can apply lag tolerance margin.
+                var request = new RequestPerformActionEvent(GetNetEntity(actionId))
+                {
+                    LastRealTick = _lagComp.GetLastRealTick(), // #Misfits Add
+                };
                 EntityManager.RaisePredictiveEvent(request);
             }
         }

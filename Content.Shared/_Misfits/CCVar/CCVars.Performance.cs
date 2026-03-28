@@ -1,0 +1,33 @@
+using Robust.Shared;
+using Robust.Shared.Configuration;
+
+namespace Content.Shared._Misfits.CCVar;
+
+/// <summary>
+/// CVars for Misfits performance systems: lag compensation, NPC proximity wake, etc.
+/// </summary>
+[CVarDefs]
+public sealed class PerformanceCVars : CVars
+{
+    /// <summary>
+    /// Maximum lag compensation window in milliseconds.
+    /// Actions and shots from clients this many ms behind the server are still accepted,
+    /// with <see cref="LagCompensationMarginTiles"/> added to their range checks.
+    /// </summary>
+    public static readonly CVarDef<int> LagCompensationMs =
+        CVarDef.Create("misfits.lag_compensation_ms", 750, CVar.REPLICATED | CVar.SERVER);
+
+    /// <summary>
+    /// Extra range margin (tiles) applied during lag-compensated range checks when a
+    /// client's last confirmed tick is behind the current server tick.
+    /// </summary>
+    public static readonly CVarDef<float> LagCompensationMarginTiles =
+        CVarDef.Create("misfits.lag_compensation_margin_tiles", 0.35f, CVar.REPLICATED | CVar.SERVER);
+
+    /// <summary>
+    /// How often (seconds) the proximity NPC system scans for nearby players.
+    /// Higher values are cheaper but increase the delay before an NPC wakes.
+    /// </summary>
+    public static readonly CVarDef<float> ProximityNPCCheckInterval =
+        CVarDef.Create("misfits.proximity_npc_check_interval", 5f, CVar.SERVER | CVar.SERVERONLY);
+}

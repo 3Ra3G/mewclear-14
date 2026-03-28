@@ -3,6 +3,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization;
+using Robust.Shared.Timing; // #Misfits Add
 
 namespace Content.Shared.Actions;
 
@@ -84,6 +85,10 @@ public sealed class RequestPerformActionEvent : EntityEventArgs
     public readonly NetEntity Action;
     public readonly NetEntity? EntityTarget;
     public readonly NetCoordinates? EntityCoordinatesTarget;
+
+    // #Misfits Add — last confirmed client tick at the time the action was triggered; used by
+    // ServerMisfitsLagCompensationSystem to apply a range-tolerance margin on the server.
+    public GameTick? LastRealTick;
 
     public RequestPerformActionEvent(NetEntity action)
     {

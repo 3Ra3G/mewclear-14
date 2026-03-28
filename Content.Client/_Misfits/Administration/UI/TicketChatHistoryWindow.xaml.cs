@@ -72,6 +72,10 @@ public sealed class TicketChatHistoryWindow : DefaultWindow
 
     private void OnChatReceived(HelpTicketChatResponseMessage msg)
     {
+        // #Misfits Fix — guard against events firing on a disposed window.
+        if (Disposed)
+            return;
+
         // Only handle responses for the ticket this window is showing
         if (msg.TicketId != _ticketId || msg.TicketType != _ticketType)
             return;

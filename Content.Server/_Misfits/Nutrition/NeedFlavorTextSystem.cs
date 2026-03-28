@@ -31,6 +31,12 @@ public sealed class NeedFlavorTextSystem : EntitySystem
     private readonly Dictionary<EntityUid, TimeSpan> _nextThirstFlavorAt = new();
     private static readonly TimeSpan FlavorTextCooldown = TimeSpan.FromMinutes(5);
 
+    // #Misfits Fix: At 70+ players two EntityQueryEnumerator passes every tick add up to ~2800
+    // component lookups/s. Gate the scan to 2 s — hunger/thirst thresholds change on a many-second
+    // cadence so we will never miss a transition at this resolution.
+    private float _scanTimer;
+    private const float ScanInterval = 2f;
+
     private static readonly string[] HungerPeckishMessages =
     {
         "need-flavor-hunger-peckish-1",
@@ -83,8 +89,10 @@ public sealed class NeedFlavorTextSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<HungerComponent, ComponentRemove>(OnHungerShutdown);
-        SubscribeLocalEvent<ThirstComponent, ComponentShutdown>(OnThirstShutdown);
+        // #Misfits Fix: System defunct — removed for 70+ player performance. Re-enable by
+        // un-commenting all subscriptions here and the Update body below.
+        // SubscribeLocalEvent<HungerComponent, ComponentRemove>(OnHungerShutdown);
+        // SubscribeLocalEvent<ThirstComponent, ComponentShutdown>(OnThirstShutdown);
     }
 
     private void OnHungerShutdown(EntityUid uid, HungerComponent component, ComponentRemove args)
@@ -103,25 +111,29 @@ public sealed class NeedFlavorTextSystem : EntitySystem
 
     public override void Update(float frameTime)
     {
-        base.Update(frameTime);
-
-        var hungerQuery = EntityQueryEnumerator<ActorComponent, HungerComponent>();
-        while (hungerQuery.MoveNext(out var uid, out var actor, out var hunger))
-        {
-            if (ShouldSkip(uid, actor.PlayerSession))
-                continue;
-
-            ProcessHunger(uid, actor.PlayerSession, hunger);
-        }
-
-        var thirstQuery = EntityQueryEnumerator<ActorComponent, ThirstComponent>();
-        while (thirstQuery.MoveNext(out var uid, out var actor, out var thirst))
-        {
-            if (ShouldSkip(uid, actor.PlayerSession))
-                continue;
-
-            ProcessThirst(uid, actor.PlayerSession, thirst);
-        }
+        // #Misfits Fix: Defunct at 70+ players — two per-player entity-query passes every scan
+        // contributed significant tick overhead. Hunger/thirst flavor text is cosmetic only.
+        // Restore by un-commenting the body below and the Initialize subscriptions above.
+        //
+        // base.Update(frameTime);
+        // _scanTimer += frameTime;
+        // if (_scanTimer < ScanInterval)
+        //     return;
+        // _scanTimer -= ScanInterval;
+        // var hungerQuery = EntityQueryEnumerator<ActorComponent, HungerComponent>();
+        // while (hungerQuery.MoveNext(out var uid, out var actor, out var hunger))
+        // {
+        //     if (ShouldSkip(uid, actor.PlayerSession))
+        //         continue;
+        //     ProcessHunger(uid, actor.PlayerSession, hunger);
+        // }
+        // var thirstQuery = EntityQueryEnumerator<ActorComponent, ThirstComponent>();
+        // while (thirstQuery.MoveNext(out var uid, out var actor, out var thirst))
+        // {
+        //     if (ShouldSkip(uid, actor.PlayerSession))
+        //         continue;
+        //     ProcessThirst(uid, actor.PlayerSession, thirst);
+        // }
     }
 
     private bool ShouldSkip(EntityUid uid, ICommonSession session)

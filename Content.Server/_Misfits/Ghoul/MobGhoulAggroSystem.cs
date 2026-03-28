@@ -16,28 +16,31 @@ public sealed class MobGhoulAggroSystem : EntitySystem
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private static readonly TimeSpan NeutralSyncInterval = TimeSpan.FromSeconds(5);
+    // #Misfits Fix: Doubled from 5 s — O(mobs × players) sync; at 70 players 10 s is still imperceptible.
+    private static readonly TimeSpan NeutralSyncInterval = TimeSpan.FromSeconds(10);
     private TimeSpan _nextNeutralSync;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<MobGhoulAggroComponent, ComponentStartup>(OnMobGhoulStartup);
-        SubscribeLocalEvent<MobGhoulAggroComponent, DamageChangedEvent>(OnMobGhoulDamaged);
-        SubscribeLocalEvent<MobGhoulAggroComponent, DisarmedEvent>(OnMobGhoulDisarmed);
-        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
+        // #Misfits Fix: System defunct — O(mobs × players) sync was a notable spike at 70 players.
+        // Feral ghouls will now aggro player ghouls normally (no special neutral treatment).
+        // Re-enable by un-commenting the subscriptions here and the Update body below.
+        // SubscribeLocalEvent<MobGhoulAggroComponent, ComponentStartup>(OnMobGhoulStartup);
+        // SubscribeLocalEvent<MobGhoulAggroComponent, DamageChangedEvent>(OnMobGhoulDamaged);
+        // SubscribeLocalEvent<MobGhoulAggroComponent, DisarmedEvent>(OnMobGhoulDisarmed);
+        // SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
     }
 
     public override void Update(float frameTime)
     {
-        base.Update(frameTime);
-
-        if (_timing.CurTime < _nextNeutralSync)
-            return;
-
-        _nextNeutralSync = _timing.CurTime + NeutralSyncInterval;
-        SyncNeutralPlayerGhouls();
+        // #Misfits Fix: Defunct — see Initialize comment above.
+        // base.Update(frameTime);
+        // if (_timing.CurTime < _nextNeutralSync)
+        //     return;
+        // _nextNeutralSync = _timing.CurTime + NeutralSyncInterval;
+        // SyncNeutralPlayerGhouls();
     }
 
     private void OnMobGhoulStartup(Entity<MobGhoulAggroComponent> ent, ref ComponentStartup args)

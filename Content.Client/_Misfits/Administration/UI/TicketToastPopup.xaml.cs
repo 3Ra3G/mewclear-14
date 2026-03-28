@@ -41,11 +41,13 @@ public sealed partial class TicketToastPopup : PanelContainer
     public void Show(string title, string body)
     {
         var titleMsg = new FormattedMessage();
-        titleMsg.AddMarkup($"[bold][color=#e94560]{title}[/color][/bold]");
+        // #Misfits Fix — escape title/body text to prevent player names containing
+        // bracket characters (e.g. "[Admin]") from crashing the markup parser.
+        titleMsg.AddMarkup($"[bold][color=#e94560]{FormattedMessage.EscapeText(title)}[/color][/bold]");
         ToastTitle.SetMessage(titleMsg);
 
         var bodyMsg = new FormattedMessage();
-        bodyMsg.AddMarkup(body);
+        bodyMsg.AddMarkup(FormattedMessage.EscapeText(body));
         ToastMessage.SetMessage(bodyMsg);
 
         _elapsed = 0f;

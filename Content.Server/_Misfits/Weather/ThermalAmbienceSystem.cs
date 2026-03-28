@@ -63,10 +63,11 @@ public sealed class ThermalAmbienceSystem : EntitySystem
     private readonly HashSet<EntityUid> _outdoorExposed = new();
 
     /// <summary>
-    /// Accumulator for throttling Update to once every ~5 seconds.
+    /// Accumulator for throttling Update to once every ~10 seconds.
     /// Flavor text and map temp tier changes are not time-critical.
     /// </summary>
-    private const float UpdateInterval = 5f;
+    // #Misfits Fix: Doubled from 5 s — temperature tiers change on a minute timescale; 10 s polling is fine.
+    private const float UpdateInterval = 10f;
     private float _updateTimer;
 
     // ──────────────────────────────────────────────────────────────────────────
@@ -173,9 +174,10 @@ public sealed class ThermalAmbienceSystem : EntitySystem
     {
         base.Initialize();
 
-        // Clean up tracking dictionaries when maps or players leave.
-        SubscribeLocalEvent<DayNightCycleComponent, ComponentRemove>(OnCycleRemoved);
-        SubscribeLocalEvent<TemperatureComponent, ComponentShutdown>(OnTemperatureShutdown);
+        // #Misfits Fix: System defunct — removed for 70+ player performance. Re-enable by
+        // un-commenting the subscriptions here and the Update body below.
+        // SubscribeLocalEvent<DayNightCycleComponent, ComponentRemove>(OnCycleRemoved);
+        // SubscribeLocalEvent<TemperatureComponent, ComponentShutdown>(OnTemperatureShutdown);
     }
 
     private void OnCycleRemoved(EntityUid uid, DayNightCycleComponent _, ComponentRemove args)
@@ -195,16 +197,18 @@ public sealed class ThermalAmbienceSystem : EntitySystem
 
     public override void Update(float frameTime)
     {
-        base.Update(frameTime);
-
-        _updateTimer += frameTime;
-        if (_updateTimer < UpdateInterval)
-            return;
-        _updateTimer -= UpdateInterval;
-
-        UpdateMapTemperatures();
-        UpdatePlayerFlavor();
-        UpdatePlayerOutdoorFlavor();
+        // #Misfits Fix: Defunct at 70+ players — per-player atmospheric and flavor scans
+        // added measurable tick cost. Temperature flavour text is purely cosmetic.
+        // Restore by un-commenting below and the Initialize subscriptions above.
+        //
+        // base.Update(frameTime);
+        // _updateTimer += frameTime;
+        // if (_updateTimer < UpdateInterval)
+        //     return;
+        // _updateTimer -= UpdateInterval;
+        // UpdateMapTemperatures();
+        // UpdatePlayerFlavor();
+        // UpdatePlayerOutdoorFlavor();
     }
 
     // ── Part A: Ambient outdoor temperature ───────────────────────────────────
