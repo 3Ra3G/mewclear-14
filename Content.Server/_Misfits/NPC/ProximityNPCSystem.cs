@@ -8,6 +8,7 @@ using Content.Shared.Sound;
 using Content.Shared.Sound.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
+using Robust.Shared.Player;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
@@ -154,6 +155,12 @@ public sealed class ProximityNPCSystem : EntitySystem
 
             var mapPos = _transform.GetMapCoordinates(uid, xform);
             var awake = _npc.IsAwake(uid);
+
+            // #Misfits Fix — skip player-possessed mobs entirely. HTNSystem already
+            // sleeps the AI on PlayerAttachedEvent; re-waking it here would re-enable
+            // hostile NPC behaviour while a player/admin is in control.
+            if (HasComp<ActorComponent>(uid))
+                continue;
 
             if (!awake)
             {
