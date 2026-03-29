@@ -63,6 +63,6 @@ undecided-loadout-category-misfits-sqr-basic-description =
 undecided-loadout-category-misfits-pal-wattz-name = Bozar Kit
 undecided-loadout-category-misfits-pal-wattz-description =
     A cache containing belongings of a Brotherhood chapter member.
-    Includes 1 Bozar, 3 heavy microfusion cells, 1 12.7mm pistol,
+    Includes 1 Bozar, 3 rifle magazines, 1 12.7mm pistol,
     2 12.7mm pistol magazines, 1 roll of gauze, 1 stimpak,
     and 1 K ration MRE.
