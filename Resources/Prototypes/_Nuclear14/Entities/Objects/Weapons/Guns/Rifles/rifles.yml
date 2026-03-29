@@ -1040,3 +1040,238 @@
             - N14Cartridge556Rifle
   - type: StaticPrice
     price: 75
+
+# ============================================================
+# Misfits Add — M1 Garand family
+# Ported from Fortune13 / LoneStar / desertrose-1 (SS13).
+# All variants use the .308 en-bloc clip (GarandEnbloc308),
+# and auto-eject with the iconic ping when the clip runs dry.
+# Sources:
+#   https://github.com/Cythisiax/LoneStar (base, Old Glory, Republic's Pride, SKS)
+#   https://github.com/Cythisiax/desertrose-1 (Pawolski's Retribution, Republic's Demise)
+# ============================================================
+
+# Base M1 Garand — the WWII American classic.
+- type: entity
+  name: M1 Garand
+  parent: N14WeaponRifleBase
+  id: N14WeaponRifleM1Garand
+  description: The WWII American classic. A semi-automatic battle rifle fed by an 8-round en-bloc clip chambered in .308 Winchester. When the clip runs dry it pings out satisfyingly. Don't stick your thumb in it.
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/m1garand.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/m1garand.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: ChamberMagazineAmmoProvider
+    autoEject: true
+    # The iconic Garand ping when the en-bloc clip ejects on empty
+    soundAutoEject:
+      path: /Audio/_Nuclear14/Weapons/Guns/Rifles/N14WeaponM1Garand/garand_ping.ogg
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -56
+  - type: Gun
+    minAngle: 24
+    maxAngle: 60
+    angleIncrease: 4
+    angleDecay: 16
+    fireRate: 3
+    soundGunshot:
+      collection: N14GarandGunshot
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: En-Bloc Clip
+        startingItem: GarandEnbloc308
+        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - N14GarandEnbloc308
+      gun_chamber:
+        name: Chamber
+        startingItem: N14Cartridge308Rifle
+        priority: 1
+        whitelist:
+          tags:
+            - N14Cartridge308Rifle
+  - type: StaticPrice
+    price: 350
+
+# Old Glory — UNIQUE. "This Machine kills communists!"
+- type: entity
+  name: Old Glory
+  parent: N14WeaponRifleM1Garand
+  id: N14WeaponRifleM1GarandOldGlory
+  description: An M1 Garand with Old Glory herself painted down the stock. "This Machine kills communists!" is scratched into the receiver. Don't let it out of your sight.
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/oldglory.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/oldglory.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: StaticPrice
+    price: 900
+
+# Pawolski's Retribution — UNIQUE, NCR heirloom.
+- type: entity
+  name: Pawolski's Retribution
+  parent: N14WeaponRifleM1Garand
+  id: N14WeaponRifleM1GarandPawolskis
+  description: An NCR veteran's M1 Garand, engraved with the motto "I am your rifle, you are on guard duty." Named after the first NCR soldier to fall at Hoover Dam.
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/pawolskis_retribution.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/pawolskis_retribution.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: StaticPrice
+    price: 850
+
+# Republic's Pride — UNIQUE, scoped M1C variant issued to NCR Scout Captains.
+- type: entity
+  name: Republic's Pride
+  parent: N14WeaponRifleM1Garand
+  id: N14WeaponRifleM1GarandRepublicsPride
+  description: A well-tuned scoped M1C rifle crafted by a master gunsmith from the Gunrunners. Proudly issued to NCR Scout Captains. Chambered in 7.62x51 and fitted with a long-range optic.
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/republics_pride.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/republics_pride.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: GunWieldBonus
+    minAngle: -26
+    maxAngle: -62
+  - type: Gun
+    # Scoped — better accuracy than base Garand
+    minAngle: 16
+    maxAngle: 40
+    angleIncrease: 3
+    angleDecay: 18
+    fireRate: 3
+    soundGunshot:
+      collection: N14GarandGunshot
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+  - type: StaticPrice
+    price: 1200
+
+# Republic's Demise — UNIQUE, Legion-looted scoped M1C. The NCR star replaced with a bull.
+- type: entity
+  name: Republic's Demise
+  parent: N14WeaponRifleM1GarandRepublicsPride
+  id: N14WeaponRifleM1GarandRepublicsDemise
+  description: A well-tuned scoped M1C rifle looted from a dead NCR lieutenant by the Legion. The NCR star on the stock has been crudely replaced with a Legion bull. Chambered in 7.62x51.
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/republics_demise.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/republics_demise.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: StaticPrice
+    price: 1000
+
+# SKS — Legion semi-auto battle rifle, shares the en-bloc internal clip system.
+# Distinct from the Garand: 10-round clip, Legion-faction weapon.
+- type: entity
+  name: SKS
+  parent: N14WeaponRifleBase
+  id: N14WeaponRifleSKS
+  description: An old hunting rifle taken from discovered stockpiles and refurbished in Legion workshops. The standard heavy rifle of the Legion, still rare. Semi-auto only, fed by a 10-round en-bloc clip.
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/sks.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/sks.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: ChamberMagazineAmmoProvider
+    autoEject: true
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -56
+  - type: Gun
+    minAngle: 24
+    maxAngle: 60
+    angleIncrease: 4
+    angleDecay: 16
+    fireRate: 3
+    soundGunshot:
+      collection: N14GarandGunshot
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: En-Bloc Clip
+        startingItem: SKSEnbloc308
+        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - N14SKSEnbloc308
+      gun_chamber:
+        name: Chamber
+        startingItem: N14Cartridge308Rifle
+        priority: 1
+        whitelist:
+          tags:
+            - N14Cartridge308Rifle
+  - type: StaticPrice
+    price: 300

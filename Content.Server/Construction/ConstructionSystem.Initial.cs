@@ -267,6 +267,9 @@ namespace Content.Server.Construction
 
             if (!TryComp(newEntity, out ConstructionComponent? construction))
             {
+                // #Misfits Fix: An invalid graph target must still release temporary construction
+                // containers, otherwise the player stays permanently locked out of hand crafting.
+                FailCleanup();
                 Log.Error($"Initial construction does not have a valid target entity! It is missing a ConstructionComponent.\nGraph: {graph.ID}, Initial Target: {edge.Target}, Ent. Prototype: {newEntityProto}\nCreated Entity {ToPrettyString(newEntity)} will be deleted.");
                 Del(newEntity); // Screw you, make proper construction graphs.
                 return null;

@@ -1,10 +1,7 @@
-# #Misfits Add: Goliath power fist reclassified as a hand-held weapon item (BaseItem), not a clothing glove.
-# SS13 Big-Iron fork (modular_BD2/legio_invicta f13powerfist.dm) confirms this as /obj/item/melee/unarmed/powerfist/goliath —
-# a one-hand unarmed melee weapon held in the hand, not worn. The basic.rsi already contains
-# inhand-left and inhand-right states that map correctly to the held-weapon display.
-# The old clothing definition has been commented out in _Misfits/Entities/Clothing/Hands/legion_powerfist.yml.
+# Goliath remains a melee gauntlet, but it needs to live in the glove slot so the
+# veteran loadout can equip it and use its punch-weapon behavior consistently.
 - type: entity
-  parent: BaseItem
+  parent: ClothingHandsBase
   id: N14ClothingHandsPowerFistGoliath
   name: goliath power fist
   description: A captured Legion shock gauntlet built around a piston-assisted ram that hurls targets backward.
@@ -12,17 +9,13 @@
   - type: Sprite
     sprite: _Nuclear14/Clothing/Hands/PowerGauntlets/basic.rsi
     state: icon
+    scale: 0.75, 0.75
   - type: Item
-    # inhand-left and inhand-right states in basic.rsi drive the held-weapon display
     size: Normal
     sprite: _Nuclear14/Clothing/Hands/PowerGauntlets/basic.rsi
   - type: Clothing
-    # Belt/suit-storage only — this is a held weapon, not a wearable glove
     sprite: _Nuclear14/Clothing/Hands/PowerGauntlets/basic.rsi
-    quickEquip: false
-    slots:
-    - belt
-    - suitStorage
+    slots: gloves
   - type: MeleeWeapon
     soundHit:
       collection: MetalThud
@@ -34,6 +27,7 @@
         Structural: 10
     animation: WeaponArcFist
     wideAnimation: WeaponArcFist
+    mustBeEquippedToUse: true
   - type: MeleeThrowOnHit
     speed: 10
     lifetime: 0.025
