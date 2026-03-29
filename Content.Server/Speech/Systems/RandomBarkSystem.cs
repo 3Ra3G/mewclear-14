@@ -1,5 +1,7 @@
 using Content.Server.Chat.Systems;
 using Content.Shared.Mind.Components;
+using Content.Shared.Mobs; // #Misfits Add
+using Content.Shared.Mobs.Components; // #Misfits Add
 using Robust.Shared.Random;
 using Content.Server.Speech.Components;
 using Content.Shared.Chat;
@@ -40,6 +42,11 @@ public sealed class RandomBarkSystem : EntitySystem
                 continue;
 
             barker.BarkAccumulator = _random.NextFloat(barker.MinTime, barker.MaxTime) * barker.BarkMultiplier;
+
+            // #Misfits Fix — dead mobs should not bark.
+            if (TryComp<MobStateComponent>(uid, out var mobState) && mobState.CurrentState == MobState.Dead)
+                continue;
+
             if (TryComp<MindContainerComponent>(uid, out var actComp) && actComp.HasMind
                 || GetNextBark((uid, barker)) is not { } bark)
                 continue;

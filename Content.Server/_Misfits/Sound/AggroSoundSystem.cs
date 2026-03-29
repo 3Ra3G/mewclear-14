@@ -1,5 +1,7 @@
 // Misfits Change - System to play aggro/alert sounds on combat entry, separate from idle ambient sounds
 using Content.Shared._Misfits.Sound;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Server.NPC.Components;
@@ -67,6 +69,10 @@ public sealed class AggroSoundSystem : EntitySystem
 
     private void TryPlayAggro(Entity<AggroSoundComponent> entity)
     {
+        // #Misfits Fix — dead mobs should not play aggro sounds.
+        if (TryComp<MobStateComponent>(entity.Owner, out var mobState) && mobState.CurrentState == MobState.Dead)
+            return;
+
         if (entity.Comp.CooldownRemaining > 0f)
             return;
 

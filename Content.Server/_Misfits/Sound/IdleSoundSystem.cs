@@ -1,4 +1,5 @@
 // Misfits Change - System to suppress idle sounds during combat and when dead
+using Content.Shared.Audio;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Sound;
@@ -15,6 +16,7 @@ namespace Content.Server._Misfits.Sound;
 /// </summary>
 public sealed class IdleSoundSystem : EntitySystem
 {
+    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private readonly SharedEmitSoundSystem _emitSound = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
 
@@ -51,6 +53,9 @@ public sealed class IdleSoundSystem : EntitySystem
             entity.Comp.CooldownRemaining = 0f;
             _suppressedEntities.Remove(entity.Owner);
             _emitSound.SetEnabled((entity.Owner, (SpamEmitSoundComponent?) null), false);
+
+            // #Misfits Fix — also silence AmbientSound (e.g. Eyebot music loop) on death.
+            _ambient.SetAmbience(entity.Owner, false);
         }
         else
         {
@@ -58,6 +63,9 @@ public sealed class IdleSoundSystem : EntitySystem
             entity.Comp.Suppressed = false;
             _suppressedEntities.Remove(entity.Owner);
             _emitSound.SetEnabled((entity.Owner, (SpamEmitSoundComponent?) null), true);
+
+            // #Misfits Fix — re-enable AmbientSound on revive.
+            _ambient.SetAmbience(entity.Owner, true);
         }
     }
 

@@ -346,7 +346,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14WeaponRifleBozarGRA
-      - id: N14PowerCellFocused
+      - id: Magazine556Rifle30
         amount: 3
       - id: N14WeaponPistol12mm
       - id: N14MagazinePistol12mm

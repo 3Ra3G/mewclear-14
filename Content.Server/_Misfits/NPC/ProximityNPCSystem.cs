@@ -2,7 +2,10 @@ using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Shared._Misfits.CCVar;
 using Content.Shared._Misfits.NPC;
+using Content.Shared.Audio;
 using Content.Shared.Movement.Components;
+using Content.Shared.Sound;
+using Content.Shared.Sound.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
@@ -39,6 +42,8 @@ public sealed class ProximityNPCSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly NPCSystem _npc = default!;
+    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
+    [Dependency] private readonly SharedEmitSoundSystem _emitSound = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private float _accumulator;
@@ -75,6 +80,11 @@ public sealed class ProximityNPCSystem : EntitySystem
             // Remove InputMover so MoverController.UpdateBeforeSolve skips this entity
             // entirely — no HandleMobMovement per physics substep while asleep.
             RemCompDeferred<InputMoverComponent>(ent);
+
+            // Silence idle sounds while sleeping — no point emitting audio for NPCs
+            // that are 60+ tiles from any player.
+            _emitSound.SetEnabled((ent.Owner, (SpamEmitSoundComponent?) null), false);
+            _ambient.SetAmbience(ent.Owner, false);
         }
     }
 
@@ -152,6 +162,8 @@ public sealed class ProximityNPCSystem : EntitySystem
                 {
                     // Add InputMover BEFORE wake so steering can write to it on the first tick.
                     EnsureComp<InputMoverComponent>(uid);
+                    _emitSound.SetEnabled((uid, (SpamEmitSoundComponent?) null), true);
+                    _ambient.SetAmbience(uid, true);
                     _npc.WakeNPC(uid);
                 }
             }
@@ -165,6 +177,8 @@ public sealed class ProximityNPCSystem : EntitySystem
                     // so MoverController.UpdateBeforeSolve skips this entity.
                     _npc.SleepNPC(uid);
                     RemCompDeferred<InputMoverComponent>(uid);
+                    _emitSound.SetEnabled((uid, (SpamEmitSoundComponent?) null), false);
+                    _ambient.SetAmbience(uid, false);
                 }
             }
         }
