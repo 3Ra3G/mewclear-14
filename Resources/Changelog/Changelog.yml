@@ -2374,3 +2374,10 @@ Entries:
   id: 5687
   time: '2026-03-29T08:36:54.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/209
+- author: Cythisiax
+  changes:
+    - type: Fix
+      message: title
+  id: 5688
+  time: '2026-03-29T19:11:18.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/211
