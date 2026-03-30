@@ -120,7 +120,7 @@
   name: centurion-marksman kit
   parent: KitBase
   id: KitCenturionMarksman
-  description: "A set of Legion equipment."
+  description: "A set of Legion command-tier marksman equipment."
   components:
   - type: Sprite
     sprite: Corvax/Objects/Misc/kits.rsi
@@ -129,11 +129,10 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponRifle762Chinese
+      - id: N14WeaponRifleM1GarandRepublicsDemise # #Misfits Change: Republic's Demise scoped M1C for Centurion marksman
+      - id: GarandEnbloc308
+        amount: 4
       - id: ClothingBeltRope
-      - id: Magazine762Rifle
-        amount: 2
-      - id: MagazineBox762
       - id: SmokeGrenade
       - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
@@ -643,9 +642,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireShield
-      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand as Decanus primary — step above Warrior/Auxilia hunting rifle
-      - id: GarandEnbloc308
-        amount: 4
+      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
+      - id: N14Cartridge308Rifle
+        amount: 8
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -677,9 +676,9 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand as Decanus primary
-      - id: GarandEnbloc308
-        amount: 4
+      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary (replaces SMG)
+      - id: N14Cartridge308Rifle
+        amount: 8
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -708,9 +707,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14SledgeHammer
-      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand as Decanus primary
-      - id: GarandEnbloc308
-        amount: 4
+      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
+      - id: N14Cartridge308Rifle
+        amount: 8
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
         amount: 2

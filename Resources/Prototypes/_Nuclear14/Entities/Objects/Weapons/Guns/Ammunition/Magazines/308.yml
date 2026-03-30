@@ -124,7 +124,7 @@
       map: ["enum.GunVisualLayers.Mag"]
   - type: MagazineVisuals
     magState: mag
-    steps: 2
+    steps: 1 # #Misfits Fix: RSI only has mag-0 (empty) and mag-1 (loaded); steps:1 maps correctly
     zeroVisible: true
   - type: Appearance
 
@@ -152,7 +152,7 @@
       map: ["enum.GunVisualLayers.Mag"]
   - type: MagazineVisuals
     magState: mag
-    steps: 2
+    steps: 1 # #Misfits Fix: RSI only has mag-0 (empty) and mag-1 (loaded); steps:1 maps correctly
     zeroVisible: true
   - type: Appearance
 
