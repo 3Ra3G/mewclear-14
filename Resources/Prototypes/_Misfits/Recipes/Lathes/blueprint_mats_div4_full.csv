@@ -2,10 +2,6 @@ recipe_id,material,original,div4
 N14BPBoSWeaponLaserPistol,Steel,25,6.25
 N14BPBoSWeaponLaserPistol,Glass,10,2.5
 N14BPBoSWeaponLaserPistol,Circuitry,5,1.25
-N14BPBoSWeaponLaserPistolRecharger,Steel,25,6.25
-N14BPBoSWeaponLaserPistolRecharger,Glass,10,2.5
-N14BPBoSWeaponLaserPistolRecharger,Circuitry,10,2.5
-N14BPBoSWeaponLaserPistolRecharger,ScrapElectronic,5,1.25
 N14BPBoSWeaponLaserRevolver,Steel,20,5
 N14BPBoSWeaponLaserRevolver,Glass,10,2.5
 N14BPBoSWeaponLaserRevolver,Scrap,10,2.5
@@ -23,10 +19,6 @@ N14BPBoSWeaponLaserRifle,Steel,60,15
 N14BPBoSWeaponLaserRifle,Glass,30,7.5
 N14BPBoSWeaponLaserRifle,Circuitry,25,6.25
 N14BPBoSWeaponLaserRifle,Plastic,10,2.5
-N14BPBoSWeaponLaserRifleRecharger,Steel,55,13.75
-N14BPBoSWeaponLaserRifleRecharger,Glass,30,7.5
-N14BPBoSWeaponLaserRifleRecharger,Circuitry,30,7.5
-N14BPBoSWeaponLaserRifleRecharger,ScrapElectronic,10,2.5
 N14BPBoSWeaponPlasmaPistol,Steel,45,11.25
 N14BPBoSWeaponPlasmaPistol,Glass,25,6.25
 N14BPBoSWeaponPlasmaPistol,Circuitry,20,5

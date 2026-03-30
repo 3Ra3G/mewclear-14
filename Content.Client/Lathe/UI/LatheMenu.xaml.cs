@@ -319,17 +319,27 @@ public sealed partial class LatheMenu : DefaultWindow
             var missingAmount = Math.Max(0, adjustedAmount - availableAmount);
 
             var name = Loc.GetString(proto.Name);
+            var unit = Loc.GetString(proto.Unit);
+            var sheetVolume = Math.Max(1, _materialStorage.GetSheetVolume(proto));
+            var adjustedSheets = (float) adjustedAmount / sheetVolume;
+            var missingSheets = (float) missingAmount / sheetVolume;
 
             string tooltipText;
-            // #Misfits Change: Show raw material counts so players see the exact recipe
-            // values configured in lathe YAMLs rather than normalized fractional stack units.
+            // #Misfits Fix: Tooltip costs should match sheet-backed material displays elsewhere
+            // in the lathe UI, rather than exposing raw internal stack volume values.
             if (missingAmount > 0)
             {
-                tooltipText = Loc.GetString("lathe-menu-material-raw-amount-missing", ("amount", adjustedAmount), ("missingAmount", missingAmount), ("material", name));
+                tooltipText = Loc.GetString("lathe-menu-material-amount-missing",
+                    ("amount", adjustedSheets),
+                    ("missingAmount", missingSheets),
+                    ("unit", unit),
+                    ("material", name));
             }
             else
             {
-                tooltipText = Loc.GetString("lathe-menu-material-raw-amount", ("amount", adjustedAmount), ("material", name));
+                tooltipText = Loc.GetString("lathe-menu-tooltip-display",
+                    ("amount", Loc.GetString("lathe-menu-material-amount", ("amount", adjustedSheets), ("unit", unit))),
+                    ("material", name));
             }
 
             sb.AppendLine(tooltipText);

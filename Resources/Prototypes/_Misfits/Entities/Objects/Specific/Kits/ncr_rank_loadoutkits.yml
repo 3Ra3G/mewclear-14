@@ -58,10 +58,10 @@
   id: NCRA_CaptainMarksmanSet
   name: Captain Frontier Marksman Kit
   description: |-
-    Includes an NCR trench coat, a loaded captain's revolver belt,
-        a captain pin, an NCR .50 rifle, a box of .50 ammo,
-        a handheld radio, a smoke grenade, a C ration MRE, a stimpak,
-        a super stimpak, a RadAway blood bag, 2 gauze packs, and a flare.
+    Includes an NCR trench coat, a loaded captain's revolver belt, a captain pin,
+    Republic's Pride (Gunrunner-tuned scoped M1C) with 4 en-bloc clips,
+    a handheld radio, a smoke grenade, a C ration MRE, a stimpak,
+    a super stimpak, a RadAway blood bag, 2 gauze packs, and a flare.
   sprite:
     sprite: _Nuclear14/Objects/Misc/kits.rsi
     state: marksman
@@ -229,7 +229,7 @@
   name: captain frontier marksman kit
   parent: KitBase
   id: KitNCR_CaptainMarksman
-  description: A crate containing a harder-hitting marksman package for an NCR captain on a dangerous frontier post.
+  description: A crate containing a precision marksman package for an NCR captain — the Republic's Pride scoped M1C, issued to scout captains by the Gunrunners.
   components:
   - type: Sprite
     state: marksman
@@ -240,8 +240,9 @@
       - id: N14ClothingOuterNCRTrenchCoat
       - id: ClothingBeltRevolverCaptainfilled
       - id: ClothingNeckPinNCRCaptain
-      - id: N14WeaponSniper50NCRRifle
-      - id: MagazineBox50
+      - id: N14WeaponRifleM1GarandRepublicsPride # #Misfits Change: Republic's Pride scoped M1C replaces .50 rifle
+      - id: GarandEnbloc308
+        amount: 4
       - id: RadioHandheld
       - id: SmokeGrenade
       - id: N14BoxCardboardMREBoxCFilled

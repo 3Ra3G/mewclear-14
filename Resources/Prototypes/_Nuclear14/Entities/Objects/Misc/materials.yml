@@ -68,6 +68,9 @@
     canChangeTransferAmount: false
   - type: DeleteOnSolutionEmpty
     solution: compost
+  # Match the dung cleanup window so rotted compost does not accumulate on the map.
+  - type: TimedDespawn
+    lifetime: 300
   - type: Material
   - type: Stack
     stackType: Compost

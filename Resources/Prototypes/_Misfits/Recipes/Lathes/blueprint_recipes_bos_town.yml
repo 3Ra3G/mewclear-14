@@ -22,22 +22,7 @@
     Circuitry: 5
 
 
-- type: latheRecipe
-  id: N14BPBoSWeaponLaserPistolRecharger
-  result: N14WeaponLaserPistolRecharger
-  category: N14BlueprintBoSWeaponsT1
-  completetime: 7
-  requiresBlueprint: true
-  availableFaction:
-  - BrotherhoodOfSteel
-  materials:
-    Steel: 1000
-
-    Glass: 5
-
-    Circuitry: 5
-
-    ScrapElectronic: 5
+# Recharger variants are intentionally excluded from blueprint crafting.
 
 
 - type: latheRecipe
@@ -125,22 +110,6 @@
     Plastic: 5
 
 
-- type: latheRecipe
-  id: N14BPBoSWeaponLaserRifleRecharger
-  result: N14WeaponLaserRifleRecharger
-  category: N14BlueprintBoSWeaponsT2
-  completetime: 12
-  requiresBlueprint: true
-  availableFaction:
-  - BrotherhoodOfSteel
-  materials:
-    Steel: 3500
-
-    Glass: 20
-
-    Circuitry: 20
-
-    ScrapElectronic: 5
 
 
 - type: latheRecipe

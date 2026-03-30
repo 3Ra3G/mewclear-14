@@ -172,6 +172,14 @@
   - /Audio/_Nuclear14/Weapons/Guns/Rifles/N14WeaponBattleRifle/shot7.ogg
   - /Audio/_Nuclear14/Weapons/Guns/Rifles/N14WeaponBattleRifle/shot8.ogg
 
+# Misfits Add — M1 Garand gunshot collection (ported from F13 hunting_rifle.ogg)
+- type: soundCollection
+  id: N14GarandGunshot
+  files:
+  - /Audio/_Nuclear14/Weapons/Guns/Rifles/N14WeaponM1Garand/shot1.ogg
+  - /Audio/_Nuclear14/Weapons/Guns/Rifles/N14WeaponM1Garand/shot2.ogg
+  - /Audio/_Nuclear14/Weapons/Guns/Rifles/N14WeaponM1Garand/shot3.ogg
+
 - type: soundCollection
   id: N14OldCarbineGunshot
   files:

@@ -394,7 +394,6 @@
   - type: Blueprint
     recipes:
     - N14BPBoSWeaponLaserPistol
-    - N14BPBoSWeaponLaserPistolRecharger
     - N14BPBoSWeaponLaserRevolver
     - N14BPBoSWeaponPistol10mm
 
@@ -409,7 +408,6 @@
     - N14BPBoSWeaponLaserRifleCrude
     - N14BPBoSWeaponLaserRifleMakeshift
     - N14BPBoSWeaponLaserRifle
-    - N14BPBoSWeaponLaserRifleRecharger
     - N14BPBoSWeaponPlasmaPistol
     - N14BPBoSWeaponPlasmaDefender
 
@@ -738,8 +736,6 @@
   - type: Blueprint
     recipes:
     - N14BPVaultWeaponSMG10mm
-    - N14BPVaultWeaponLaserPistolRecharger
-    - N14BPVaultWeaponLaserRifleRecharger
     - N14BPVaultWeaponCombatKnife
 
 - type: entity

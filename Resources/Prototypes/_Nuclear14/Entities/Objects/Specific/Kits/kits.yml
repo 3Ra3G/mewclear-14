@@ -485,10 +485,7 @@
       - id: ClothingBeltNCR
       - id: N14ClothingHeadHatNCRHelmetMetalDesert # Forge-Change
       - id: N14ClothingNeckCloakNCR # Forge-Change
-      - id: GrenadeFrag # #Misfits Change /Tweak/: replace launcher kit explosives with throwable grenades only.
-        amount: 2
-      - id: GrenadeFrag
-        amount: 2
+      # #Misfits Change: removed 4x GrenadeFrag — no grenade launcher in this kit, grenades were orphaned
       - id: SmokeGrenade
       - id: N14WeaponPistol45Colt
       - id: N14MagazinePistol45

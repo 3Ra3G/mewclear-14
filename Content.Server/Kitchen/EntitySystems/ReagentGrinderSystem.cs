@@ -90,31 +90,33 @@ namespace Content.Server.Kitchen.EntitySystems
 
                 foreach (var item in inputContainer.ContainedEntities.ToList())
                 {
-                    var solution = active.Program switch
-                    {
-                        GrinderProgram.Grind => GetGrindSolution(item),
-                        GrinderProgram.Juice => CompOrNull<ExtractableComponent>(item)?.JuiceSolution,
-                        _ => null,
-                    };
+                    var solution = GetProgramSolution(item, active.Program);
 
                     if (solution is null)
                         continue;
 
                     if (TryComp<StackComponent>(item, out var stack))
                     {
-                        var totalVolume = solution.Volume * stack.Count;
-                        if (totalVolume <= 0)
+                        // #Misfits Fix: stacked produce can collapse down to shared reagent state,
+                        // so sample a single fresh unit and scale from that instead of trusting
+                        // the merged stack's live solution data.
+                        var unitSolution = stack.Count > 1
+                            ? GetStackUnitSolution(item, active.Program, uid) ?? solution
+                            : solution;
+
+                        if (unitSolution.Volume <= 0)
                             continue;
 
-                        // Maximum number of items we can process in the stack without going over AvailableVolume
+                        // Maximum number of items we can process in the stack without going over AvailableVolume.
                         // We add a small tolerance, because floats are inaccurate.
-                        var fitsCount = (int) (stack.Count * FixedPoint2.Min(containerSolution.AvailableVolume / totalVolume + 0.01, 1));
+                        var fitsCount = Math.Min(stack.Count,
+                            (int) MathF.Floor((containerSolution.AvailableVolume / unitSolution.Volume).Float() + 0.01f));
+
                         if (fitsCount <= 0)
                             continue;
 
-                        // Make a copy of the solution to scale
-                        // Otherwise we'll actually change the volume of the remaining stack too
-                        var scaledSolution = new Solution(solution);
+                        // Make a copy of the per-item solution to scale.
+                        var scaledSolution = new Solution(unitSolution);
                         scaledSolution.ScaleSolution(fitsCount);
                         solution = scaledSolution;
 
@@ -352,6 +354,29 @@ namespace Content.Server.Kitchen.EntitySystems
             }
             else
                 return null;
+        }
+
+        private Solution? GetProgramSolution(EntityUid uid, GrinderProgram program)
+        {
+            return program switch
+            {
+                GrinderProgram.Grind => GetGrindSolution(uid),
+                GrinderProgram.Juice => CompOrNull<ExtractableComponent>(uid)?.JuiceSolution,
+                _ => null,
+            };
+        }
+
+        private Solution? GetStackUnitSolution(EntityUid source, GrinderProgram program, EntityUid grinder)
+        {
+            var prototype = Prototype(source)?.ID;
+            if (prototype is null)
+                return null;
+
+            var sample = EntityManager.SpawnEntity(prototype, Transform(grinder).Coordinates);
+            var solution = GetProgramSolution(sample, program);
+
+            Del(sample);
+            return solution;
         }
 
         private bool CanGrind(EntityUid uid)

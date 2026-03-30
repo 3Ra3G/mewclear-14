@@ -793,6 +793,11 @@
         reagents:
         - ReagentId: Bitterdrink
           Quantity: 50
+  #Misfits Fix: Bitterdrink is crafted through the legacy hand-construction flow,
+  # so it needs Construction metadata for the result entity to finalize correctly.
+  - type: Construction
+    graph: N14Bitterdrink
+    node: bitterdrink
 
 - type: entity
   parent: N14HealingPowder

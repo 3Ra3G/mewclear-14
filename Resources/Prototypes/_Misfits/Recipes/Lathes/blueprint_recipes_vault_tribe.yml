@@ -57,33 +57,7 @@
     Plastic: 75
     N14Iron: 50
 
-- type: latheRecipe
-  id: N14BPVaultWeaponLaserPistolRecharger
-  result: N14WeaponLaserPistolRecharger
-  category: N14BlueprintVaultWeaponsT2
-  completetime: 8
-  requiresBlueprint: true
-  availableFaction:
-  - Vault
-  materials:
-    Steel: 12500
-    Glass: 75
-    Circuitry: 75
-    ScrapElectronic: 25
-
-- type: latheRecipe
-  id: N14BPVaultWeaponLaserRifleRecharger
-  result: N14WeaponLaserRifleRecharger
-  category: N14BlueprintVaultWeaponsT2
-  completetime: 12
-  requiresBlueprint: true
-  availableFaction:
-  - Vault
-  materials:
-    Steel: 200
-    Glass: 125
-    Circuitry: 1
-    ScrapElectronic: 50
+# Recharger variants are intentionally excluded from blueprint crafting.
 
 - type: latheRecipe
   id: N14BPVaultWeaponCombatKnife

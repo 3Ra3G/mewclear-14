@@ -447,7 +447,10 @@
 - type: UndecidedLoadoutBackpackSet
   id: CenturionMarksmanSet
   name: Centurion Marksman
-  description: Includes a Chinese rifle, a rope belt, 2 7.62 rifle magazines, a box of 7.62 ammo, a smoke grenade, 2 healing powder, 2 K rations, and a ceramic flask.
+  description: |-
+    Includes Republic's Demise (scoped M1C looted from a dead NCR lieutenant),
+    4 en-bloc clips, a rope belt, a smoke grenade,
+    2 healing powder, 2 K rations, and a ceramic flask.
   sprite:
     sprite: Corvax/Objects/Misc/kits.rsi
     state: base
@@ -677,7 +680,10 @@
 - type: UndecidedLoadoutBackpackSet
   id: DecanusGladiatorSet
   name: Decanus Gladiator
-  description: Includes a Legion shield, a rope belt, a trench club, 2 bolas, a handcuff box, 2 healing powder, 2 K rations, a ceramic flask, and mustard.
+  description: |-
+    Includes an M1 Garand with 4 en-bloc clips, a Legion shield,
+    a rope belt, a trench club, 2 bolas, a handcuff box,
+    2 healing powder, 2 K rations, a ceramic flask, and mustard.
   sprite:
     sprite: Corvax/Objects/Misc/kits.rsi
     state: base
@@ -687,7 +693,10 @@
 - type: UndecidedLoadoutBackpackSet
   id: DecanusSagitariaSet
   name: Decanus Sagitaria
-  description: Includes a 10mm SMG, a rope belt, 2 10mm SMG magazines, a box of 10mm ammo, a smoke grenade, 2 healing powder, 2 K rations, a ceramic flask, and mustard.
+  description: |-
+    Includes an M1 Garand with 4 en-bloc clips, a .45 revolver with 2 spare mags,
+    a rope belt, a smoke grenade,
+    2 healing powder, 2 K rations, a ceramic flask, and mustard.
   sprite:
     sprite: Corvax/Objects/Misc/kits.rsi
     state: base
@@ -697,7 +706,10 @@
 - type: UndecidedLoadoutBackpackSet
   id: DecanusBerserkerSet
   name: Decanus Berserker
-  description: Includes a sledgehammer, a rope belt, 3 throwing knives, 2 healing powder, 2 K rations, a ceramic flask, and mustard.
+  description: |-
+    Includes an M1 Garand with 4 en-bloc clips, a .45 revolver with 2 spare mags,
+    a sledgehammer, a rope belt, 3 throwing knives,
+    2 healing powder, 2 K rations, a ceramic flask, and mustard.
   sprite:
     sprite: Corvax/Objects/Misc/kits.rsi
     state: base
