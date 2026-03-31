@@ -8,3 +8,4 @@
   description: A lockable Legion collar used to mark and transport captives.
   icon: { sprite: Corvax/Clothing/Bandage/bandageSerfMBOS.rsi, state: icon }
   objectType: Item
+  hide: false

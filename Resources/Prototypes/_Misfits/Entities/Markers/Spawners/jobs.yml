@@ -668,3 +668,49 @@
   - type: SpawnPoint
     job_id: SyntheticAssaultron
 
+# Outlaws
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointKhan
+  name: Khan
+  components:
+  - type: SpawnPoint
+    job_id: Khan
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: raider
+
+- type: entity
+  parent: MisfitsSpawnPointKhan
+  id: MisfitsSpawnPointJackal
+  name: Jackal
+  components:
+  - type: SpawnPoint
+    job_id: Jackal
+
+- type: entity
+  parent: MisfitsSpawnPointKhan
+  id: MisfitsSpawnPointViper
+  name: Viper
+  components:
+  - type: SpawnPoint
+    job_id: Viper
+
+- type: entity
+  parent: MisfitsSpawnPointKhan
+  id: MisfitsSpawnPointGunner
+  name: Gunner
+  components:
+  - type: SpawnPoint
+    job_id: Gunner
+
+- type: entity
+  parent: MisfitsSpawnPointKhan
+  id: MisfitsSpawnPointFiend
+  name: Fiend
+  components:
+  - type: SpawnPoint
+    job_id: Fiend
+
