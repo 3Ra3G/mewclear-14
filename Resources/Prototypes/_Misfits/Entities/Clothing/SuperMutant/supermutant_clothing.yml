@@ -169,3 +169,20 @@
   - type: Tag
     tags:
     - SuperMutantWearable
+
+# #Misfits Add - Vault suit jumpsuit for the base playable Supermutant role.
+# Sprites by ColonelNothing (CC-BY-SA-3.0). Prevents naked spawns.
+# --- Supermutant Vault Suit ---
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingSuperMutantVaultSuit
+  name: supermutant vault suit
+  description: A heavily stretched vault suit modified to fit a supermutant's oversized frame.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/SuperMutant/vaultsuit.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/SuperMutant/vaultsuit.rsi
+  - type: Tag
+    tags:
+    - SuperMutantWearable

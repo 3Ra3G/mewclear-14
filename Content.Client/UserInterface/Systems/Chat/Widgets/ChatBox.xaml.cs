@@ -35,6 +35,18 @@ public partial class ChatBox : UIWidget, ILinkClickHandler // #Misfits Change â€
     private readonly ILocalizationManager _loc;
     private readonly IClientConsoleHost _console; // #Misfits Change
 
+    // #Misfits Fix â€” chat messages need FontTag allowed so speech verb fontSize markup is not stripped.
+    private static readonly Type[] ChatMessageTags =
+    [
+        typeof(BoldItalicTag),
+        typeof(BoldTag),
+        typeof(BulletTag),
+        typeof(ColorTag),
+        typeof(FontTag),
+        typeof(HeadingTag),
+        typeof(ItalicTag),
+    ];
+
     // #Misfits Change â€” extended tag set that allows our AdminChatLinkTag for [Info]/[Ghost] hyperlinks.
     private static readonly Type[] AdminChatTags =
     [
@@ -42,6 +54,7 @@ public partial class ChatBox : UIWidget, ILinkClickHandler // #Misfits Change â€
         typeof(BoldTag),
         typeof(BulletTag),
         typeof(ColorTag),
+        typeof(FontTag),
         typeof(HeadingTag),
         typeof(ItalicTag),
         typeof(AdminChatLinkTag),
@@ -259,7 +272,8 @@ public partial class ChatBox : UIWidget, ILinkClickHandler // #Misfits Change â€
                                 ("size", 8 + sizeIncrease)
                                 ));
         }
-        Contents.AddMessage(formatted);
+        // #Misfits Fix â€” use explicit allowed tags so [font size=...] from wrapped chat is preserved.
+        Contents.AddMessage(formatted, ChatMessageTags, null);
     }
 
     // #Misfits Change â€” like AddLine but appends [Ghost] (all ghosts) and optionally [Info] (aghost admins only).

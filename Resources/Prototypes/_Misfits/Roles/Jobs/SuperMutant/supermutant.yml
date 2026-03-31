@@ -16,6 +16,7 @@
   whitelisted: true # #Misfits Fix — allow job-whitelist fallback in lobby visibility filter
   hideWithoutWhitelist: true # #Misfits Change
   spawnLoadout: false
+  startingGear: SuperMutantVaultSuitGear # #Misfits Add - prevents naked spawns
   applyTraits: false
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -24,6 +25,12 @@
 
 - type: playTimeTracker
   id: SuperMutant
+
+# #Misfits Add - startingGear for the base Supermutant: a vault suit so they don't spawn naked.
+- type: startingGear
+  id: SuperMutantVaultSuitGear
+  equipment:
+    jumpsuit: ClothingSuperMutantVaultSuit
 
 # #Misfits Add - Gladiator variant of the playable Supermutant role.
 # Spawns with an arena-themed outfit while retaining normal whitelist and species restrictions.
@@ -55,6 +62,9 @@
     outerClothing: ClothingSuperMutantGladiatorArmor
     shoes: ClothingSuperMutantGladiatorBoots
     head: ClothingSuperMutantGladiatorHelmet
+    id: N14IDLegionaryBadgeSlave # Gladiator serves under Legion authority
+  inhand:
+    - N14WastelandTribalSpear # Starts with a tribal spear for close-combat
 
 - type: playTimeTracker
   id: SuperMutantGladiator

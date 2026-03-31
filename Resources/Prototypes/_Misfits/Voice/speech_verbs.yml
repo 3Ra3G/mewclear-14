@@ -3,4 +3,5 @@
   name: chat-speech-verb-name-megaphone
   speechVerbStrings:
   - chat-speech-verb-megaphone
-  fontSize: 15
+  bold: true
+  fontSize: 20

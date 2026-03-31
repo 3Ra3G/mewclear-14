@@ -64,9 +64,9 @@
       key_slots:
       - EncryptionKeyVault
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/cargo.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/vault.rsi
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/cargo.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/vault.rsi
 
 - type: entity
   parent: N14ClothingHeadsetAlt
@@ -176,9 +176,9 @@
       - EncryptionKeyEnclave
       - EncryptionKeyWastelandGlobal
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/security.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/enclave.rsi
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/security.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/enclave.rsi
 
 - type: entity
   parent: N14ClothingHeadsetAlt
@@ -191,9 +191,9 @@
       - EncryptionKeyNCR
       - EncryptionKeyWastelandGlobal
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/security.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/ncr.rsi
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/security.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/ncr.rsi
 
 # #Misfits Change - Legion headset
 - type: entity
@@ -207,9 +207,9 @@
       - EncryptionKeyLegion
       - EncryptionKeyWastelandGlobal
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/security.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/legion.rsi
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/security.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/legion.rsi
 
 # #Misfits Add — Followers of the Apocalypse headset; grants both faction and wasteland channels
 - type: entity

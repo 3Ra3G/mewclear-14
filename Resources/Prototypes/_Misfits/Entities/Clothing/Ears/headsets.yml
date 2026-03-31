@@ -10,6 +10,6 @@
       key_slots:
       - EncryptionKeyWastelandGlobal
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/base.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/scrap.rsi
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/base.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/scrap.rsi

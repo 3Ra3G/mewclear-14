@@ -11,9 +11,9 @@
       - EncryptionKeyBrotherhoodOfSteel
       - EncryptionKeyWastelandGlobal
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/command.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/bos.rsi
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/command.rsi
+    sprite: _Misfits/Clothing/Ears/Headsets/bos.rsi
 
 - type: entity
   parent: N14ClothingHeadsetLightScribe
@@ -25,3 +25,15 @@
       key_slots:
       - EncryptionKeyBrotherhoodOfSteel
       - EncryptionKeyWastelandGlobal
+  # Keep light-capable state names while applying the new BoS sprite set.
+  - type: Sprite
+    sprite: _Misfits/Clothing/Ears/Headsets/boslight.rsi
+    layers:
+    - state: icon
+    - state: light-icon
+      shader: unshaded
+      visible: false
+      map: [ "light" ]
+  - type: Clothing
+    sprite: _Misfits/Clothing/Ears/Headsets/boslight.rsi
+    equippedPrefix: off

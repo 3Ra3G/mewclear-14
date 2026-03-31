@@ -1,80 +1,77 @@
-// Assaultron beam charge-up system. When the player holds fire (FullAuto), 
-// the first attempt starts a 2-second charge phase with an area emote.
-// After the charge completes the next poll allows the shot through, broadcasts 
-// a "firing" emote, and enters a 3-second cooldown. Total cycle ≈ 5 seconds.
+// Server-side emote + power drain handler for Assaultron beam charge-up events.
+// Shot blocking / state machine logic lives in SharedAssaultronBeamChargeSystem
+// (Content.Shared) so it runs on both client and server for proper prediction.
+// This system only exists server-side because ChatSystem and BatterySystem are server-only.
 
 using Content.Server.Chat.Systems;
+using Content.Server.Power.EntitySystems;
 using Content.Shared._Misfits.Robot;
 using Content.Shared.Chat;
-using Content.Shared.Weapons.Ranged.Systems;
+using Content.Shared.Containers.ItemSlots;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Misfits.Robot;
 
-public sealed class AssaultronBeamChargeSystem : EntitySystem
+public sealed class AssaultronBeamChargeEmoteSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private readonly BatterySystem _battery = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<AssaultronBeamChargeComponent, AttemptShootEvent>(OnAttemptShoot);
-        SubscribeLocalEvent<AssaultronBeamChargeComponent, GunShotEvent>(OnGunShot);
+        SubscribeLocalEvent<AssaultronBeamChargeComponent, AssaultronChargeStartedEvent>(OnChargeStarted);
+        SubscribeLocalEvent<AssaultronBeamChargeComponent, AssaultronBeamFiredEvent>(OnBeamFired);
     }
 
-    private void OnAttemptShoot(EntityUid uid, AssaultronBeamChargeComponent comp, ref AttemptShootEvent args)
+    private void OnChargeStarted(EntityUid uid, AssaultronBeamChargeComponent comp, ref AssaultronChargeStartedEvent args)
     {
         var now = _timing.CurTime;
-
-        // Still in post-fire cooldown — block the shot silently.
-        if (now < comp.CooldownEndTime)
-        {
-            args.Cancelled = true;
+        if (now < comp.NextChargeEmoteTime)
             return;
-        }
 
-        // Charge phase complete — allow the shot through.
-        if (comp.IsCharging && now >= comp.ChargeEndTime)
-        {
-            comp.IsCharging = false;
-            comp.ReadyToFire = true;
-            // Shot allowed — GunShotEvent will handle the fire emote + cooldown.
-            return;
-        }
-
-        // Currently charging but not yet ready — keep blocking.
-        if (comp.IsCharging)
-        {
-            args.Cancelled = true;
-            return;
-        }
-
-        // Idle state — start the charge-up phase.
-        comp.IsCharging = true;
-        comp.ChargeEndTime = now + TimeSpan.FromSeconds(comp.ChargeDuration);
+        comp.NextChargeEmoteTime = now + TimeSpan.FromSeconds(comp.EmoteCooldown);
 
         _chat.TrySendInGameICMessage(
             uid,
-            Loc.GetString(comp.ChargeEmoteLocale),
+            Loc.GetString(args.EmoteLocale),
             InGameICChatType.Emote,
             ChatTransmitRange.Normal,
             ignoreActionBlocker: true);
-
-        args.Cancelled = true;
     }
 
-    private void OnGunShot(EntityUid uid, AssaultronBeamChargeComponent comp, ref GunShotEvent args)
+    private void OnBeamFired(EntityUid uid, AssaultronBeamChargeComponent comp, ref AssaultronBeamFiredEvent args)
     {
-        // Shot actually fired — broadcast fire emote and start cooldown.
-        comp.ReadyToFire = false;
-        comp.CooldownEndTime = _timing.CurTime + TimeSpan.FromSeconds(comp.CooldownDuration);
+        // Drain the robot's chassis battery on each shot.
+        if (comp.FireDrainCharge > 0f)
+            DrainCellSlot(uid, comp);
+
+        var now = _timing.CurTime;
+        if (now < comp.NextFireEmoteTime)
+            return;
+
+        comp.NextFireEmoteTime = now + TimeSpan.FromSeconds(comp.EmoteCooldown);
 
         _chat.TrySendInGameICMessage(
             uid,
-            Loc.GetString(comp.FireEmoteLocale),
+            Loc.GetString(args.EmoteLocale),
             InGameICChatType.Emote,
             ChatTransmitRange.Normal,
             ignoreActionBlocker: true);
+    }
+
+    /// <summary>
+    /// Drains charge from the battery entity stored in the robot's cell_slot.
+    /// This makes the beam attack consume the robot's own power supply.
+    /// </summary>
+    private void DrainCellSlot(EntityUid uid, AssaultronBeamChargeComponent comp)
+    {
+        var cellEntity = _itemSlots.GetItemOrNull(uid, comp.CellSlotId);
+        if (cellEntity == null)
+            return;
+
+        _battery.UseCharge(cellEntity.Value, comp.FireDrainCharge);
     }
 }

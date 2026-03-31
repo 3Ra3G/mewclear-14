@@ -272,6 +272,13 @@ public sealed partial class GunComponent : Component
     public Vector2 DefaultDirection = new Vector2(0, -1);
 
     /// <summary>
+    /// #Misfits Add: World-space offset applied to the shot origin.
+    /// Shifts where projectiles / hitscan rays originate from (e.g. head beam).
+    /// </summary>
+    [DataField]
+    public Vector2 ShootOffset = Vector2.Zero;
+
+    /// <summary>
     ///     The percentage chance of a given gun to accidentally discharge if violently thrown into a wall or person
     /// </summary>
     [DataField]

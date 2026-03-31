@@ -93,6 +93,23 @@
         Shock: -0.5
   - type: RobotSelfRepairAnnouncer # #Misfits Change: hull integrity warnings + self-repair popups
 
+  - type: Gun # #Misfits Add: built-in flamer — right-click in combat mode to fire
+    cameraRecoilScalar: 0
+    fireRate: 10
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Nuclear14/Weapons/Guns/Flames/flamer.ogg
+    useKey: false
+  - type: BasicEntityAmmoProvider # #Misfits Add: limited fuel bursts, auto-refills after cooldown
+    proto: FireProjectile
+    capacity: 30
+    count: 30
+  - type: RechargeBasicEntityAmmo # #Misfits Add: slow recharge simulates fuel regeneration
+    rechargeCooldown: 3
+  - type: RobotGunPowerDrain # #Misfits Add: each flamer burst drains the robot's chassis battery
+    drainPerShot: 20
   - type: ContainerFill
     containers:
       borg_brain:
@@ -101,10 +118,12 @@
         - BorgModuleDiagnosis
         - BorgModuleTreatment
         - BorgModuleSurgery
-        - N14BorgModuleFlamer # #Misfits Add: Mr. Handy gets an integrated flamer for domestic and combat use
         - BorgModuleCleaning # #Misfits Add: Mr. Handy is a domestic servant — cleaning module is thematic
+        - BorgModuleGardening # #Misfits Add: domestic servant — gardening fits the Handy role
       id: # #Misfits Change: pre-load the nav module into the id inventory slot
         - MisfitsRobotNavCard
+      ears: # Wasteland radio for inter-robot and faction communication
+        - MisfitsClothingHeadsetWastelandScrap
   - type: ItemSlots
     slots:
       cell_slot:
@@ -194,6 +213,8 @@
         - PositronicBrain
       id: # #Misfits Change: pre-load the nav module into the id inventory slot
         - MisfitsRobotNavCardRobCo # RobCo Industries Navigation
+      ears: # Wasteland radio for inter-robot and faction communication
+        - MisfitsClothingHeadsetWastelandScrap
   - type: ItemSlots
     slots:
       cell_slot:
@@ -258,15 +279,37 @@
         Shock: -0.5
   - type: RobotSelfRepairAnnouncer # #Misfits Change: hull integrity warnings + self-repair popups
 
+  - type: Gun # #Misfits Add: built-in plasma caster — right-click in combat mode to fire
+    minAngle: 9
+    maxAngle: 18
+    angleIncrease: 3
+    angleDecay: 4
+    fireRate: 2
+    soundGunshot:
+      collection: N14PlasmaPistolGunshot
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+  - type: BasicEntityAmmoProvider # #Misfits Add: limited plasma shots, auto-refills after cooldown
+    proto: BulletPlasma
+    capacity: 15
+    count: 15
+  - type: RechargeBasicEntityAmmo # #Misfits Add: recharge simulates internal capacitor cycling
+    rechargeCooldown: 2
+  - type: RobotGunPowerDrain # #Misfits Add: each plasma shot drains the robot's chassis battery
+    drainPerShot: 50
   - type: ContainerFill
     containers:
       borg_brain:
         - PositronicBrain
       borg_module:
-        - N14BorgModulePlasma
-        - N14BorgModuleFlamer # #Misfits Change: Flamer module re-enabled — now battery-based to avoid SolutionContainerManager bugs
+        - BorgModuleTool # #Misfits Add: military utility — field repair and maintenance tools
+        - BorgModuleGPS # #Misfits Add: military utility — navigation and scanning tools
       id: # #Misfits Change: pre-load the nav module into the id inventory slot
         - MisfitsRobotNavCard # General Atomics Navigation
+      ears: # Wasteland radio for inter-robot and faction communication
+        - MisfitsClothingHeadsetWastelandScrap
   - type: ItemSlots
     slots:
       cell_slot:
@@ -323,6 +366,8 @@
         - N14BorgModuleSecurity
       id:
         - MisfitsRobotNavCardRobCo
+      ears: # Wasteland radio for inter-robot and faction communication
+        - MisfitsClothingHeadsetWastelandScrap
 
 - type: entity
   parent: N14PlayerSyntheticProtectron
@@ -356,6 +401,8 @@
         - BorgModuleRCD
       id:
         - MisfitsRobotNavCardRobCo
+      ears: # Wasteland radio for inter-robot and faction communication
+        - MisfitsClothingHeadsetWastelandScrap
 
 - type: entity
   parent: N14PlayerSyntheticProtectron
@@ -388,6 +435,8 @@
         - BorgModuleTool
       id:
         - MisfitsRobotNavCardRobCo
+      ears: # Wasteland radio for inter-robot and faction communication
+        - MisfitsClothingHeadsetWastelandScrap
 
 - type: entity
   parent: N14BasePlayerSynthetic
@@ -450,6 +499,7 @@
     angleIncrease: 2
     angleDecay: 4
     fireRate: 2 # Polling rate while held — actual ROF gated by AssaultronBeamCharge (2s charge + 3s cooldown = ~5s cycle)
+    shootOffset: 0, 0.35 # Shift beam origin up from body center to head level
     soundGunshot: # #Misfits Add: custom assaultron beam sound
       path: /Audio/_Misfits/Weapons/Guns/assaultron_beam.ogg
     useKey: false
@@ -497,6 +547,8 @@
         - PositronicBrain
       id: # #Misfits Change: pre-load the nav module into the id inventory slot
         - MisfitsRobotNavCardRobCo # RobCo Industries Navigation
+      ears: # Wasteland radio for inter-robot and faction communication
+        - MisfitsClothingHeadsetWastelandScrap
   - type: ItemSlots
     slots:
       cell_slot:
@@ -524,6 +576,7 @@
     angleIncrease: 2
     angleDecay: 4
     fireRate: 2
+    shootOffset: 0, 0.35 # Shift projectile origin up from body center to head level
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
     useKey: false
@@ -535,6 +588,7 @@
     cooldownDuration: 3
     chargeEmoteLocale: assaultron-tesla-charge-emote
     fireEmoteLocale: assaultron-tesla-fire-emote
+    fireDrainCharge: 900 # 50% of PowerCellHyper (1800) — tesla shot is devastating but costly
   - type: ProjectileBatteryAmmoProvider # Fires TeslaGunBullet — chain-lightning energy ball
     proto: TeslaGunBullet
     fireCost: 100
@@ -611,6 +665,17 @@
     - SmallCaliber
     - MediumCaliber
   - type: NoPull # Too heavy to drag
+  # Sentry bot 360-degree red glow — spawns 4 cone PointLight emitters at cardinal
+  # rotations on init (matching the NPC sentry bot). Also drives overload flash.
+  - type: SentryBotOverloadLight
+    steadyLightEnabled: true
+    flashInterval: 0.35
+  # Required on the main entity so SentryBotOverloadLightSystem's Update() query
+  # (which requires both SentryBotOverloadLightComponent and PointLightComponent) runs.
+  - type: PointLight
+    enabled: false
+    radius: 0
+    softness: 0
   - type: Gun # #Misfits Add: built-in 5mm minigun — fires in bursts, then overheats
     minAngle: 5
     maxAngle: 20
@@ -656,6 +721,8 @@
         - BorgModuleTool
       id:
         - MisfitsRobotNavCardRobCo
+      ears: # Wasteland radio for inter-robot and faction communication
+        - MisfitsClothingHeadsetWastelandScrap
   - type: ItemSlots
     slots:
       cell_slot:
@@ -766,6 +833,8 @@
         - BorgModuleTool
       id:
         - MisfitsRobotNavCardRobCo
+      ears: # Wasteland radio for inter-robot and faction communication
+        - MisfitsClothingHeadsetWastelandScrap
   - type: ItemSlots
     slots:
       cell_slot:
@@ -815,3 +884,5 @@
         - BorgModuleDiagnosis
       id:
         - MisfitsRobotNavCardRobCo
+      ears: # Wasteland radio for inter-robot and faction communication
+        - MisfitsClothingHeadsetWastelandScrap

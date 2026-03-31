@@ -165,6 +165,7 @@ public sealed class MobRobotAggroSystem : EntitySystem
             || humanoid.Species == "RobotProtectronFire"
             || humanoid.Species == "RobotMrGutsy"
             || humanoid.Species == "RobotAssaultron"
+            || humanoid.Species == "RobotAssaultronTesla"
             || humanoid.Species == "RobotSentryBot"
             || humanoid.Species == "RobotSentryBotLaser"
             || humanoid.Species == "RobotRobobrain"

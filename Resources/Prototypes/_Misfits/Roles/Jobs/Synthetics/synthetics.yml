@@ -82,6 +82,7 @@
   - !type:CharacterSpeciesRequirement
     species:
     - RobotAssaultron
+    - RobotAssaultronTesla
 
 - type: playTimeTracker
   id: SyntheticMrHandy

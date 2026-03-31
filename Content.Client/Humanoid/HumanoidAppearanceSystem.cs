@@ -67,6 +67,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             || speciesId == "RobotProtectronFire"
             || speciesId == "RobotMrGutsy"
             || speciesId == "RobotAssaultron"
+            || speciesId == "RobotAssaultronTesla"
             || speciesId == "RobotSentryBot"
             || speciesId == "RobotSentryBotLaser"
             || speciesId == "RobotRobobrain"

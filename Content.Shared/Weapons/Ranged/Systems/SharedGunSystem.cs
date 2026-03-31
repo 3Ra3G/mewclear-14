@@ -335,6 +335,11 @@ public abstract partial class SharedGunSystem : EntitySystem
         }
 
         var fromCoordinates = Transform(user).Coordinates;
+
+        // #Misfits Add: apply per-gun origin offset (e.g. Assaultron head beam)
+        if (gun.ShootOffset != Vector2.Zero)
+            fromCoordinates = fromCoordinates.Offset(gun.ShootOffset);
+
         // Remove ammo
         var ev = new TakeAmmoEvent(shots, new List<(EntityUid? Entity, IShootable Shootable)>(), fromCoordinates, user);
 

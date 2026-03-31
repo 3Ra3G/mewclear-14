@@ -193,7 +193,7 @@
     animation: WeaponArcPunch
     damage:
       types:
-        Slash: 30 #Misfits Tweak - assaultron claws should hit like a dedicated slashing melee threat
+        Slash: 15 #Misfits Tweak - tone down NPC assaultron claw lethality per balance request
   # - type: GhostRole
     # prob: 1
     # makeSentient: true

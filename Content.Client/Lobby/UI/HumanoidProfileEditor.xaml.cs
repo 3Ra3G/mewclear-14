@@ -1641,6 +1641,7 @@ namespace Content.Client.Lobby.UI
                 || speciesId == "RobotProtectronFire"
                 || speciesId == "RobotMrGutsy"
                 || speciesId == "RobotAssaultron"
+                || speciesId == "RobotAssaultronTesla"
                 || speciesId == "RobotSentryBot"
                 || speciesId == "RobotSentryBotLaser"
                 || speciesId == "RobotRobobrain"

@@ -129,6 +129,10 @@ public sealed partial class GunSystem : SharedGunSystem
             if (ev.TintColor != null)
                 sprite.LayerSetColor(EffectLayers.Unshaded, ev.TintColor.Value);
 
+            // #Misfits Add: extend the HitscanEffect entity lifetime when beamDuration exceeds the prototype default (2s)
+            if (ev.BeamDuration > 2f && TryComp<TimedDespawnComponent>(ent, out var despawn))
+                despawn.Lifetime = ev.BeamDuration + 0.5f;
+
             var anim = new Animation()
             {
                 Length = TimeSpan.FromSeconds(ev.BeamDuration), // #Misfits Change: use configurable beam duration
