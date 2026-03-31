@@ -24,3 +24,4 @@
           rules: ghost-role-component-default-rules
         - type: GhostRoleMobSpawner
           prototype: N14MobPetDogLegion
+          availableTakeovers: 5
