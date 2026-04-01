@@ -49,26 +49,5 @@
                 Disabled="True" Margin="12 8"
                 HorizontalExpand="True"/>
 
-        <!-- Confirmation overlay — hidden until user clicks Launch -->
-        <PanelContainer Name="ConfirmOverlay" Visible="False"
-                        HorizontalExpand="True" VerticalExpand="True">
-            <BoxContainer Orientation="Vertical"
-                          HorizontalAlignment="Center" VerticalAlignment="Center"
-                          Margin="20 20">
-                <Label Text="{Loc n14-expedition-confirm-title}"
-                       StyleClasses="LabelBig" Align="Center" Margin="0 0 0 8"/>
-                <RichTextLabel Name="ConfirmWarning" HorizontalExpand="True" Margin="8 4"/>
-                <BoxContainer Orientation="Horizontal"
-                              HorizontalAlignment="Center" Margin="0 12 0 0"
-                              SeparationOverride="12">
-                    <Button Name="ConfirmProceedButton"
-                            Text="{Loc n14-expedition-confirm-proceed}"
-                            MinWidth="120" StyleClasses="ButtonColorGreen"/>
-                    <Button Name="ConfirmCancelButton"
-                            Text="{Loc n14-expedition-confirm-cancel}"
-                            MinWidth="120" StyleClasses="ButtonColorRed"/>
-                </BoxContainer>
-            </BoxContainer>
-        </PanelContainer>
     </BoxContainer>
 </controls:FancyWindow>

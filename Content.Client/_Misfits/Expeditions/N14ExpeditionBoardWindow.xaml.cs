@@ -22,33 +22,20 @@ public sealed partial class N14ExpeditionBoardWindow : FancyWindow
 
     private string? _selectedTierId;
     private N14ExpeditionBoardState? _lastState;
+    // Reference to the currently open confirm window (if any). #Misfits Change
+    private N14ExpeditionConfirmWindow? _confirmWindow;
 
     public N14ExpeditionBoardWindow()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        // Launch button shows confirmation overlay instead of sending immediately
+        // Launch button opens the dedicated confirm window instead of an inline overlay
         LaunchButton.OnPressed += _ =>
         {
             if (_selectedTierId != null)
                 ShowConfirmation();
         };
-
-        // Proceed = actually fire the launch message
-        ConfirmProceedButton.OnPressed += _ =>
-        {
-            HideConfirmation();
-            if (_selectedTierId != null)
-                OnLaunchExpedition?.Invoke(_selectedTierId);
-        };
-
-        // Cancel = dismiss the overlay
-        ConfirmCancelButton.OnPressed += _ => HideConfirmation();
-
-        // Pre-populate the warning text
-        ConfirmWarning.SetMessage(FormattedMessage.FromMarkupPermissive(
-            Loc.GetString("n14-expedition-confirm-warning")));
     }
 
     /// <summary>
@@ -176,19 +163,50 @@ public sealed partial class N14ExpeditionBoardWindow : FancyWindow
         }
     }
 
-    /// <summary>Show the death-warning confirmation overlay.</summary>
+    /// <summary>Open the dedicated expedition briefing/confirm window.</summary>
     private void ShowConfirmation()
     {
-        ConfirmOverlay.Visible = true;
+        // Don't open a second window if one is already showing
+        if (_confirmWindow is { Disposed: false })
+            return;
+
+        _confirmWindow = new N14ExpeditionConfirmWindow();
         LaunchButton.Disabled = true;
+
+        // Track whether the player made an explicit choice (prevent double-action from OnClose)
+        var decided = false;
+
+        _confirmWindow.OnProceed += () =>
+        {
+            decided = true;
+            _confirmWindow = null;
+            if (_selectedTierId != null)
+                OnLaunchExpedition?.Invoke(_selectedTierId);
+        };
+
+        _confirmWindow.OnCancel += () =>
+        {
+            decided = true;
+            _confirmWindow = null;
+            ReEnableLaunch();
+        };
+
+        // Closing via window X-button should also cancel
+        _confirmWindow.OnClose += () =>
+        {
+            if (!decided)
+            {
+                _confirmWindow = null;
+                ReEnableLaunch();
+            }
+        };
+
+        _confirmWindow.OpenCentered();
     }
 
-    /// <summary>Hide the confirmation overlay and re-enable the launch button.</summary>
-    private void HideConfirmation()
+    /// <summary>Re-enable the launch button if the board is still idle.</summary>
+    private void ReEnableLaunch()
     {
-        ConfirmOverlay.Visible = false;
-
-        // Re-enable the launch button only if the board is still idle
         if (_lastState is { ExpeditionActive: false, OnCooldown: false, LaunchEndTime: null }
             && _selectedTierId != null)
         {
