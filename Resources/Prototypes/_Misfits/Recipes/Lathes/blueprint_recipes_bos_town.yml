@@ -726,7 +726,7 @@
 
     Lead: 350
 
-    N14Silver: 20
+    N14Silver: 50
 
 
 - type: latheRecipe
@@ -746,7 +746,7 @@
 
     Lead: 350
 
-    N14Silver: 20
+    N14Silver: 50
 
 
 - type: latheRecipe
@@ -803,7 +803,7 @@
 
     ScrapElectronic: 100
 
-    N14Silver: 80
+    N14Silver: 50
 
     Lead: 800
 
@@ -864,7 +864,7 @@
 
     ScrapElectronic: 100
 
-    N14Gold: 100
+    N14Gold: 50
 
     Lead: 1000
 
