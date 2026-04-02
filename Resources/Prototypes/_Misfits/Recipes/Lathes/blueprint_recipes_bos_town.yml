@@ -590,13 +590,13 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 10
+    Glass: 100
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    Lead: 10
+    Lead: 100
 
 
 - type: latheRecipe
@@ -608,13 +608,13 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 10
+    Glass: 100
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    Lead: 10
+    Lead: 100
 
 
 - type: latheRecipe
@@ -626,11 +626,11 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Lead: 10
+    Lead: 100
 
-    N14Brass: 5
+    N14Brass: 50
 
-    N14Gunpowder: 5
+    N14Gunpowder: 50
 
 
 # --- BoS Tier 2 Ammo ---
@@ -643,13 +643,13 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 20
+    Glass: 200
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    Lead: 20
+    Lead: 200
 
 
 - type: latheRecipe
@@ -661,13 +661,13 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 20
+    Glass: 200
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    Lead: 20
+    Lead: 200
 
 
 - type: latheRecipe
@@ -679,13 +679,13 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 25
+    Glass: 250
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    Lead: 25
+    Lead: 250
 
 
 # --- BoS Tier 3 Ammo ---
@@ -698,15 +698,15 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 35
+    Glass: 350
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    Lead: 35
+    Lead: 350
 
-    N14Silver: 2
+    N14Silver: 20
 
 
 - type: latheRecipe
@@ -718,15 +718,15 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 35
+    Glass: 350
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    Lead: 35
+    Lead: 350
 
-    N14Silver: 2
+    N14Silver: 20
 
 
 - type: latheRecipe
@@ -738,13 +738,13 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 40
+    Glass: 400
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    Lead: 40
+    Lead: 400
 
 
 # --- BoS Tier 4 Ammo ---
@@ -757,15 +757,15 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 85
+    Glass: 850
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    N14Gold: 5
+    N14Gold: 50
 
-    Lead: 85
+    Lead: 850
 
 
 - type: latheRecipe
@@ -777,15 +777,15 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 80
+    Glass: 800
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    N14Silver: 8
+    N14Silver: 80
 
-    Lead: 80
+    Lead: 800
 
 
 # --- BoS Tier 5 Ammo ---
@@ -798,15 +798,15 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 50
+    Glass: 500
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    N14Gold: 5
+    N14Gold: 50
 
-    Lead: 50
+    Lead: 500
 
 
 - type: latheRecipe
@@ -818,15 +818,15 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 50
+    Glass: 500
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    N14Gold: 5
+    N14Gold: 50
 
-    Lead: 50
+    Lead: 500
 
 
 - type: latheRecipe
@@ -838,15 +838,15 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 100
+    Glass: 1000
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
-    N14Gold: 10
+    N14Gold: 100
 
-    Lead: 100
+    Lead: 1000
 
 
 # =====================================================================

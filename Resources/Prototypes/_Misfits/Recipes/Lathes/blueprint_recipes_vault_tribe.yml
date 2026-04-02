@@ -310,10 +310,10 @@
   availableFaction:
   - Vault
   materials:
-    Glass: 10
-    Circuitry: 10
-    ScrapElectronic: 10
-    Lead: 10
+    Glass: 100
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 100
 
 - type: latheRecipe
   id: N14BPVaultAmmoMag10mmSMG
@@ -338,10 +338,10 @@
   availableFaction:
   - Vault
   materials:
-    Glass: 20
-    Circuitry: 10
-    ScrapElectronic: 10
-    Lead: 20
+    Glass: 200
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 200
 
 - type: latheRecipe
   id: N14BPVaultAmmoPlasmaCell
@@ -352,10 +352,10 @@
   availableFaction:
   - Vault
   materials:
-    Glass: 25
-    Circuitry: 10
-    ScrapElectronic: 10
-    Lead: 25
+    Glass: 250
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 250
 
 # --- Vault Tier 4 Ammo ---
 - type: latheRecipe
@@ -367,10 +367,10 @@
   availableFaction:
   - Vault
   materials:
-    Glass: 40
-    Circuitry: 10
-    ScrapElectronic: 10
-    Lead: 40
+    Glass: 400
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 400
 
 - type: latheRecipe
   id: N14BPVaultAmmoPowerCellAdvanced
@@ -381,11 +381,11 @@
   availableFaction:
   - Vault
   materials:
-    Glass: 35
-    Circuitry: 10
-    ScrapElectronic: 10
-    Lead: 35
-    N14Silver: 2
+    Glass: 350
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 350
+    N14Silver: 20
 
 # =====================================================================
 # TRIBE WEAPON RECIPES
