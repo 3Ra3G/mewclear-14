@@ -261,6 +261,26 @@
     ScrapElectronic: 15
 
 
+- type: latheRecipe
+  id: N14BPBoSWeaponLaserRCW
+  result: N14WeaponLaserRCW
+  category: N14BlueprintBoSWeaponsT3
+  completetime: 16
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 6000
+
+    Glass: 35
+
+    Circuitry: 30
+
+    ScrapElectronic: 15
+
+    Plastic: 10
+
+
 # --- BoS Tier 4 Weapons (Elder's vault - pre-war prototypes) ---
 - type: latheRecipe
   id: N14BPBoSWeaponLaserRiflePrototypeAER14

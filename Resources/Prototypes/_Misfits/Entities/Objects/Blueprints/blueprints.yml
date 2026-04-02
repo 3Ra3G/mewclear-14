@@ -425,6 +425,7 @@
     - N14BPBoSWeaponPlasmaRifleUrban
     - N14BPBoSWeaponLaserRifleWattz2000
     - N14BPBoSWeaponPlasmaMultiplas
+    - N14BPBoSWeaponLaserRCW
 
 - type: entity
   parent: N14BlueprintBase
@@ -775,6 +776,7 @@
     - N14BPVaultWeaponPlasmaRifle
     - N14BPVaultWeaponLaserRifleWattz2000
     - N14BPVaultWeaponLaserRifleAuto
+    - N14BPVaultWeaponLaserRCW
 
 # --- Vault Armor ---
 - type: entity

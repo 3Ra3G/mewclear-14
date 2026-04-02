@@ -159,6 +159,21 @@
     ScrapElectronic: 175
     Plastic: 75
 
+- type: latheRecipe
+  id: N14BPVaultWeaponLaserRCW
+  result: N14WeaponLaserRCW
+  category: N14BlueprintVaultWeaponsT4
+  completetime: 20
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 55000
+    Glass: 350
+    Circuitry: 250
+    ScrapElectronic: 175
+    Plastic: 75
+
 # =====================================================================
 # VAULT ARMOR RECIPES
 # =====================================================================
