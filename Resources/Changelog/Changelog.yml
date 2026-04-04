@@ -2763,3 +2763,10 @@ Entries:
   id: 5707
   time: '2026-04-04T04:17:59.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/246
+- author: qeviefun
+  changes:
+    - type: Fix
+      message: Made Mr. Handy not deal toxin damage in surgery
+  id: 5708
+  time: '2026-04-04T18:14:04.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/248
