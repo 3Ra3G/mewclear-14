@@ -2714,3 +2714,21 @@ Entries:
   id: 5705
   time: '2026-04-03T14:56:21.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/243
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        `GunDamageBonusComponent` and `GunDamageBonusSystem` to allow guns to
+        apply flat bonus damage (exx., +5 Heat) and a fire cost multiplier.
+    - type: Tweak
+      message: >-
+        Updated the Wattz 2000 and Wattz 3000 laser rifles to use the new
+        component, granting +5 Heat damage and doubling their fire cost.
+    - type: Tweak
+      message: >-
+        Tier 5 (`N14BlueprintBoSWeaponsT5`) for BoS weapon blueprints, moving
+        the RCW, Plasma Caster, Laser Gatling, and Wattz 3000 rifles to this,
+        and shifting the Wattz 2000 rifle from Tier 3 to Tier 4.
+  id: 5706
+  time: '2026-04-03T21:46:18.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/245
