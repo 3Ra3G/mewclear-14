@@ -14,6 +14,8 @@ namespace Content.Client.Administration.UI.Bwoink
 
         public int Unread { get; private set; } = 0;
         public DateTime LastMessage { get; private set; } = DateTime.MinValue;
+        // #Misfits Add — plain-text snippet of the last message for card preview in ticket list
+        public string? LastMessageText { get; private set; }
         private List<string> PeopleTyping { get; set; } = new();
         public event Action<string>? InputTextChanged;
 
@@ -62,6 +64,8 @@ namespace Content.Client.Administration.UI.Bwoink
             formatted.AddMarkup($"[color=gray]{message.SentAt.ToShortTimeString()}[/color] {message.Text}");
             TextOutput.AddMessage(formatted);
             LastMessage = message.SentAt;
+            // #Misfits Add — store plain text for card preview (strip any BBCode/markup)
+            LastMessageText = message.Text.Length > 80 ? message.Text[..80] + "..." : message.Text;
         }
 
         private void UpdateTypingIndicator()

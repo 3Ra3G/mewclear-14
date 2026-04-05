@@ -487,6 +487,10 @@
       - id: N14ClothingHeadHatNCRHelmetMetalDesert # Forge-Change
       - id: N14ClothingNeckCloakNCR # Forge-Change
       # #Misfits Change: removed 4x GrenadeFrag — no grenade launcher in this kit, grenades were orphaned
+      # #Misfits Fix - Added grenade rifle + 40mm rounds so the Grenadier kit actually has a primary weapon
+      - id: N14WeaponRifleGrenade
+      - id: 40mmGrenadeFrag
+        amount: 4
       - id: SmokeGrenade
       - id: N14WeaponPistol45Colt
       - id: N14MagazinePistol45
