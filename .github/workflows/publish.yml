@@ -20,9 +20,10 @@ jobs:
         dotnet-version: 10.0.x
 
     - name: Get Engine Tag
+      # #Misfits Fix - Fetch tags so gen_build_info.py can resolve engine version via git describe
       run: |
         cd RobustToolbox
-        git fetch --depth=1
+        git fetch --tags --depth=100
 
     - name: Install dependencies
       run: dotnet restore
