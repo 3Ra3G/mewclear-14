@@ -17,5 +17,5 @@ guide-entry-misfits-guidebook-template = Guidebook Authoring Template
 guide-entry-misfits-wiki = Wiki
 guide-entry-new-player = Server Rules
 
-# #Misfits Add - WebView back button label
-ui-webview-back = ← Back
+# #Misfits Removed - WebView module removed, back button no longer exists
+# ui-webview-back = ← Back
