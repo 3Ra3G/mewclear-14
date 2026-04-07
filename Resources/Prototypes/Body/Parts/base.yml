@@ -114,6 +114,7 @@
     partType: Head
     toolName: "a head" # Shitmed Change
     vital: true
+    canSever: false # #Misfits Tweak - Disable head severing for all playable mobs
   - type: Input
     context: "ghost"
   - type: Tag
