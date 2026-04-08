@@ -1,9 +1,11 @@
 using Content.Server.UserInterface;
 using Content.Shared._Misfits.Holotape;
 using Content.Shared.Dataset;
+using Content.Shared.DeviceLinking;
 using Content.Shared.GameTicking;
 using Content.Shared.Interaction;
 using Content.Shared.UserInterface;
+using Content.Server.DeviceLinking.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -29,6 +31,8 @@ public sealed class HolotapeSystem : EntitySystem
     // #Misfits Add - Notebook system dependency for notes integration on terminal UI open
     [Dependency] private readonly TerminalNotebookSystem _notebook = default!;
     [Dependency] private readonly TerminalNotesDataStore _notesData = default!;
+    // #Misfits Add - DeviceLinkSystem for firing signals from the terminal LINKS tab
+    [Dependency] private readonly DeviceLinkSystem _deviceLink = default!;
 
     // Tracks which terminal entry keys have been assigned this round.
     // Ensures no two terminals display the same content.
@@ -52,6 +56,9 @@ public sealed class HolotapeSystem : EntitySystem
 
         // When a terminal with its own content is clicked, show that content
         SubscribeLocalEvent<HolotapeDataComponent, AfterActivatableUIOpenEvent>(OnTerminalUIOpen);
+
+        // #Misfits Add - Handle link port invocation from the terminal LINKS tab
+        SubscribeLocalEvent<HolotapeReaderComponent, InvokeTerminalLinkPortMessage>(OnInvokeLinkPort);
     }
 
     /// <summary>
@@ -160,11 +167,29 @@ public sealed class HolotapeSystem : EntitySystem
     /// When a terminal with its own HolotapeDataComponent is clicked and
     /// the ActivatableUI opens, send the terminal's own content to the viewer.
     /// If the terminal has a TerminalNotebookComponent, include persisted notes.
+    /// If the terminal has a DeviceLinkSourceComponent, include available port IDs.
     /// </summary>
     private void OnTerminalUIOpen(EntityUid uid, HolotapeDataComponent comp, AfterActivatableUIOpenEvent args)
     {
         if (!_ui.HasUi(uid, HolotapeUiKey.Key))
             return;
+
+        // #Misfits Add - Gather device link source port data for the LINKS tab
+        var hasLinkSource = false;
+        List<string>? linkPorts = null;
+        if (TryComp<DeviceLinkSourceComponent>(uid, out var linkSource))
+        {
+            // Read Ports into a local — direct method calls on the component field
+            // trigger RA0002 (Execute access) since we only have Read permission.
+            var ports = linkSource.Ports;
+            if (ports != null)
+            {
+                hasLinkSource = true;
+                linkPorts = new List<string>();
+                foreach (var port in ports)
+                    linkPorts.Add(port.Id);
+            }
+        }
 
         // #Misfits Add - Include notebook notes and viewer ID if terminal has notebook
         if (TryComp<TerminalNotebookComponent>(uid, out var notebook)
@@ -176,11 +201,28 @@ public sealed class HolotapeSystem : EntitySystem
                 viewerId = actor.PlayerSession.UserId;
 
             _ui.SetUiState(uid, HolotapeUiKey.Key,
-                new HolotapeBoundUserInterfaceState(comp.Title, comp.Content, notes, viewerId));
+                new HolotapeBoundUserInterfaceState(comp.Title, comp.Content, notes, viewerId,
+                    hasLinkSource: hasLinkSource, linkPorts: linkPorts));
             return;
         }
 
         _ui.SetUiState(uid, HolotapeUiKey.Key,
-            new HolotapeBoundUserInterfaceState(comp.Title, comp.Content));
+            new HolotapeBoundUserInterfaceState(comp.Title, comp.Content,
+                hasLinkSource: hasLinkSource, linkPorts: linkPorts));
+    }
+
+    // #Misfits Add - Validate port exists on the terminal's DeviceLinkSourceComponent and invoke it.
+    // This allows terminals to fire device link signals (e.g. Open/Close door) from the UI.
+    private void OnInvokeLinkPort(EntityUid uid, HolotapeReaderComponent comp, InvokeTerminalLinkPortMessage args)
+    {
+        if (!TryComp<DeviceLinkSourceComponent>(uid, out var linkSource))
+            return;
+
+        // Read Ports into a local to avoid RA0002 Execute access on the component field.
+        var ports = linkSource.Ports;
+        if (ports == null || !ports.Contains(args.PortId))
+            return;
+
+        _deviceLink.InvokePort(uid, args.PortId);
     }
 }

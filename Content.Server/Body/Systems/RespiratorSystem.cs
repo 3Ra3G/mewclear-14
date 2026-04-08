@@ -323,7 +323,8 @@ public sealed class RespiratorSystem : EntitySystem
             RaiseLocalEvent(ent, new MoodEffectEvent("Suffocating"));
         }
 
-        _damageableSys.TryChangeDamage(ent, HasComp<DebrainedComponent>(ent) ? ent.Comp.Damage * 4.5f : ent.Comp.Damage, interruptsDoAfters: false);
+        // #Misfits Fix - Disable per-part damage for suffocation to prevent asphyxiation from crippling all limbs (mirrors BarotraumaSystem behavior)
+        _damageableSys.TryChangeDamage(ent, HasComp<DebrainedComponent>(ent) ? ent.Comp.Damage * 4.5f : ent.Comp.Damage, interruptsDoAfters: false, doPartDamage: false);
     }
 
     private void StopSuffocation(Entity<RespiratorComponent> ent)

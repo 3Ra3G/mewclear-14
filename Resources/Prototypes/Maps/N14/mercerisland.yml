@@ -31,7 +31,7 @@
             TownShopkeeper: [ 2, 2 ]
             Townsperson: [ 4, 4 ]
             NCRVeteranRanger: [ 1, 1 ] #Misfits Change - renamed from RangerVeteran
-            NCRRanger: [ 3, 3 ]
+            NCRFieldRanger: [ 3, 3 ] # #Misfits Fix - renamed from NCRRanger
 #            CaravanLeader: [ 1, 1 ]
 #            CaravanTrader: [ 1, 1 ]
 #            CaravanGuard: [ 2, 2 ]

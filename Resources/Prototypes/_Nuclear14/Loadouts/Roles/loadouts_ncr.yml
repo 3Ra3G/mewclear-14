@@ -355,7 +355,7 @@
         - NCRCaptain
         - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingEyesGlassesGoggles
@@ -382,7 +382,7 @@
         - NCRCaptain
         - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHandsGlovesNCR
@@ -424,7 +424,7 @@
         - NCRCaptain
         - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHeadHatWinterBoonie
@@ -451,7 +451,7 @@
         - NCRCaptain
         - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHeadHatWoodBoonie
@@ -478,7 +478,7 @@
         - NCRCaptain
         - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHeadHatDesertBoonie
@@ -504,7 +504,7 @@
         - NCRLT
         - NCRCaptain
         - NCRMPinvestigator
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakNCR
@@ -531,7 +531,7 @@
         - NCRCaptain
         - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakGhillie
@@ -558,7 +558,7 @@
         - NCRCaptain
         - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakNCRSnow
@@ -585,7 +585,7 @@
         - NCRCaptain
         - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakNCRWoods
@@ -612,7 +612,7 @@
         - NCRCaptain
         - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingMaskBrownBalaclava

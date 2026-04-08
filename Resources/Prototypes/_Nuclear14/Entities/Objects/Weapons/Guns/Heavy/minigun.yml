@@ -117,8 +117,8 @@
   - type: Item
     sprite: _Nuclear14/Objects/Weapons/Guns/Heavy/avengerminigun.rsi
   - type: Gun
-    minAngle: 2
-    maxAngle: 8
+    minAngle: 3 # #Misfits Tweak - increased spread range (was 2)
+    maxAngle: 10 # #Misfits Tweak - increased spread range (was 8)
     angleIncrease: 2
     angleDecay: 8
     fireRate: 8

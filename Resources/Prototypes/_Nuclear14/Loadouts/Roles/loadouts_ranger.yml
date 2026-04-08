@@ -85,7 +85,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
   items:
     - N14ClothingNeckCloakRanger
 
@@ -99,7 +99,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHeadHatRangerB
@@ -112,7 +112,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHeadHatNCRBeretRecon
@@ -137,7 +137,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingUniformRangerV1
@@ -150,7 +150,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingUniformRangerV2
@@ -163,7 +163,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingUniformRangerV3
@@ -176,7 +176,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingUniformDesertPants
@@ -189,7 +189,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingUniformDesertPantsFull
@@ -202,7 +202,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHandsGlovesNCR
@@ -216,7 +216,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14MedkitCombatFilled
@@ -230,7 +230,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingUniformRangerVeteranRed
@@ -243,7 +243,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingUniformRangerVeteran
@@ -256,7 +256,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingUniformRangerVeteranBlack
@@ -269,7 +269,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingUniformRangerBlue
@@ -282,7 +282,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - N14ClothingUniformRangerModif
@@ -295,7 +295,7 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
   items:
     - ClothingNeckOldMantle
@@ -584,10 +584,10 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRRanger
+        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
         - NCRVeteranRanger
     - !type:CharacterPlaytimeRequirement
-      tracker: NCRRanger
+      tracker: NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
       min: 216000 # 60 hours veterancy unlock "First Tour"
   items:
     - N14ClothingUniformJumpsuitRangerRoman

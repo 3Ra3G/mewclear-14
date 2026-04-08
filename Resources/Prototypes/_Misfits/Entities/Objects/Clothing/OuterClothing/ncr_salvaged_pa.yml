@@ -31,11 +31,11 @@
         Heat: 0.65
         Caustic: 0.75
         Radiation: 0.65
-  # 25% speed penalty while wearing — no fusion core needed for this salvaged variant.
+  # 35% speed penalty while wearing — no fusion core needed for this salvaged variant.
   # Standalone modifier (does NOT rely on fusion core 4.5x compensation).
-  - type: ClothingSpeedModifier # #Misfits Tweak - standalone 25% slowdown, no fusion core required
-    walkModifier: 0.75
-    sprintModifier: 0.75
+  - type: ClothingSpeedModifier # #Misfits Tweak - standalone 35% slowdown, no fusion core required
+    walkModifier: 0.65
+    sprintModifier: 0.65
   # #Misfits Tweak - Spawns helmet, gauntlets, and boots; NO fusion core (not needed for salvaged variant).
   - type: ToggleableClothing
     clothingPrototypes:

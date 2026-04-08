@@ -1742,6 +1742,55 @@
     Leather: 5
 
 
+# #Misfits Add - T3 firearm parity: semi-auto shotgun, SMG, and carbine rifle to close gap with NCR
+- type: latheRecipe
+  id: N14BPLegionWeaponShotgunNeostead
+  result: N14WeaponShotgunNeostead
+  category: N14BlueprintLegionWeaponsT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Steel: 5500
+
+    N14Iron: 15
+
+    Leather: 10
+
+
+- type: latheRecipe
+  id: N14BPLegionWeaponSMGGreaseGun
+  result: N14WeaponSMGGreaseGun
+  category: N14BlueprintLegionWeaponsT3
+  completetime: 11
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Steel: 4500
+
+    N14Iron: 10
+
+    N14Brass: 15
+
+
+- type: latheRecipe
+  id: N14BPLegionWeaponRifle762SKS
+  result: N14WeaponRifle762SKS
+  category: N14BlueprintLegionWeaponsT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Steel: 5000
+
+    Wood: 20
+
+    N14Iron: 12
+
+
 # --- Legion Tier 4 Weapons (Legate's elite) ---
 - type: latheRecipe
   id: N14BPLegionWeaponSuperSledgeHammer
@@ -1847,6 +1896,61 @@
     N14Iron: 37
 
     Circuitry: 25
+
+    ScrapElectronic: 15
+
+
+# #Misfits Add - T4 firearm additions: Bren LMG (.308 FullAuto) and Auto Shotgun for DPS parity with NCR T4
+- type: latheRecipe
+  id: N14BPLegionWeaponBren
+  result: N14WeaponLMGBren
+  category: N14BlueprintLegionWeaponsT4
+  completetime: 20
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Steel: 11000
+
+    N14Iron: 25
+
+    N14Brass: 30
+
+    Wood: 20
+
+
+- type: latheRecipe
+  id: N14BPLegionWeaponShotgunAuto
+  result: N14WeaponShotgunAuto
+  category: N14BlueprintLegionWeaponsT4
+  completetime: 14
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Steel: 7000
+
+    N14Iron: 15
+
+    N14Brass: 10
+
+
+# #Misfits Add - T5 Legion Weapons: Scorcher flamethrower (apex incendiary weapon)
+# --- Legion Tier 5 Weapons (Scorched Earth) ---
+- type: latheRecipe
+  id: N14BPLegionWeaponScorcher
+  result: N14WeaponLegionScorcher
+  category: N14BlueprintLegionWeaponsT5
+  completetime: 35
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Steel: 14000
+
+    N14Iron: 30
+
+    Circuitry: 20
 
     ScrapElectronic: 15
 
@@ -2248,6 +2352,39 @@
     N14Iron: 10
 
 
+# #Misfits Add - T3 ammo parity: 7.62mm for SKS, and craftable dynamite (Legion explosive doctrine)
+- type: latheRecipe
+  id: N14BPLegionAmmoBox762
+  result: N14AmmoBox762
+  category: N14BlueprintLegionAmmoT3
+  completetime: 7
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Lead: 45
+
+    N14Brass: 35
+
+    N14Gunpowder: 35
+
+
+- type: latheRecipe
+  id: N14BPLegionWeaponDynamite
+  result: N14Dynamite
+  category: N14BlueprintLegionAmmoT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    N14Gunpowder: 60
+
+    Cloth: 10
+
+    N14Brass: 5
+
+
 # --- Legion Tier 4 Ammo ---
 - type: latheRecipe
   id: N14BPLegionAmmoMissile
@@ -2301,5 +2438,23 @@
     N14Iron: 27
 
     Plastic: 15
+
+
+# #Misfits Add - T4 ammo for Bren LMG (.308 Long magazine, 20-round box)
+- type: latheRecipe
+  id: N14BPLegionAmmoMagazine308RifleLong
+  result: Magazine308RifleLong
+  category: N14BlueprintLegionAmmoT4
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Steel: 2500
+
+    Lead: 25
+
+    N14Gunpowder: 15
+
 
 

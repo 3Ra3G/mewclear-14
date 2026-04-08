@@ -16,6 +16,7 @@
   canBeAntag: false
   access:
   - NCR
+  - NCRRanger # #Misfits Add - recruit needs NCRRanger access to open Ranger-locked doors
   special:
   - !type:AddComponentSpecial
     components:
@@ -23,8 +24,7 @@
         factions:
           - Rangers
   requirements:
-    - !type:CharacterDepartmentTimeRequirement # #Misfits Add - T4 timelock (12h Rangers)
-      department: Rangers
+    - !type:CharacterOverallTimeRequirement # #Misfits Fix - entry-level ranger uses overall playtime, not Rangers dept time
       min: 43200 # 12 hours
     - !type:CharacterSpeciesRequirement # #Misfits Change - robots and super mutants cannot be Rangers
       inverted: true

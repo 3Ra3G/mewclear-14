@@ -72,6 +72,10 @@
   id: N14BlueprintLegionWeaponsT4
   name: lathe-category-blueprint-legion-weapons-t4
 
+- type: latheCategory  # #Misfits Add - T5 for Legion Scorcher flamethrower
+  id: N14BlueprintLegionWeaponsT5
+  name: lathe-category-blueprint-legion-weapons-t5
+
 - type: latheCategory
   id: N14BlueprintLegionArmorT1
   name: lathe-category-blueprint-legion-armor-t1
