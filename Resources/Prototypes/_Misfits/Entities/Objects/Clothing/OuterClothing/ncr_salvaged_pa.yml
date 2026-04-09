@@ -1,6 +1,6 @@
 # #Misfits Add - NCR salvaged T-45 PA variant for Heavy Trooper.
 # Stripped of full servo linkage; no PA training required, no servo-lock on break.
-# Provides 35% passive mitigation (via armor coefficients alone) once integrity is depleted.
+# Provides 50% passive mitigation (via armor coefficients alone) once integrity is depleted. # #Misfits Tweak - raised from 35% to match nerf request
 
 - type: entity
   parent: N14ClothingOuterPowerArmorT45NCR
@@ -21,16 +21,16 @@
     maxIntegrity: 250          # #Misfits Add - lighter salvaged plating
     brokenBleedthroughRatio: 1.0  # #Misfits Add - when broken, only armor coefficients apply (35% mitigation from plates alone)
     disableServosLock: true       # #Misfits Add - no servo-lock speed debuff when armor breaks
-  # 35% passive damage reduction from the salvaged plate at all times.
+  # 50% passive damage reduction post-integrity (nerfed from 35% salvaged plate). # #Misfits Tweak - coefficients raised from 0.65 → 0.50 (half damage on all main types)
   - type: Armor # #Misfits Add - weaker than stock NCR T45 (0.80 coeff) to reflect stripped-down state
     modifiers:
       coefficients:
-        Blunt: 0.65
-        Slash: 0.65
-        Piercing: 0.65
-        Heat: 0.65
+        Blunt: 0.50
+        Slash: 0.50
+        Piercing: 0.50
+        Heat: 0.50
         Caustic: 0.75
-        Radiation: 0.65
+        Radiation: 0.50
   # 35% speed penalty while wearing — no fusion core needed for this salvaged variant.
   # Standalone modifier (does NOT rely on fusion core 4.5x compensation).
   - type: ClothingSpeedModifier # #Misfits Tweak - standalone 35% slowdown, no fusion core required

@@ -1,5 +1,5 @@
 # #Misfits Add - NCR Heavy Trooper job: T4.5 heavy weapons specialist between Specialist and Sergeant.
-# Armed with the Avenger minigun and salvaged NCR T-45 power armor (no training required).
+# Armed with the standard minigun and salvaged NCR T-45 power armor (no training required). # #Misfits Tweak - downgraded from Avenger to standard minigun
 # 25% innate speed penalty from the armor frame; no servo-lock if armor breaks.
 
 - type: job
@@ -47,7 +47,7 @@
     ears: N14ClothingHeadsetNCR               # NCR radio earpiece
     neck: ClothingNeckPinNCRSpecialist        # enlisted heavy weapons rank
     belt: ClothingBeltNCR
-    pocket1: N14WeaponMinigunAvenger          # #Misfits Fix - Avenger minigun here instead of back slot; loadout kit removed
+    pocket1: N14WeaponMinigun                  # #Misfits Tweak - downgraded to standard minigun (Avenger was too strong for this tier)
     pocket2: RadioHandheld
     id: N14IDNCRDogtagWS                      # Specialist-tier dogtag
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
