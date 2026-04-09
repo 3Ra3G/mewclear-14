@@ -36,6 +36,10 @@ public sealed partial class HolotapeWindow : DefaultWindow
     /// <summary>Fired when the user switches to the Notes tab (requests fresh data).</summary>
     public event Action? OnRequestNotes;
 
+    // #Misfits Add - Fired when the user clicks a link port button in the LINKS tab.
+    /// <summary>Fired when the user clicks a link port toggle button. Carries the port ID string.</summary>
+    public event Action<string>? OnInvokeLinkPort;
+
     /// <summary>Whether we're currently showing the notes tab.</summary>
     private bool _showingNotes;
 
@@ -44,6 +48,10 @@ public sealed partial class HolotapeWindow : DefaultWindow
 
     /// <summary>Whether this terminal has notebook capability (controls tab bar visibility).</summary>
     private bool _hasNotebook;
+
+    // #Misfits Add - Whether this terminal has device link source (controls LINKS tab visibility)
+    /// <summary>Whether this terminal has a DeviceLinkSourceComponent (controls LINKS tab visibility).</summary>
+    private bool _hasLinkSource;
 
     public HolotapeWindow()
     {
@@ -55,10 +63,14 @@ public sealed partial class HolotapeWindow : DefaultWindow
         SepMid.PanelOverride = new StyleBoxFlat(Color.FromHex("#0f3d0f"));
         SepBot.PanelOverride = new StyleBoxFlat(Color.FromHex("#0f3d0f"));
         SepNotes.PanelOverride = new StyleBoxFlat(Color.FromHex("#0f3d0f"));
+        // #Misfits Add - Separator styling for the LINKS tab
+        SepLinks.PanelOverride = new StyleBoxFlat(Color.FromHex("#0f3d0f"));
 
         // Tab button styling
         DataTabButton.OnPressed += _ => SwitchToDataTab();
         NotesTabButton.OnPressed += _ => SwitchToNotesTab();
+        // #Misfits Add - Wire the Links tab button
+        LinksTabButton.OnPressed += _ => SwitchToLinksTab();
 
         // Submit button
         SubmitNoteButton.OnPressed += _ => HandleSubmit();
@@ -120,8 +132,9 @@ public sealed partial class HolotapeWindow : DefaultWindow
         _viewerUserId = viewerUserId;
         _hasNotebook = notes != null;
 
-        // Show/hide tab bar depending on whether this terminal has a notebook
-        TabBar.Visible = _hasNotebook;
+        // Show/hide tab bar depending on whether this terminal has a notebook or links
+        TabBar.Visible = _hasNotebook || _hasLinkSource;
+        NotesTabButton.Visible = _hasNotebook;
 
         if (notes == null)
         {
@@ -134,6 +147,71 @@ public sealed partial class HolotapeWindow : DefaultWindow
         RebuildNotesList(notes);
     }
 
+    // #Misfits Add - Populates the LINKS tab with one button per device link source port.
+    // Each button fires OnInvokeLinkPort with the port ID, which the BUI sends to the server.
+    /// <summary>
+    /// Updates the links list display. Called when state includes device link source data.
+    /// </summary>
+    public void UpdateLinks(bool hasLinkSource, List<string>? portIds)
+    {
+        _hasLinkSource = hasLinkSource;
+        LinksTabButton.Visible = _hasLinkSource;
+
+        // Update tab bar visibility: show if notebook OR links present
+        TabBar.Visible = _hasNotebook || _hasLinkSource;
+
+        LinksList.RemoveAllChildren();
+
+        if (!hasLinkSource || portIds == null || portIds.Count == 0)
+        {
+            if (LinksPanel.Visible)
+                SwitchToDataTab();
+            return;
+        }
+
+        foreach (var portId in portIds)
+        {
+            var capturedId = portId; // capture for lambda closure
+
+            // Row container: port label + trigger button
+            var row = new BoxContainer
+            {
+                Orientation = BoxContainer.LayoutOrientation.Horizontal,
+                SeparationOverride = 8,
+                HorizontalExpand = true,
+            };
+
+            // Port name label in terminal green
+            var label = new RichTextLabel { HorizontalExpand = true };
+            var labelMsg = new FormattedMessage();
+            labelMsg.PushColor(Color.FromHex(TermGreen));
+            labelMsg.AddMarkupPermissive($"[bold]> {portId}[/bold]");
+            labelMsg.Pop();
+            label.SetMessage(labelMsg);
+            row.AddChild(label);
+
+            // Trigger button — fires the port signal through DeviceLinkSystem
+            var btn = new Button
+            {
+                Text = "[ ACTIVATE ]",
+                MinWidth = 100,
+            };
+            btn.OnPressed += _ => OnInvokeLinkPort?.Invoke(capturedId);
+            row.AddChild(btn);
+
+            LinksList.AddChild(row);
+
+            // Separator between port rows
+            var sep = new PanelContainer
+            {
+                MinHeight = 1,
+                HorizontalExpand = true,
+                PanelOverride = new StyleBoxFlat(Color.FromHex("#0f3d0f")),
+            };
+            LinksList.AddChild(sep);
+        }
+    }
+
     // ── Tab Switching ────────────────────────────────────────────────────────
 
     private void SwitchToDataTab()
@@ -141,6 +219,7 @@ public sealed partial class HolotapeWindow : DefaultWindow
         _showingNotes = false;
         DataPanel.Visible = true;
         NotesPanel.Visible = false;
+        LinksPanel.Visible = false;
     }
 
     private void SwitchToNotesTab()
@@ -148,9 +227,19 @@ public sealed partial class HolotapeWindow : DefaultWindow
         _showingNotes = true;
         DataPanel.Visible = false;
         NotesPanel.Visible = true;
+        LinksPanel.Visible = false;
 
         // Request fresh notes from server
         OnRequestNotes?.Invoke();
+    }
+
+    // #Misfits Add - Switch to the LINKS tab showing device link port controls
+    private void SwitchToLinksTab()
+    {
+        _showingNotes = false;
+        DataPanel.Visible = false;
+        NotesPanel.Visible = false;
+        LinksPanel.Visible = true;
     }
 
     // ── Notes Rendering ──────────────────────────────────────────────────────

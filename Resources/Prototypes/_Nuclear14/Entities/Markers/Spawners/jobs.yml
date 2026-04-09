@@ -304,7 +304,7 @@
   name: NCR ranger
   components:
   - type: SpawnPoint
-    job_id: NCRRanger
+    job_id: NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
   - type: Sprite
     layers:
       - state: green

@@ -15,10 +15,12 @@
             <!-- Separator line -->
             <PanelContainer Name="SepTop" MinHeight="1" HorizontalExpand="True" />
 
-            <!-- Tab buttons row (only visible when terminal has notebook) -->
+            <!-- Tab buttons row (visible when terminal has notebook or link ports) -->
             <BoxContainer Name="TabBar" Orientation="Horizontal" SeparationOverride="4" Visible="False">
                 <Button Name="DataTabButton" Text="[ DATA ]" MinWidth="80" />
                 <Button Name="NotesTabButton" Text="[ NOTES ]" MinWidth="80" />
+                <!-- #Misfits Add - Links tab button for device link port controls -->
+                <Button Name="LinksTabButton" Text="[ LINKS ]" MinWidth="80" Visible="False" />
             </BoxContainer>
 
             <!-- ═══ DATA TAB content ═══ -->
@@ -58,6 +60,21 @@
                           HorizontalExpand="True" />
                 <!-- Submit button -->
                 <Button Name="SubmitNoteButton" Text="[ SUBMIT NOTE ]" HorizontalAlignment="Center" />
+            </BoxContainer>
+
+            <!-- ═══ LINKS TAB content (hidden by default) ═══ -->
+            <!-- #Misfits Add - Scrollable list of device link port toggle buttons -->
+            <BoxContainer Name="LinksPanel" Orientation="Vertical" VerticalExpand="True" SeparationOverride="4" Visible="False">
+                <Label Name="LinksHeaderLabel"
+                       Text="CONNECTED SYSTEMS"
+                       FontColorOverride="#33FF33"
+                       StyleClasses="monospace"
+                       HorizontalAlignment="Center" />
+                <PanelContainer Name="SepLinks" MinHeight="1" HorizontalExpand="True" />
+                <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
+                    <BoxContainer Name="LinksList" Orientation="Vertical" SeparationOverride="6"
+                                  HorizontalExpand="True" />
+                </ScrollContainer>
             </BoxContainer>
         </BoxContainer>
     </PanelContainer>

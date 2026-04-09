@@ -51,18 +51,29 @@ public sealed class HolotapeBoundUserInterfaceState : BoundUserInterfaceState
     // False when viewing a built-in terminal. Controls header and window title text.
     public readonly bool IsHolotapeItem;
 
+    // #Misfits Add - Link tab support: expose device link source port data to client UI.
+    // When true, the terminal has a DeviceLinkSourceComponent and the LINKS tab should appear.
+    public readonly bool HasLinkSource;
+
+    // #Misfits Add - List of port ID strings that the terminal can invoke (e.g. "Toggle", "Open", "Close").
+    public readonly List<string>? LinkPorts;
+
     public HolotapeBoundUserInterfaceState(
         string title,
         string content,
         List<TerminalNoteEntry>? notes = null,
         NetUserId? viewerUserId = null,
-        bool isHolotapeItem = false)
+        bool isHolotapeItem = false,
+        bool hasLinkSource = false,
+        List<string>? linkPorts = null)
     {
         Title = title;
         Content = content;
         Notes = notes;
         ViewerUserId = viewerUserId;
         IsHolotapeItem = isHolotapeItem;
+        HasLinkSource = hasLinkSource;
+        LinkPorts = linkPorts;
     }
 }
 
@@ -104,5 +115,22 @@ public sealed class DeleteTerminalNoteMessage : BoundUserInterfaceMessage
     public DeleteTerminalNoteMessage(Guid noteId)
     {
         NoteId = noteId;
+    }
+}
+
+// #Misfits Add - BUI message sent when the player clicks a link port button in the LINKS tab.
+// Server validates the port exists on the entity's DeviceLinkSourceComponent before invoking it.
+
+/// <summary>
+/// Client requests invocation of a device link source port from the terminal UI.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class InvokeTerminalLinkPortMessage : BoundUserInterfaceMessage
+{
+    public readonly string PortId;
+
+    public InvokeTerminalLinkPortMessage(string portId)
+    {
+        PortId = portId;
     }
 }

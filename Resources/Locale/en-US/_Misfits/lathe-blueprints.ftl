@@ -24,6 +24,7 @@ lathe-category-blueprint-legion-weapons-t1 = Legion Weapons - Tier 1
 lathe-category-blueprint-legion-weapons-t2 = Legion Weapons - Tier 2
 lathe-category-blueprint-legion-weapons-t3 = Legion Weapons - Tier 3
 lathe-category-blueprint-legion-weapons-t4 = Legion Weapons - Tier 4
+lathe-category-blueprint-legion-weapons-t5 = Legion Weapons - Tier 5
 lathe-category-blueprint-legion-armor-t1 = Legion Armor - Tier 1
 lathe-category-blueprint-legion-armor-t2 = Legion Armor - Tier 2
 lathe-category-blueprint-legion-armor-t3 = Legion Armor - Tier 3

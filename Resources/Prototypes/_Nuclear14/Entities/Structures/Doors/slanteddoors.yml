@@ -258,7 +258,7 @@
   components:
   - type: Sprite
     sprite: _Nuclear14/Structures/Doors/SlantedDoors/airlock.rsi
-    drawdepth: WallTops
+    drawdepth: Mobs # #Misfits Tweak - Match tall wall drawdepth layer
     layers:
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
@@ -284,8 +284,8 @@
     openTimeTwo: 0.4
     openingAnimationTime: 1.4
     closingAnimationTime: 1.4
-    closedDrawDepth: WallTops
-    openDrawDepth: WallTops
+    closedDrawDepth: Mobs # #Misfits Tweak - Match tall wall drawdepth layer
+    openDrawDepth: Mobs
     openSound:
       path: /Audio/_Nuclear14/Effects/Doors/DRS_Metal_Jail_Swing_Open_01.ogg
     closeSound:

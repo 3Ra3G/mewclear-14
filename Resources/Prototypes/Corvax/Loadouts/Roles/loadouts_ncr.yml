@@ -22,7 +22,7 @@
     - NCRCaptain
     - NCRMajor # Misfits Add: NCRMajor was missing from NCR armor loadout
     - NCRMPinvestigator
-    - NCRRanger
+    - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
     - NCRVeteranRanger #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
   - !type:CharacterPlaytimeRequirement
     tracker: NCRSoldier
@@ -54,7 +54,7 @@
     - NCRCaptain
     - NCRMajor # Misfits Add: NCRMajor was missing from NCR armor loadout
     - NCRMPinvestigator
-    - NCRRanger
+    - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
     - NCRVeteranRanger #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
   - !type:CharacterPlaytimeRequirement
     tracker: NCRSoldier
@@ -86,7 +86,7 @@
     - NCRCaptain
     - NCRMajor # Misfits Add: NCRMajor was missing from NCR armor loadout
     - NCRMPinvestigator
-    - NCRRanger
+    - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
     - NCRVeteranRanger #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
   - !type:CharacterPlaytimeRequirement
     tracker: NCRSoldier

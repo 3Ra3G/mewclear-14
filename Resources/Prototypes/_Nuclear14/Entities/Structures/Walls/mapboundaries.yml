@@ -76,5 +76,5 @@
   - type: Icon
     sprite: _Nuclear14/Structures/Walls/nc14/fencechain.rsi
   - type: IconSmooth
-    key: walls
+    key: fence # #Misfits Fix - was 'walls', causing fence to merge smooth group with tall walls and suppress wall faces
     base: fence

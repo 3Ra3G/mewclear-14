@@ -560,6 +560,21 @@
       - state: green
       - state: investigator
 
+# #Misfits Add - Ranger Recruit spawn point was missing, causing fallback to BoS base spawn.
+# Maps to the NCRRangerRecruit job; uses the upstream ranger sprite with recruit state.
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRRangerRecruit
+  name: NCR Ranger Recruit
+  components:
+  - type: SpawnPoint
+    job_id: NCRRangerRecruit
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/rangers.rsi
+    layers:
+      - state: green
+      - state: recruit
+
 # Enclave — expanded 8-role hierarchy (#Misfits Change)
 - type: entity
   parent: SpawnPointJobBase

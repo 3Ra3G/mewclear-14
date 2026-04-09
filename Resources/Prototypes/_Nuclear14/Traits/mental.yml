@@ -167,14 +167,10 @@
         - Tribe
         - Townsfolk
   functions:
-    - !type:TraitAddComponent
-      components:
-        - type: GhostRole
-          name: ghost-role-information-n14pet-roach-name
-          description: ghost-role-information-n14pet-generic-description
-          rules: ghost-role-component-default-rules
-        - type: GhostRoleMobSpawner
-          prototype: N14MobPetRoach
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerRoach
 
 - type: trait
   id: N14PetPigrat
@@ -187,14 +183,10 @@
         - Tribe
         - Townsfolk
   functions:
-    - !type:TraitAddComponent
-      components:
-        - type: GhostRole
-          name: ghost-role-information-n14pet-pigrat-name
-          description: ghost-role-information-n14pet-generic-description
-          rules: ghost-role-component-default-rules
-        - type: GhostRoleMobSpawner
-          prototype: N14MobPetPigrat
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerPigrat
 
 #- type: trait
 #  id: N14PetAnt
@@ -229,14 +221,10 @@
         - Wastelander
         - Townsfolk
   functions:
-    - !type:TraitAddComponent
-      components:
-        - type: GhostRole
-          name: ghost-role-information-n14pet-eyebot-name
-          description: ghost-role-information-n14pet-eyebot-description
-          rules: ghost-role-component-default-rules
-        - type: GhostRoleMobSpawner
-          prototype: N14MobPetEyebot
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerEyebot
 
 - type: trait
   id: N14PetEyebotMBoS
@@ -247,14 +235,10 @@
       departments:
         - BrotherhoodOfSteel
   functions:
-    - !type:TraitAddComponent
-      components:
-        - type: GhostRole
-          name: ghost-role-information-n14pet-eyebot-mbos-name
-          description: ghost-role-information-n14pet-eyebot-description
-          rules: ghost-role-component-default-rules
-        - type: GhostRoleMobSpawner
-          prototype: N14MobPetEyebotMBoS
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerEyebotMBoS
 
 #Misfits Change /Comment-out/: Washington BoS eyebot pet trait removed — locale commented out.
 #- type: trait
@@ -293,14 +277,10 @@
         - Tribe
         - Townsfolk
   functions:
-    - !type:TraitAddComponent
-      components:
-        - type: GhostRole
-          name: ghost-role-information-n14pet-dog-name
-          description: ghost-role-information-n14pet-generic-description
-          rules: ghost-role-component-default-rules
-        - type: GhostRoleMobSpawner
-          prototype: N14MobPetDog
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerDogGeneric
 
 - type: trait
   id: N14PetDogMBoS
@@ -313,14 +293,10 @@
       departments:
         - BrotherhoodOfSteel
   functions:
-    - !type:TraitAddComponent
-      components:
-        - type: GhostRole
-          name: ghost-role-information-n14pet-dog-mbos-name
-          description: ghost-role-information-n14pet-hauler-description
-          rules: ghost-role-component-default-rules
-        - type: GhostRoleMobSpawner
-          prototype: N14MobPetDogMBoS
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerDogMBoS
 
 #Misfits Change /Comment-out/: Washington BoS dog pet trait removed — locale commented out.
 #- type: trait
@@ -382,14 +358,10 @@
       departments:
         - NCR
   functions:
-    - !type:TraitAddComponent
-      components:
-        - type: GhostRole
-          name: ghost-role-information-n14pet-dog-ncr-name
-          description: ghost-role-information-n14pet-generic-description
-          rules: ghost-role-component-default-rules
-        - type: GhostRoleMobSpawner
-          prototype: N14MobPetDogNCR
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerDogNCR
 
 - type: trait
   id: N14PetDogNCRK9Medical
@@ -406,11 +378,7 @@
       jobs:
       - NCRPisoner
   functions:
-    - !type:TraitAddComponent
-      components:
-        - type: GhostRole
-          name: ghost-role-information-n14pet-dog-ncrmed-name
-          description: ghost-role-information-n14pet-generic-description
-          rules: ghost-role-component-default-rules
-        - type: GhostRoleMobSpawner
-          prototype: N14MobPetDogNCRMedicK9
+    # #Misfits Fix - Use TraitSpawnEntity so multiple pet ghost roles can coexist
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerDogNCRK9Medical

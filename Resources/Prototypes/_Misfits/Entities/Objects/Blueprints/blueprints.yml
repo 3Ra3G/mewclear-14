@@ -276,8 +276,12 @@
     - N14BPLegionWeaponTribalBigClub
     - N14BPLegionWeaponRevolver44TribalExtra
     - N14BPLegionWeaponHandcannon
+    - N14BPLegionWeaponRifleM1Garand
     - N14BPLegionWeaponLauncherGrenade
     - N14BPLegionWeaponBaseballBat
+    - N14BPLegionWeaponShotgunNeostead  # #Misfits Add - Semi-auto shotgun
+    - N14BPLegionWeaponSMGGreaseGun    # #Misfits Add - .45 ACP SMG
+    - N14BPLegionWeaponRifle762SKS     # #Misfits Add - 7.62mm semi-auto rifle
 
 - type: entity
   parent: N14BlueprintBase
@@ -293,6 +297,19 @@
     - N14BPLegionWeaponRipper
     - N14BPLegionWeaponPolearm
     - N14BPLegionWeaponLauncherMissile
+    - N14BPLegionWeaponBren           # #Misfits Add - Bren LMG (.308 FullAuto)
+    - N14BPLegionWeaponShotgunAuto    # #Misfits Add - Auto Shotgun
+
+# #Misfits Add - T5 Legion Weapons: Scorcher flamethrower (single apex incendiary)
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintLegionWeaponsT5
+  name: Legion Scorcher Schematics
+  description: Technical diagrams torn from a pre-war military depot. The Legion's most feared weapon — a military flamethrower reverse-engineered by Legion armorsmiths at great cost. Tier 5 weapons.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPLegionWeaponScorcher
 
 # --- Legion Armor ---
 - type: entity
@@ -378,6 +395,8 @@
     - N14BPLegionAmmoBox45-70
     - N14BPLegionAmmoSpeedLoader45-70
     - N14BPLegionAmmo40mmGrenade
+    - N14BPLegionAmmoBox762       # #Misfits Add - 7.62mm box (for SKS)
+    - N14BPLegionWeaponDynamite   # #Misfits Add - craftable dynamite
 
 - type: entity
   parent: N14BlueprintBase
@@ -390,6 +409,7 @@
     - N14BPLegionAmmoMissile
     - N14BPLegionAmmoBox50
     - N14BPLegionAmmo40mmGrenadeIncendiary
+    - N14BPLegionAmmoMagazine308RifleLong  # #Misfits Add - .308 Long mag for Bren LMG
 
 # =====================================================================
 # BROTHERHOOD OF STEEL BLUEPRINTS
