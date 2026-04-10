@@ -491,7 +491,7 @@
       - id: N14PilumSpear
         amount: 3
       - id: N14LegionnaireBuckler
-      - id: N14N14HealingPoultice
+      - id: N14HealingPoultice
       - id: N14FoodTinK
         amount: 2
       - id: N14JunkCeramicFlask
@@ -548,7 +548,7 @@
     items:
       - id: N14LegionnaireShield
       - id: N14WeaponLMGchinese # #Misfits Change by BILL CLINTON!: Parity with NCR specialist kits. they get lmgs why doesn't legion?
-      - id: N14Magazine762Belt # #Misfits Change by bill - one belt of LMG is more than enough
+      - id: Magazine762AmmoBelt # #Misfits Change by bill - one belt of LMG is more than enough
         amount: 1
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
@@ -582,7 +582,7 @@
     items:
       - id: N14LegionnaireBuckler
       - id: N14WeaponLMGchinese # #Misfits Change by BILL CLINTON!: Parity with NCR specialist kits. they get lmgs why doesn't legion?
-      - id: N14Magazine762Belt # #Misfits Change by bill - one belt of LMG is more than enough.
+      - id: Magazine762AmmoBelt # #Misfits Change by bill - one belt of LMG is more than enough.
         amount: 1
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
