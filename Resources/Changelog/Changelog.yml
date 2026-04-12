@@ -3101,3 +3101,10 @@ Entries:
   id: 5723
   time: '2026-04-11T22:42:12.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/273
+- author: Oli
+  changes:
+    - type: Add
+      message: FOUR tribal clothes to the loadout menu
+  id: 5724
+  time: '2026-04-12T02:02:11.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/276
