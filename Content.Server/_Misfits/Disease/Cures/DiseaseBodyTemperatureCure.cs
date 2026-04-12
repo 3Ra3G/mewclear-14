@@ -2,7 +2,7 @@
 // Cures the disease if the entity's body temperature is above/below a threshold.
 
 using Content.Shared._Misfits.Disease;
-using Content.Shared.Atmos.Components;
+using Content.Server.Temperature.Components;
 using Robust.Shared.Serialization;
 
 namespace Content.Server._Misfits.Disease.Cures;

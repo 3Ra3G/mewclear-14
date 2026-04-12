@@ -7,6 +7,7 @@ using Content.Shared._Misfits.Disease.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Misfits.Disease.Machines;
@@ -21,6 +22,7 @@ public sealed class DiseaseVaccineSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly DiseaseSystem _disease = default!;
+    [Dependency] private readonly MetaDataSystem _meta = default!;
 
     public override void Initialize()
     {
@@ -116,8 +118,7 @@ public sealed class DiseaseVaccineSystem : EntitySystem
 
         // Update the entity name to reflect the disease
         var diseaseName = Loc.GetString(disease.Name);
-        var meta = MetaData(vaccine);
-        meta.EntityName = Loc.GetString("disease-vaccine-named", ("disease", diseaseName));
+        _meta.SetEntityName(vaccine, Loc.GetString("disease-vaccine-named", ("disease", diseaseName)));
 
         _popup.PopupEntity(Loc.GetString("disease-vaccinator-finished"), vaccinator);
     }

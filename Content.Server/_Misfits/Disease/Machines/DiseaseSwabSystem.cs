@@ -7,6 +7,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Robust.Shared.Random;
+using System.Linq;
 
 namespace Content.Server._Misfits.Disease.Machines;
 

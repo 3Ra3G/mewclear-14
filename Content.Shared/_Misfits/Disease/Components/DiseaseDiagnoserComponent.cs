@@ -2,6 +2,7 @@
 // Accepts a used disease swab, processes it, and produces a diagnosis report.
 
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Misfits.Disease.Components;
 
@@ -23,4 +24,8 @@ public sealed partial class DiseaseDiagnoserComponent : Component
     /// <summary>Accumulated processing time.</summary>
     [ViewVariables]
     public float Accumulator;
+
+    /// <summary>Disease queued for processing from inserted swab.</summary>
+    [ViewVariables]
+    public ProtoId<DiseasePrototype>? QueuedDisease;
 }

@@ -2,7 +2,7 @@
 // Adds or removes a specified reagent from the entity's chemical solution.
 
 using Content.Shared._Misfits.Disease;
-using Content.Shared.Body.Components;
+using Content.Server.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Serialization;

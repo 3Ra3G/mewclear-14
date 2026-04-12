@@ -30,9 +30,9 @@ public sealed partial class DiseasePrototype : IPrototype
     [DataField]
     public bool Airborne { get; private set; } = true;
 
-    /// <summary>Spreads by physical contact (touch interaction).</summary>
+    /// <summary>Chance of spreading via physical contact (touch interaction). 0-1.</summary>
     [DataField]
-    public bool ContactSpread { get; private set; } = true;
+    public float ContactSpread { get; private set; } = 0.3f;
 
     /// <summary>Base resistance subtracted from infection chance roll.</summary>
     [DataField]

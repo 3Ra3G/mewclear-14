@@ -34,6 +34,10 @@ public sealed partial class DiseaseGenericStatusEffect : DiseaseEffect
         var statusSys = args.EntityManager.System<StatusEffectsSystem>();
         var time = TimeSpan.FromSeconds(Duration);
 
-        statusSys.TryAddStatusEffect(args.DiseasedEntity, Key, time, Refresh, Component);
+        // Use the overload with component name only if one is specified
+        if (Component != null)
+            statusSys.TryAddStatusEffect(args.DiseasedEntity, Key, time, Refresh, Component);
+        else
+            statusSys.TryAddStatusEffect(args.DiseasedEntity, Key, time, Refresh);
     }
 }

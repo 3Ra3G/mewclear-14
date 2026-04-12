@@ -2,7 +2,7 @@
 // Cures the disease if the entity has enough of a specific reagent in their blood.
 
 using Content.Shared._Misfits.Disease;
-using Content.Shared.Body.Components;
+using Content.Server.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Robust.Shared.Serialization;
 
