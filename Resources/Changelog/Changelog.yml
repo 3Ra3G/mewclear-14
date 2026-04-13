@@ -3122,3 +3122,10 @@ Entries:
   id: 5726
   time: '2026-04-12T15:19:25.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/279
+- author: cythisiax
+  changes:
+    - type: Tweak
+      message: blacklisted glowing ghouls species from NCRR
+  id: 5727
+  time: '2026-04-13T15:21:13.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/282
