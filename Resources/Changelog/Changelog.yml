@@ -3165,3 +3165,12 @@ Entries:
   id: 5731
   time: '2026-04-14T17:03:47.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/287
+- author: qevie
+  changes:
+    - type: Tweak
+      message: Actually properly gave berets to the respective roles.
+    - type: Tweak
+      message: Removed recon armor from scribes.
+  id: 5732
+  time: '2026-04-14T17:04:11.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/286
