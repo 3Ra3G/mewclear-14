@@ -97,7 +97,7 @@
     layers:
     - state: paper
       color: "#f3eb5a"
-   - state: paper_words
+    - state: paper_words
       map: ["enum.PaperVisualLayers.Writing"]
       color: "#f3eb5a"
       visible: true
