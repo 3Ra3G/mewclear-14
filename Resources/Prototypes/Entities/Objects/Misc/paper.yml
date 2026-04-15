@@ -97,12 +97,10 @@
     - state: paper_words
       map: ["enum.PaperVisualLayers.Writing"]
       color: "#f3eb5a"
-      visible: false
+      visible: true
     - state: paper_stamp-generic
       map: ["enum.PaperVisualLayers.Stamp"]
-      visible: false
-    - type: PaperLabelType
-    - type: PaperVisuals
+      visible: true
     - type: Paper
       content: book-text-vault-guide                                                                                
       

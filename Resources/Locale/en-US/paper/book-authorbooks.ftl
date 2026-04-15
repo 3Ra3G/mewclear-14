@@ -1,30 +1,13 @@
-book-text-vault-guide = # So, You’ve Avoided the Nuclear Holocaust!     …What now?
-
-
+book-text-vault-guide = So, You’ve Avoided the Nuclear Holocaust!     …What now?
       A good question, and if you stick to this Vault-Tec Issue Pamphlet, an easily answered one!
-
-
-
-      ## Chapter One: Getting Used to Your New Home!
-
-
-
+      Chapter One: Getting Used to Your New Home!
       First, let’s get you acquainted with the basics. Notice your Vault-Suit? This suit of yours is tailored specifically to be slim fitting AND functional, keeping out as many rads as possible and keeping YOU safe. Keep this suit well maintained, and never lose it! It could be the difference between life and death.
-
       As you get settled into our state-of-the-art Vault, you may notice a feeling of loneliness or of boredom. It’s true, the Vault may be bland at times, but that’s no reason to give up on it. Fill some time with some of the following suggestions!
-
-      * Redecorating! Sometimes a potted plant in the right place can make all the difference, and thanks to our customizable dorm rooms, you too can have a healthy environment to raise yourself from your bootstraps or even raise your children in!
-
-
-      * Amateur Radio! Experimentation with Electronics could help you net good favor among our top Engineers!
-
-      -# Vault-Tec highly advises against making earnest attempts to contact the Outside, violation of this may result in legal action.
-
-
-
-      * Host yourself a get-together! Our top-of-the-line Library comes equipped with a game room, including all the fixings for one damn good game of Spirits and Sand dunes.
-
-      * Journaling! In the words of Senior Sales Representative Ackerman, a Happy Resident is a Safe Resident!
+      Redecorating! Sometimes a potted plant in the right place can make all the difference, and thanks to our customizable dorm rooms, you too can have a healthy environment to raise yourself from your bootstraps or even raise your children in!
+      Amateur Radio! Experimentation with Electronics could help you net good favor among our top Engineers!
+      Vault-Tec highly advises against making earnest attempts to contact the Outside, violation of this may result in legal action.
+      Host yourself a get-together! Our top-of-the-line Library comes equipped with a game room, including all the fixings for one damn good game of Spirits and Sand dunes.
+      Journaling! In the words of Senior Sales Representative Ackerman, a Happy Resident is a Safe Resident!
 
 
 book-text-narsielegend = In the beginning, the world was young and full of chaos. The people of the world struggled to survive against the harsh elements and savage beasts that roamed the land. They cried out for a savior to deliver them from their suffering.
