@@ -1,5 +1,5 @@
 book-text-vault-guide =
-    [color=#a4885c]Vault-Tec Vault 101[/color]
+    [bolditalic]Vault-Tec Vault 101[/bolditalic]
     So, You’ve Avoided the Nuclear Holocaust! ...What now?
     A good question, and if you stick to this Vault-Tec Issue Pamphlet, an easily answered one!
 
