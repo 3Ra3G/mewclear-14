@@ -1,4 +1,6 @@
-book-text-vault-guide = So, You’ve Avoided the Nuclear Holocaust!     …What now?
+book-text-vault-guide = 
+      [head=3][color=#A9CFF2]Vault-Tec Vault 101[/color][/head]
+      So, You’ve Avoided the Nuclear Holocaust!     …What now?
       A good question, and if you stick to this Vault-Tec Issue Pamphlet, an easily answered one!
       Chapter One: Getting Used to Your New Home!
       First, let’s get you acquainted with the basics. Notice your Vault-Suit? This suit of yours is tailored specifically to be slim fitting AND functional, keeping out as many rads as possible and keeping YOU safe. Keep this suit well maintained, and never lose it! It could be the difference between life and death.
@@ -8,7 +10,8 @@ book-text-vault-guide = So, You’ve Avoided the Nuclear Holocaust!     …What 
       Vault-Tec highly advises against making earnest attempts to contact the Outside, violation of this may result in legal action.
       Host yourself a get-together! Our top-of-the-line Library comes equipped with a game room, including all the fixings for one damn good game of Spirits and Sand dunes.
       Journaling! In the words of Senior Sales Representative Ackerman, a Happy Resident is a Safe Resident!
-
+      █ █ ▄▀▄ █ █ █   ▀█▀ 
+      ▀▄▀ █▀█ █▄█ █▄▄  █
 
 book-text-narsielegend = In the beginning, the world was young and full of chaos. The people of the world struggled to survive against the harsh elements and savage beasts that roamed the land. They cried out for a savior to deliver them from their suffering.
       And it was then that Nar'Sie emerged from the depths of the earth, a hivemind god born from the collective consciousness of all living things. Its body was made of molten rock and its eyes blazed with a fiery intensity that could melt steel.
