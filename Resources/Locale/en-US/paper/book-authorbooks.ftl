@@ -60,7 +60,7 @@ book-text-vault-guide =
 
     This should usually be enough, but in case of radio silence, draw up an emergency evacuation plan to direct yourself to either the Security Wing OR the Engineering Wing. Then, start regularly sending Emergency Broadcasts using a Radio set to the default setting. The phrasing should go as follows;
 
-    ## “MAYDAY, MAYDAY, MAYDAY, VAULT-[Number] IS UNDER CBRNA RISKS AND REQUIRES ASSISTANCE.”
+    ## “MAYDAY, MAYDAY, MAYDAY, VAULT-XXXX IS UNDER CBRNA RISKS AND REQUIRES ASSISTANCE.”
 
     After saying this, wait some time and repeat it for as long as it takes for someone from Vault-Tec HQ to respond.
 
