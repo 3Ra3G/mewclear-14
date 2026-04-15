@@ -1,25 +1,26 @@
 book-text-vault-guide =
-    [bolditalic]Vault-Tec Vault 101[/bolditalic]
-    So, You’ve Avoided the Nuclear Holocaust! ...What now?
-    A good question, and if you stick to this Vault-Tec Issue Pamphlet, an easily answered one!
+   █  █ ▄▀▄ █   █ █   ▀█▀ 
+   ▀▄▀ █▀█ █▄█ █▄▄ █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+So, You’ve Avoided the Nuclear Holocaust! ...What now?
+A good question, and if you stick to this Vault-Tec Issue Pamphlet, an easily answered one!
 
-    Chapter One: Getting Used to Your New Home!
-    First, let’s get you acquainted with the basics. Notice your Vault-Suit? This suit of yours is tailored specifically to be slim fitting AND functional, keeping out as many rads as possible and keeping YOU safe. Keep this suit well maintained, and never lose it! It could be the difference between life and death.
+Chapter One: Getting Used to Your New Home!
+First, let’s get you acquainted with the basics. Notice your Vault-Suit? This suit of yours is tailored specifically to be slim fitting AND functional, keeping out as many rads as possible and keeping YOU safe. Keep this suit well maintained, and never lose it! It could be the difference between life and death.
 
-    As you get settled into our state-of-the-art Vault, you may notice a feeling of loneliness or of boredom. It’s true, the Vault may be bland at times, but that’s no reason to give up on it. Fill some time with some of the following suggestions!
+As you get settled into our state-of-the-art Vault, you may notice a feeling of loneliness or of boredom. It’s true, the Vault may be bland at times, but that’s no reason to give up on it. Fill some time with some of the following suggestions!
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+• Redecorating! Sometimes a potted plant in the right place can make all the difference.
 
-    Redecorating! Sometimes a potted plant in the right place can make all the difference.
+• Amateur Radio! Experimentation with Electronics could help you net good favor among our top Engineers!
+(Vault-Tec highly advises against making earnest attempts to contact the Outside.)
 
-    Amateur Radio! Experimentation with Electronics could help you net good favor among our top Engineers!
+• Host yourself a get-together! Our Library comes equipped with a game room.
 
-    Vault-Tec highly advises against making earnest attempts to contact the Outside.
+• Journaling! A Happy Resident is a Safe Resident!
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-    Host yourself a get-together! Our Library comes equipped with a game room.
 
-    Journaling! A Happy Resident is a Safe Resident!
-
-    █ █ ▄▀▄ █ █ █   ▀█▀
-    ▀▄▀ █▀█ █▄█ █▄▄  █
 
 book-text-narsielegend = In the beginning, the world was young and full of chaos. The people of the world struggled to survive against the harsh elements and savage beasts that roamed the land. They cried out for a savior to deliver them from their suffering.
       And it was then that Nar'Sie emerged from the depths of the earth, a hivemind god born from the collective consciousness of all living things. Its body was made of molten rock and its eyes blazed with a fiery intensity that could melt steel.
