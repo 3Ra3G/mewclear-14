@@ -10,14 +10,14 @@ book-text-vault-guide =
     First, let’s get you acquainted with the basics. Notice your Vault-Suit? This suit of yours is tailored specifically to be slim fitting AND functional, keeping out as many rads as possible and keeping YOU safe. Keep this suit well maintained, and never lose it! It could be the difference between life and death.
 
     As you get settled into our state-of-the-art Vault, you may notice a feeling of loneliness or of boredom. It’s true, the Vault may be bland at times, but that’s no reason to give up on it. Fill some time with some of the following suggestions!
-
+    ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
     - Redecorating! Sometimes a potted plant in the right place can make all the difference.
     - Amateur Radio! Experimentation with Electronics could help you net good favor among our top Engineers!
       (Vault-Tec highly advises against making earnest attempts to contact the Outside.)
     - Host yourself a get-together! Our Library comes equipped with a game room.
     - Journaling! A Happy Resident is a Safe Resident!
     - Gardening! With our Hydroponics Wing and patented Vault-Tec brand tools, whether you’re providing for fun or family, you can keep the Vault thriving AND have relax the soothing glow of our patented UV-Simulation emitters!
-
+    ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
     If you stick to your guns, you will find yourself more than at home here. Speaking of Guns…
 
     Chapter Two: The Ins and Outs, the Dos and Don’ts!
@@ -42,13 +42,13 @@ book-text-vault-guide =
 
     ### Advanced Emergency Protocols
     Welcome to the big leagues, if you’re referring to this section, this means that something catastrophic has happened to the vault in any of these categories:
-
+    ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
     - Chemical
     - Biological
     - Radiological
     - Nuclear
     - Atmospheric
-
+    ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
     If you follow these step-by-step instructions, you can keep yourself and your fellow residents alive.
 
     If you’ve identified a threat, head directly to your dorm room, this will provide solace to your Security Team by having one less thing to worry about. Once you’ve done this, wait for a broadcast by either Security or the Overseer to confirm it’s safe. Unless you hear from them, do not open your doors.
