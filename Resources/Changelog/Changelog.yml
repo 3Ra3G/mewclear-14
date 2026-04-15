@@ -3200,3 +3200,30 @@ Entries:
   id: 5734
   time: '2026-04-14T21:18:26.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/289
+- author: Bradysgaming
+  changes:
+    - type: Fix
+      message: Fixed Shopkeeper helpers not getting a headset
+  id: 5735
+  time: '2026-04-15T01:18:56.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/290
+- author: Bill Clinton
+  changes:
+    - type: Tweak
+      message: gave veteran sarge NCR kit a 5.56 carbine
+    - type: Tweak
+      message: Town guard lose HMG millions must die
+    - type: Fix
+      message: poultice doesn't make you vomit every time you take it now
+  id: 5736
+  time: '2026-04-15T01:19:18.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/292
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        Server state is missing the metadata component for a new entity,
+        spamming client console every tick on live server, and crashing.
+  id: 5737
+  time: '2026-04-15T01:30:56.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/293
