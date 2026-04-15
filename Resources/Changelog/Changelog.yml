@@ -3227,3 +3227,24 @@ Entries:
   id: 5737
   time: '2026-04-15T01:30:56.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/293
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: Disease effects server side shared placements
+    - type: Fix
+      message: Camera rotation keybinds disabled to prevent directional PVP advantage.
+    - type: Fix
+      message: >-
+        Legion hunting rifle now displays the correct back-slot sprite instead
+        of the SKS placeholder.
+    - type: Add
+      message: >-
+        Combat keybind section in Controls options with remappable gun actions
+        (eject magazine, toggle bolt).
+    - type: Add
+      message: >-
+        Mentor Help and Help Menu keybinds exposed in the User Interface options
+        section.
+  id: 5738
+  time: '2026-04-15T02:08:48.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/294
