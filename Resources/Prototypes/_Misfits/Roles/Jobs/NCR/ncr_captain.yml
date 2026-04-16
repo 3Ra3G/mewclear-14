@@ -36,6 +36,7 @@
         factions:
           - Wastelander
           - NCR
+      - type: PowerArmorProficiency # Bill clinton misfits change: For sierra armor use within NCR.
 
 - type: startingGear
   id: NCRCaptainGear
