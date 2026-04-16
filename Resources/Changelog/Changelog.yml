@@ -3255,3 +3255,21 @@ Entries:
   id: 5739
   time: '2026-04-15T22:56:27.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/296
+- author: Bill Clinton
+  changes:
+    - type: Tweak
+      message: >-
+        Heavy Troopers given roundstart LMG instead of minigun. this makes them
+        more capable against PA and heavier troops.
+    - type: Tweak
+      message: >-
+        NCR specialist kits have been modified, in a good way. extra GL
+        shot/12.7 SMG for grenadier and BAR for the gunner. 
+    - type: Tweak
+      message: >-
+        NCRA captain now has power armor training manual for use with sierra or
+        any captured power armor. He can give it off to someone else or use it
+        himself. 
+  id: 5740
+  time: '2026-04-16T16:09:48.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/297
