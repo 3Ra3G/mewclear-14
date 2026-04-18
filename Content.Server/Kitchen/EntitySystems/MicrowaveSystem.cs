@@ -249,8 +249,9 @@ namespace Content.Server.Kitchen.EntitySystems
                 var parentId = proto.Parents[0];
                 if (parentId == ancestorId)
                     return true;
-                if (!_prototype.TryIndex<EntityPrototype>(parentId, out proto))
+                if (!_prototype.TryIndex<EntityPrototype>(parentId, out var parentProto))
                     break;
+                proto = parentProto;
             }
             return false;
         }
