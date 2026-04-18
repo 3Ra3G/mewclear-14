@@ -3284,3 +3284,35 @@ Entries:
   id: 5741
   time: '2026-04-17T15:16:17.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/298
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        Trade vendor no longer gets stuck open and locked for other players
+        after a silver-tier contract is turned in.
+    - type: Fix
+      message: >-
+        Faction loadout kit boxes (NCR, etc.) now disappear after use instead of
+        letting players grab from them infinitely.
+    - type: Fix
+      message: >-
+        Microwave cooking now correctly consumes child food variants when they
+        satisfy a parent recipe, and picks the most specific matching recipe to
+        avoid cooking the wrong thing.
+    - type: Fix
+      message: >-
+        Random access key doors can now actually be opened by clicking on them
+        with the key in hand; the door also immediately recognizes its assigned
+        key without needing a relog.
+    - type: Tweak
+      message: >-
+        Floor tiles can now be placed over roads, concrete paths, and other
+        outdoor terrain, not just bare wasteland ground. Removing the placed
+        tile still restores whatever was underneath.
+    - type: Add
+      message: >-
+        Shields can now be stored on your back slot or tucked into armor suit
+        storage.
+  id: 5742
+  time: '2026-04-18T17:58:38.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/300
