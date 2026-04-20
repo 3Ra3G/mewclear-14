@@ -109,7 +109,7 @@ undecided-loadout-category-med-combat-description =
 
 # NCRA Weapon Specialist Kits
 
-undecided-loadout-category-ws-gunner-name = Specialist Gunner Kit
+undecided-loadout-category-ws-gunner-name = Specialist heavy sniper Kit
 undecided-loadout-category-ws-gunner-description =
     Includes 1 NCR belt, 1 metal helmet, 1 NCR cloak, 1 NCR .50 rifle,
     1 box of .50, 1 9mm pistol, 2 9mm pistol magazines,

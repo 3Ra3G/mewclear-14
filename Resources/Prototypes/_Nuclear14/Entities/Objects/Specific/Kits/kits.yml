@@ -439,7 +439,7 @@
 # NCRA Weapon Specialist Kits
 
 - type: entity
-  name: specialist's gunner kit
+  name: specialist's heavy sniper kit
   parent: KitBase
   id: KitNCR_WSGunner
   description: A crate containing all an NCR weapon specialist needs to perform their job.
