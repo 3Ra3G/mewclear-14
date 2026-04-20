@@ -453,9 +453,8 @@
       - id: ClothingBeltNCR
       - id: N14ClothingHeadHatNCRHelmetMetalDesert # Forge-Change
       - id: N14ClothingNeckCloakNCR # Forge-Change
-      - id: N14WeaponLMGAutoRifle
-      - id: Magazine308Rifle
-        amount: 2
+      - id: N14WeaponSniper50NCRRifle # Bill- the autorifle was too much. Kill tankies with skillful shots
+      - id: MagazineBox50
       - id: N14WeaponPistol9mm
       - id: N14MagazinePistol9mm
         amount: 2
