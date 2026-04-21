@@ -86,8 +86,10 @@ public sealed partial class TraitPreferenceSelector : Control
 
 
         // Get requirement reasons
+        // #Misfits Fix - pass real player playtimes (was new Dictionary<>(), causing time-locked
+        // traits to always report the full Min as "needed" regardless of accrued playtime).
         characterRequirementsSystem.CheckRequirementsValid(
-            trait.Requirements, highJob, profile, new Dictionary<string, TimeSpan>(),
+            trait.Requirements, highJob, profile, jobRequirementsManager.GetRawPlayTimeTrackers(),
             jobRequirementsManager.IsWhitelisted(), trait,
             entityManager, prototypeManager, configManager,
             sponsorManager, out var reasons); // Forge-Change

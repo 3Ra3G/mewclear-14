@@ -11,7 +11,10 @@
   id: C27Unit
   description: department-C27Unit-description
   color: "#8a96a3" # light brushed-steel grey, distinct from Robots (#607d8b)
-  weight: -100 # group with Robots / FEVMutants / Enclave special departments
+  # #Misfits Tweak - lowered weight from -100 to -102 so the lobby UI sorts
+  # Robots/FEVMutants (-100) and Enclave (-101) between CaesarLegion (-99) and
+  # C27Unit, matching the visual margin/spacing of the other special departments.
+  weight: -102
   roles:
   - C27
 
@@ -45,32 +48,24 @@
         factions:
           - PlayerRobot
 
-# Starting gear: chassis jumpsuit always applied; faction armor kit selected via subGear.
+# Starting gear: chassis jumpsuit always applied; faction kit + headset/tag selected via subGear.
 # subGear entries are matched by the player's chosen C-27 species variant at spawn time:
-#   C27 (Generic)  → pocket1: C27GenericLoadoutKit
-#   C27NCR         → pocket1: C27NCRLoadoutKit
-#   C27BoS         → pocket1: C27BoSLoadoutKit
-# The kit opens an UndecidedLoadoutBackpack UI so the player picks Light / Medium / Heavy plating.
+#   C27 (Generic / Unassigned) → no armor kit, no faction tag/headset (chassis jumpsuit only)
+#   C27NCR                     → pocket1: C27NCRLoadoutKit  + ears: NCR headset + id: NCR dogtag
+#   C27BoS                     → pocket1: C27BoSLoadoutKit  + ears: BoS headset + id: BoS holotag
+# The faction kits open an UndecidedLoadoutBackpack UI that now offers Light only.
+# Medium / Heavy variants are obtained by crafting at an armor workbench using the
+# C-27 Armor Blueprint (NCR / BoS / Generic) — see blueprint_recipes_c27.yml.
 - type: startingGear
   id: C27Gear
   equipment:
     jumpsuit: ClothingC27Chassis
-  subGear: # #Misfits Add - per-faction kit delivery via species-conditional sub-gears
-  - C27GearGenericKit
+  subGear: # #Misfits Tweak - per-faction kit + faction-tag/headset delivery via species-conditional sub-gears
   - C27GearNCRKit
   - C27GearBoSKit
+  # Generic species ('Unassigned') intentionally has no sub-gear entry; jumpsuit only.
 
-# Sub-gear: gives the Generic-model kit in pocket1 when species is C27
-- type: startingGear
-  id: C27GearGenericKit
-  requirements:
-  - !type:CharacterSpeciesRequirement
-    species:
-    - C27
-  equipment:
-    pocket1: C27GenericLoadoutKit
-
-# Sub-gear: gives the NCR-model kit in pocket1 when species is C27NCR
+# Sub-gear: NCR variant — Light NCR armor kit, NCR headset, NCR soldier dogtag.
 - type: startingGear
   id: C27GearNCRKit
   requirements:
@@ -79,8 +74,10 @@
     - C27NCR
   equipment:
     pocket1: C27NCRLoadoutKit
+    ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece on faction-aligned C-27
+    id: N14IDNCRDogtagSoldier   # #Misfits Add - NCR soldier dogtag marks faction allegiance
 
-# Sub-gear: gives the BoS-model kit in pocket1 when species is C27BoS
+# Sub-gear: Brotherhood of Steel variant — Light BoS armor kit, BoS headset, BoS Initiate holotag.
 - type: startingGear
   id: C27GearBoSKit
   requirements:
@@ -89,6 +86,8 @@
     - C27BoS
   equipment:
     pocket1: C27BoSLoadoutKit
+    ears: N14ClothingHeadsetBrotherhoodOfSteel       # #Misfits Add - BoS radio earpiece on faction-aligned C-27
+    id: N14IDBrotherhoodOfSteelHolotagInitiate       # #Misfits Add - BoS Initiate holotag marks faction allegiance
 
 - type: playTimeTracker
   id: C27

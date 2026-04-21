@@ -87,3 +87,8 @@ lathe-category-blueprint-tribe-ammo-t4 = Tribe Ammo - Tier 4
 lathe-category-blueprint-robobrain = Robobrain Chassis
 lathe-category-blueprint-mmi = MMI Schematic
 
+# #Misfits Add - C-27 chassis armor blueprint categories.
+lathe-category-blueprint-c27-armor-generic = C-27 Armor (Generic)
+lathe-category-blueprint-c27-armor-ncr = C-27 Armor (NCR)
+lathe-category-blueprint-c27-armor-bos = C-27 Armor (Brotherhood)
+

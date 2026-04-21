@@ -322,3 +322,16 @@
   id: N14BlueprintMMI
   name: lathe-category-blueprint-mmi
 
+# === C-27 CHASSIS ARMOR === # #Misfits Add - category grouping for C-27 chassis armor blueprint recipes.
+- type: latheCategory
+  id: N14BlueprintC27ArmorGeneric
+  name: lathe-category-blueprint-c27-armor-generic
+
+- type: latheCategory
+  id: N14BlueprintC27ArmorNCR
+  name: lathe-category-blueprint-c27-armor-ncr
+
+- type: latheCategory
+  id: N14BlueprintC27ArmorBoS
+  name: lathe-category-blueprint-c27-armor-bos
+

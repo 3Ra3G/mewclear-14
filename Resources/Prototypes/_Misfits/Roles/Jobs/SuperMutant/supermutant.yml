@@ -160,3 +160,88 @@
 
 - type: playTimeTracker
   id: SuperMutantTrooper
+
+# #Misfits Add - NCR-aligned supermutant ranger.
+# Dual faction: PlayerSuperMutant (Loremaster detection) + NCR (faction interactions).
+# Uses ranger_armor.rsi sprites. NCR headset and badge recognise this mutant as an ally.
+- type: job
+  id: SuperMutantNCRRanger
+  jobWhitelistBypassesRoleTimers: true
+  name: job-name-supermutant-ncr-ranger
+  description: job-description-supermutant-ncr-ranger
+  playTimeTracker: SuperMutantNCRRanger
+  icon: JobIconBorg
+  supervisors: job-supervisors-ncr-ranger
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true
+  hideWithoutWhitelist: true
+  spawnLoadout: false
+  applyTraits: true
+  startingGear: SuperMutantNCRRangerGear
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+        - SuperMutant
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerSuperMutant  # keeps Loremaster/perk detection working
+          - NCR                # recognised as ally by NCR faction AI and tabs
+
+- type: startingGear
+  id: SuperMutantNCRRangerGear
+  equipment:
+    outerClothing: ClothingSuperMutantRangerArmor
+    ears: N14ClothingHeadsetNCR
+    id: N14IDBadgeNCRRanger
+    back: N14ClothingBackpackMilitary
+    neck: N14ClothingNeckCloakRangerPoncho  # NCR ranger duster, fits neck slot
+
+- type: playTimeTracker
+  id: SuperMutantNCRRanger
+
+# #Misfits Add - NCR-aligned supermutant trooper.
+# Front-line grunt who has been folded into NCR service.
+# Uses trooper_armor.rsi sprites. NCR dogtag marks allegiance.
+- type: job
+  id: SuperMutantNCRTrooper
+  jobWhitelistBypassesRoleTimers: true
+  name: job-name-supermutant-ncr-trooper
+  description: job-description-supermutant-ncr-trooper
+  playTimeTracker: SuperMutantNCRTrooper
+  icon: JobIconBorg
+  supervisors: job-supervisors-ncr
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true
+  hideWithoutWhitelist: true
+  spawnLoadout: false
+  applyTraits: true
+  startingGear: SuperMutantNCRTrooperGear
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+        - SuperMutant
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerSuperMutant  # keeps Loremaster/perk detection working
+          - NCR                # recognised as ally by NCR faction AI and tabs
+
+- type: startingGear
+  id: SuperMutantNCRTrooperGear
+  equipment:
+    outerClothing: ClothingSuperMutantTrooperArmor
+    ears: N14ClothingHeadsetNCR
+    id: N14IDNCRDogtagSoldier
+    back: N14ClothingBackpackNCR
+
+- type: playTimeTracker
+  id: SuperMutantNCRTrooper

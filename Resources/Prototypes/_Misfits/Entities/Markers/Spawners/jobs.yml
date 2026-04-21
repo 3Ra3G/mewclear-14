@@ -797,3 +797,22 @@
   id: N14SpawnPointCaravanTrader
   name: caravan trader (legacy)
 
+# #Misfits Add - C-27 Autonomous Unit latejoin spawn point.
+# Single spawner for the whitelisted-only C27 job. Because the C27 job declares
+# CharacterSpeciesRequirement [C27, C27NCR, C27BoS] and hideWithoutWhitelist:true,
+# all non-C27 roles are inherently blocked from claiming this slot — only a
+# whitelisted player who picked one of the three C-27 species variants can spawn
+# here. The species variant determines which startingGear sub-gear is applied
+# (NCR kit + headset + dogtag, BoS kit + headset + holotag, or Generic = bare).
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointC27
+  name: C-27 Autonomous Unit
+  components:
+  - type: SpawnPoint
+    job_id: C27
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green # base spawn marker; no overlay until C27-specific marker art exists
+

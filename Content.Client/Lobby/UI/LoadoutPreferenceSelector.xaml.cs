@@ -248,8 +248,11 @@ public sealed partial class LoadoutPreferenceSelector : Control
             tooltip.Append(loadoutDesc); // #Misfits Change - use description directly, not as loc key
 
         // Get requirement reasons
+        // #Misfits Fix - pass real player playtimes (was new Dictionary<>(), causing time-locked
+        // loadouts like pipe rifle/shotgun to always report the full Min as "needed" regardless
+        // of how much Overall/role time the player had actually accrued).
         characterRequirementsSystem.CheckRequirementsValid(
-            loadout.Requirements, highJob, profile, new Dictionary<string, TimeSpan>(),
+            loadout.Requirements, highJob, profile, jobRequirementsManager.GetRawPlayTimeTrackers(),
             jobRequirementsManager.IsWhitelisted(), loadout,
             entityManager, prototypeManager, configManager,
             sponsorManager, out var reasons); // Forge-Change

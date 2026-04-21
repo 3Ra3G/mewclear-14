@@ -20,7 +20,12 @@
   weight: -100
   roles:
   - SuperMutant
-  - SuperMutantGladiator # #Misfits Add - playable supermutant gladiator whitelist variant
+  - SuperMutantGladiator    # #Misfits Add - Supermutant Legion Gladiator (Legion-aligned)
+  - SuperMutantNCRRanger   # #Misfits Add - NCR-aligned supermutant ranger
+  - SuperMutantNCRTrooper  # #Misfits Add - NCR-aligned supermutant trooper
+  # #Misfits Removed - generic variants hidden from department; NCR-specific ones take their place
+  # - SuperMutantRanger
+  # - SuperMutantTrooper
 
 # #Misfits Add - Enclave department is job-whitelist-only and sorted below other special departments.
 # #Misfits Change - Expanded from 3 roles to 8 (5 military + 3 science).

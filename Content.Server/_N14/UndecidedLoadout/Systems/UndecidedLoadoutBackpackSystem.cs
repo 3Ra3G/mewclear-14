@@ -49,7 +49,12 @@ public sealed class UndecidedLoadoutBackpackSystem : EntitySystem
             }
         }
         _audio.PlayPvs(backpack.Comp.ApproveSound, backpack.Owner);
-        QueueDel(backpack);
+        // #Misfits Fix - undecided loadout kits (e.g. NCRtrooperloadoutkits → KitNCR_Rifleman) were not despawning after Approve,
+        // letting players drop the kit, pick it back up, and re-submit indefinitely. Close any open UI and strip the component so
+        // any reentrant BUI message becomes a no-op, then queue-delete so the entity is reaped at end-of-tick.
+        _ui.CloseUi(backpack.Owner, UndecidedLoadoutBackpackUIKey.Key);
+        RemComp<UndecidedLoadoutBackpackComponent>(backpack.Owner);
+        QueueDel(backpack.Owner);
     }
     private void OnChangeSet(Entity<UndecidedLoadoutBackpackComponent> backpack, ref UndecidedLoadoutBackpackChangeSetMessage args)
     {
