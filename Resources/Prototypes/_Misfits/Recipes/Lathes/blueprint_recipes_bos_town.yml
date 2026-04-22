@@ -320,6 +320,25 @@
     ScrapElectronic: 25
 
 
+# #Misfits Add - Bozar as T4 craftable BoS weapon blueprint; removed from Knight loadout kit
+- type: latheRecipe
+  id: N14BPBoSWeaponBozarGRA
+  result: N14WeaponRifleBozarGRA
+  category: N14BlueprintBoSWeaponsT4
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 9000
+
+    N14Gunpowder: 80
+
+    Circuitry: 20
+
+    ScrapElectronic: 15
+
+
 - type: latheRecipe
   id: N14BPBoSWeaponLaserRifleWattz3000
   result: N14WeaponLaserRifleWattz3000
@@ -794,6 +813,23 @@
 #   id: N14BPBoSAmmoFusionCoreBlue
 #   result: N14FusionCore
 #   category: N14BlueprintBoSAmmoT4
+
+# #Misfits Add - 5.56mm 30-round magazine as T4 BoS ammo blueprint for Bozar
+- type: latheRecipe
+  id: N14BPBoSAmmoMag556Rifle30
+  result: Magazine556Rifle30
+  category: N14BlueprintBoSAmmoT4
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Lead: 90
+
+    Steel: 190
+
+    N14Gunpowder: 60
+
 
 # --- BoS Tier 5 Ammo ---
 # #Misfits Removed - All T5 energy cell recipes commented out; consolidated to single generic cells at T1. No unique ammo at T5.
