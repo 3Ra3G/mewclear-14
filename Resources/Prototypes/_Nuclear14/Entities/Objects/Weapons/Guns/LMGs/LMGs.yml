@@ -351,7 +351,7 @@
   - type: GunRequiresWield
   - type: GunWieldBonus
     minAngle: -21 # Corvax-Change
-    maxAngle: -50 # Corvax-Change
+    maxAngle: -40 # Corvax-Change
   - type: Gun
     minAngle: 24
     maxAngle: 60
