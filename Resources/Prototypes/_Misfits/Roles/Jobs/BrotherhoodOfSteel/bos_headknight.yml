@@ -70,6 +70,9 @@
     - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T7 faction timelock (40h BoS)
       department: BrotherhoodOfSteel
       min: 144000 # 40 hours
+    - !type:CharacterPlaytimeRequirement # #Misfits Tweak - Require 8h as Senior Knight before Head Knight
+      tracker: BoSMidKnight
+      min: 28800 # 8 hours as Senior Knight
   startingGear: BoSHeadKnightGear
   alwaysUseSpawner: true
   icon: "JobIconBosMKnight"

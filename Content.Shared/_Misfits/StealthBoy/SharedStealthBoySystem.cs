@@ -1,6 +1,9 @@
 // #Misfits Add - Shared Stealth Boy logic. Handles activation, opacity interpolation,
 // and expiry for the Fallout Stealth Boy device. Ported/inspired by RMC-14 stealth system,
 // simplified to remove evasion and skill dependencies.
+// #Misfits Tweak - Now also tracks long-term "stealth radiation" exposure on the user,
+// scaling hallucinations / damage by tier, and grants the Chinese-Stealth-Suit translucent
+// shimmer instead of full invisibility (visibility clamped on the StealthComponent).
 using Content.Shared.Actions;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
@@ -17,6 +20,18 @@ public abstract class SharedStealthBoySystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedStealthSystem _stealth = default!;
+
+    /// <summary>
+    /// Server-only hook called on activation so subclasses can apply addiction
+    /// or other side effects without pulling server systems into Shared.
+    /// </summary>
+    protected virtual void OnStealthBoyActivated(EntityUid user, StealthBoyExposureComponent exposure) { }
+
+    /// <summary>
+    /// Server-only hook called when the cloak ends so subclasses can re-evaluate
+    /// derived state (e.g. clearing the Paracusia breakdown intensity).
+    /// </summary>
+    protected virtual void OnStealthBoyDeactivated(EntityUid user) { }
 
     public override void Initialize()
     {
@@ -72,12 +87,26 @@ public abstract class SharedStealthBoySystem : EntitySystem
         active.FadeOutStart = TimeSpan.Zero;
         Dirty(user, active);
 
-        EnsureComp<StealthComponent>(user);
+        // Spawn the stealth shader. Clamp MinVisibility to the prototype's target so
+        // we keep the translucent "Chinese Stealth Suit" shimmer rather than going invisible.
+        var stealth = EnsureComp<StealthComponent>(user);
+        stealth.MinVisibility = Math.Min(stealth.MinVisibility, item.Comp.Visibility);
+        Dirty(user, stealth);
         _stealth.SetEnabled(user, true);
         _stealth.SetVisibility(user, 1f);
 
+        // Track cumulative exposure across activations. The shared HallucinationsComponent
+        // is owned by HallucinationsSystem; we just trigger a refresh from the server hook.
+        var exposure = EnsureComp<StealthBoyExposureComponent>(user);
+        exposure.LastUpdate = now;
+        Dirty(user, exposure);
+
+        // Server-only side effects (addiction, hallucination refresh).
         if (_net.IsServer)
+        {
+            OnStealthBoyActivated(user, exposure);
             _popup.PopupEntity("The Stealth Boy hums and you feel yourself fade from view.", user, user);
+        }
     }
 
     private void OnActiveShutdown(Entity<StealthBoyActiveComponent> ent, ref ComponentShutdown args)
@@ -86,6 +115,10 @@ public abstract class SharedStealthBoySystem : EntitySystem
             return;
 
         RemCompDeferred<StealthComponent>(ent);
+        // Hallucination intensity is reasserted by the server-side OnTierChanged path;
+        // exposure stays so it can decay back down naturally.
+        if (_net.IsServer)
+            OnStealthBoyDeactivated(ent.Owner);
     }
 
     public override void Update(float frameTime)
@@ -95,9 +128,24 @@ public abstract class SharedStealthBoySystem : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
+        UpdateActive(frameTime);
+        UpdateExposureDecay(frameTime);
+    }
+
+    private void UpdateActive(float frameTime)
+    {
         var query = EntityQueryEnumerator<StealthBoyActiveComponent>();
         while (query.MoveNext(out var uid, out var active))
         {
+            // Accumulate exposure for this user while the cloak is up.
+            if (TryComp<StealthBoyExposureComponent>(uid, out var exposure))
+            {
+                exposure.ExposureSeconds += frameTime;
+                exposure.LastUpdate = _timing.CurTime;
+                UpdateTier((uid, exposure));
+                Dirty(uid, exposure);
+            }
+
             var now = _timing.CurTime;
 
             if (!active.FadingOut)
@@ -148,6 +196,66 @@ public abstract class SharedStealthBoySystem : EntitySystem
 
         _stealth.SetVisibility(uid, visibility);
     }
+
+    /// <summary>
+    /// Decays exposure for users that are not currently cloaked. Bounded by
+    /// the Without filter so we never iterate the same set of users twice.
+    /// </summary>
+    private void UpdateExposureDecay(float frameTime)
+    {
+        // Only run on server — clients don't predict the long-term exposure value.
+        if (!_net.IsServer)
+            return;
+
+        var query = EntityQueryEnumerator<StealthBoyExposureComponent, MetaDataComponent>();
+        while (query.MoveNext(out var uid, out var exposure, out _))
+        {
+            if (HasComp<StealthBoyActiveComponent>(uid))
+                continue;
+
+            if (exposure.ExposureSeconds <= 0f)
+            {
+                // Fully clear users get the comp removed so the query shrinks again.
+                if (exposure.CurrentTier == 0)
+                    RemCompDeferred<StealthBoyExposureComponent>(uid);
+                continue;
+            }
+
+            exposure.ExposureSeconds = Math.Max(0f, exposure.ExposureSeconds - exposure.DecayPerSecond * frameTime);
+            UpdateTier((uid, exposure));
+            Dirty(uid, exposure);
+        }
+    }
+
+    /// <summary>
+    /// Recompute the cached tier from ExposureSeconds. Override-friendly hook for
+    /// the server to send tier-transition popups.
+    /// </summary>
+    protected void UpdateTier(Entity<StealthBoyExposureComponent> ent)
+    {
+        var thresholds = ent.Comp.TierThresholds;
+        var newTier = 0;
+        for (var i = thresholds.Length - 1; i >= 1; i--)
+        {
+            if (ent.Comp.ExposureSeconds >= thresholds[i])
+            {
+                newTier = i;
+                break;
+            }
+        }
+
+        if (newTier == ent.Comp.CurrentTier)
+            return;
+
+        var oldTier = ent.Comp.CurrentTier;
+        ent.Comp.CurrentTier = newTier;
+        OnTierChanged(ent.Owner, oldTier, newTier);
+    }
+
+    /// <summary>
+    /// Hook for the server to surface tier transitions to the player (popup, alert, etc.).
+    /// </summary>
+    protected virtual void OnTierChanged(EntityUid user, int oldTier, int newTier) { }
 }
 
 /// <summary>

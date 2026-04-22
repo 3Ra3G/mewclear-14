@@ -58,6 +58,10 @@ public sealed class HolotapeBoundUserInterfaceState : BoundUserInterfaceState
     // #Misfits Add - List of port ID strings that the terminal can invoke (e.g. "Toggle", "Open", "Close").
     public readonly List<string>? LinkPorts;
 
+    // #Misfits Add - Faction-shared database tab state. Null when the terminal has no
+    // TerminalDatabaseComponent or its prototype is missing — DATABASE tab stays hidden.
+    public readonly TerminalDatabaseState? Database;
+
     public HolotapeBoundUserInterfaceState(
         string title,
         string content,
@@ -65,7 +69,8 @@ public sealed class HolotapeBoundUserInterfaceState : BoundUserInterfaceState
         NetUserId? viewerUserId = null,
         bool isHolotapeItem = false,
         bool hasLinkSource = false,
-        List<string>? linkPorts = null)
+        List<string>? linkPorts = null,
+        TerminalDatabaseState? database = null)
     {
         Title = title;
         Content = content;
@@ -74,6 +79,7 @@ public sealed class HolotapeBoundUserInterfaceState : BoundUserInterfaceState
         IsHolotapeItem = isHolotapeItem;
         HasLinkSource = hasLinkSource;
         LinkPorts = linkPorts;
+        Database = database;
     }
 }
 

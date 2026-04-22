@@ -18,9 +18,11 @@
             <!-- Tab buttons row (visible when terminal has notebook or link ports) -->
             <BoxContainer Name="TabBar" Orientation="Horizontal" SeparationOverride="4" Visible="False">
                 <Button Name="DataTabButton" Text="[ DATA ]" MinWidth="80" />
-                <Button Name="NotesTabButton" Text="[ NOTES ]" MinWidth="80" />
+                <Button Name="NotesTabButton" Text="[ TERMINAL NOTES ]" MinWidth="120" />
                 <!-- #Misfits Add - Links tab button for device link port controls -->
                 <Button Name="LinksTabButton" Text="[ LINKS ]" MinWidth="80" Visible="False" />
+                <!-- #Misfits Add - Database tab button for the faction-shared knowledge database -->
+                <Button Name="DatabaseTabButton" Text="[ DATABASE ]" MinWidth="100" Visible="False" />
             </BoxContainer>
 
             <!-- ═══ DATA TAB content ═══ -->
@@ -75,6 +77,67 @@
                     <BoxContainer Name="LinksList" Orientation="Vertical" SeparationOverride="6"
                                   HorizontalExpand="True" />
                 </ScrollContainer>
+            </BoxContainer>
+
+            <!-- ═══ DATABASE TAB content (hidden by default) ═══ -->
+            <!-- #Misfits Add - Faction-shared knowledge database tab. Folders → subfolders → docs. -->
+            <BoxContainer Name="DatabasePanel" Orientation="Vertical" VerticalExpand="True" SeparationOverride="4" Visible="False">
+                <Label Name="DatabaseHeaderLabel"
+                       Text="FACTION DATABASE"
+                       FontColorOverride="#33FF33"
+                       StyleClasses="monospace"
+                       HorizontalAlignment="Center" />
+                <PanelContainer Name="SepDatabase" MinHeight="1" HorizontalExpand="True" />
+                <RichTextLabel Name="DatabaseBreadcrumbLabel"
+                               StyleClasses="monospace"
+                               HorizontalExpand="True" />
+                <!-- Browser: list of folders/subfolders/docs depending on current view -->
+                <ScrollContainer Name="DatabaseBrowserScroll" VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
+                    <BoxContainer Name="DatabaseList" Orientation="Vertical" SeparationOverride="2"
+                                  HorizontalExpand="True" />
+                </ScrollContainer>
+                <!-- Document viewer: shown when a doc is opened, replaces browser -->
+                <ScrollContainer Name="DatabaseDocScroll" VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False" Visible="False">
+                    <BoxContainer Name="DatabaseDocBox" Orientation="Vertical" SeparationOverride="4" HorizontalExpand="True">
+                        <RichTextLabel Name="DatabaseDocTitle" StyleClasses="monospace" HorizontalExpand="True" />
+                        <RichTextLabel Name="DatabaseDocMeta" StyleClasses="monospace" HorizontalExpand="True" />
+                        <RichTextLabel Name="DatabaseDocBody" StyleClasses="monospace" HorizontalExpand="True" />
+                    </BoxContainer>
+                </ScrollContainer>
+                <!-- Editor: shown when creating/editing -->
+                <BoxContainer Name="DatabaseEditor" Orientation="Vertical" SeparationOverride="4" Visible="False" VerticalExpand="True">
+                    <Label Name="DatabaseEditorPrompt"
+                           Text="NEW ENTRY"
+                           FontColorOverride="#33FF33"
+                           StyleClasses="monospace" />
+                    <LineEdit Name="DatabaseEditorTitleInput" PlaceHolder="Title (max 64 chars)" HorizontalExpand="True" />
+                    <!-- #Misfits Add - BBCode toolbar: wraps the current selection (or inserts at cursor) with the chosen tag. -->
+                    <BoxContainer Name="DatabaseEditorToolbar" Orientation="Horizontal" SeparationOverride="2" HorizontalExpand="True">
+                        <Button Name="BBBoldButton"    Text="B"     MinWidth="28" ToolTip="Bold — wraps selection in [bold]…[/bold]" />
+                        <Button Name="BBItalicButton"  Text="I"     MinWidth="28" ToolTip="Italic — wraps selection in [italic]…[/italic]" />
+                        <Button Name="BBHead2Button"   Text="H"     MinWidth="28" ToolTip="Heading — wraps selection in [head=2]…[/head]" />
+                        <Button Name="BBBulletButton"  Text="•"     MinWidth="28" ToolTip="Bullet — inserts a [bullet] marker" />
+                        <Button Name="BBColorButton"   Text="Color" MinWidth="50" ToolTip="Color — wraps selection in [color=#33FF33]…[/color]" />
+                        <Button Name="BBClearButton"   Text="Clear" MinWidth="50" ToolTip="Strip all BBCode tags from the body" />
+                    </BoxContainer>
+                    <TextEdit Name="DatabaseEditorBodyInput" MinHeight="120" HorizontalExpand="True" VerticalExpand="True" />
+                    <!-- #Misfits Add - Admin-only checkbox: marks a new root folder as Admin-protected.
+                         Visible only when the actor's job grants Admin tier. Label text is set
+                         in code-behind from the prototype's adminLabel (e.g. "ELDER COUNCIL"). -->
+                    <Button Name="DatabaseEditorAdminToggle"
+                            Text="[ ☐  ADMIN ]"
+                            ToggleMode="True"
+                            Visible="False"
+                            HorizontalAlignment="Left"
+                            ToolTip="Admin-only. Marks this root folder as Admin-protected — only Admin-tier (faction leadership council) can delete it or anything inside it." />
+                    <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                        <Button Name="DatabaseEditorSubmitButton" Text="[ SAVE ]" MinWidth="100" />
+                        <Button Name="DatabaseEditorCancelButton" Text="[ CANCEL ]" MinWidth="100" />
+                    </BoxContainer>
+                </BoxContainer>
+                <!-- Action bar (rebuilt per view in code-behind) -->
+                <PanelContainer Name="SepDatabaseActions" MinHeight="1" HorizontalExpand="True" />
+                <BoxContainer Name="DatabaseActionsBar" Orientation="Horizontal" SeparationOverride="6" />
             </BoxContainer>
         </BoxContainer>
     </PanelContainer>

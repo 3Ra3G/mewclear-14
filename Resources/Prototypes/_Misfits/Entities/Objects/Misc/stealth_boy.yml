@@ -23,11 +23,15 @@
     size: Small
     sprite: _Nuclear14/Objects/Misc/pipboy.rsi
     heldPrefix: pda
+  # #Misfits Tweak - Visibility raised from -1 (fully invisible) to 0.3 so the
+  # cloak reads like the Chinese Stealth Suit: a translucent, distorted shimmer
+  # rather than total invisibility. SharedStealthBoySystem also clamps the
+  # spawned StealthComponent's MinVisibility to this value.
   - type: StealthBoy
     duration: 30
     fadeInTime: 1.5
     fadeOutTime: 2
-    visibility: -1
+    visibility: 0.3
   - type: ActionGrant
     actions:
     - ActionActivateStealthBoy

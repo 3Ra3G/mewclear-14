@@ -168,19 +168,54 @@ public sealed class HolotapeSystem : EntitySystem
     /// the ActivatableUI opens, send the terminal's own content to the viewer.
     /// If the terminal has a TerminalNotebookComponent, include persisted notes.
     /// If the terminal has a DeviceLinkSourceComponent, include available port IDs.
+    /// If the terminal has a TerminalDatabaseComponent, include faction database state.
     /// </summary>
     private void OnTerminalUIOpen(EntityUid uid, HolotapeDataComponent comp, AfterActivatableUIOpenEvent args)
     {
         if (!_ui.HasUi(uid, HolotapeUiKey.Key))
             return;
 
-        // #Misfits Add - Gather device link source port data for the LINKS tab
+        // #Misfits Add - Single state builder shared with RefreshTerminalState.
+        var state = BuildTerminalState(uid, args.User, openDatabaseDocumentId: null);
+        _ui.SetUiState(uid, HolotapeUiKey.Key, state);
+    }
+
+    // #Misfits Add - Public re-entry point used by TerminalDatabaseSystem after every
+    // database mutation. Keeps the state object's other tabs (data/notes/links) accurate
+    // by going through the same builder used on initial UI open.
+    /// <summary>
+    /// Rebuilds and pushes the full HolotapeBoundUserInterfaceState for this terminal.
+    /// Pass openDatabaseDocumentId to render a specific document in the DATABASE tab viewer.
+    /// </summary>
+    public void RefreshTerminalState(EntityUid uid, EntityUid actor, Guid? openDatabaseDocumentId = null)
+    {
+        if (!_ui.HasUi(uid, HolotapeUiKey.Key))
+            return;
+        var state = BuildTerminalState(uid, actor, openDatabaseDocumentId);
+        _ui.SetUiState(uid, HolotapeUiKey.Key, state);
+    }
+
+    /// <summary>
+    /// Assembles the full state object for a terminal: random/static title+content
+    /// (DATA tab), notebook notes (NOTES tab), device link ports (LINKS tab),
+    /// and faction database state (DATABASE tab).
+    /// </summary>
+    private HolotapeBoundUserInterfaceState BuildTerminalState(EntityUid uid, EntityUid actor, Guid? openDatabaseDocumentId)
+    {
+        // ── DATA tab content ───────────────────────────────────────────────
+        var title = string.Empty;
+        var content = string.Empty;
+        if (TryComp<HolotapeDataComponent>(uid, out var data))
+        {
+            title = data.Title;
+            content = data.Content;
+        }
+
+        // ── LINKS tab: gather device link source port data ─────────────────
         var hasLinkSource = false;
         List<string>? linkPorts = null;
         if (TryComp<DeviceLinkSourceComponent>(uid, out var linkSource))
         {
-            // Read Ports into a local — direct method calls on the component field
-            // trigger RA0002 (Execute access) since we only have Read permission.
             var ports = linkSource.Ports;
             if (ports != null)
             {
@@ -191,24 +226,31 @@ public sealed class HolotapeSystem : EntitySystem
             }
         }
 
-        // #Misfits Add - Include notebook notes and viewer ID if terminal has notebook
+        // ── NOTES tab: include notebook notes + viewer ID ──────────────────
+        List<TerminalNoteEntry>? notes = null;
+        NetUserId? viewerId = null;
         if (TryComp<TerminalNotebookComponent>(uid, out var notebook)
             && !string.IsNullOrEmpty(notebook.TerminalId))
         {
-            var notes = _notesData.GetNotes(notebook.TerminalId);
-            NetUserId? viewerId = null;
-            if (TryComp<ActorComponent>(args.User, out var actor))
-                viewerId = actor.PlayerSession.UserId;
-
-            _ui.SetUiState(uid, HolotapeUiKey.Key,
-                new HolotapeBoundUserInterfaceState(comp.Title, comp.Content, notes, viewerId,
-                    hasLinkSource: hasLinkSource, linkPorts: linkPorts));
-            return;
+            notes = _notesData.GetNotes(notebook.TerminalId);
+            if (TryComp<ActorComponent>(actor, out var actorComp))
+                viewerId = actorComp.PlayerSession.UserId;
         }
 
-        _ui.SetUiState(uid, HolotapeUiKey.Key,
-            new HolotapeBoundUserInterfaceState(comp.Title, comp.Content,
-                hasLinkSource: hasLinkSource, linkPorts: linkPorts));
+        // ── DATABASE tab: viewer-driven faction database resolution ────────
+        // #Misfits Change - DATABASE tab is now on every terminal. The viewer's ID
+        // access tags determine which faction database (if any) they see. Wastelanders
+        // and IDless characters get a NO ACCESS sentinel state from BuildState.
+        var dbSystem = EntityManager.System<TerminalDatabaseSystem>();
+        var databaseState = dbSystem.BuildState(uid, actor, openDatabaseDocumentId);
+
+        return new HolotapeBoundUserInterfaceState(
+            title, content,
+            notes, viewerId,
+            isHolotapeItem: false,
+            hasLinkSource: hasLinkSource,
+            linkPorts: linkPorts,
+            database: databaseState);
     }
 
     // #Misfits Add - Validate port exists on the terminal's DeviceLinkSourceComponent and invoke it.

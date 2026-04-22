@@ -84,6 +84,7 @@ namespace Content.Server.IoC
             IoCManager.Register<SharedPlayerRateLimitManager, PlayerRateLimitManager>();
             IoCManager.Register<MappingManager>();
             IoCManager.Register<TerminalNotesDataStore>(); // #Misfits Add - Persistent terminal notes storage
+            IoCManager.Register<TerminalDatabaseDataStore>(); // #Misfits Add - Persistent faction database storage
         }
     }
 }

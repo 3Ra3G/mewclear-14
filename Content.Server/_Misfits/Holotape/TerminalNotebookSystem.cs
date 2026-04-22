@@ -156,20 +156,11 @@ public sealed class TerminalNotebookSystem : EntitySystem
         if (!_ui.HasUi(uid, HolotapeUiKey.Key))
             return;
 
-        // Get the terminal's data content (title/body from HolotapeDataComponent)
-        var title = string.Empty;
-        var content = string.Empty;
-        if (TryComp<HolotapeDataComponent>(uid, out var data))
-        {
-            title = data.Title;
-            content = data.Content;
-        }
-
-        var notes = _dataStore.GetNotes(notebook.TerminalId);
-        var viewerId = GetUserId(actor);
-
-        var state = new HolotapeBoundUserInterfaceState(title, content, notes, viewerId);
-        _ui.SetUiState(uid, HolotapeUiKey.Key, state);
+        // #Misfits Fix - Previously this method built a partial HolotapeBoundUserInterfaceState
+        // that omitted Database/Links data, which caused the client to wipe those tabs whenever
+        // a player switched to the NOTES tab (RequestNotes triggers this push). Route through
+        // HolotapeSystem.RefreshTerminalState so every push contains the FULL terminal state.
+        EntityManager.System<HolotapeSystem>().RefreshTerminalState(uid, actor);
     }
 
     // ── Helpers ──────────────────────────────────────────────────────────────

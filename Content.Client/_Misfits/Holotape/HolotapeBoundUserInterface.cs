@@ -48,6 +48,29 @@ public sealed class HolotapeBoundUserInterface : BoundUserInterface
         {
             SendMessage(new InvokeTerminalLinkPortMessage(portId));
         };
+
+        // #Misfits Add - Wire database events to send BUI messages to server.
+        _window.OnRequestDatabase += () =>
+            SendMessage(new RequestDatabaseStateMessage());
+        _window.OnOpenDatabaseDocument += docId =>
+            SendMessage(new OpenDatabaseDocumentMessage(docId));
+        _window.OnCreateDatabaseFolder += (parentId, name, markAdmin) =>
+            SendMessage(new CreateDatabaseFolderMessage(parentId, name, markAdmin));
+        _window.OnCreateDatabaseDocument += (folderId, subfolderId, title, body, markAdmin) =>
+            SendMessage(new CreateDatabaseDocumentMessage(folderId, subfolderId, title, body, markAdmin));
+        _window.OnEditDatabaseDocument += (docId, body) =>
+            SendMessage(new EditDatabaseDocumentMessage(docId, body));
+        _window.OnDeleteDatabaseFolder += (folderId, subfolderId) =>
+            SendMessage(new DeleteDatabaseFolderMessage(folderId, subfolderId));
+        _window.OnDeleteDatabaseDocument += docId =>
+            SendMessage(new DeleteDatabaseDocumentMessage(docId));
+        _window.OnRollbackDatabaseDocument += (docId, rev) =>
+            SendMessage(new RollbackDatabaseDocumentMessage(docId, rev));
+        _window.OnRestoreDatabaseEntry += (folderId, subParent, subId, docId) =>
+            SendMessage(new RestoreDatabaseEntryMessage(folderId, subParent, subId, docId));
+        // #Misfits Add - Forward Database document export requests to the server.
+        _window.OnExportDatabaseDocument += docId =>
+            SendMessage(new ExportDatabaseDocumentMessage(docId));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -67,5 +90,8 @@ public sealed class HolotapeBoundUserInterface : BoundUserInterface
 
         // #Misfits Add - Update the LINKS tab (shows device link port buttons when terminal has links)
         _window.UpdateLinks(cast.HasLinkSource, cast.LinkPorts);
+
+        // #Misfits Add - Update the DATABASE tab (faction-shared knowledge base)
+        _window.UpdateDatabase(cast.Database);
     }
 }
