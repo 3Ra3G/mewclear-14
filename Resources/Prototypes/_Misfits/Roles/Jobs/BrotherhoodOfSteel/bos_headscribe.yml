@@ -15,6 +15,9 @@
     - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T7 faction timelock (40h BoS)
       department: BrotherhoodOfSteel
       min: 144000 # 40 hours
+    - !type:CharacterPlaytimeRequirement # #Misfits Tweak - Require 8h as Senior Scribe before Head Scribe
+      tracker: BoSMidScribe
+      min: 28800 # 8 hours as Senior Scribe
   startingGear: BoSWestScribeGear
   alwaysUseSpawner: true
   icon: "JobIconBosMScriptor"
