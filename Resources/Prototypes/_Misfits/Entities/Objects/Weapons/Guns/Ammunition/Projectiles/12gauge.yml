@@ -12,4 +12,8 @@
       types:
         Blunt: 12
   - type: StaminaDamageOnCollide
-    damage: 60 # 2 hits to stun
+    damage: 50 # 2 hits to stun, just barely
+  - type: BallisticDamageFalloff
+    falloffStartTiles: 3.0
+    maxFalloffTiles: 8.0
+    minDamageMultiplier: 0.3
