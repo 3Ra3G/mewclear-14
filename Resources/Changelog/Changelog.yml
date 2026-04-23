@@ -3743,3 +3743,22 @@ Entries:
   id: 5762
   time: '2026-04-23T21:33:45.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/321
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: lol stuff/title
+    - type: Fix
+      message: >-
+        /raid p2p YES | NO going to stale cached userID, new refresh queue and
+        admin approve/deny fallback
+    - type: Tweak
+      message: despawn component to plasticbox spam & MREs
+    - type: Tweak
+      message: PA weld require 30 seconds
+    - type: Tweak
+      message: >-
+        C-27 weld require 30 seconds. Nerf EHP to 400/600/800 for
+        Light/Med/Heavy
+  id: 5763
+  time: '2026-04-23T22:52:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/322
