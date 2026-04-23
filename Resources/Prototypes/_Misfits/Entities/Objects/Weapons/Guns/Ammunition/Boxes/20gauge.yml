@@ -1,5 +1,5 @@
 ﻿- type: entity
-  parent: MagazineBox12gauge
+  parent: MagazineBox20gauge
   id: MisfitsMagazineBox20GaugeBeanbag
   name: ammunition box (20 gauge beanbag)
   components:
