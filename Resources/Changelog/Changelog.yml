@@ -3771,3 +3771,10 @@ Entries:
   id: 5764
   time: '2026-04-23T22:53:13.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/323
+- author: Trosling
+  changes:
+    - type: Add
+      message: Properly implemented beanbag shells, for 20 gauge as well
+  id: 5765
+  time: '2026-04-24T02:19:13.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/325
