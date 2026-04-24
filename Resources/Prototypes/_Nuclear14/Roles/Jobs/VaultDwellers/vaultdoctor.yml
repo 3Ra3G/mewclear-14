@@ -56,6 +56,6 @@
     - N14Stimpak # #Misfits Add - extra stimpak for the doctor
     - N14CurrencyPrewarMoney100
     - N14CurrencyPrewarMoney100
-
+    - VaultGuidePaper
 - type: playTimeTracker
   id: VaultDoctor
